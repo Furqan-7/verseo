@@ -1,0 +1,6 @@
+/node_modules
+/.next
+/out
+/.rendered
+.env*.local
+.DS_Store
