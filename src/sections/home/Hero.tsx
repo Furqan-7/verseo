@@ -60,7 +60,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-1h6ujzx" data-framer-appear-id="1h6ujzx" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                   <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                    {"CreatorOS brings your inbox, brand deals, content and schedule into one place — and does the busywork so you can create"}
+                    {"Your inbox, brand deals, content and schedule in one place, with a daily briefing that tells you what to do and does the busywork for you."}
                   </p>
                 </div>
               </div>
@@ -72,12 +72,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                         <div className="framer-8n851v" data-framer-name="Text Container">
                           <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                              {"Get Started"}
+                              {"Get my briefing"}
                             </p>
                           </div>
                           <div className="framer-1uxyoc7" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                              {"Get Started"}
+                              {"Get my briefing"}
                             </p>
                           </div>
                         </div>
@@ -92,12 +92,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                         <div className="framer-8n851v" data-framer-name="Text Container">
                           <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                              {"Try Demo"}
+                              {"Watch demo"}
                             </p>
                           </div>
                           <div className="framer-1uxyoc7" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                              {"Try Demo"}
+                              {"Watch demo"}
                             </p>
                           </div>
                         </div>
@@ -161,7 +161,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-1h6ujzx" data-framer-appear-id="1h6ujzx" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                   <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                    {"CreatorOS brings your inbox, brand deals, content and schedule into one place — and does the busywork so you can create"}
+                    {"Your inbox, brand deals, content and schedule in one place, with a daily briefing that tells you what to do and does the busywork for you."}
                   </p>
                 </div>
               </div>
@@ -173,12 +173,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                         <div className="framer-8n851v" data-framer-name="Text Container">
                           <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                              {"Get Started"}
+                              {"Get my briefing"}
                             </p>
                           </div>
                           <div className="framer-1uxyoc7" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                              {"Get Started"}
+                              {"Get my briefing"}
                             </p>
                           </div>
                         </div>
@@ -193,12 +193,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                         <div className="framer-8n851v" data-framer-name="Text Container">
                           <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                              {"Try Demo"}
+                              {"Watch demo"}
                             </p>
                           </div>
                           <div className="framer-1uxyoc7" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                              {"Try Demo"}
+                              {"Watch demo"}
                             </p>
                           </div>
                         </div>
@@ -262,7 +262,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-1h6ujzx" data-framer-appear-id="1h6ujzx" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                   <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                    {"CreatorOS brings your inbox, brand deals, content and schedule into one place — and does the busywork so you can create"}
+                    {"Your inbox, brand deals, content and schedule in one place, with a daily briefing that tells you what to do and does the busywork for you."}
                   </p>
                 </div>
               </div>
@@ -274,12 +274,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                         <div className="framer-8n851v" data-framer-name="Text Container">
                           <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                              {"Get Started"}
+                              {"Get my briefing"}
                             </p>
                           </div>
                           <div className="framer-1uxyoc7" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                              {"Get Started"}
+                              {"Get my briefing"}
                             </p>
                           </div>
                         </div>
@@ -294,12 +294,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                         <div className="framer-8n851v" data-framer-name="Text Container">
                           <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                              {"Try Demo"}
+                              {"Watch demo"}
                             </p>
                           </div>
                           <div className="framer-1uxyoc7" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                              {"Try Demo"}
+                              {"Watch demo"}
                             </p>
                           </div>
                         </div>
@@ -346,7 +346,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-1d9kbh2" data-framer-name="What do you want to write today?" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto" style={{ "--framer-text-color": "var(--token-70dd917f-3e82-45ab-bf0e-41869a710944, rgb(133, 133, 133))" }}>
-                        {"What should I post today?"}
+                        {"What needs me today?"}
                       </p>
                     </div>
                   </div>
@@ -362,7 +362,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-1d9kbh2" data-framer-name="What do you want to write today?" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto" style={{ "--framer-text-color": "var(--token-70dd917f-3e82-45ab-bf0e-41869a710944, rgb(133, 133, 133))" }}>
-                        {"What should I post today?"}
+                        {"What needs me today?"}
                       </p>
                     </div>
                   </div>
@@ -438,7 +438,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
           <div className="ssr-variant">
             <div className="framer-vci1j0" data-framer-appear-id="vci1j0" data-framer-name="Image" style={{ willChange: "transform", opacity: "0.001", transform: "perspective(1000px)" }}>
               <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                <img width="2151" height="720" sizes="(min-width: 1200px) max(956px, 100vw), (max-width: 809.98px) max(956px, calc((100vw - 24px) * 3)), (min-width: 810px) and (max-width: 1199.98px) max(min(max(min(100vw, 1440px) - 60px, 1px), 908px), 100vw)" srcSet="/assets/img/5c8a4ae73d00e8fe.webp 512w, /assets/img/05f8aeb404ba7c20.webp 1024w, /assets/img/805eb251f1ea5381.webp 2048w, /assets/img/5406b94c975e109e.webp 2151w" src="/assets/img/5406b94c975e109e.webp" alt="Verseo AI content generation dashboard preview" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center top", objectFit: "cover" }} loading="eager" fetchPriority="high" />
+                <img width="2151" height="720" sizes="(min-width: 1200px) max(956px, 100vw), (max-width: 809.98px) max(956px, calc((100vw - 24px) * 3)), (min-width: 810px) and (max-width: 1199.98px) max(min(max(min(100vw, 1440px) - 60px, 1px), 908px), 100vw)" srcSet="/assets/img/creatoros-hero-512.webp 512w, /assets/img/creatoros-hero-1024.webp 1024w, /assets/img/creatoros-hero-2048.webp 2048w, /assets/img/creatoros-hero-2151.webp 2151w" src="/assets/img/creatoros-hero-2151.webp" alt="CreatorOS daily briefing dashboard preview" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center top", objectFit: "cover" }} loading="eager" fetchPriority="high" />
               </div>
             </div>
           </div>
@@ -1595,7 +1595,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-19817cs" data-framer-name="What do you want to write today?" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                      {"What should I post today?"}
+                      {"What needs me today?"}
                     </p>
                   </div>
                 </div>
@@ -1611,7 +1611,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-19817cs" data-framer-name="What do you want to write today?" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                      {"What should I post today?"}
+                      {"What needs me today?"}
                     </p>
                   </div>
                 </div>
@@ -1673,14 +1673,14 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
       <div className="ssr-variant hidden-15twu3q">
         <div className="framer-1xis650 hidden-72rtr7 hidden-1mvte0s" data-framer-appear-id="1xis650" data-framer-name="Image mobile" style={{ willChange: "transform", height: "auto", aspectRatio: "2.9875", opacity: "0.001", transform: "perspective(1000px)" }}>
           <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-            <img width="2151" height="720" srcSet="/assets/img/5c8a4ae73d00e8fe.webp 512w, /assets/img/05f8aeb404ba7c20.webp 1024w, /assets/img/805eb251f1ea5381.webp 2048w, /assets/img/5406b94c975e109e.webp 2151w" src="/assets/img/5406b94c975e109e.webp" alt="Verseo AI content dashboard shown on a mobile device" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "1.3% 57.4%", objectFit: "cover" }} sizes="(min-width: 1200px) max(956px, 100vw), (max-width: 809.98px) max(956px, calc((100vw - 24px) * 3)), (min-width: 810px) and (max-width: 1199.98px) max(min(max(min(100vw, 1440px) - 60px, 1px), 908px), 100vw)" loading="eager" />
+            <img width="2151" height="720" srcSet="/assets/img/creatoros-hero-512.webp 512w, /assets/img/creatoros-hero-1024.webp 1024w, /assets/img/creatoros-hero-2048.webp 2048w, /assets/img/creatoros-hero-2151.webp 2151w" src="/assets/img/creatoros-hero-2151.webp" alt="CreatorOS daily briefing dashboard shown on a mobile device" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "1.3% 57.4%", objectFit: "cover" }} sizes="(min-width: 1200px) max(956px, 100vw), (max-width: 809.98px) max(956px, calc((100vw - 24px) * 3)), (min-width: 810px) and (max-width: 1199.98px) max(min(max(min(100vw, 1440px) - 60px, 1px), 908px), 100vw)" loading="eager" />
           </div>
         </div>
       </div>
       <div className="ssr-variant hidden-1mvte0s hidden-72rtr7">
         <div className="framer-1xis650 hidden-72rtr7 hidden-1mvte0s" data-framer-appear-id="1xis650" data-framer-name="Image mobile" style={{ willChange: "transform", height: "auto", aspectRatio: "2.9875", opacity: "0.001", transform: "perspective(1000px)" }}>
           <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-            <img width="2151" height="720" sizes="(min-width: 1200px) max(956px, 100vw), (max-width: 809.98px) max(956px, calc((100vw - 24px) * 3)), (min-width: 810px) and (max-width: 1199.98px) max(min(max(min(100vw, 1440px) - 60px, 1px), 908px), 100vw)" srcSet="/assets/img/5c8a4ae73d00e8fe.webp 512w, /assets/img/05f8aeb404ba7c20.webp 1024w, /assets/img/805eb251f1ea5381.webp 2048w, /assets/img/5406b94c975e109e.webp 2151w" src="/assets/img/5406b94c975e109e.webp" alt="Verseo AI content dashboard shown on a mobile device" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "1.3% 57.4%", objectFit: "cover" }} loading="eager" />
+            <img width="2151" height="720" sizes="(min-width: 1200px) max(956px, 100vw), (max-width: 809.98px) max(956px, calc((100vw - 24px) * 3)), (min-width: 810px) and (max-width: 1199.98px) max(min(max(min(100vw, 1440px) - 60px, 1px), 908px), 100vw)" srcSet="/assets/img/creatoros-hero-512.webp 512w, /assets/img/creatoros-hero-1024.webp 1024w, /assets/img/creatoros-hero-2048.webp 2048w, /assets/img/creatoros-hero-2151.webp 2151w" src="/assets/img/creatoros-hero-2151.webp" alt="CreatorOS daily briefing dashboard shown on a mobile device" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "1.3% 57.4%", objectFit: "cover" }} loading="eager" />
           </div>
         </div>
       </div>

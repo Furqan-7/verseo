@@ -17,15 +17,17 @@
    "AI writing tool": "AI OS for creators",
    "Write better content.": "Run your creator business.",
    "Faster. With AI": "Smarter. With AI",
-   "Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word": "CreatorOS brings your inbox, brand deals, content and schedule into one place — and does the busywork so you can create",
-   "What do you want to write today?": "What should I post today?",
+   "Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word": "Your inbox, brand deals, content and schedule in one place, with a daily briefing that tells you what to do and does the busywork for you.",
+   "What do you want to write today?": "What needs me today?",
    "AI Writer": "Briefing",
    "Brand Voice": "Inbox",
    "Rewrite": "Publish",
-   "Summarize": "Deals"
+   "Summarize": "Deals",
+   "Get Started": "Get my briefing",
+   "Try Demo": "Watch demo"
   },
   "Client Logos": {
-   "Trusted by modern teams": "Built for creators on every platform"
+   "Trusted by modern teams": "Works with the platforms you already use"
   },
   "Problem And Difference": {
    "Where content friction ": "Where creator chaos ",
@@ -243,9 +245,45 @@
     node.nodeValue = lead + next + trail;
   }
 
+  // Images are matched by the width and height attributes Framer gives them,
+  // which stay the same when its runtime re-renders the page with its own URLs.
+  var HERO_SRCSET = "/assets/img/creatoros-hero-512.webp 512w, /assets/img/creatoros-hero-1024.webp 1024w, /assets/img/creatoros-hero-2048.webp 2048w, /assets/img/creatoros-hero-2151.webp 2151w";
+  var IMAGES = {
+    "Hero": { "2151x720": { src: "/assets/img/creatoros-hero-2151.webp", srcset: HERO_SRCSET } },
+    "Client Logos": {
+      "294x81": { src: "/assets/img/creatoros-logo-youtube.png" },
+      "268x83": { src: "/assets/img/creatoros-logo-instagram.png" },
+      "224x88": { src: "/assets/img/creatoros-logo-tiktok.png" },
+      "286x81": { src: "/assets/img/creatoros-logo-gmail.png" },
+      "252x83": { src: "/assets/img/creatoros-logo-calendar.png" }
+    }
+  };
+
+  function sectionOf(el) {
+    while (el) {
+      var name = el.getAttribute && el.getAttribute("data-framer-name");
+      if (name && IMAGES[name]) return name;
+      el = el.parentElement;
+    }
+    return null;
+  }
+
+  function fixImg(img) {
+    var section = sectionOf(img);
+    if (!section) return;
+    var want = IMAGES[section][img.getAttribute("width") + "x" + img.getAttribute("height")];
+    if (!want) return;
+    if (want.srcset && img.getAttribute("srcset") !== want.srcset) img.setAttribute("srcset", want.srcset);
+    if (!want.srcset && img.hasAttribute("srcset")) img.removeAttribute("srcset");
+    if (img.getAttribute("src") !== want.src) img.setAttribute("src", want.src);
+  }
+
   function fixTree(root) {
     if (root.nodeType === 3) return fixText(root);
     if (root.nodeType !== 1) return;
+    if (root.tagName === "IMG") return fixImg(root);
+    var imgs = root.getElementsByTagName("img");
+    for (var i = 0; i < imgs.length; i++) fixImg(imgs[i]);
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
     var n;
     while ((n = walker.nextNode())) fixText(n);
@@ -258,10 +296,11 @@
   new MutationObserver(function (records) {
     records.forEach(function (r) {
       if (r.type === "characterData") fixText(r.target);
+      else if (r.type === "attributes") fixImg(r.target);
       else r.addedNodes.forEach(fixTree);
     });
     fixTitle();
-  }).observe(document.documentElement, { childList: true, subtree: true, characterData: true });
+  }).observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ["src", "srcset"] });
 
   document.addEventListener("DOMContentLoaded", function () { fixTree(document.body); fixTitle(); });
 })();
