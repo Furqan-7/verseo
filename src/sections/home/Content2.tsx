@@ -172,7 +172,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
           <form className="framer-1xhirwq" data-framer-name="Form 2">
             <label className="framer-1dw8j17" data-border="true" data-framer-name="Footer Surface 2" style={{ "--border-bottom-width": "1px", "--border-color": "var(--token-98add4f9-5140-43c9-a5d6-d7d07e477a2d, rgb(237, 237, 237))", "--border-left-width": "1px", "--border-right-width": "1px", "--border-style": "solid", "--border-top-width": "1px", backgroundColor: "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23)", borderBottomLeftRadius: "5px", borderBottomRightRadius: "5px", borderTopLeftRadius: "5px", borderTopRightRadius: "5px" }}>
               <div className="framer-form-text-input framer-form-input-wrapper framer-146vkyh" data-framer-name="Input 2" style={{ "--framer-input-font-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-input-icon-mask-image": "none", "--framer-input-placeholder-color": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }}>
-                <input type="email" required name="Email" placeholder="jane@framer.com" className="framer-form-input framer-form-input-empty" defaultValue="" />
+                <input type="email" required name="Email" placeholder="you@example.com" className="framer-form-input framer-form-input-empty" defaultValue="" />
               </div>
             </label>
             <div className="framer-19cg671-container" data-framer-name="Footer Instance 4" name="Footer Instance 4">
@@ -404,7 +404,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
               <div className="framer-17egewn" data-framer-name="Label – X 2" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                 <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
                   <Suspense fallback={null}>
-                    <a className="framer-text framer-styles-preset-ubvt1p" data-styles-preset="oe5nON5T_" href="https://x.com/YTsyhanenko" target="_blank" rel="noopener">
+                    <a className="framer-text framer-styles-preset-ubvt1p" data-styles-preset="oe5nON5T_" href="https://x.com/" target="_blank" rel="noopener">
                       {"X"}
                     </a>
                   </Suspense>

@@ -197,7 +197,8 @@
    "For agencies and growing teams": "For managers and creator teams",
    "Shared workspace": "Multiple creator workspaces",
    "Team collaboration tools": "Shared deal board",
-   "Unlimited team projects": "Roles and approvals"
+   "Unlimited team projects": "Roles and approvals",
+   "Get Started": "Get Started"
   },
   "FAQ": {
    "Whether you’re creating content solo or collaborating with a team,": "Questions about how CreatorOS reads your inbox,",
@@ -230,7 +231,9 @@
   "+ clear value proposition ": "+ Nike deliverable due Friday ",
   "+ conversion-focused copy ": "+ 3 content ideas for today ",
   "status: ready to publish ✓": "status: briefing ready ✓",
-  "content_request: ": "request: "
+  "content_request: ": "request: ",
+  "Get Started": "Get started free",
+  "Try Demo": "See how it works"
  }
 };
 
@@ -277,7 +280,8 @@
     var map = mapFor(node);
     var next = map[key];
     if (next === undefined && raw.indexOf("Verseo") !== -1) next = raw.trim().replace(/Verseo/g, "CreatorOS");
-    if (next === undefined || next === raw.trim()) return;
+    if (next === undefined) return fixFaqAnswer(node);
+    if (next === raw.trim()) return;
     var lead = raw.match(/^\s*/)[0], trail = raw.match(/\s*$/)[0];
     node.nodeValue = lead + next + trail;
   }
@@ -338,17 +342,74 @@
 
   // Button links, which Framer's runtime would reset to the template's own.
   var SIGNUP = "/auth/signup";
+  function hide(el) {
+    if (el.style.display !== "none") el.style.display = "none";
+  }
+
   function fixLink(a) {
     var href = a.getAttribute("href") || "", want = null;
+    var toContact = href.indexOf("contact-us") !== -1;
+    var role = a.getAttribute("data-framer-name");
+    // Template credits and the template's 404 demo link don't belong in the footer.
+    if (href.indexOf("framer.link/yulia95") !== -1 || href.indexOf("tvorbadesign.com") !== -1) return hide(a);
+    if (/(^|\/)404$/.test(href)) return hide(a.closest("p") || a);
     if (href.indexOf("framer.link/") !== -1) want = SIGNUP;
-    else if (a.closest('[data-framer-name="Results"]') && href.indexOf("contact-us") !== -1) want = SIGNUP;
-    else if (a.closest('[data-framer-name="Hero"]')) {
-      var role = a.getAttribute("data-framer-name");
-      if (role === "Primary") want = SIGNUP;
-      else if (role === "Secondary") want = "./#how-it-works";
-    }
+    else if (href.indexOf("x.com/YTsyhanenko") !== -1) want = "https://x.com/";
+    else if (toContact && (a.closest('[data-framer-name="Results"]') || a.closest('[data-framer-name="Pricing"]'))) want = SIGNUP;
+    else if (role === "Primary" && (toContact || a.closest('[data-framer-name="Hero"]'))) want = SIGNUP;
+    else if (role === "Secondary" && (toContact || a.closest('[data-framer-name="Hero"]'))) want = "./#how-it-works";
     if (want && href !== want) a.setAttribute("href", want);
     if (want === SIGNUP && a.getAttribute("target") === "_blank") a.removeAttribute("target");
+  }
+
+  // The footer newsletter form is wired to the template's Framer form service,
+  // which would send visitors' emails to the template author. Send them to
+  // sign-up instead, with the email filled in.
+  window.addEventListener("submit", function (e) {
+    var form = e.target;
+    var input = form && form.querySelector && form.querySelector('input[type="email"]');
+    if (!input) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    location.href = SIGNUP + "?email=" + encodeURIComponent(input.value);
+  }, true);
+
+  function fixInput(input) {
+    if (input.getAttribute("placeholder") === "jane@framer.com") input.setAttribute("placeholder", "you@example.com");
+  }
+
+  // FAQ answers that only Framer's runtime renders. The template's wording isn't
+  // known, so each answer is found by the question in the same FAQ item.
+  var FAQ_ANSWERS = {
+    "What is CreatorOS?": "CreatorOS is an AI operating system for creators. It brings your inbox, brand deals, content, calendar and analytics into one place, gives you a daily briefing, and does the busywork - sorting messages, drafting replies, writing captions and chasing payments - so you spend more time creating.",
+    "Who is CreatorOS designed for?": "Creators who run their own business: full-time YouTubers, Instagram and TikTok creators, and the managers and small teams who work with them. If you juggle brand deals, an inbox and a posting schedule, it's built for you.",
+    "Will it post or send anything on its own?": "No. CreatorOS prepares replies, captions, invoices and calendar events, but nothing is sent, posted or booked until you approve it. Emails are saved as drafts in your Gmail.",
+    "Which platforms does it work with?": "Gmail, Google Calendar, Google Drive and YouTube connect directly. Instagram and TikTok work through imports for now, and posts for every platform are prepared and scheduled from one board.",
+    "Where do the content ideas come from?": "From your own audience and numbers: questions people repeat in your comments, the formats and topics that perform best for you, and the niche and goals you set. Every idea shows why it was picked.",
+    "How much time will it save me?": "It depends on how much you post, but sorting messages, drafting replies, writing captions for each platform and chasing payments add up to hours every week. Your daily briefing shows the time CreatorOS has saved you."
+  };
+  var FAQ_QUESTIONS = Object.keys(FAQ_ANSWERS);
+
+  function fixFaqAnswer(node) {
+    var text = norm(node.nodeValue || "");
+    if (text.length < 40 || FAQ_ANSWERS[text] !== undefined) return;
+    var el = node.parentElement, faq = null;
+    while (el && !faq) {
+      var name = el.getAttribute && el.getAttribute("data-framer-name");
+      if (name === "FAQ") faq = el;
+      el = el.parentElement;
+    }
+    if (!faq) return;
+    for (el = node.parentElement; el && el !== faq; el = el.parentElement) {
+      var all = norm(el.textContent), found = [];
+      FAQ_QUESTIONS.forEach(function (q) { if (all.indexOf(q) !== -1) found.push(q); });
+      if (found.length > 1) return;
+      if (found.length === 1) {
+        var answer = FAQ_ANSWERS[found[0]];
+        if (text !== answer && text !== found[0]) node.nodeValue = answer;
+        return;
+      }
+    }
   }
 
   function fixAnchors() {
@@ -361,6 +422,9 @@
     if (root.nodeType !== 1) return;
     if (root.tagName === "IMG") return fixImg(root);
     if (root.tagName === "A") fixLink(root);
+    if (root.tagName === "INPUT") return fixInput(root);
+    var inputs = root.getElementsByTagName("input");
+    for (var k = 0; k < inputs.length; k++) fixInput(inputs[k]);
     var links = root.getElementsByTagName("a");
     for (var j = 0; j < links.length; j++) fixLink(links[j]);
     var imgs = root.getElementsByTagName("img");
@@ -377,12 +441,16 @@
   new MutationObserver(function (records) {
     records.forEach(function (r) {
       if (r.type === "characterData") fixText(r.target);
-      else if (r.type === "attributes") r.target.tagName === "A" ? fixLink(r.target) : fixImg(r.target);
+      else if (r.type === "attributes") {
+        if (r.target.tagName === "A") fixLink(r.target);
+        else if (r.target.tagName === "INPUT") fixInput(r.target);
+        else fixImg(r.target);
+      }
       else r.addedNodes.forEach(fixTree);
     });
     fixTitle();
     fixAnchors();
-  }).observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ["src", "srcset", "href"] });
+  }).observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ["src", "srcset", "href", "placeholder"] });
 
   document.addEventListener("DOMContentLoaded", function () { fixTree(document.body); fixTitle(); fixAnchors(); });
 })();

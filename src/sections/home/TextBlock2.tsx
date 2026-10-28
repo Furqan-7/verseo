@@ -46,16 +46,16 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
           <Suspense fallback={null}>
             <div className="framer-3glfew-container" data-framer-name="Final CTA Instance 3" name="Final CTA Instance 3">
               <Suspense fallback={null}>
-                <a name="Final CTA Instance 3" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-m8hd4j framer-14zb1bv" data-framer-name="Primary" data-highlight="true" href="./contact-us" tabIndex={0} style={{ "--border-bottom-width": "0px", "--border-color": "rgba(0, 0, 0, 0)", "--border-left-width": "0px", "--border-right-width": "0px", "--border-style": "solid", "--border-top-width": "0px", backgroundColor: "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", width: "100%", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
+                <a name="Final CTA Instance 3" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-m8hd4j framer-14zb1bv" data-framer-name="Primary" data-highlight="true" href="/auth/signup" tabIndex={0} style={{ "--border-bottom-width": "0px", "--border-color": "rgba(0, 0, 0, 0)", "--border-left-width": "0px", "--border-right-width": "0px", "--border-style": "solid", "--border-top-width": "0px", backgroundColor: "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", width: "100%", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
                   <div className="framer-8n851v" data-framer-name="Text Container">
                     <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                        {"Get Started"}
+                        {"Get started free"}
                       </p>
                     </div>
                     <div className="framer-1uxyoc7" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                        {"Get Started"}
+                        {"Get started free"}
                       </p>
                     </div>
                   </div>
@@ -66,16 +66,16 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
           <Suspense fallback={null}>
             <div className="framer-15edl4l-container" data-framer-name="Final CTA Instance 4" name="Final CTA Instance 4">
               <Suspense fallback={null}>
-                <a name="Final CTA Instance 4" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-1dkwqj9 framer-14zb1bv" data-framer-name="Secondary" data-highlight="true" data-border="true" href="./contact-us" tabIndex={0} style={{ "--border-bottom-width": "1px", "--border-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--border-left-width": "1px", "--border-right-width": "1px", "--border-style": "solid", "--border-top-width": "1px", backgroundColor: "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23)", width: "100%", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
+                <a name="Final CTA Instance 4" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-1dkwqj9 framer-14zb1bv" data-framer-name="Secondary" data-highlight="true" data-border="true" href="./#how-it-works" tabIndex={0} style={{ "--border-bottom-width": "1px", "--border-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--border-left-width": "1px", "--border-right-width": "1px", "--border-style": "solid", "--border-top-width": "1px", backgroundColor: "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23)", width: "100%", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
                   <div className="framer-8n851v" data-framer-name="Text Container">
                     <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                        {"Try Demo"}
+                        {"See how it works"}
                       </p>
                     </div>
                     <div className="framer-1uxyoc7" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                        {"Try Demo"}
+                        {"See how it works"}
                       </p>
                     </div>
                   </div>
