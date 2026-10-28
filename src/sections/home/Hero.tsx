@@ -39,7 +39,7 @@ export default function Hero() {
                     </div>
                     <div className="framer-30ccy0" data-framer-name="AI Writing Tool" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-10kjy79" data-styles-preset="sMdfU46Ak" dir="auto" style={{ "--framer-text-color": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }}>
-                        {"AI writing tool"}
+                        {"AI OS for creators"}
                       </p>
                     </div>
                     <div className="framer-2dkflj" data-framer-name="]" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
@@ -51,16 +51,16 @@ export default function Hero() {
                   <div className="framer-110a02j" data-framer-appear-id="110a02j" data-framer-name="SYNTIQ AI SYSTEMS FOR STRUCTURED GROWTH. → Heading 2 → Scientific AI Systems 
 for Structured Growth " data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                     <h1 className="framer-text framer-styles-preset-i5u1e3" data-styles-preset="IqdDbb0JQ" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                      {"Write better content."}
+                      {"Run your creator business."}
                     </h1>
                     <p className="framer-text framer-styles-preset-i5u1e3" data-styles-preset="IqdDbb0JQ" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                      {"Faster. With AI"}
+                      {"Smarter. With AI"}
                     </p>
                   </div>
                 </div>
                 <div className="framer-1h6ujzx" data-framer-appear-id="1h6ujzx" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                   <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                    {"Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word"}
+                    {"CreatorOS brings your inbox, brand deals, content and schedule into one place — and does the busywork so you can create"}
                   </p>
                 </div>
               </div>
@@ -140,7 +140,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-30ccy0" data-framer-name="AI Writing Tool" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-10kjy79" data-styles-preset="sMdfU46Ak" dir="auto" style={{ "--framer-text-color": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }}>
-                        {"AI writing tool"}
+                        {"AI OS for creators"}
                       </p>
                     </div>
                     <div className="framer-2dkflj" data-framer-name="]" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
@@ -152,16 +152,16 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <div className="framer-110a02j" data-framer-appear-id="110a02j" data-framer-name="SYNTIQ AI SYSTEMS FOR STRUCTURED GROWTH. → Heading 2 → Scientific AI Systems 
 for Structured Growth " data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                     <h1 className="framer-text framer-styles-preset-i5u1e3" data-styles-preset="IqdDbb0JQ" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                      {"Write better content."}
+                      {"Run your creator business."}
                     </h1>
                     <p className="framer-text framer-styles-preset-i5u1e3" data-styles-preset="IqdDbb0JQ" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                      {"Faster. With AI"}
+                      {"Smarter. With AI"}
                     </p>
                   </div>
                 </div>
                 <div className="framer-1h6ujzx" data-framer-appear-id="1h6ujzx" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                   <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                    {"Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word"}
+                    {"CreatorOS brings your inbox, brand deals, content and schedule into one place — and does the busywork so you can create"}
                   </p>
                 </div>
               </div>
@@ -241,7 +241,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-30ccy0" data-framer-name="AI Writing Tool" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-10kjy79" data-styles-preset="sMdfU46Ak" dir="auto" style={{ "--framer-text-color": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }}>
-                        {"AI writing tool"}
+                        {"AI OS for creators"}
                       </p>
                     </div>
                     <div className="framer-2dkflj" data-framer-name="]" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
@@ -253,16 +253,16 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <div className="framer-110a02j" data-framer-appear-id="110a02j" data-framer-name="SYNTIQ AI SYSTEMS FOR STRUCTURED GROWTH. → Heading 2 → Scientific AI Systems 
 for Structured Growth " data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                     <h1 className="framer-text framer-styles-preset-i5u1e3" data-styles-preset="IqdDbb0JQ" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                      {"Write better content."}
+                      {"Run your creator business."}
                     </h1>
                     <p className="framer-text framer-styles-preset-i5u1e3" data-styles-preset="IqdDbb0JQ" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                      {"Faster. With AI"}
+                      {"Smarter. With AI"}
                     </p>
                   </div>
                 </div>
                 <div className="framer-1h6ujzx" data-framer-appear-id="1h6ujzx" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                   <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                    {"Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word"}
+                    {"CreatorOS brings your inbox, brand deals, content and schedule into one place — and does the busywork so you can create"}
                   </p>
                 </div>
               </div>
@@ -346,7 +346,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-1d9kbh2" data-framer-name="What do you want to write today?" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto" style={{ "--framer-text-color": "var(--token-70dd917f-3e82-45ab-bf0e-41869a710944, rgb(133, 133, 133))" }}>
-                        {"What do you want to write today?"}
+                        {"What should I post today?"}
                       </p>
                     </div>
                   </div>
@@ -362,7 +362,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-1d9kbh2" data-framer-name="What do you want to write today?" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto" style={{ "--framer-text-color": "var(--token-70dd917f-3e82-45ab-bf0e-41869a710944, rgb(133, 133, 133))" }}>
-                        {"What do you want to write today?"}
+                        {"What should I post today?"}
                       </p>
                     </div>
                   </div>
@@ -379,7 +379,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-1pmj67k" data-framer-name="AI Writer" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1uv5ubx" data-styles-preset="CdsWnLXPW" dir="auto">
-                        {"AI Writer"}
+                        {"Briefing"}
                       </p>
                     </div>
                   </div>
@@ -392,7 +392,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-u53drw" data-framer-name="AI Writer" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1uv5ubx" data-styles-preset="CdsWnLXPW" dir="auto" style={{ "--framer-text-color": "var(--token-70dd917f-3e82-45ab-bf0e-41869a710944, rgb(133, 133, 133))" }}>
-                        {"Brand Voice"}
+                        {"Inbox"}
                       </p>
                     </div>
                   </div>
@@ -405,7 +405,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-15pooi3" data-framer-name="AI Writer" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1uv5ubx" data-styles-preset="CdsWnLXPW" dir="auto" style={{ "--framer-text-color": "var(--token-70dd917f-3e82-45ab-bf0e-41869a710944, rgb(133, 133, 133))" }}>
-                        {"Rewrite"}
+                        {"Publish"}
                       </p>
                     </div>
                   </div>
@@ -418,7 +418,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-1chfqwr" data-framer-name="AI Writer" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1uv5ubx" data-styles-preset="CdsWnLXPW" dir="auto" style={{ "--framer-text-color": "var(--token-70dd917f-3e82-45ab-bf0e-41869a710944, rgb(133, 133, 133))" }}>
-                        {"Summarize"}
+                        {"Deals"}
                       </p>
                     </div>
                   </div>
@@ -1595,7 +1595,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-19817cs" data-framer-name="What do you want to write today?" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                      {"What do you want to write today?"}
+                      {"What should I post today?"}
                     </p>
                   </div>
                 </div>
@@ -1611,7 +1611,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-19817cs" data-framer-name="What do you want to write today?" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                      {"What do you want to write today?"}
+                      {"What should I post today?"}
                     </p>
                   </div>
                 </div>
@@ -1628,7 +1628,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-17qa1x2" data-framer-name="AI Writer" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-1uv5ubx" data-styles-preset="CdsWnLXPW" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                      {"AI Writer"}
+                      {"Briefing"}
                     </p>
                   </div>
                 </div>

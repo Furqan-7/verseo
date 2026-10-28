@@ -203,16 +203,16 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
           <div className="ssr-variant hidden-15twu3q">
             <div className="framer-1e1e41o" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
               <p className="framer-text framer-styles-preset-wklbpq" data-styles-preset="HM0tD8O3g" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                {"Whether you’re creating content solo or collaborating with a team,"}
+                {"Start free with your first deals and videos,"}
                 <br className="framer-text" />
-                {"there’s a plan designed for your workflow."}
+                {"and upgrade when your business grows."}
               </p>
             </div>
           </div>
           <div className="ssr-variant hidden-1mvte0s hidden-72rtr7">
             <div className="framer-1e1e41o" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
               <p className="framer-text framer-styles-preset-wklbpq" data-styles-preset="HM0tD8O3g" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                {"Whether you’re creating content solo or collaborating with a team, there’s a plan designed for your workflow."}
+                {"Start free with your first deals and videos, and upgrade when your business grows."}
               </p>
             </div>
           </div>
@@ -302,14 +302,14 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           </div>
                           <div className="framer-sb92ge" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                              {"For individuals and freelancers"}
+                              {"For creators landing first deals"}
                             </p>
                           </div>
                         </div>
                       </div>
                       <div className="framer-tasjsm" data-framer-name="$12" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "44px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"$12"}
+                          {"$0"}
                         </p>
                       </div>
                       <Suspense fallback={null}>
@@ -338,7 +338,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 5" className="framer-jJpra framer-h9gmkb" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-303e3u" data-framer-name="Ideas don’t translate into clear content" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"AI writing assistant"}
+                                {"Daily briefing"}
                               </p>
                             </div>
                           </div>
@@ -346,7 +346,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 6" className="framer-jJpra framer-qdm910" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-as276p" data-framer-name="Constantly starting from a blank page" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Essential content templates"}
+                                {"Unified inbox for 1 platform"}
                               </p>
                             </div>
                           </div>
@@ -354,7 +354,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 7" className="framer-jJpra framer-yi5rpy" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-1bukl1a" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Rewrite and improve text"}
+                                {"3 videos repurposed a month"}
                               </p>
                             </div>
                           </div>
@@ -362,7 +362,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 8" className="framer-jJpra framer-ttylog" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-2zbrft" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Standard support"}
+                                {"Manual deal tracking"}
                               </p>
                             </div>
                           </div>
@@ -461,20 +461,20 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           <div className="framer-yexbv2" data-framer-name="Frame 2147239314">
                             <div className="framer-1256y7x" data-framer-name="Stay in the flow" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto">
-                                {"Pro"}
+                                {"Creator"}
                               </p>
                             </div>
                           </div>
                           <div className="framer-sb92ge" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                              {"For creators and professionals"}
+                              {"For full-time creators"}
                             </p>
                           </div>
                         </div>
                       </div>
                       <div className="framer-tasjsm" data-framer-name="$12" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "44px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"$29"}
+                          {"$19"}
                         </p>
                       </div>
                       <Suspense fallback={null}>
@@ -503,7 +503,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus" className="framer-jJpra framer-h9gmkb" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-303e3u" data-framer-name="Ideas don’t translate into clear content" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Advanced AI generation"}
+                                {"All platforms connected"}
                               </p>
                             </div>
                           </div>
@@ -511,7 +511,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 2" className="framer-jJpra framer-qdm910" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-as276p" data-framer-name="Constantly starting from a blank page" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Brand voice controls"}
+                                {"Unlimited repurposing"}
                               </p>
                             </div>
                           </div>
@@ -519,7 +519,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 3" className="framer-jJpra framer-yi5rpy" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-1bukl1a" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Full template library"}
+                                {"Brand deal pipeline"}
                               </p>
                             </div>
                           </div>
@@ -527,7 +527,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 4" className="framer-jJpra framer-ttylog" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-2zbrft" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Priority content tools"}
+                                {"Invoices and payment chasing"}
                               </p>
                             </div>
                           </div>
@@ -632,14 +632,14 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           </div>
                           <div className="framer-sb92ge" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                              {"For agencies and growing teams"}
+                              {"For managers and creator teams"}
                             </p>
                           </div>
                         </div>
                       </div>
                       <div className="framer-tasjsm" data-framer-name="$12" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "44px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"$79"}
+                          {"$49"}
                         </p>
                       </div>
                       <Suspense fallback={null}>
@@ -668,7 +668,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 5" className="framer-jJpra framer-h9gmkb" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-303e3u" data-framer-name="Ideas don’t translate into clear content" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Shared workspace"}
+                                {"Multiple creator workspaces"}
                               </p>
                             </div>
                           </div>
@@ -676,7 +676,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 6" className="framer-jJpra framer-qdm910" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-as276p" data-framer-name="Constantly starting from a blank page" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Team collaboration tools"}
+                                {"Shared deal board"}
                               </p>
                             </div>
                           </div>
@@ -684,7 +684,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 7" className="framer-jJpra framer-yi5rpy" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-1bukl1a" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Unlimited team projects"}
+                                {"Roles and approvals"}
                               </p>
                             </div>
                           </div>
@@ -826,14 +826,14 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           </div>
                           <div className="framer-sb92ge" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                              {"For individuals and freelancers"}
+                              {"For creators landing first deals"}
                             </p>
                           </div>
                         </div>
                       </div>
                       <div className="framer-tasjsm" data-framer-name="$12" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "44px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"$12"}
+                          {"$0"}
                         </p>
                       </div>
                       <Suspense fallback={null}>
@@ -862,7 +862,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 5" className="framer-jJpra framer-h9gmkb" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-303e3u" data-framer-name="Ideas don’t translate into clear content" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"AI writing assistant"}
+                                {"Daily briefing"}
                               </p>
                             </div>
                           </div>
@@ -870,7 +870,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 6" className="framer-jJpra framer-qdm910" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-as276p" data-framer-name="Constantly starting from a blank page" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Essential content templates"}
+                                {"Unified inbox for 1 platform"}
                               </p>
                             </div>
                           </div>
@@ -878,7 +878,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 7" className="framer-jJpra framer-yi5rpy" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-1bukl1a" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Rewrite and improve text"}
+                                {"3 videos repurposed a month"}
                               </p>
                             </div>
                           </div>
@@ -886,7 +886,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 8" className="framer-jJpra framer-ttylog" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-2zbrft" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Standard support"}
+                                {"Manual deal tracking"}
                               </p>
                             </div>
                           </div>
@@ -985,20 +985,20 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           <div className="framer-yexbv2" data-framer-name="Frame 2147239314">
                             <div className="framer-1256y7x" data-framer-name="Stay in the flow" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto">
-                                {"Pro"}
+                                {"Creator"}
                               </p>
                             </div>
                           </div>
                           <div className="framer-sb92ge" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                              {"For creators and professionals"}
+                              {"For full-time creators"}
                             </p>
                           </div>
                         </div>
                       </div>
                       <div className="framer-tasjsm" data-framer-name="$12" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "44px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"$29"}
+                          {"$19"}
                         </p>
                       </div>
                       <Suspense fallback={null}>
@@ -1027,7 +1027,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus" className="framer-jJpra framer-h9gmkb" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-303e3u" data-framer-name="Ideas don’t translate into clear content" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Advanced AI generation"}
+                                {"All platforms connected"}
                               </p>
                             </div>
                           </div>
@@ -1035,7 +1035,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 2" className="framer-jJpra framer-qdm910" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-as276p" data-framer-name="Constantly starting from a blank page" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Brand voice controls"}
+                                {"Unlimited repurposing"}
                               </p>
                             </div>
                           </div>
@@ -1043,7 +1043,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 3" className="framer-jJpra framer-yi5rpy" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-1bukl1a" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Full template library"}
+                                {"Brand deal pipeline"}
                               </p>
                             </div>
                           </div>
@@ -1051,7 +1051,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 4" className="framer-jJpra framer-ttylog" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-2zbrft" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Priority content tools"}
+                                {"Invoices and payment chasing"}
                               </p>
                             </div>
                           </div>
@@ -1156,14 +1156,14 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           </div>
                           <div className="framer-sb92ge" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                              {"For agencies and growing teams"}
+                              {"For managers and creator teams"}
                             </p>
                           </div>
                         </div>
                       </div>
                       <div className="framer-tasjsm" data-framer-name="$12" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "44px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"$79"}
+                          {"$49"}
                         </p>
                       </div>
                       <Suspense fallback={null}>
@@ -1192,7 +1192,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 5" className="framer-jJpra framer-h9gmkb" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-303e3u" data-framer-name="Ideas don’t translate into clear content" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Shared workspace"}
+                                {"Multiple creator workspaces"}
                               </p>
                             </div>
                           </div>
@@ -1200,7 +1200,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 6" className="framer-jJpra framer-qdm910" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-as276p" data-framer-name="Constantly starting from a blank page" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Team collaboration tools"}
+                                {"Shared deal board"}
                               </p>
                             </div>
                           </div>
@@ -1208,7 +1208,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 7" className="framer-jJpra framer-yi5rpy" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-1bukl1a" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Unlimited team projects"}
+                                {"Roles and approvals"}
                               </p>
                             </div>
                           </div>
@@ -1350,14 +1350,14 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           </div>
                           <div className="framer-sb92ge" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                              {"For individuals and freelancers"}
+                              {"For creators landing first deals"}
                             </p>
                           </div>
                         </div>
                       </div>
                       <div className="framer-tasjsm" data-framer-name="$12" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "44px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"$12"}
+                          {"$0"}
                         </p>
                       </div>
                       <Suspense fallback={null}>
@@ -1386,7 +1386,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 5" className="framer-jJpra framer-h9gmkb" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-303e3u" data-framer-name="Ideas don’t translate into clear content" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"AI writing assistant"}
+                                {"Daily briefing"}
                               </p>
                             </div>
                           </div>
@@ -1394,7 +1394,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 6" className="framer-jJpra framer-qdm910" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-as276p" data-framer-name="Constantly starting from a blank page" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Essential content templates"}
+                                {"Unified inbox for 1 platform"}
                               </p>
                             </div>
                           </div>
@@ -1402,7 +1402,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 7" className="framer-jJpra framer-yi5rpy" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-1bukl1a" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Rewrite and improve text"}
+                                {"3 videos repurposed a month"}
                               </p>
                             </div>
                           </div>
@@ -1410,7 +1410,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 8" className="framer-jJpra framer-ttylog" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-2zbrft" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Standard support"}
+                                {"Manual deal tracking"}
                               </p>
                             </div>
                           </div>
@@ -1509,20 +1509,20 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           <div className="framer-yexbv2" data-framer-name="Frame 2147239314">
                             <div className="framer-1256y7x" data-framer-name="Stay in the flow" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto">
-                                {"Pro"}
+                                {"Creator"}
                               </p>
                             </div>
                           </div>
                           <div className="framer-sb92ge" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                              {"For creators and professionals"}
+                              {"For full-time creators"}
                             </p>
                           </div>
                         </div>
                       </div>
                       <div className="framer-tasjsm" data-framer-name="$12" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "44px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"$29"}
+                          {"$19"}
                         </p>
                       </div>
                       <Suspense fallback={null}>
@@ -1551,7 +1551,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus" className="framer-jJpra framer-h9gmkb" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-303e3u" data-framer-name="Ideas don’t translate into clear content" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Advanced AI generation"}
+                                {"All platforms connected"}
                               </p>
                             </div>
                           </div>
@@ -1559,7 +1559,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 2" className="framer-jJpra framer-qdm910" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-as276p" data-framer-name="Constantly starting from a blank page" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Brand voice controls"}
+                                {"Unlimited repurposing"}
                               </p>
                             </div>
                           </div>
@@ -1567,7 +1567,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 3" className="framer-jJpra framer-yi5rpy" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-1bukl1a" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Full template library"}
+                                {"Brand deal pipeline"}
                               </p>
                             </div>
                           </div>
@@ -1575,7 +1575,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 4" className="framer-jJpra framer-ttylog" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-2zbrft" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Priority content tools"}
+                                {"Invoices and payment chasing"}
                               </p>
                             </div>
                           </div>
@@ -1680,14 +1680,14 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           </div>
                           <div className="framer-sb92ge" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                             <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                              {"For agencies and growing teams"}
+                              {"For managers and creator teams"}
                             </p>
                           </div>
                         </div>
                       </div>
                       <div className="framer-tasjsm" data-framer-name="$12" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "44px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"$79"}
+                          {"$49"}
                         </p>
                       </div>
                       <Suspense fallback={null}>
@@ -1716,7 +1716,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 5" className="framer-jJpra framer-h9gmkb" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-303e3u" data-framer-name="Ideas don’t translate into clear content" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Shared workspace"}
+                                {"Multiple creator workspaces"}
                               </p>
                             </div>
                           </div>
@@ -1724,7 +1724,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 6" className="framer-jJpra framer-qdm910" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-as276p" data-framer-name="Constantly starting from a blank page" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Team collaboration tools"}
+                                {"Shared deal board"}
                               </p>
                             </div>
                           </div>
@@ -1732,7 +1732,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                             <div data-framer-name="Icon – Minus 7" className="framer-jJpra framer-yi5rpy" style={{ "--43q7um": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }} />
                             <div className="framer-1bukl1a" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                                {"Unlimited team projects"}
+                                {"Roles and approvals"}
                               </p>
                             </div>
                           </div>

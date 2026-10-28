@@ -9,7 +9,7 @@ export default function ClientLogos() {
     <div className="framer-4sqh8q" data-border="true" data-framer-name="Client Logos">
       <div className="framer-1vey0s6" data-framer-name="Trusted by modern teams" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-          {"Trusted by modern teams"}
+          {"Built for creators on every platform"}
         </p>
       </div>
       <div className="framer-1ef2yn9" data-framer-name="Vertical grid lines">

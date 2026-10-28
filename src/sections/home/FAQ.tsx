@@ -204,16 +204,16 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
           <div className="ssr-variant hidden-15twu3q">
             <div className="framer-16x8o5c" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
               <p className="framer-text framer-styles-preset-wklbpq" data-styles-preset="HM0tD8O3g" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                {"Whether you’re creating content solo or collaborating with a team,"}
+                {"Questions about how CreatorOS reads your inbox,"}
                 <br className="framer-text" />
-                {"there’s a plan designed for your workflow."}
+                {"plans your day and acts for you."}
               </p>
             </div>
           </div>
           <div className="ssr-variant hidden-1mvte0s hidden-72rtr7">
             <div className="framer-16x8o5c" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
               <p className="framer-text framer-styles-preset-wklbpq" data-styles-preset="HM0tD8O3g" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                {"Whether you’re creating content solo or collaborating with a team, there’s a plan designed for your workflow."}
+                {"Questions about how CreatorOS reads your inbox, plans your day and acts for you."}
               </p>
             </div>
           </div>
@@ -232,7 +232,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 7">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY) 2" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"What is Verseo?"}
+                          {"What is CreatorOS?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 4" name="FAQ Instance 4">
@@ -279,7 +279,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-1hoylpw" data-framer-name="Verseo is an AI-powered writing assistant that helps you generate, rewrite, and improve content in seconds. From emails and social posts to product descriptions and marketing copy, it helps you create content faster with less effort." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                        {"Verseo is an AI-powered writing assistant that helps you generate, rewrite, and improve content in seconds. From emails and social posts to product descriptions and marketing copy, it helps you create content faster with less effort."}
+                        {"CreatorOS is an AI operating system for creators. It brings your inbox, brand deals, content, calendar and analytics into one place, gives you a daily briefing, and does the busywork - sorting messages, drafting replies, writing captions and chasing payments - so you spend more time creating."}
                       </p>
                     </div>
                   </div>
@@ -332,7 +332,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"Who is Verseo designed for?"}
+                          {"Who is CreatorOS designed for?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -427,7 +427,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"Do I need any writing experience?"}
+                          {"Will it post or send anything on its own?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -524,7 +524,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"Can I customize the generated content?"}
+                          {"Which platforms does it work with?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -619,7 +619,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"What types of content can I create?"}
+                          {"Where do the content ideas come from?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -714,7 +714,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"How fast can I generate content?"}
+                          {"How much time will it save me?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -815,7 +815,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 7">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY) 2" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"What is Verseo?"}
+                          {"What is CreatorOS?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 4" name="FAQ Instance 4">
@@ -862,7 +862,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-1hoylpw" data-framer-name="Verseo is an AI-powered writing assistant that helps you generate, rewrite, and improve content in seconds. From emails and social posts to product descriptions and marketing copy, it helps you create content faster with less effort." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                        {"Verseo is an AI-powered writing assistant that helps you generate, rewrite, and improve content in seconds. From emails and social posts to product descriptions and marketing copy, it helps you create content faster with less effort."}
+                        {"CreatorOS is an AI operating system for creators. It brings your inbox, brand deals, content, calendar and analytics into one place, gives you a daily briefing, and does the busywork - sorting messages, drafting replies, writing captions and chasing payments - so you spend more time creating."}
                       </p>
                     </div>
                   </div>
@@ -915,7 +915,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"Who is Verseo designed for?"}
+                          {"Who is CreatorOS designed for?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -1010,7 +1010,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"Do I need any writing experience?"}
+                          {"Will it post or send anything on its own?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -1107,7 +1107,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"Can I customize the generated content?"}
+                          {"Which platforms does it work with?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -1202,7 +1202,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"What types of content can I create?"}
+                          {"Where do the content ideas come from?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -1297,7 +1297,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"How fast can I generate content?"}
+                          {"How much time will it save me?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -1398,7 +1398,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 7">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY) 2" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"What is Verseo?"}
+                          {"What is CreatorOS?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 4" name="FAQ Instance 4">
@@ -1445,7 +1445,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     </div>
                     <div className="framer-1hoylpw" data-framer-name="Verseo is an AI-powered writing assistant that helps you generate, rewrite, and improve content in seconds. From emails and social posts to product descriptions and marketing copy, it helps you create content faster with less effort." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                        {"Verseo is an AI-powered writing assistant that helps you generate, rewrite, and improve content in seconds. From emails and social posts to product descriptions and marketing copy, it helps you create content faster with less effort."}
+                        {"CreatorOS is an AI operating system for creators. It brings your inbox, brand deals, content, calendar and analytics into one place, gives you a daily briefing, and does the busywork - sorting messages, drafting replies, writing captions and chasing payments - so you spend more time creating."}
                       </p>
                     </div>
                   </div>
@@ -1498,7 +1498,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"Who is Verseo designed for?"}
+                          {"Who is CreatorOS designed for?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -1593,7 +1593,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"Do I need any writing experience?"}
+                          {"Will it post or send anything on its own?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -1690,7 +1690,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"Can I customize the generated content?"}
+                          {"Which platforms does it work with?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -1785,7 +1785,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"What types of content can I create?"}
+                          {"Where do the content ideas come from?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">
@@ -1880,7 +1880,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1u04at0" data-framer-name="FAQ Group 2">
                       <div className="framer-ubc33w" data-framer-name="Text – var(--variable-wVOCCZUHY)" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                          {"How fast can I generate content?"}
+                          {"How much time will it save me?"}
                         </p>
                       </div>
                       <div className="framer-aeh9qz-container" data-framer-name="FAQ Instance 2" name="FAQ Instance 2">

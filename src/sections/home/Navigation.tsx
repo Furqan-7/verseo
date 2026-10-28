@@ -23,7 +23,7 @@ export default function Navigation() {
                     </div>
                     <div className="framer-myjthy" data-framer-name="Logo" data-framer-component-type="RichTextContainer" style={{ "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p dir="auto" className="framer-text" style={{ "--font-selector": "RlM7U3BhY2UgR3JvdGVzay1ib2xk", "--framer-font-family": "\"Space Grotesk\", \"Space Grotesk Placeholder\", sans-serif", "--framer-font-open-type-features": "'blwf' on, 'cv03' on, 'cv04' on, 'cv09' on, 'cv11' on", "--framer-font-weight": "700", "--framer-letter-spacing": "-0.04em", "--framer-text-alignment": "center", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))", "--framer-text-transform": "uppercase" }}>
-                        {"Verseo"}
+                        {"CreatorOS"}
                       </p>
                     </div>
                   </a>
@@ -82,12 +82,12 @@ export default function Navigation() {
                     <div className="framer-8n851v" data-framer-name="Text Container">
                       <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                          {"Get Template Free"}
+                          {"Join the Beta"}
                         </p>
                       </div>
                       <div className="framer-1uxyoc7" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                          {"Get Template Free"}
+                          {"Join the Beta"}
                         </p>
                       </div>
                     </div>
@@ -118,7 +118,7 @@ export default function Navigation() {
                     </div>
                     <div className="framer-myjthy" data-framer-name="Logo" data-framer-component-type="RichTextContainer" style={{ "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p dir="auto" className="framer-text" style={{ "--font-selector": "RlM7U3BhY2UgR3JvdGVzay1ib2xk", "--framer-font-family": "\"Space Grotesk\", \"Space Grotesk Placeholder\", sans-serif", "--framer-font-open-type-features": "'blwf' on, 'cv03' on, 'cv04' on, 'cv09' on, 'cv11' on", "--framer-font-weight": "700", "--framer-letter-spacing": "-0.04em", "--framer-text-alignment": "center", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))", "--framer-text-transform": "uppercase" }}>
-                        {"Verseo"}
+                        {"CreatorOS"}
                       </p>
                     </div>
                   </a>
@@ -156,7 +156,7 @@ export default function Navigation() {
                     </div>
                     <div className="framer-myjthy" data-framer-name="Logo" data-framer-component-type="RichTextContainer" style={{ "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p dir="auto" className="framer-text" style={{ "--font-selector": "RlM7U3BhY2UgR3JvdGVzay1ib2xk", "--framer-font-family": "\"Space Grotesk\", \"Space Grotesk Placeholder\", sans-serif", "--framer-font-open-type-features": "'blwf' on, 'cv03' on, 'cv04' on, 'cv09' on, 'cv11' on", "--framer-font-weight": "700", "--framer-letter-spacing": "-0.04em", "--framer-text-alignment": "center", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))", "--framer-text-transform": "uppercase" }}>
-                        {"Verseo"}
+                        {"CreatorOS"}
                       </p>
                     </div>
                   </a>
