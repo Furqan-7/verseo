@@ -256,7 +256,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <Suspense fallback={null}>
                     <div className="framer-1t6y2na-container" data-framer-name="Results Instance" name="Results Instance">
                       <Suspense fallback={null}>
-                        <a name="Results Instance" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-m8hd4j framer-14zb1bv" data-framer-name="Primary" data-highlight="true" href="./contact-us" tabIndex={0} style={{ "--border-bottom-width": "0px", "--border-color": "rgba(0, 0, 0, 0)", "--border-left-width": "0px", "--border-right-width": "0px", "--border-style": "solid", "--border-top-width": "0px", backgroundColor: "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
+                        <a name="Results Instance" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-m8hd4j framer-14zb1bv" data-framer-name="Primary" data-highlight="true" href="/auth/signup" tabIndex={0} style={{ "--border-bottom-width": "0px", "--border-color": "rgba(0, 0, 0, 0)", "--border-left-width": "0px", "--border-right-width": "0px", "--border-style": "solid", "--border-top-width": "0px", backgroundColor: "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
                           <div className="framer-8n851v" data-framer-name="Text Container">
                             <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
@@ -315,7 +315,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <Suspense fallback={null}>
                     <div className="framer-1t6y2na-container" data-framer-name="Results Instance 9" name="Results Instance 9">
                       <Suspense fallback={null}>
-                        <a name="Results Instance 9" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-m8hd4j framer-14zb1bv" data-framer-name="Primary" data-highlight="true" href="./contact-us" tabIndex={0} style={{ "--border-bottom-width": "0px", "--border-color": "rgba(0, 0, 0, 0)", "--border-left-width": "0px", "--border-right-width": "0px", "--border-style": "solid", "--border-top-width": "0px", backgroundColor: "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
+                        <a name="Results Instance 9" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-m8hd4j framer-14zb1bv" data-framer-name="Primary" data-highlight="true" href="/auth/signup" tabIndex={0} style={{ "--border-bottom-width": "0px", "--border-color": "rgba(0, 0, 0, 0)", "--border-left-width": "0px", "--border-right-width": "0px", "--border-style": "solid", "--border-top-width": "0px", backgroundColor: "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
                           <div className="framer-8n851v" data-framer-name="Text Container">
                             <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
@@ -374,7 +374,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <Suspense fallback={null}>
                     <div className="framer-1t6y2na-container" data-framer-name="Results Instance 5" name="Results Instance 5">
                       <Suspense fallback={null}>
-                        <a name="Results Instance 5" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-m8hd4j framer-14zb1bv" data-framer-name="Primary" data-highlight="true" href="./contact-us" tabIndex={0} style={{ "--border-bottom-width": "0px", "--border-color": "rgba(0, 0, 0, 0)", "--border-left-width": "0px", "--border-right-width": "0px", "--border-style": "solid", "--border-top-width": "0px", backgroundColor: "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
+                        <a name="Results Instance 5" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-m8hd4j framer-14zb1bv" data-framer-name="Primary" data-highlight="true" href="/auth/signup" tabIndex={0} style={{ "--border-bottom-width": "0px", "--border-color": "rgba(0, 0, 0, 0)", "--border-left-width": "0px", "--border-right-width": "0px", "--border-style": "solid", "--border-top-width": "0px", backgroundColor: "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
                           <div className="framer-8n851v" data-framer-name="Text Container">
                             <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                               <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
@@ -600,7 +600,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-pyun7f" data-framer-name="Frame 2147239065">
                       <div className="framer-iywzup" data-framer-name="Less time spent editing" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-kaub7j" data-styles-preset="wMUzVG6ND" dir="auto">
-                          {"Less time on admin"}
+                          {"Goal: less admin time"}
                         </p>
                       </div>
                     </div>
@@ -704,7 +704,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-v3eu1l" data-framer-name="Frame 2147239065">
                       <div className="framer-1qd5fcp" data-framer-name="Less time spent editing" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-kaub7j" data-styles-preset="wMUzVG6ND" dir="auto">
-                          {"Deadlines met"}
+                          {"Goal: deadlines met"}
                         </p>
                       </div>
                     </div>
@@ -970,7 +970,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-pyun7f" data-framer-name="Frame 2147239065">
                       <div className="framer-iywzup" data-framer-name="Less time spent editing" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-kaub7j" data-styles-preset="wMUzVG6ND" dir="auto">
-                          {"Less time on admin"}
+                          {"Goal: less admin time"}
                         </p>
                       </div>
                     </div>
@@ -1074,7 +1074,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-v3eu1l" data-framer-name="Frame 2147239065">
                       <div className="framer-1qd5fcp" data-framer-name="Less time spent editing" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-kaub7j" data-styles-preset="wMUzVG6ND" dir="auto">
-                          {"Deadlines met"}
+                          {"Goal: deadlines met"}
                         </p>
                       </div>
                     </div>
@@ -1340,7 +1340,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-pyun7f" data-framer-name="Frame 2147239065">
                       <div className="framer-iywzup" data-framer-name="Less time spent editing" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-kaub7j" data-styles-preset="wMUzVG6ND" dir="auto">
-                          {"Less time on admin"}
+                          {"Goal: less admin time"}
                         </p>
                       </div>
                     </div>
@@ -1444,7 +1444,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-v3eu1l" data-framer-name="Frame 2147239065">
                       <div className="framer-1qd5fcp" data-framer-name="Less time spent editing" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-kaub7j" data-styles-preset="wMUzVG6ND" dir="auto">
-                          {"Deadlines met"}
+                          {"Goal: deadlines met"}
                         </p>
                       </div>
                     </div>

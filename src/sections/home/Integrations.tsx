@@ -46,7 +46,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="127" height="44" src="/assets/img/8edeb9627010f4c0.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="127" height="44" src="/assets/img/creatoros-tool-canva.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -57,7 +57,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="145" height="37" src="/assets/img/3a2ddcad752c89aa.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="145" height="37" src="/assets/img/creatoros-tool-notion.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -68,7 +68,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="163" height="37" src="/assets/img/a8590a88c4ebf9bc.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="163" height="37" src="/assets/img/creatoros-tool-slack.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -79,7 +79,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="182" height="38" src="/assets/img/346d97fd0b81d538.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="182" height="38" src="/assets/img/creatoros-tool-drive.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -90,7 +90,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="136" height="37" src="/assets/img/ebae982997f39724.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="136" height="37" src="/assets/img/creatoros-tool-stripe.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -101,7 +101,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="180" height="37" src="/assets/img/9154f9bf8cf622db.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="180" height="37" src="/assets/img/creatoros-tool-dropbox.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -126,7 +126,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="127" height="44" src="/assets/img/8edeb9627010f4c0.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="127" height="44" src="/assets/img/creatoros-tool-canva.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -137,7 +137,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="145" height="37" src="/assets/img/3a2ddcad752c89aa.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="145" height="37" src="/assets/img/creatoros-tool-notion.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -148,7 +148,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="163" height="37" src="/assets/img/a8590a88c4ebf9bc.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="163" height="37" src="/assets/img/creatoros-tool-slack.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -159,7 +159,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="182" height="38" src="/assets/img/346d97fd0b81d538.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="182" height="38" src="/assets/img/creatoros-tool-drive.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -170,7 +170,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="136" height="37" src="/assets/img/ebae982997f39724.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="136" height="37" src="/assets/img/creatoros-tool-stripe.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -181,7 +181,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="180" height="37" src="/assets/img/9154f9bf8cf622db.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="180" height="37" src="/assets/img/creatoros-tool-dropbox.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -206,7 +206,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="127" height="44" src="/assets/img/8edeb9627010f4c0.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="127" height="44" src="/assets/img/creatoros-tool-canva.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -217,7 +217,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="145" height="37" src="/assets/img/3a2ddcad752c89aa.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="145" height="37" src="/assets/img/creatoros-tool-notion.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -228,7 +228,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="163" height="37" src="/assets/img/a8590a88c4ebf9bc.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="163" height="37" src="/assets/img/creatoros-tool-slack.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -239,7 +239,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="182" height="38" src="/assets/img/346d97fd0b81d538.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="182" height="38" src="/assets/img/creatoros-tool-drive.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -250,7 +250,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="136" height="37" src="/assets/img/ebae982997f39724.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="136" height="37" src="/assets/img/creatoros-tool-stripe.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>
@@ -261,7 +261,7 @@ export default function Integrations() {
                         <div name="Logo Card" className="framer-4BYAb framer-enysxq framer-v-enysxq" data-framer-name="Primary" style={{ width: "100%", borderBottomLeftRadius: "10px", borderBottomRightRadius: "10px", borderTopLeftRadius: "10px", borderTopRightRadius: "10px" }}>
                           <div className="framer-1mwoim6" data-framer-name="Logo Image">
                             <div style={{ position: "absolute", borderRadius: "inherit", cornerShape: "inherit", top: "0", right: "0", bottom: "0", left: "0" }} data-framer-background-image-wrapper="true">
-                              <img decoding="async" width="180" height="37" src="/assets/img/9154f9bf8cf622db.webp" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
+                              <img decoding="async" width="180" height="37" src="/assets/img/creatoros-tool-dropbox.png" alt="logo" style={{ display: "block", width: "100%", height: "100%", borderRadius: "inherit", cornerShape: "inherit", objectPosition: "center", objectFit: "contain" }} loading="lazy" />
                             </div>
                           </div>
                         </div>

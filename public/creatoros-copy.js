@@ -128,9 +128,9 @@
    "Start Writing": "Start Creating",
    "Ready to Publish": "Your day, planned",
    "Review, edit, regenerate, and export your content wherever you need it.": "To-dos, replies, deals and content ideas, ready every morning.",
-   "Less time spent editing": "Less time on admin",
+   "Less time spent editing": "Goal: less admin time",
    "Refine and finalize content faster with AI-powered suggestions and rewrites.": "Sorting, replies, captions and invoices are prepared for you to approve.",
-   "Brand Voice": "Deadlines met",
+   "Brand Voice": "Goal: deadlines met",
    "Keep messaging aligned across emails, social media, landing pages, and campaigns.": "Deliverables, posts and payments tracked on one calendar, with reminders.",
    "Content that fits anywhere": "Content that fits every platform",
    "From social posts to long-form content.": "From Shorts and Reels to long-form video."
@@ -287,6 +287,15 @@
   var HERO_SRCSET = "/assets/img/creatoros-hero-512.webp 512w, /assets/img/creatoros-hero-1024.webp 1024w, /assets/img/creatoros-hero-2048.webp 2048w, /assets/img/creatoros-hero-2151.webp 2151w";
   var IMAGES = {
     "Hero": { "2151x720": { src: "/assets/img/creatoros-hero-2151.webp", srcset: HERO_SRCSET } },
+    "Integrations": {
+      "127x44": { src: "/assets/img/creatoros-tool-canva.png" },
+      "145x37": { src: "/assets/img/creatoros-tool-notion.png" },
+      "163x37": { src: "/assets/img/creatoros-tool-slack.png" },
+      "182x38": { src: "/assets/img/creatoros-tool-drive.png" },
+      "136x37": { src: "/assets/img/creatoros-tool-stripe.png" },
+      "180x37": { src: "/assets/img/creatoros-tool-dropbox.png" }
+    },
+    "Examples": {},
     "How It Works": { "1040x530": { src: "/assets/img/creatoros-step1-1040.webp", srcset: "/assets/img/creatoros-step1-512.webp 512w, /assets/img/creatoros-step1-1024.webp 1024w, /assets/img/creatoros-step1-1040.webp 1040w, /assets/img/creatoros-step1-2080.webp 2080w" } },
     "Client Logos": {
       "294x81": { src: "/assets/img/creatoros-logo-youtube.png" },
@@ -295,6 +304,17 @@
       "286x81": { src: "/assets/img/creatoros-logo-gmail.png" },
       "252x83": { src: "/assets/img/creatoros-logo-calendar.png" }
     }
+  };
+
+  // The three example images share one size, so they are matched by alt text
+  // (the template's alt, which Framer's runtime restores, or ours).
+  var IMAGES_BY_ALT = {
+    "AI writing workflow interface for generating polished content": { src: "/assets/img/creatoros-ex-briefing-756.webp", srcset: "/assets/img/creatoros-ex-briefing-512.webp 512w, /assets/img/creatoros-ex-briefing-756.webp 756w, /assets/img/creatoros-ex-briefing-1512.webp 1512w" },
+    "CreatorOS morning briefing with today's to-dos and a content idea": { src: "/assets/img/creatoros-ex-briefing-756.webp", srcset: "/assets/img/creatoros-ex-briefing-512.webp 512w, /assets/img/creatoros-ex-briefing-756.webp 756w, /assets/img/creatoros-ex-briefing-1512.webp 1512w" },
+    "Content automation dashboard showing workflow controls and results": { src: "/assets/img/creatoros-ex-reply-756.webp", srcset: "/assets/img/creatoros-ex-reply-512.webp 512w, /assets/img/creatoros-ex-reply-756.webp 756w, /assets/img/creatoros-ex-reply-1512.webp 1512w" },
+    "CreatorOS reply draft to a brand partner, waiting for approval": { src: "/assets/img/creatoros-ex-reply-756.webp", srcset: "/assets/img/creatoros-ex-reply-512.webp 512w, /assets/img/creatoros-ex-reply-756.webp 756w, /assets/img/creatoros-ex-reply-1512.webp 1512w" },
+    "Verseo content workspace preview with AI-generated outputs": { src: "/assets/img/creatoros-ex-posted-756.webp", srcset: "/assets/img/creatoros-ex-posted-512.webp 512w, /assets/img/creatoros-ex-posted-756.webp 756w, /assets/img/creatoros-ex-posted-1512.webp 1512w" },
+    "CreatorOS schedule posting one clip as a Reel, Short and TikTok": { src: "/assets/img/creatoros-ex-posted-756.webp", srcset: "/assets/img/creatoros-ex-posted-512.webp 512w, /assets/img/creatoros-ex-posted-756.webp 756w, /assets/img/creatoros-ex-posted-1512.webp 1512w" }
   };
 
   function sectionOf(el) {
@@ -309,7 +329,7 @@
   function fixImg(img) {
     var section = sectionOf(img);
     if (!section) return;
-    var want = IMAGES[section][img.getAttribute("width") + "x" + img.getAttribute("height")];
+    var want = section === "Examples" ? IMAGES_BY_ALT[img.getAttribute("alt")] : IMAGES[section][img.getAttribute("width") + "x" + img.getAttribute("height")];
     if (!want) return;
     if (want.srcset && img.getAttribute("srcset") !== want.srcset) img.setAttribute("srcset", want.srcset);
     if (!want.srcset && img.hasAttribute("srcset")) img.removeAttribute("srcset");
@@ -321,6 +341,7 @@
   function fixLink(a) {
     var href = a.getAttribute("href") || "", want = null;
     if (href.indexOf("framer.link/") !== -1) want = SIGNUP;
+    else if (a.closest('[data-framer-name="Results"]') && href.indexOf("contact-us") !== -1) want = SIGNUP;
     else if (a.closest('[data-framer-name="Hero"]')) {
       var role = a.getAttribute("data-framer-name");
       if (role === "Primary") want = SIGNUP;
