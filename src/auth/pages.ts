@@ -5,8 +5,11 @@
 // so they need no Framer runtime. Styles are inline because the site caches
 // every .css and .js file for a year (see _headers and vercel.json).
 //
-// The forms are not connected to an auth provider yet. Submitting shows a
-// notice; replace the script at the bottom when auth is wired up.
+// Sign-in posts to app/auth/session/route.ts, which accepts the hackathon demo
+// login (src/auth/demo.ts) and opens /dashboard. Sign-up and Google sign-in
+// are not connected yet and show a notice pointing to the demo login.
+
+import { DEMO_EMAIL, DEMO_PASSWORD } from "./demo";
 
 export type AuthKind = "signup" | "signin";
 
@@ -64,6 +67,10 @@ input:focus{outline:2px solid var(--ink);outline-offset:-1px;border-color:var(--
 .primary:hover{background:#000}
 .notice{display:none;margin-top:14px;padding:10px 12px;border-radius:4px;background:#f3f6fa;border:1px solid #dfe6ee;font-size:13px;line-height:1.4;color:#3f5670}
 .notice.show{display:block}
+.notice a{color:inherit;font-weight:500}
+.notice.error{background:#fdf1f0;border-color:#f3d3cf;color:#a3392d}
+.demo{margin-top:18px;padding:10px 12px;border-radius:6px;border:1px dashed #cfd8e3;background:#f7f9fc;font-size:13px;line-height:1.5;color:var(--muted)}
+.demo b{font:500 12.5px "JetBrains Mono",monospace;color:var(--ink)}
 .foot{margin-top:18px;text-align:center;font-size:14px;color:var(--muted)}
 .foot a{color:var(--ink);font-weight:500}
 .legal{margin-top:14px;text-align:center;font-size:12px;color:var(--faint);line-height:1.5}
@@ -87,16 +94,20 @@ input:focus{outline:2px solid var(--ink);outline-offset:-1px;border-color:var(--
   .px{display:none}
 }`;
 
-// Prefills the email from ?email= (the footer newsletter sends visitors here)
-// and shows a notice instead of submitting, until auth is connected.
+// Prefills the email from ?email= (the footer newsletter and a failed sign-in
+// send visitors here), shows the sign-in error, and shows a notice for the
+// parts that aren't connected yet.
 const SCRIPT = `
 (function () {
-  var email = new URLSearchParams(location.search).get("email");
+  var params = new URLSearchParams(location.search);
   var field = document.getElementById("email");
-  if (email && field) field.value = email;
+  if (params.get("email") && field) field.value = params.get("email");
   var notice = document.getElementById("notice");
+  var error = document.getElementById("error");
+  if (error && params.get("error")) error.classList.add("show");
   function hold(e) { e.preventDefault(); notice.classList.add("show"); }
-  document.getElementById("auth-form").addEventListener("submit", hold);
+  var form = document.getElementById("auth-form");
+  if (form.getAttribute("data-hold") === "true") form.addEventListener("submit", hold);
   document.getElementById("google").addEventListener("click", hold);
 })();`;
 
@@ -114,7 +125,7 @@ const SIGNUP_PITCH = `
   </section>`;
 
 const SIGNUP_FORM = `
-  <form class="card" id="auth-form" novalidate>
+  <form class="card" id="auth-form" data-hold="true" novalidate>
     <div class="eyebrow"><span>[</span>sign up<span>]</span></div>
     <h1>Create your account</h1>
     <p class="sub">Free to start. No credit card needed.</p>
@@ -124,21 +135,23 @@ const SIGNUP_FORM = `
     <label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
     <label for="password">Password <span class="hint">8+ characters</span></label><input id="password" name="password" type="password" placeholder="••••••••" autocomplete="new-password" minlength="8">
     <button class="primary" type="submit">Create account</button>
-    <p class="notice" id="notice" role="status">Sign-up isn't connected yet. Accounts open soon.</p>
+    <p class="notice" id="notice" role="status">Sign-up isn't connected yet. For the demo, <a href="/auth/signin">sign in</a> with ${DEMO_EMAIL} / ${DEMO_PASSWORD}.</p>
     <p class="legal">By creating an account you agree to our <a href="/terms-of-service">Terms</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
   </form>`;
 
 const SIGNIN_FORM = `
-  <form class="card" id="auth-form" novalidate>
+  <form class="card" id="auth-form" method="post" action="/auth/session">
     <div class="eyebrow"><span>[</span>welcome back<span>]</span></div>
     <h1>Sign in to CreatorOS</h1>
     <p class="sub">Your briefing is waiting.</p>
     <button class="google" id="google" type="button">${GOOGLE} Continue with Google</button>
     <div class="or">or sign in with email</div>
-    <label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
-    <label for="password">Password <a class="hint" href="#">Forgot password?</a></label><input id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password">
+    <label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+    <label for="password">Password <a class="hint" href="#">Forgot password?</a></label><input id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password" required>
     <button class="primary" type="submit">Sign in</button>
-    <p class="notice" id="notice" role="status">Sign-in isn't connected yet. Accounts open soon.</p>
+    <p class="notice error" id="error" role="alert">That email and password don't match the demo login.</p>
+    <p class="notice" id="notice" role="status">Google sign-in isn't connected yet. Use the demo login below.</p>
+    <p class="demo">Demo login: <b>${DEMO_EMAIL}</b> · <b>${DEMO_PASSWORD}</b></p>
     <p class="foot">Don't have an account? <a href="/auth/signup">Sign up free</a></p>
   </form>`;
 
