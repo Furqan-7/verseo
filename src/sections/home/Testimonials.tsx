@@ -172,7 +172,7 @@ export default function Testimonials() {
               </div>
               <div className="framer-yyhu07" data-framer-name="AI Writing Tool" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                 <p className="framer-text framer-styles-preset-10kjy79" data-styles-preset="sMdfU46Ak" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)" }}>
-                  {"testimonials"}
+                  {"creator voices"}
                 </p>
               </div>
               <div className="framer-61wud8" data-framer-name="]" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
@@ -185,9 +185,9 @@ export default function Testimonials() {
               <div className="framer-xtb9kq" data-framer-name="SYNTIQ AI SYSTEMS FOR STRUCTURED GROWTH. → Heading 2 → Scientific AI Systems 
 for Structured Growth " data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
                 <h2 className="framer-text framer-styles-preset-fz4ha5" data-styles-preset="ZDTNXlux_" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)" }}>
-                  {"Loved by teams that "}
+                  {"Made for creators who "}
                   <br className="framer-text" />
-                  {"create content every day"}
+                  {"would rather be creating"}
                 </h2>
               </div>
             </div>
@@ -195,16 +195,16 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
               <div className="framer-xtb9kq" data-framer-name="SYNTIQ AI SYSTEMS FOR STRUCTURED GROWTH. → Heading 2 → Scientific AI Systems 
 for Structured Growth " data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
                 <h2 className="framer-text framer-styles-preset-fz4ha5" data-styles-preset="ZDTNXlux_" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                  {"Loved by teams that create content every day"}
+                  {"Made for creators who would rather be creating"}
                 </h2>
               </div>
             </div>
           </div>
           <div className="framer-10ji1ha" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
             <p className="framer-text framer-styles-preset-wklbpq" data-styles-preset="HM0tD8O3g" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-              {"From marketers and founders to agencies and growing teams — Verseo helps"}
+              {"From solo YouTubers to managers and creator teams — CreatorOS helps"}
               <br className="framer-text" />
-              {" people create better content faster, without sacrificing quality or consistency."}
+              {" people spend less time managing and more time creating."}
             </p>
           </div>
         </div>
@@ -225,7 +225,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-99kqnz" data-framer-name="Testimonial Group 12">
                         <div className="framer-13wckko" data-framer-name="5,0" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "R0Y7SmV0QnJhaW5zIE1vbm8tcmVndWxhcg==", "--framer-font-family": "\"JetBrains Mono\", monospace", "--framer-font-size": "14px", "--framer-letter-spacing": "-0.01em", "--framer-line-height": "16px", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                            {"4,9"}
+                            {"5 apps"}
                           </p>
                         </div>
                         <div data-framer-component-type="SVG" parentsize="0" _constraints="[object Object]" rotation="0" shadows="" className="framer-14cjsuv" aria-hidden="true" style={{ imageRendering: "pixelated", flexShrink: "0" }}>
@@ -240,7 +240,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1suczne" data-framer-name="Testimonial Group 13">
                       <div className="framer-r4oi1k" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"\"We tested several AI writing tools, but Verseo felt the most practical. It's fast, intuitive, and fits naturally into our workflow.\""}
+                          {"\"My brand emails, DMs and comments live in five apps. I lose deals just because I see them too late.\""}
                         </p>
                       </div>
                     </div>
@@ -254,12 +254,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-8p8r4" data-framer-name="Client Story Author Info">
                       <div className="framer-1hv8dsc" data-framer-name="Subtitle → 200+" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                          {"Emma Rodriguez"}
+                          {"Maya (persona)"}
                         </p>
                       </div>
                       <div className="framer-ki70uw" data-framer-name="Content Description → Satisfied teams" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto">
-                          {"Content Strategist"}
+                          {"YouTuber, 180k"}
                         </p>
                       </div>
                     </div>
@@ -318,7 +318,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-99kqnz" data-framer-name="Testimonial Group 3">
                         <div className="framer-13wckko" data-framer-name="5,0" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "R0Y7SmV0QnJhaW5zIE1vbm8tcmVndWxhcg==", "--framer-font-family": "\"JetBrains Mono\", monospace", "--framer-font-size": "14px", "--framer-letter-spacing": "-0.01em", "--framer-line-height": "16px", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                            {"5,0"}
+                            {"3h/day"}
                           </p>
                         </div>
                         <div data-framer-component-type="SVG" parentsize="0" _constraints="[object Object]" rotation="0" shadows="" className="framer-14cjsuv" aria-hidden="true" style={{ imageRendering: "pixelated", flexShrink: "0" }}>
@@ -333,7 +333,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1suczne" data-framer-name="Testimonial Group 4">
                       <div className="framer-r4oi1k" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"\"Verseo cut our content creation time in half. What used to take hours now takes minutes, and the quality is consistently high.\""}
+                          {"\"I spend about three hours a day on admin: replies, captions for every platform, invoices. That is time I am not filming.\""}
                         </p>
                       </div>
                     </div>
@@ -347,12 +347,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-8p8r4" data-framer-name="Client Story Author Info">
                       <div className="framer-1hv8dsc" data-framer-name="Subtitle → 200+" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                          {"Sarah Chen"}
+                          {"Leo (persona)"}
                         </p>
                       </div>
                       <div className="framer-ki70uw" data-framer-name="Content Description → Satisfied teams" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto">
-                          {"Marketing Manager"}
+                          {"Multi-platform creator"}
                         </p>
                       </div>
                     </div>
@@ -411,7 +411,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-99kqnz" data-framer-name="Testimonial Group 12">
                         <div className="framer-13wckko" data-framer-name="5,0" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "R0Y7SmV0QnJhaW5zIE1vbm8tcmVndWxhcg==", "--framer-font-family": "\"JetBrains Mono\", monospace", "--framer-font-size": "14px", "--framer-letter-spacing": "-0.01em", "--framer-line-height": "16px", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                            {"5,0"}
+                            {"3h/day"}
                           </p>
                         </div>
                         <div data-framer-component-type="SVG" parentsize="0" _constraints="[object Object]" rotation="0" shadows="" className="framer-14cjsuv" aria-hidden="true" style={{ imageRendering: "pixelated", flexShrink: "0" }}>
@@ -426,7 +426,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1suczne" data-framer-name="Testimonial Group 13">
                       <div className="framer-r4oi1k" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"\"The biggest win for us is consistency. Every email, post, and product update sounds like it comes from the same brand voice.\""}
+                          {"\"Brands pay late and I forget to follow up. I need something that remembers who owes me what.\""}
                         </p>
                       </div>
                     </div>
@@ -440,12 +440,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-8p8r4" data-framer-name="Client Story Author Info">
                       <div className="framer-1hv8dsc" data-framer-name="Subtitle → 200+" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                          {"David Miller"}
+                          {"Sana (persona)"}
                         </p>
                       </div>
                       <div className="framer-ki70uw" data-framer-name="Content Description → Satisfied teams" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto">
-                          {"Startup Founder"}
+                          {"Creator, 60k"}
                         </p>
                       </div>
                     </div>
@@ -508,7 +508,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-99kqnz" data-framer-name="Testimonial Group 12">
                         <div className="framer-13wckko" data-framer-name="5,0" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "R0Y7SmV0QnJhaW5zIE1vbm8tcmVndWxhcg==", "--framer-font-family": "\"JetBrains Mono\", monospace", "--framer-font-size": "14px", "--framer-letter-spacing": "-0.01em", "--framer-line-height": "16px", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                            {"4,9"}
+                            {"5 apps"}
                           </p>
                         </div>
                         <div data-framer-component-type="SVG" parentsize="0" _constraints="[object Object]" rotation="0" shadows="" className="framer-14cjsuv" aria-hidden="true" style={{ imageRendering: "pixelated", flexShrink: "0" }}>
@@ -523,7 +523,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1suczne" data-framer-name="Testimonial Group 13">
                       <div className="framer-r4oi1k" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"\"We tested several AI writing tools, but Verseo felt the most practical. It's fast, intuitive, and fits naturally into our workflow.\""}
+                          {"\"My brand emails, DMs and comments live in five apps. I lose deals just because I see them too late.\""}
                         </p>
                       </div>
                     </div>
@@ -537,12 +537,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-8p8r4" data-framer-name="Client Story Author Info">
                       <div className="framer-1hv8dsc" data-framer-name="Subtitle → 200+" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                          {"Emma Rodriguez"}
+                          {"Maya (persona)"}
                         </p>
                       </div>
                       <div className="framer-ki70uw" data-framer-name="Content Description → Satisfied teams" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto">
-                          {"Content Strategist"}
+                          {"YouTuber, 180k"}
                         </p>
                       </div>
                     </div>
@@ -601,7 +601,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-99kqnz" data-framer-name="Testimonial Group 3">
                         <div className="framer-13wckko" data-framer-name="5,0" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "R0Y7SmV0QnJhaW5zIE1vbm8tcmVndWxhcg==", "--framer-font-family": "\"JetBrains Mono\", monospace", "--framer-font-size": "14px", "--framer-letter-spacing": "-0.01em", "--framer-line-height": "16px", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                            {"5,0"}
+                            {"3h/day"}
                           </p>
                         </div>
                         <div data-framer-component-type="SVG" parentsize="0" _constraints="[object Object]" rotation="0" shadows="" className="framer-14cjsuv" aria-hidden="true" style={{ imageRendering: "pixelated", flexShrink: "0" }}>
@@ -616,7 +616,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1suczne" data-framer-name="Testimonial Group 4">
                       <div className="framer-r4oi1k" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"\"Verseo cut our content creation time in half. What used to take hours now takes minutes, and the quality is consistently high.\""}
+                          {"\"I spend about three hours a day on admin: replies, captions for every platform, invoices. That is time I am not filming.\""}
                         </p>
                       </div>
                     </div>
@@ -630,12 +630,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-8p8r4" data-framer-name="Client Story Author Info">
                       <div className="framer-1hv8dsc" data-framer-name="Subtitle → 200+" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                          {"Sarah Chen"}
+                          {"Leo (persona)"}
                         </p>
                       </div>
                       <div className="framer-ki70uw" data-framer-name="Content Description → Satisfied teams" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto">
-                          {"Marketing Manager"}
+                          {"Multi-platform creator"}
                         </p>
                       </div>
                     </div>
@@ -694,7 +694,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-99kqnz" data-framer-name="Testimonial Group 12">
                         <div className="framer-13wckko" data-framer-name="5,0" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "R0Y7SmV0QnJhaW5zIE1vbm8tcmVndWxhcg==", "--framer-font-family": "\"JetBrains Mono\", monospace", "--framer-font-size": "14px", "--framer-letter-spacing": "-0.01em", "--framer-line-height": "16px", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                            {"5,0"}
+                            {"3h/day"}
                           </p>
                         </div>
                         <div data-framer-component-type="SVG" parentsize="0" _constraints="[object Object]" rotation="0" shadows="" className="framer-14cjsuv" aria-hidden="true" style={{ imageRendering: "pixelated", flexShrink: "0" }}>
@@ -709,7 +709,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1suczne" data-framer-name="Testimonial Group 13">
                       <div className="framer-r4oi1k" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"\"The biggest win for us is consistency. Every email, post, and product update sounds like it comes from the same brand voice.\""}
+                          {"\"Brands pay late and I forget to follow up. I need something that remembers who owes me what.\""}
                         </p>
                       </div>
                     </div>
@@ -723,12 +723,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-8p8r4" data-framer-name="Client Story Author Info">
                       <div className="framer-1hv8dsc" data-framer-name="Subtitle → 200+" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                          {"David Miller"}
+                          {"Sana (persona)"}
                         </p>
                       </div>
                       <div className="framer-ki70uw" data-framer-name="Content Description → Satisfied teams" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto">
-                          {"Startup Founder"}
+                          {"Creator, 60k"}
                         </p>
                       </div>
                     </div>
@@ -791,7 +791,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-99kqnz" data-framer-name="Testimonial Group 12">
                         <div className="framer-13wckko" data-framer-name="5,0" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "R0Y7SmV0QnJhaW5zIE1vbm8tcmVndWxhcg==", "--framer-font-family": "\"JetBrains Mono\", monospace", "--framer-font-size": "14px", "--framer-letter-spacing": "-0.01em", "--framer-line-height": "16px", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                            {"4,9"}
+                            {"5 apps"}
                           </p>
                         </div>
                         <div data-framer-component-type="SVG" parentsize="0" _constraints="[object Object]" rotation="0" shadows="" className="framer-14cjsuv" aria-hidden="true" style={{ imageRendering: "pixelated", flexShrink: "0" }}>
@@ -806,7 +806,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1suczne" data-framer-name="Testimonial Group 13">
                       <div className="framer-r4oi1k" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"\"We tested several AI writing tools, but Verseo felt the most practical. It's fast, intuitive, and fits naturally into our workflow.\""}
+                          {"\"My brand emails, DMs and comments live in five apps. I lose deals just because I see them too late.\""}
                         </p>
                       </div>
                     </div>
@@ -820,12 +820,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-8p8r4" data-framer-name="Client Story Author Info">
                       <div className="framer-1hv8dsc" data-framer-name="Subtitle → 200+" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                          {"Emma Rodriguez"}
+                          {"Maya (persona)"}
                         </p>
                       </div>
                       <div className="framer-ki70uw" data-framer-name="Content Description → Satisfied teams" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto">
-                          {"Content Strategist"}
+                          {"YouTuber, 180k"}
                         </p>
                       </div>
                     </div>
@@ -884,7 +884,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-99kqnz" data-framer-name="Testimonial Group 3">
                         <div className="framer-13wckko" data-framer-name="5,0" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "R0Y7SmV0QnJhaW5zIE1vbm8tcmVndWxhcg==", "--framer-font-family": "\"JetBrains Mono\", monospace", "--framer-font-size": "14px", "--framer-letter-spacing": "-0.01em", "--framer-line-height": "16px", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                            {"5,0"}
+                            {"3h/day"}
                           </p>
                         </div>
                         <div data-framer-component-type="SVG" parentsize="0" _constraints="[object Object]" rotation="0" shadows="" className="framer-14cjsuv" aria-hidden="true" style={{ imageRendering: "pixelated", flexShrink: "0" }}>
@@ -899,7 +899,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1suczne" data-framer-name="Testimonial Group 4">
                       <div className="framer-r4oi1k" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"\"Verseo cut our content creation time in half. What used to take hours now takes minutes, and the quality is consistently high.\""}
+                          {"\"I spend about three hours a day on admin: replies, captions for every platform, invoices. That is time I am not filming.\""}
                         </p>
                       </div>
                     </div>
@@ -913,12 +913,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-8p8r4" data-framer-name="Client Story Author Info">
                       <div className="framer-1hv8dsc" data-framer-name="Subtitle → 200+" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                          {"Sarah Chen"}
+                          {"Leo (persona)"}
                         </p>
                       </div>
                       <div className="framer-ki70uw" data-framer-name="Content Description → Satisfied teams" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto">
-                          {"Marketing Manager"}
+                          {"Multi-platform creator"}
                         </p>
                       </div>
                     </div>
@@ -977,7 +977,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-99kqnz" data-framer-name="Testimonial Group 12">
                         <div className="framer-13wckko" data-framer-name="5,0" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "R0Y7SmV0QnJhaW5zIE1vbm8tcmVndWxhcg==", "--framer-font-family": "\"JetBrains Mono\", monospace", "--framer-font-size": "14px", "--framer-letter-spacing": "-0.01em", "--framer-line-height": "16px", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565))" }}>
-                            {"5,0"}
+                            {"3h/day"}
                           </p>
                         </div>
                         <div data-framer-component-type="SVG" parentsize="0" _constraints="[object Object]" rotation="0" shadows="" className="framer-14cjsuv" aria-hidden="true" style={{ imageRendering: "pixelated", flexShrink: "0" }}>
@@ -992,7 +992,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1suczne" data-framer-name="Testimonial Group 13">
                       <div className="framer-r4oi1k" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                          {"\"The biggest win for us is consistency. Every email, post, and product update sounds like it comes from the same brand voice.\""}
+                          {"\"Brands pay late and I forget to follow up. I need something that remembers who owes me what.\""}
                         </p>
                       </div>
                     </div>
@@ -1006,12 +1006,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-8p8r4" data-framer-name="Client Story Author Info">
                       <div className="framer-1hv8dsc" data-framer-name="Subtitle → 200+" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto">
-                          {"David Miller"}
+                          {"Sana (persona)"}
                         </p>
                       </div>
                       <div className="framer-ki70uw" data-framer-name="Content Description → Satisfied teams" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto">
-                          {"Startup Founder"}
+                          {"Creator, 60k"}
                         </p>
                       </div>
                     </div>

@@ -9,7 +9,7 @@ export default function Integrations() {
     <div className="framer-1ujpa7k" data-border="true" data-framer-name="Integrations">
       <div className="framer-jzfx6j" data-framer-name="Trusted by modern teams" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-          {"Works with your favorite tools"}
+          {"Connects to the tools you already use"}
         </p>
       </div>
       <div className="framer-1pdqxrd" data-framer-name="Vertical grid lines">

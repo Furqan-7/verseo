@@ -32,13 +32,13 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
               <h1 className="framer-text framer-styles-preset-i5u1e3" data-styles-preset="IqdDbb0JQ" dir="auto">
                 {"Start creating "}
                 <br className="framer-text" />
-                {"better content today"}
+                {"more, manage less"}
               </h1>
             </div>
           </div>
           <div className="framer-17nberj" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
             <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-              {"Turn ideas into polished content in seconds. Generate, refine, and publish faster with AI-powered workflows designed for modern teams."}
+              {"Your inbox, deals, content and schedule in one place. Wake up to a plan, with the busywork already done."}
             </p>
           </div>
         </div>

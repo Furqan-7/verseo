@@ -19,13 +19,13 @@ export default function Content() {
             </div>
             <div className="framer-1w1bdte" data-framer-name="Logo" data-framer-component-type="RichTextContainer" style={{ "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
               <p dir="auto" className="framer-text" style={{ "--font-selector": "RlM7U3BhY2UgR3JvdGVzay1ib2xk", "--framer-font-family": "\"Space Grotesk\", \"Space Grotesk Placeholder\", sans-serif", "--framer-font-open-type-features": "'blwf' on, 'cv03' on, 'cv04' on, 'cv09' on, 'cv11' on", "--framer-font-size": "28.53px", "--framer-font-weight": "700", "--framer-letter-spacing": "-0.04em", "--framer-text-alignment": "center", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))", "--framer-text-transform": "uppercase" }}>
-                {"Verseo"}
+                {"CreatorOS"}
               </p>
             </div>
           </div>
           <div className="framer-htulml" data-framer-name="Verseo helps teams create, refine, and publish high-quality content faster — without complicated workflows or endless revisions." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
             <p className="framer-text framer-styles-preset-wklbpq" data-styles-preset="HM0tD8O3g" dir="auto" style={{ "--framer-text-alignment": "left", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-              {"Verseo helps teams create, refine, and publish high-quality content faster — without complicated workflows or endless revisions."}
+              {"CreatorOS brings a creator's inbox, content, brand deals and schedule into one place, and does the busywork so they can create."}
             </p>
           </div>
           <div className="framer-12j0r0e" data-framer-name="Footer Group 6">
@@ -67,10 +67,10 @@ export default function Content() {
           <div className="framer-1kuw13e" data-framer-name="Frame 2147240476">
             <div className="framer-f7qya8" data-framer-name="content_request: > Create a high-converting landing page processing... → analyzing audience → structuring content → optimizing messaging output: + compelling headline + clear value proposition + conversion-focused copy status: ready to publish ✓" data-framer-component-type="RichTextContainer" style={{ "--extracted-14qxiz": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-1fa19q2": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-1iakedh": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-1jpqyj2": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-1s8lkzu": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-1yfvjw7": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-2gxw0f": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-8vgz36": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-f9af1q": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-httz1r": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-i57awu": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-r6o4lv": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-t2ptvp": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--extracted-ydz9fi": "var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911)", "--framer-paragraph-spacing": "0px", opacity: "0.2", transform: "none" }}>
               <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.02em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911))", "--framer-text-transform": "lowercase" }}>
-                {"content_request: "}
+                {"request: "}
               </p>
               <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.02em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-2gxw0f, var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911))", "--framer-text-transform": "lowercase" }}>
-                {"> Create a high-converting landing page "}
+                {"> Plan my day as a creator "}
               </p>
               <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.02em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-1iakedh, var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911))", "--framer-text-transform": "lowercase" }}>
                 {" "}
@@ -79,13 +79,13 @@ export default function Content() {
                 {"processing… "}
               </p>
               <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.02em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-ydz9fi, var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911))", "--framer-text-transform": "lowercase" }}>
-                {"→ analyzing audience "}
+                {"→ sorting 23 new messages "}
               </p>
               <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.02em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-1yfvjw7, var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911))", "--framer-text-transform": "lowercase" }}>
-                {"→ structuring content "}
+                {"→ checking brand deadlines "}
               </p>
               <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.02em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-8vgz36, var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911))", "--framer-text-transform": "lowercase" }}>
-                {"→ optimizing messaging "}
+                {"→ picking today's content ideas "}
               </p>
               <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.02em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-t2ptvp, var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911))", "--framer-text-transform": "lowercase" }}>
                 {" "}
@@ -94,19 +94,19 @@ export default function Content() {
                 {"output: "}
               </p>
               <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.02em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-f9af1q, var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911))", "--framer-text-transform": "lowercase" }}>
-                {"+ compelling headline "}
+                {"+ 4 replies drafted "}
               </p>
               <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.02em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-i57awu, var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911))", "--framer-text-transform": "lowercase" }}>
-                {"+ clear value proposition "}
+                {"+ Nike deliverable due Friday "}
               </p>
               <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.02em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-httz1r, var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911))", "--framer-text-transform": "lowercase" }}>
-                {"+ conversion-focused copy "}
+                {"+ 3 content ideas for today "}
               </p>
               <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.02em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-1s8lkzu, var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911))", "--framer-text-transform": "lowercase" }}>
                 {" "}
               </p>
               <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.02em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-1fa19q2, var(--token-b264e7a4-07c4-4441-b3e8-2493ff121911))", "--framer-text-transform": "lowercase" }}>
-                {"status: ready to publish ✓"}
+                {"status: briefing ready ✓"}
               </p>
             </div>
           </div>
@@ -157,8 +157,8 @@ export default function Content() {
             <div className="framer-os5gde" data-framer-name="Content Title" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
               <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "28px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-alignment": "right", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
                 <Suspense fallback={null}>
-                  <a className="framer-text framer-styles-preset-ubvt1p" data-styles-preset="oe5nON5T_" href="mailto:verseo@gmail.com" target="_blank" rel="noopener">
-                    {"verseo@gmail.com"}
+                  <a className="framer-text framer-styles-preset-ubvt1p" data-styles-preset="oe5nON5T_" href="mailto:hello@creatoros.ai" target="_blank" rel="noopener">
+                    {"hello@creatoros.ai"}
                   </a>
                 </Suspense>
               </p>
@@ -519,7 +519,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
           <div className="framer-1e458dy" data-framer-name="Footer Group 37">
             <div className="framer-1k2zyx8" data-framer-name="Body" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
               <p className="framer-text framer-styles-preset-1ux1n5" data-styles-preset="j04PT0t19" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                {"© 2026 Verseo | All Rights Reserved"}
+                {"© 2026 CreatorOS | All Rights Reserved"}
               </p>
             </div>
             <div className="framer-1dor1xq-container" data-framer-name="Footer Instance 2" name="Footer Instance 2">

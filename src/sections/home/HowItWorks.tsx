@@ -202,9 +202,9 @@ export default function HowItWorks() {
             <div className="framer-1y7drug" data-framer-name="SYNTIQ AI SYSTEMS FOR STRUCTURED GROWTH. → Heading 2 → Scientific AI Systems 
 for Structured Growth " data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
               <h2 className="framer-text framer-styles-preset-fz4ha5" data-styles-preset="ZDTNXlux_" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)" }}>
-                {"Turn any idea into ready-to-use "}
+                {"Turn one upload into ready-to-post "}
                 <br className="framer-text" />
-                {"content in seconds"}
+                {"content everywhere"}
               </h2>
             </div>
           </div>
@@ -212,7 +212,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
             <div className="framer-1y7drug" data-framer-name="SYNTIQ AI SYSTEMS FOR STRUCTURED GROWTH. → Heading 2 → Scientific AI Systems 
 for Structured Growth " data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
               <h2 className="framer-text framer-styles-preset-fz4ha5" data-styles-preset="ZDTNXlux_" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                {"Turn any idea into ready-to-use content in seconds"}
+                {"Turn one upload into ready-to-post content everywhere"}
               </h2>
             </div>
           </div>
@@ -220,16 +220,16 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
         <div className="ssr-variant hidden-15twu3q">
           <div className="framer-124tst3" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
             <p className="framer-text framer-styles-preset-wklbpq" data-styles-preset="HM0tD8O3g" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-              {"No complex tools or long workflows - just describe what you need,"}
+              {"No juggling apps or rewriting captions - just upload your video,"}
               <br className="framer-text" />
-              {"and Verseo does the rest."}
+              {"and CreatorOS does the rest."}
             </p>
           </div>
         </div>
         <div className="ssr-variant hidden-1mvte0s hidden-72rtr7">
           <div className="framer-124tst3" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
             <p className="framer-text framer-styles-preset-wklbpq" data-styles-preset="HM0tD8O3g" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-              {"No complex tools or long workflows - just describe what you need, and Verseo does the rest."}
+              {"No juggling apps or rewriting captions - just upload your video, and CreatorOS does the rest."}
             </p>
           </div>
         </div>
@@ -252,12 +252,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-17nexft" data-framer-name="How It Works Group 7">
                         <div className="framer-ztyd7z" data-framer-name="Enter your idea" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p className="framer-text framer-styles-preset-qrqban" data-styles-preset="QJehLDsLg" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                            {"Enter your idea"}
+                            {"Upload your video"}
                           </p>
                         </div>
                         <div className="framer-1lf5zop" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                            {"Describe what you want to create in a simple prompt - even a rough idea works."}
+                            {"Drop in a long video or paste a YouTube link - CreatorOS reads the transcript."}
                           </p>
                         </div>
                       </div>
@@ -313,12 +313,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-17nexft" data-framer-name="How It Works Group 2">
                         <div className="framer-ztyd7z" data-framer-name="Enter your idea" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "24px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                            {"Generate content"}
+                            {"Get clips and captions"}
                           </p>
                         </div>
                         <div className="framer-1lf5zop" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                            {"Verseo turns your input into structured, high-quality content in seconds."}
+                            {"AI picks the best moments and writes titles, captions and hashtags per platform."}
                           </p>
                         </div>
                       </div>
@@ -374,12 +374,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-17nexft" data-framer-name="How It Works Group 2">
                         <div className="framer-ztyd7z" data-framer-name="Enter your idea" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "24px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                            {"Refine and publish"}
+                            {"Approve and schedule"}
                           </p>
                         </div>
                         <div className="framer-1lf5zop" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                            {"Adjust tone, edit, and use your content anywhere - ready when you are."}
+                            {"Review everything on one board and schedule it for the best times to post."}
                           </p>
                         </div>
                       </div>
@@ -427,7 +427,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 <div className="framer-1b90u56" data-border="true" data-framer-name="Top" style={{ "--border-bottom-width": "0px", "--border-color": "var(--token-98add4f9-5140-43c9-a5d6-d7d07e477a2d, rgb(237, 237, 237))", "--border-left-width": "1.5px", "--border-right-width": "1.5px", "--border-style": "solid", "--border-top-width": "1.5px" }}>
                   <div className="framer-1t20m9u" data-framer-name="The simpler the input, the faster you get results" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-329f9eec-c465-4112-bf50-dbe84d61d60b, rgb(51, 54, 55))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-uhe7sv" data-styles-preset="Y45uaKpRy" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-329f9eec-c465-4112-bf50-dbe84d61d60b, rgb(51, 54, 55)))" }}>
-                      {"The simpler the input, the faster you get results"}
+                      {"One upload in, a week of posts out"}
                     </p>
                   </div>
                   <div className="framer-1wgeky6" data-framer-name="How It Works Steps Group">
@@ -887,12 +887,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-17nexft" data-framer-name="How It Works Group 7">
                         <div className="framer-ztyd7z" data-framer-name="Enter your idea" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p className="framer-text framer-styles-preset-qrqban" data-styles-preset="QJehLDsLg" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                            {"Enter your idea"}
+                            {"Upload your video"}
                           </p>
                         </div>
                         <div className="framer-1lf5zop" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                            {"Describe what you want to create in a simple prompt - even a rough idea works."}
+                            {"Drop in a long video or paste a YouTube link - CreatorOS reads the transcript."}
                           </p>
                         </div>
                       </div>
@@ -948,12 +948,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-17nexft" data-framer-name="How It Works Group 2">
                         <div className="framer-ztyd7z" data-framer-name="Enter your idea" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "24px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                            {"Generate content"}
+                            {"Get clips and captions"}
                           </p>
                         </div>
                         <div className="framer-1lf5zop" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                            {"Verseo turns your input into structured, high-quality content in seconds."}
+                            {"AI picks the best moments and writes titles, captions and hashtags per platform."}
                           </p>
                         </div>
                       </div>
@@ -1009,12 +1009,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-17nexft" data-framer-name="How It Works Group 2">
                         <div className="framer-ztyd7z" data-framer-name="Enter your idea" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "24px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                            {"Refine and publish"}
+                            {"Approve and schedule"}
                           </p>
                         </div>
                         <div className="framer-1lf5zop" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                            {"Adjust tone, edit, and use your content anywhere - ready when you are."}
+                            {"Review everything on one board and schedule it for the best times to post."}
                           </p>
                         </div>
                       </div>
@@ -1062,7 +1062,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 <div className="framer-1b90u56" data-border="true" data-framer-name="Top" style={{ "--border-bottom-width": "0px", "--border-color": "var(--token-98add4f9-5140-43c9-a5d6-d7d07e477a2d, rgb(237, 237, 237))", "--border-left-width": "1.5px", "--border-right-width": "1.5px", "--border-style": "solid", "--border-top-width": "1.5px" }}>
                   <div className="framer-1t20m9u" data-framer-name="The simpler the input, the faster you get results" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-329f9eec-c465-4112-bf50-dbe84d61d60b, rgb(51, 54, 55))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-uhe7sv" data-styles-preset="Y45uaKpRy" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-329f9eec-c465-4112-bf50-dbe84d61d60b, rgb(51, 54, 55)))" }}>
-                      {"The simpler the input, the faster you get results"}
+                      {"One upload in, a week of posts out"}
                     </p>
                   </div>
                   <div className="framer-1wgeky6" data-framer-name="How It Works Steps Group 271">
@@ -1206,12 +1206,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-17nexft" data-framer-name="How It Works Group 7">
                         <div className="framer-ztyd7z" data-framer-name="Enter your idea" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p className="framer-text framer-styles-preset-qrqban" data-styles-preset="QJehLDsLg" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                            {"Enter your idea"}
+                            {"Upload your video"}
                           </p>
                         </div>
                         <div className="framer-1lf5zop" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                            {"Describe what you want to create in a simple prompt - even a rough idea works."}
+                            {"Drop in a long video or paste a YouTube link - CreatorOS reads the transcript."}
                           </p>
                         </div>
                       </div>
@@ -1267,12 +1267,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-17nexft" data-framer-name="How It Works Group 2">
                         <div className="framer-ztyd7z" data-framer-name="Enter your idea" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "24px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                            {"Generate content"}
+                            {"Get clips and captions"}
                           </p>
                         </div>
                         <div className="framer-1lf5zop" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                            {"Verseo turns your input into structured, high-quality content in seconds."}
+                            {"AI picks the best moments and writes titles, captions and hashtags per platform."}
                           </p>
                         </div>
                       </div>
@@ -1328,12 +1328,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       <div className="framer-17nexft" data-framer-name="How It Works Group 2">
                         <div className="framer-ztyd7z" data-framer-name="Enter your idea" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "24px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                            {"Refine and publish"}
+                            {"Approve and schedule"}
                           </p>
                         </div>
                         <div className="framer-1lf5zop" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                           <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163))" }}>
-                            {"Adjust tone, edit, and use your content anywhere - ready when you are."}
+                            {"Review everything on one board and schedule it for the best times to post."}
                           </p>
                         </div>
                       </div>
@@ -1381,7 +1381,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 <div className="framer-1b90u56" data-border="true" data-framer-name="Top" style={{ "--border-bottom-width": "0px", "--border-color": "var(--token-98add4f9-5140-43c9-a5d6-d7d07e477a2d, rgb(237, 237, 237))", "--border-left-width": "1.5px", "--border-right-width": "1.5px", "--border-style": "solid", "--border-top-width": "1.5px" }}>
                   <div className="framer-1t20m9u" data-framer-name="The simpler the input, the faster you get results" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-329f9eec-c465-4112-bf50-dbe84d61d60b, rgb(51, 54, 55))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-uhe7sv" data-styles-preset="Y45uaKpRy" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-329f9eec-c465-4112-bf50-dbe84d61d60b, rgb(51, 54, 55)))" }}>
-                      {"The simpler the input, the faster you get results"}
+                      {"One upload in, a week of posts out"}
                     </p>
                   </div>
                   <div className="framer-1wgeky6" data-framer-name="How It Works Steps Group 136">

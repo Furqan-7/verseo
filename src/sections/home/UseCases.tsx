@@ -172,7 +172,7 @@ export default function UseCases() {
               </div>
               <div className="framer-1ta3z8o" data-framer-name="AI Writing Tool" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                 <p className="framer-text framer-styles-preset-10kjy79" data-styles-preset="sMdfU46Ak" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565)" }}>
-                  {"use cases "}
+                  {"built for "}
                 </p>
               </div>
               <div className="framer-fw3f83" data-framer-name="]" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
@@ -185,9 +185,9 @@ export default function UseCases() {
               <div className="framer-1cf7iml" data-framer-name="SYNTIQ AI SYSTEMS FOR STRUCTURED GROWTH. → Heading 2 → Scientific AI Systems 
 for Structured Growth " data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
                 <h2 className="framer-text framer-styles-preset-fz4ha5" data-styles-preset="ZDTNXlux_" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)" }}>
-                  {"Built for how you actually"}
+                  {"Built for how creators actually"}
                   <br className="framer-text" />
-                  {"create content"}
+                  {"run their business"}
                 </h2>
               </div>
             </div>
@@ -195,7 +195,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
               <div className="framer-1cf7iml" data-framer-name="SYNTIQ AI SYSTEMS FOR STRUCTURED GROWTH. → Heading 2 → Scientific AI Systems 
 for Structured Growth " data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
                 <h2 className="framer-text framer-styles-preset-fz4ha5" data-styles-preset="ZDTNXlux_" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                  {"Built for how you actually create content"}
+                  {"Built for how creators actually run their business"}
                 </h2>
               </div>
             </div>
@@ -203,16 +203,16 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
           <div className="ssr-variant hidden-15twu3q">
             <div className="framer-1wdxgdi" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
               <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)" }}>
-                {"Whether you’re creating content daily or scaling it across a team,"}
+                {"Whether you post daily or manage a roster of creators,"}
                 <br className="framer-text" />
-                {"Verseo adapts to your workflow."}
+                {"CreatorOS adapts to your workflow."}
               </p>
             </div>
           </div>
           <div className="ssr-variant hidden-1mvte0s hidden-72rtr7">
             <div className="framer-1wdxgdi" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
               <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163)" }}>
-                {"Whether you’re creating content daily or scaling it across a team, Verseo adapts to your workflow."}
+                {"Whether you post daily or manage a roster of creators, CreatorOS adapts to your workflow."}
               </p>
             </div>
           </div>
@@ -241,7 +241,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-olbn6a" data-framer-name="For marketers" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-70dd917f-3e82-45ab-bf0e-41869a710944)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                     <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-70dd917f-3e82-45ab-bf0e-41869a710944))", "--framer-text-transform": "uppercase" }}>
-                      {"For marketers"}
+                      {"For solo creators"}
                     </p>
                   </div>
                   <div className="framer-qfnnot" data-border="true" data-framer-name="Use Case Accordion Panel 4" style={{ "--border-bottom-width": "1.5px", "--border-color": "var(--token-98add4f9-5140-43c9-a5d6-d7d07e477a2d, rgb(237, 237, 237))", "--border-left-width": "1.5px", "--border-right-width": "1.5px", "--border-style": "solid", "--border-top-width": "1.5px", borderBottomLeftRadius: "30px", borderBottomRightRadius: "30px", borderTopLeftRadius: "30px", borderTopRightRadius: "30px" }} />
@@ -317,12 +317,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <div className="framer-o1wxbi" data-framer-name="Use Case Accordion Group 7">
                     <div className="framer-1bcw51o" data-framer-name="For marketers" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto">
-                        {"For marketers"}
+                        {"For solo creators"}
                       </p>
                     </div>
                     <div className="framer-t5yq30" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                        {"Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds."}
+                        {"Wake up to one briefing: messages sorted, replies drafted, deal deadlines flagged and today's content ideas picked from what your audience asks - so your morning goes to creating, not admin."}
                       </p>
                     </div>
                   </div>
@@ -430,7 +430,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-olbn6a" data-framer-name="For marketers" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-70dd917f-3e82-45ab-bf0e-41869a710944)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                     <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-70dd917f-3e82-45ab-bf0e-41869a710944))", "--framer-text-transform": "uppercase" }}>
-                      {"For marketers"}
+                      {"For solo creators"}
                     </p>
                   </div>
                   <div className="framer-qfnnot" data-border="true" data-framer-name="Use Case Accordion Panel 16" style={{ "--border-bottom-width": "1.5px", "--border-color": "var(--token-98add4f9-5140-43c9-a5d6-d7d07e477a2d, rgb(237, 237, 237))", "--border-left-width": "1.5px", "--border-right-width": "1.5px", "--border-style": "solid", "--border-top-width": "1.5px", borderBottomLeftRadius: "30px", borderBottomRightRadius: "30px", borderTopLeftRadius: "30px", borderTopRightRadius: "30px" }} />
@@ -510,12 +510,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <div className="framer-o1wxbi" data-framer-name="Use Case Accordion Group 29">
                     <div className="framer-1bcw51o" data-framer-name="For marketers" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto">
-                        {"For marketers"}
+                        {"For solo creators"}
                       </p>
                     </div>
                     <div className="framer-t5yq30" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                        {"Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds."}
+                        {"Wake up to one briefing: messages sorted, replies drafted, deal deadlines flagged and today's content ideas picked from what your audience asks - so your morning goes to creating, not admin."}
                       </p>
                     </div>
                   </div>
@@ -582,7 +582,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-olbn6a" data-framer-name="For marketers" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-70dd917f-3e82-45ab-bf0e-41869a710944)", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                     <p dir="auto" className="framer-text" style={{ "--framer-font-size": "14px", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-70dd917f-3e82-45ab-bf0e-41869a710944))", "--framer-text-transform": "uppercase" }}>
-                      {"For marketers"}
+                      {"For solo creators"}
                     </p>
                   </div>
                   <div className="framer-qfnnot" data-border="true" data-framer-name="Use Case Accordion Panel 10" style={{ "--border-bottom-width": "1.5px", "--border-color": "var(--token-98add4f9-5140-43c9-a5d6-d7d07e477a2d, rgb(237, 237, 237))", "--border-left-width": "1.5px", "--border-right-width": "1.5px", "--border-style": "solid", "--border-top-width": "1.5px", borderBottomLeftRadius: "30px", borderBottomRightRadius: "30px", borderTopLeftRadius: "30px", borderTopRightRadius: "30px" }} />
@@ -658,12 +658,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <div className="framer-o1wxbi" data-framer-name="Use Case Accordion Group 18">
                     <div className="framer-1bcw51o" data-framer-name="For marketers" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto">
-                        {"For marketers"}
+                        {"For solo creators"}
                       </p>
                     </div>
                     <div className="framer-t5yq30" data-framer-name="Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                        {"Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds."}
+                        {"Wake up to one briefing: messages sorted, replies drafted, deal deadlines flagged and today's content ideas picked from what your audience asks - so your morning goes to creating, not admin."}
                       </p>
                     </div>
                   </div>
@@ -790,7 +790,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <div className="framer-o1wxbi" data-framer-name="Use Case Accordion Group 2">
                     <div className="framer-1bcw51o" data-framer-name="For marketers" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto">
-                        {"For founders"}
+                        {"For talent managers"}
                       </p>
                     </div>
                   </div>
@@ -958,7 +958,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <div className="framer-o1wxbi" data-framer-name="Use Case Accordion Group 24">
                     <div className="framer-1bcw51o" data-framer-name="For marketers" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto">
-                        {"For founders"}
+                        {"For talent managers"}
                       </p>
                     </div>
                   </div>
@@ -1044,7 +1044,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <div className="framer-o1wxbi" data-framer-name="Use Case Accordion Group 13">
                     <div className="framer-1bcw51o" data-framer-name="For marketers" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto">
-                        {"For founders"}
+                        {"For talent managers"}
                       </p>
                     </div>
                   </div>
@@ -1171,7 +1171,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <div className="framer-o1wxbi" data-framer-name="Use Case Accordion Group 2">
                     <div className="framer-1bcw51o" data-framer-name="For marketers" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto">
-                        {"For teams"}
+                        {"For creator teams"}
                       </p>
                     </div>
                   </div>
@@ -1339,7 +1339,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <div className="framer-o1wxbi" data-framer-name="Use Case Accordion Group 24">
                     <div className="framer-1bcw51o" data-framer-name="For marketers" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto">
-                        {"For teams"}
+                        {"For creator teams"}
                       </p>
                     </div>
                   </div>
@@ -1425,7 +1425,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <div className="framer-o1wxbi" data-framer-name="Use Case Accordion Group 13">
                     <div className="framer-1bcw51o" data-framer-name="For marketers" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto">
-                        {"For teams"}
+                        {"For creator teams"}
                       </p>
                     </div>
                   </div>

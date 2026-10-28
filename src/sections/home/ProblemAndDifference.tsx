@@ -120,7 +120,7 @@ export default function ProblemAndDifference() {
 for Structured Growth " data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
                 <h2 className="framer-text framer-styles-preset-fz4ha5" data-styles-preset="ZDTNXlux_" dir="auto">
                   <span style={{ "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }} className="framer-text">
-                    {"Where content friction "}
+                    {"Where creator chaos "}
                   </span>
                   <br className="framer-text" />
                   <span style={{ "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }} className="framer-text">
@@ -133,14 +133,14 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
               <div className="framer-1xbn361" data-framer-name="SYNTIQ AI SYSTEMS FOR STRUCTURED GROWTH. → Heading 2 → Scientific AI Systems 
 for Structured Growth " data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
                 <h2 className="framer-text framer-styles-preset-fz4ha5" data-styles-preset="ZDTNXlux_" dir="auto" style={{ "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                  {"Where content friction ends, clarity begins"}
+                  {"Where creator chaos ends, clarity begins"}
                 </h2>
               </div>
             </div>
           </div>
           <div className="framer-5lqsv4" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
             <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "center", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-              {"See how AI replaces slow, manual writing with fast, structured content creation."}
+              {"See how AI replaces scattered tools and busywork with one workspace that acts for you."}
             </p>
           </div>
         </div>
@@ -160,7 +160,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
             <div className="framer-12koxbl" data-framer-name="Frame 2147239568">
               <div className="framer-1gaf0t5" data-framer-name="Content Title" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                 <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto">
-                  {"Fragmented writing"}
+                  {"Scattered tools"}
                 </p>
               </div>
               <div className="framer-1ai10h5" data-framer-name="Frame 2147238934">
@@ -176,7 +176,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-1ub24nt" data-framer-name="Ideas don’t translate into clear content" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                      {"Ideas don’t translate into clear content"}
+                      {"Inbox, DMs and comments in different apps"}
                     </p>
                   </div>
                 </div>
@@ -192,7 +192,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-19dtjt8" data-framer-name="Constantly starting from a blank page" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                      {"Constantly starting from a blank page"}
+                      {"Deals and deadlines tracked from memory"}
                     </p>
                   </div>
                 </div>
@@ -208,7 +208,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-14zkwt5" data-framer-name="No clear structure or direction" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                      {"No clear structure or direction"}
+                      {"No single view of what needs you today"}
                     </p>
                   </div>
                 </div>
@@ -362,7 +362,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
             <div className="framer-1qxjs67" data-framer-name="Frame 2147239568">
               <div className="framer-19x7ale" data-framer-name="Content Title" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                 <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto">
-                  {"Manual workflows"}
+                  {"Endless busywork"}
                 </p>
               </div>
               <div className="framer-eg01n" data-framer-name="Frame 2147238934">
@@ -378,7 +378,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-1s4d5is" data-framer-name="Writing takes too much time" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                      {"Writing takes too much time"}
+                      {"Captions rewritten for every platform"}
                     </p>
                   </div>
                 </div>
@@ -394,7 +394,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-tsfo8p" data-framer-name="Endless editing and rewriting" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                      {"Endless editing and rewriting"}
+                      {"Chasing brands for late payments"}
                     </p>
                   </div>
                 </div>
@@ -410,7 +410,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-1hclw5s" data-framer-name="Inconsistent tone across channels" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                      {"Inconsistent tone across channels"}
+                      {"More time managing than creating"}
                     </p>
                   </div>
                 </div>
@@ -558,7 +558,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 <div className="framer-1in9e3x" data-framer-name="Frame 2147239568">
                   <div className="framer-1nhm1jz" data-framer-name="Content Title" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                     <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto">
-                      {"AI-powered content flow"}
+                      {"One creator OS"}
                     </p>
                   </div>
                   <div className="framer-wrywdx" data-framer-name="Frame 2147238934">
@@ -572,7 +572,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       </div>
                       <div className="framer-1ehzzv7" data-framer-name="Generate structured content in seconds" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                          {"Generate structured content in seconds"}
+                          {"A daily briefing of what needs you"}
                         </p>
                       </div>
                     </div>
@@ -586,7 +586,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       </div>
                       <div className="framer-jzkswk" data-framer-name="Keep your voice consistent everywhere" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                          {"Keep your voice consistent everywhere"}
+                          {"Every message sorted, replies drafted"}
                         </p>
                       </div>
                     </div>
@@ -600,7 +600,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       </div>
                       <div className="framer-9xiwd6" data-framer-name="Refine, edit, and scale effortlessly" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                          {"Refine, edit, and scale effortlessly"}
+                          {"Post once, publish everywhere"}
                         </p>
                       </div>
                     </div>
@@ -616,7 +616,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 <div className="framer-1in9e3x" data-framer-name="Frame 2147239568">
                   <div className="framer-1nhm1jz" data-framer-name="Content Title" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                     <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto">
-                      {"AI-powered content flow"}
+                      {"One creator OS"}
                     </p>
                   </div>
                   <div className="framer-wrywdx" data-framer-name="Frame 2147238934">
@@ -630,7 +630,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       </div>
                       <div className="framer-1ehzzv7" data-framer-name="Generate structured content in seconds" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                          {"Generate structured content in seconds"}
+                          {"A daily briefing of what needs you"}
                         </p>
                       </div>
                     </div>
@@ -644,7 +644,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       </div>
                       <div className="framer-jzkswk" data-framer-name="Keep your voice consistent everywhere" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                          {"Keep your voice consistent everywhere"}
+                          {"Every message sorted, replies drafted"}
                         </p>
                       </div>
                     </div>
@@ -658,7 +658,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       </div>
                       <div className="framer-9xiwd6" data-framer-name="Refine, edit, and scale effortlessly" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                          {"Refine, edit, and scale effortlessly"}
+                          {"Post once, publish everywhere"}
                         </p>
                       </div>
                     </div>
@@ -674,7 +674,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 <div className="framer-1in9e3x" data-framer-name="Frame 2147239568">
                   <div className="framer-1nhm1jz" data-framer-name="Content Title" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                     <p className="framer-text framer-styles-preset-1eeo3wr" data-styles-preset="D7hGfXMfz" dir="auto">
-                      {"AI-powered content flow"}
+                      {"One creator OS"}
                     </p>
                   </div>
                   <div className="framer-wrywdx" data-framer-name="Frame 2147238934">
@@ -688,7 +688,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       </div>
                       <div className="framer-1ehzzv7" data-framer-name="Generate structured content in seconds" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                          {"Generate structured content in seconds"}
+                          {"A daily briefing of what needs you"}
                         </p>
                       </div>
                     </div>
@@ -702,7 +702,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       </div>
                       <div className="framer-jzkswk" data-framer-name="Keep your voice consistent everywhere" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                          {"Keep your voice consistent everywhere"}
+                          {"Every message sorted, replies drafted"}
                         </p>
                       </div>
                     </div>
@@ -716,7 +716,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                       </div>
                       <div className="framer-9xiwd6" data-framer-name="Refine, edit, and scale effortlessly" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                          {"Refine, edit, and scale effortlessly"}
+                          {"Post once, publish everywhere"}
                         </p>
                       </div>
                     </div>
