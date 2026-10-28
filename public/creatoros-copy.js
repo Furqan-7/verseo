@@ -92,7 +92,30 @@
    "Verseo turns your input into structured, high-quality content in seconds.": "AI picks the best moments and writes titles, captions and hashtags per platform.",
    "Refine and publish": "Approve and schedule",
    "Adjust tone, edit, and use your content anywhere - ready when you are.": "Review everything on one board and schedule it for the best times to post.",
-   "The simpler the input, the faster you get results": "One upload in, a week of posts out"
+   "The simpler the input, the faster you get results": "One upload in, a week of posts out",
+   "Watch your content take shape": "Watch your clips take shape",
+   "Structuring content": "Finding best moments",
+   "analyzing tone...": "writing captions...",
+   "→ understanding product context": "→ reading the transcript",
+   "→ matching brand voice": "→ finding hook moments",
+   "→ generating hook": "→ cutting 3 clips",
+   "+ concise headline": "+ 3 short clips",
+   "+ clear cta": "+ captions per platform",
+   "+ launch-ready copy": "+ hashtags and titles",
+   "email generation:": "scheduling:",
+   "→ adapting tone": "→ checking best times",
+   "→ structuring message flow": "→ Shorts, Reels and TikTok",
+   "generated:": "scheduled:",
+   "+ welcome email": "+ Tue 6:30 pm · Reel",
+   "+ follow-up sequence": "+ Wed 12:00 pm · Short",
+   "+ activation cta": "+ Thu 7:00 pm · TikTok",
+   "Subject: Content creation without the bottleneck": "Instagram Reel · Tue 6:30 pm",
+   "Subject:": "Instagram Reel ·",
+   "Content creation without the bottleneck": "Tue 6:30 pm",
+   "Hey Sarah,": "Caption:",
+   "Turn rough ideas into publish-ready content in seconds.": "The camera setup I use for every video, in 30 seconds.",
+   "From social posts to product copy, Promptly helps your team generate clear, consistent messaging without overthinking every word.": "Lens, mic and lights are linked below. Save this for your next shoot and tell me what you want to see next.",
+   "Write faster. Edit less. Stay on-brand everywhere.": "#creatorsetup #filmmaking #youtubetips"
   },
   "Results": {
    "See the impact instantly": "Get your time back",
@@ -218,7 +241,7 @@
   // Framer's runtime renders was copied from screenshots, so spacing and quote
   // style can differ from the live page.
   var norm = function (s) {
-    return s.replace(/\u00a0/g, " ").replace(/[\u2018\u2019]/g, "'").replace(/[\u201c\u201d]/g, '"').replace(/\s+/g, " ").trim();
+    return s.replace(/\u00a0/g, " ").replace(/[\u2018\u2019]/g, "'").replace(/[\u201c\u201d]/g, '"').replace(/\u2026/g, "...").replace(/\s+/g, " ").trim();
   };
   function trimmed(src) {
     var m = {};
@@ -264,6 +287,7 @@
   var HERO_SRCSET = "/assets/img/creatoros-hero-512.webp 512w, /assets/img/creatoros-hero-1024.webp 1024w, /assets/img/creatoros-hero-2048.webp 2048w, /assets/img/creatoros-hero-2151.webp 2151w";
   var IMAGES = {
     "Hero": { "2151x720": { src: "/assets/img/creatoros-hero-2151.webp", srcset: HERO_SRCSET } },
+    "How It Works": { "1040x530": { src: "/assets/img/creatoros-step1-1040.webp", srcset: "/assets/img/creatoros-step1-512.webp 512w, /assets/img/creatoros-step1-1024.webp 1024w, /assets/img/creatoros-step1-1040.webp 1040w, /assets/img/creatoros-step1-2080.webp 2080w" } },
     "Client Logos": {
       "294x81": { src: "/assets/img/creatoros-logo-youtube.png" },
       "268x83": { src: "/assets/img/creatoros-logo-instagram.png" },
