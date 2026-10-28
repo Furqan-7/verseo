@@ -75,7 +75,9 @@
    "For marketers": "For solo creators",
    "For founders": "For talent managers",
    "For teams": "For creator teams",
-   "Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds.": "Wake up to one briefing: messages sorted, replies drafted, deal deadlines flagged and today's content ideas picked from what your audience asks - so your morning goes to creating, not admin."
+   "Create ads, emails, landing pages, and social content - without starting from scratch. Quickly generate multiple variations, test different angles, and adapt your message for every platform in seconds.": "Wake up to one briefing: messages sorted, replies drafted, deal deadlines flagged and today's content ideas picked from what your audience asks - so your morning goes to creating, not admin.",
+   "Write product copy, pitches, and updates with more clarity and less effort. Turn rough ideas into structured messaging that clearly explains your product, value, and positioning.": "See every creator's deals, deadlines and payments on one board. Know which campaign needs attention, chase late invoices in one click, and keep brands updated without digging through inboxes.",
+   "Keep your messaging consistent across every channel, no matter who’s writing. Align your tone, structure, and communication style across your entire team - from social media and email campaigns to landing pages, product copy, and client communication.": "Editors, assistants and managers work from one shared workspace. Tasks come straight from contracts and the content calendar, approvals stay with the creator, and the Copilot answers \"what's due this week?\" with sources."
   },
   "How It Works": {
    "Turn any idea into ready-to-use ": "Turn one upload into ready-to-post ",
@@ -210,12 +212,17 @@
 };
 
   var TITLE = "CreatorOS — The AI Operating System for Creators";
-  var norm = function (s) { return s.replace(/\u00a0/g, " "); };
-  // Keys and values are trimmed: the page text is compared trimmed, and some
-  // template lines end in a space (the first half of a two-line heading).
+  // Page text and map keys are compared in a normalised form: trimmed, runs of
+  // whitespace collapsed and curly quotes made straight. Some template lines end
+  // in a space (the first half of a two-line heading), and text that only
+  // Framer's runtime renders was copied from screenshots, so spacing and quote
+  // style can differ from the live page.
+  var norm = function (s) {
+    return s.replace(/\u00a0/g, " ").replace(/[\u2018\u2019]/g, "'").replace(/[\u201c\u201d]/g, '"').replace(/\s+/g, " ").trim();
+  };
   function trimmed(src) {
     var m = {};
-    Object.keys(src).forEach(function (k) { m[norm(k).trim()] = src[k].trim(); });
+    Object.keys(src).forEach(function (k) { m[norm(k)] = src[k].trim(); });
     return m;
   }
   var globalMap = trimmed(COPY.global);
@@ -243,11 +250,11 @@
       if (raw.indexOf("Verseo") !== -1) node.nodeValue = TITLE;
       return;
     }
-    var key = norm(raw).trim();
+    var key = norm(raw);
     var map = mapFor(node);
     var next = map[key];
-    if (next === undefined && key.indexOf("Verseo") !== -1) next = key.replace(/Verseo/g, "CreatorOS");
-    if (next === undefined || next === key) return;
+    if (next === undefined && raw.indexOf("Verseo") !== -1) next = raw.trim().replace(/Verseo/g, "CreatorOS");
+    if (next === undefined || next === raw.trim()) return;
     var lead = raw.match(/^\s*/)[0], trail = raw.match(/\s*$/)[0];
     node.nodeValue = lead + next + trail;
   }
