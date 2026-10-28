@@ -6,7 +6,7 @@ import React, { Suspense } from "react";
  *  Everything else is ordinary JSX: edit it like any other component. */
 export default function HowItWorks() {
   return (
-    <div className="framer-1l5d84c" data-border="true" data-framer-name="How It Works">
+    <div className="framer-1l5d84c" data-border="true" data-framer-name="How It Works" id="how-it-works">
       <div className="framer-12rw223" data-framer-name="Scroll Area">
         <div className="ssr-variant hidden-15twu3q hidden-1mvte0s">
           <div className="framer-rfu0ub" data-framer-name="How It Works Surface" />

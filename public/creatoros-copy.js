@@ -23,8 +23,8 @@
    "Brand Voice": "Inbox",
    "Rewrite": "Publish",
    "Summarize": "Deals",
-   "Get Started": "Get my briefing",
-   "Try Demo": "Watch demo"
+   "Get Started": "Get started free",
+   "Try Demo": "See how it works"
   },
   "Client Logos": {
    "Trusted by modern teams": "Works with the platforms you already use"
@@ -189,7 +189,7 @@
  },
  "global": {
   "Verseo": "CreatorOS",
-  "Get Template Free": "Join the Beta",
+  "Get Template Free": "Sign up free",
   "better content today": "more, manage less",
   "Turn ideas into polished content in seconds. Generate, refine, and publish faster": "Your inbox, deals, content and schedule in one place. Wake up to a plan,",
   "with AI-powered workflows designed for modern teams.": "with the busywork already done.",
@@ -278,10 +278,32 @@
     if (img.getAttribute("src") !== want.src) img.setAttribute("src", want.src);
   }
 
+  // Button links, which Framer's runtime would reset to the template's own.
+  var SIGNUP = "/auth/signup";
+  function fixLink(a) {
+    var href = a.getAttribute("href") || "", want = null;
+    if (href.indexOf("framer.link/") !== -1) want = SIGNUP;
+    else if (a.closest('[data-framer-name="Hero"]')) {
+      var role = a.getAttribute("data-framer-name");
+      if (role === "Primary") want = SIGNUP;
+      else if (role === "Secondary") want = "./#how-it-works";
+    }
+    if (want && href !== want) a.setAttribute("href", want);
+    if (want === SIGNUP && a.getAttribute("target") === "_blank") a.removeAttribute("target");
+  }
+
+  function fixAnchors() {
+    var how = document.querySelector('[data-framer-name="How It Works"]');
+    if (how && !document.getElementById("how-it-works")) how.id = "how-it-works";
+  }
+
   function fixTree(root) {
     if (root.nodeType === 3) return fixText(root);
     if (root.nodeType !== 1) return;
     if (root.tagName === "IMG") return fixImg(root);
+    if (root.tagName === "A") fixLink(root);
+    var links = root.getElementsByTagName("a");
+    for (var j = 0; j < links.length; j++) fixLink(links[j]);
     var imgs = root.getElementsByTagName("img");
     for (var i = 0; i < imgs.length; i++) fixImg(imgs[i]);
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
@@ -296,11 +318,12 @@
   new MutationObserver(function (records) {
     records.forEach(function (r) {
       if (r.type === "characterData") fixText(r.target);
-      else if (r.type === "attributes") fixImg(r.target);
+      else if (r.type === "attributes") r.target.tagName === "A" ? fixLink(r.target) : fixImg(r.target);
       else r.addedNodes.forEach(fixTree);
     });
     fixTitle();
-  }).observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ["src", "srcset"] });
+    fixAnchors();
+  }).observe(document.documentElement, { childList: true, subtree: true, characterData: true, attributes: true, attributeFilter: ["src", "srcset", "href"] });
 
-  document.addEventListener("DOMContentLoaded", function () { fixTree(document.body); fixTitle(); });
+  document.addEventListener("DOMContentLoaded", function () { fixTree(document.body); fixTitle(); fixAnchors(); });
 })();

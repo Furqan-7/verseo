@@ -78,16 +78,16 @@ export default function Navigation() {
               </div>
               <div className="framer-1iaaojo-container" data-framer-name="Navigation Instance 2" name="Navigation Instance 2">
                 <Suspense fallback={null}>
-                  <a name="Navigation Instance 2" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-m8hd4j framer-14zb1bv" data-framer-name="Primary" data-highlight="true" href="https://framer.link/W76dZzY" rel="noopener" tabIndex={0} style={{ "--border-bottom-width": "0px", "--border-color": "rgba(0, 0, 0, 0)", "--border-left-width": "0px", "--border-right-width": "0px", "--border-style": "solid", "--border-top-width": "0px", backgroundColor: "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
+                  <a name="Navigation Instance 2" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-m8hd4j framer-14zb1bv" data-framer-name="Primary" data-highlight="true" href="/auth/signup" rel="noopener" tabIndex={0} style={{ "--border-bottom-width": "0px", "--border-color": "rgba(0, 0, 0, 0)", "--border-left-width": "0px", "--border-right-width": "0px", "--border-style": "solid", "--border-top-width": "0px", backgroundColor: "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
                     <div className="framer-8n851v" data-framer-name="Text Container">
                       <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                          {"Join the Beta"}
+                          {"Sign up free"}
                         </p>
                       </div>
                       <div className="framer-1uxyoc7" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                          {"Join the Beta"}
+                          {"Sign up free"}
                         </p>
                       </div>
                     </div>
