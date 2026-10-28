@@ -176,7 +176,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-1ub24nt" data-framer-name="Ideas don’t translate into clear content" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                      {"Inbox, DMs and comments in different apps"}
+                      {"Messages spread across five apps"}
                     </p>
                   </div>
                 </div>
@@ -192,7 +192,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   </div>
                   <div className="framer-19dtjt8" data-framer-name="Constantly starting from a blank page" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", transform: "none" }}>
                     <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto">
-                      {"Deals and deadlines tracked from memory"}
+                      {"Deadlines kept in your head"}
                     </p>
                   </div>
                 </div>

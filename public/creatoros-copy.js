@@ -34,8 +34,8 @@
    "Where content friction ends, clarity begins": "Where creator chaos ends, clarity begins",
    "See how AI replaces slow, manual writing with fast, structured content creation.": "See how AI replaces scattered tools and busywork with one workspace that acts for you.",
    "Fragmented writing": "Scattered tools",
-   "Ideas don’t translate into clear content": "Inbox, DMs and comments in different apps",
-   "Constantly starting from a blank page": "Deals and deadlines tracked from memory",
+   "Ideas don’t translate into clear content": "Messages spread across five apps",
+   "Constantly starting from a blank page": "Deadlines kept in your head",
    "No clear structure or direction": "No single view of what needs you today",
    "Manual workflows": "Endless busywork",
    "Writing takes too much time": "Captions rewritten for every platform",
@@ -51,12 +51,12 @@
    "to create better content": "business needs",
    "Everything you need to create better content": "Everything your creator business needs",
    "Create, refine, and scale content - faster and without starting from scratch.": "Inbox, content, deals and schedule - handled in one place, with AI doing the busywork.",
-   "AI Writing": "Daily Briefing",
-   "Start from a simple idea and turn it into structured, high-quality content in seconds.": "Every morning: your to-do list, messages that need you, deal updates and today's content ideas.",
-   "No more blank pages.": "Know your day at a glance.",
-   "Smart Rewrite": "Unified Inbox",
-   "Improve clarity, structure, and tone instantly without rewriting from scratch.": "Emails, comments and DMs in one feed, sorted into deals, collabs, fans and spam.",
-   "Fix and refine in one click.": "Replies drafted. You approve.",
+   "AI Writing": "Unified Inbox",
+   "Start from a simple idea and turn it into structured, high-quality content in seconds.": "Emails, comments and DMs in one feed, sorted into deals, collabs, fans and spam.",
+   "No more blank pages.": "Replies drafted. You approve.",
+   "Smart Rewrite": "Daily Briefing",
+   "Improve clarity, structure, and tone instantly without rewriting from scratch.": "Every morning: your to-do list, messages that need you, deal updates and today's content ideas.",
+   "Fix and refine in one click.": "Know your day at a glance.",
    "Tone Control": "Publish Everywhere",
    "Keep your voice consistent across every channel — from emails to social posts.": "Upload one video and get clips, captions and hashtags for every platform, scheduled.",
    "Write like your brand, every time.": "Create once, post everywhere.",
@@ -211,11 +211,18 @@
 
   var TITLE = "CreatorOS — The AI Operating System for Creators";
   var norm = function (s) { return s.replace(/\u00a0/g, " "); };
+  // Keys and values are trimmed: the page text is compared trimmed, and some
+  // template lines end in a space (the first half of a two-line heading).
+  function trimmed(src) {
+    var m = {};
+    Object.keys(src).forEach(function (k) { m[norm(k).trim()] = src[k].trim(); });
+    return m;
+  }
+  var globalMap = trimmed(COPY.global);
   var sectionMaps = {};
   Object.keys(COPY.sections).forEach(function (name) {
-    var m = {}, src = COPY.sections[name];
-    Object.keys(src).forEach(function (k) { m[k] = src[k]; });
-    Object.keys(COPY.global).forEach(function (k) { if (!(k in m)) m[k] = COPY.global[k]; });
+    var m = trimmed(COPY.sections[name]);
+    Object.keys(globalMap).forEach(function (k) { if (!(k in m)) m[k] = globalMap[k]; });
     sectionMaps[name] = m;
   });
 
@@ -226,7 +233,7 @@
       if (name && sectionMaps[name]) return sectionMaps[name];
       el = el.parentElement;
     }
-    return COPY.global;
+    return globalMap;
   }
 
   function fixText(node) {

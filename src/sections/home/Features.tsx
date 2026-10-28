@@ -251,18 +251,18 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-sdrl7b" data-framer-name="Frame 2147239314">
                       <div className="framer-69hlqa" data-framer-name="Smart Rewrite" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "24px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                          {"Unified Inbox"}
+                          {"Daily Briefing"}
                         </p>
                       </div>
                       <div className="framer-19yg9w7" data-framer-name="Improve clarity, structure, and tone instantly without rewriting from scratch." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                          {"Emails, comments and DMs in one feed, sorted into deals, collabs, fans and spam."}
+                          {"Every morning: your to-do list, messages that need you, deal updates and today's content ideas."}
                         </p>
                       </div>
                     </div>
                     <div className="framer-1exmxff" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104)))" }}>
-                        {"Replies drafted. You approve."}
+                        {"Know your day at a glance."}
                       </p>
                     </div>
                   </div>
@@ -315,18 +315,18 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-sdrl7b" data-framer-name="Frame 2147239314">
                       <div className="framer-69hlqa" data-framer-name="Smart Rewrite" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "24px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                          {"Unified Inbox"}
+                          {"Daily Briefing"}
                         </p>
                       </div>
                       <div className="framer-19yg9w7" data-framer-name="Improve clarity, structure, and tone instantly without rewriting from scratch." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                          {"Emails, comments and DMs in one feed, sorted into deals, collabs, fans and spam."}
+                          {"Every morning: your to-do list, messages that need you, deal updates and today's content ideas."}
                         </p>
                       </div>
                     </div>
                     <div className="framer-1exmxff" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104)))" }}>
-                        {"Replies drafted. You approve."}
+                        {"Know your day at a glance."}
                       </p>
                     </div>
                   </div>
@@ -379,18 +379,18 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-sdrl7b" data-framer-name="Frame 2147239314">
                       <div className="framer-69hlqa" data-framer-name="Smart Rewrite" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "24px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                          {"Unified Inbox"}
+                          {"Daily Briefing"}
                         </p>
                       </div>
                       <div className="framer-19yg9w7" data-framer-name="Improve clarity, structure, and tone instantly without rewriting from scratch." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                          {"Emails, comments and DMs in one feed, sorted into deals, collabs, fans and spam."}
+                          {"Every morning: your to-do list, messages that need you, deal updates and today's content ideas."}
                         </p>
                       </div>
                     </div>
                     <div className="framer-1exmxff" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104)))" }}>
-                        {"Replies drafted. You approve."}
+                        {"Know your day at a glance."}
                       </p>
                     </div>
                   </div>
@@ -443,18 +443,18 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-sdrl7b" data-framer-name="Frame 2147239314">
                       <div className="framer-69hlqa" data-framer-name="Smart Rewrite" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "24px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                          {"Daily Briefing"}
+                          {"Unified Inbox"}
                         </p>
                       </div>
                       <div className="framer-19yg9w7" data-framer-name="Improve clarity, structure, and tone instantly without rewriting from scratch." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                          {"Every morning: your to-do list, messages that need you, deal updates and today's content ideas."}
+                          {"Emails, comments and DMs in one feed, sorted into deals, collabs, fans and spam."}
                         </p>
                       </div>
                     </div>
                     <div className="framer-1exmxff" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104)))" }}>
-                        {"Know your day at a glance."}
+                        {"Replies drafted. You approve."}
                       </p>
                     </div>
                   </div>
@@ -507,18 +507,18 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-sdrl7b" data-framer-name="Frame 2147239314">
                       <div className="framer-69hlqa" data-framer-name="Smart Rewrite" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "24px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                          {"Daily Briefing"}
+                          {"Unified Inbox"}
                         </p>
                       </div>
                       <div className="framer-19yg9w7" data-framer-name="Improve clarity, structure, and tone instantly without rewriting from scratch." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                          {"Every morning: your to-do list, messages that need you, deal updates and today's content ideas."}
+                          {"Emails, comments and DMs in one feed, sorted into deals, collabs, fans and spam."}
                         </p>
                       </div>
                     </div>
                     <div className="framer-1exmxff" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104)))" }}>
-                        {"Know your day at a glance."}
+                        {"Replies drafted. You approve."}
                       </p>
                     </div>
                   </div>
@@ -571,18 +571,18 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-sdrl7b" data-framer-name="Frame 2147239314">
                       <div className="framer-69hlqa" data-framer-name="Smart Rewrite" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p dir="auto" className="framer-text" style={{ "--font-selector": "SW50ZXItTWVkaXVt", "--framer-font-size": "24px", "--framer-font-weight": "500", "--framer-letter-spacing": "-0.01em", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                          {"Daily Briefing"}
+                          {"Unified Inbox"}
                         </p>
                       </div>
                       <div className="framer-19yg9w7" data-framer-name="Improve clarity, structure, and tone instantly without rewriting from scratch." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                         <p className="framer-text framer-styles-preset-r3kf23" data-styles-preset="Ncsb6Q58x" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                          {"Every morning: your to-do list, messages that need you, deal updates and today's content ideas."}
+                          {"Emails, comments and DMs in one feed, sorted into deals, collabs, fans and spam."}
                         </p>
                       </div>
                     </div>
                     <div className="framer-1exmxff" data-framer-name="Fix and refine in one click." data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-19hz8kk" data-styles-preset="cJo28_gcx" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104)))" }}>
-                        {"Know your day at a glance."}
+                        {"Replies drafted. You approve."}
                       </p>
                     </div>
                   </div>
