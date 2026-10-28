@@ -1,0 +1,1015 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CreatorOS — The AI Operating System for Creators</title>
+<meta name="description" content="CreatorOS turns contracts, deadlines, payments and content performance into decisions and actions. Upload a brand deal and watch it become a risk score, deliverables, reminders and next steps.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f9f9f9; --surface:#fff; --soft:#f6f6f6; --line:#ededed;
+  --ink:#181818; --muted:#686868; --faint:#858585;
+  --purple:#aeabff; --green:#a2e198; --yellow:#ffcc40; --blue:#006fff; --red:#ec6b5e; --sky:#c2e1ff; --cyan:#76e5fc;
+  --shadow:0 12px 32px -12px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.04);
+  --max:1440px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:1.2;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+.mono{font-family:"JetBrains Mono",monospace}
+
+/* page frame: the vertical hairlines Verseo runs down both edges */
+.frame{position:relative;max-width:1440px;margin:0 auto}
+.frame::before,.frame::after{content:"";position:absolute;top:0;bottom:0;width:1px;background:var(--line);z-index:0;pointer-events:none}
+.frame::before{left:12px}.frame::after{right:12px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 40px;position:relative;z-index:1}
+section{position:relative;padding:120px 0}
+.hr{height:1px;background:var(--line);position:relative}
+.hr::before,.hr::after{content:"+";position:absolute;top:-9px;color:#cfcfcf;font-size:14px;font-weight:300}
+.hr::before{left:7px}.hr::after{right:7px}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(249,249,249,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:75px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:16px;letter-spacing:-.04em}
+.logo svg{width:26px;height:26px}
+.links{display:flex;gap:22px}
+.links a{font-size:15px;transition:color .2s}
+.links a:hover{color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:48px;padding:0 24px;border-radius:4px;font-size:15px;transition:transform .2s,background .2s,box-shadow .2s;white-space:nowrap}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:#000;transform:translateY(-1px);box-shadow:0 8px 18px -8px rgba(0,0,0,.5)}
+.btn-line{border:1px solid var(--ink);background:transparent;width:142px}
+.btn-line:hover{background:var(--ink);color:#fff}
+.btn-sm{height:44px;padding:0 16px}
+.menu-btn{display:none;width:40px;height:40px;border:1px solid var(--line);border-radius:4px;align-items:center;justify-content:center}
+
+/* section heads */
+.eyebrow{display:inline-flex;gap:8px;color:var(--muted);font-size:14px;margin-bottom:20px}
+h1{font-size:64px;font-weight:600;letter-spacing:-.03em;line-height:1.08}
+h2{font-size:48px;font-weight:600;letter-spacing:-.03em;line-height:1.1}
+h3{font-size:20px;font-weight:500;letter-spacing:-.02em;line-height:1.2}
+.lead{font-size:18px;line-height:1.4;letter-spacing:-.02em;max-width:740px;margin:20px auto 0}
+.head{text-align:center;margin-bottom:64px}
+.muted{color:var(--muted)}
+.tag{display:inline-flex;align-items:center;height:26px;padding:0 9px;border:1px solid var(--line);border-radius:4px;font-size:12px;color:var(--muted);background:var(--surface)}
+.tag.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+/* hero */
+.hero{padding:110px 0 0;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:101px 81px;background-position:center -6px;mask-image:linear-gradient(to bottom,#000 30%,transparent 85%);-webkit-mask-image:linear-gradient(to bottom,#000 30%,transparent 85%);opacity:.75}
+.spark{position:absolute;width:38px;height:38px;border:1px solid var(--line);border-radius:50%;background:var(--bg);display:grid;place-items:center;color:var(--ink)}
+.pix{position:absolute;display:grid;grid-template-columns:repeat(3,8px);gap:2px;opacity:.12}
+.pix i{width:8px;height:8px;background:var(--ink)}.pix i.o{background:transparent}
+.hero .wrap{text-align:center}
+.hero .lead{max-width:760px}
+.cta{display:flex;justify-content:center;gap:12px;margin-top:32px}
+.prompt{position:relative;z-index:3;width:min(556px,100%);margin:40px auto -40px;background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);text-align:left}
+.prompt-in{display:flex;align-items:center;gap:10px;padding:14px 14px 22px;font-size:14px;color:var(--faint);min-height:52px}
+.prompt-in .typed{color:var(--ink)}
+.caret{display:inline-block;width:1px;height:16px;background:var(--ink);animation:blink 1s steps(1) infinite;vertical-align:middle}
+@keyframes blink{50%{opacity:0}}
+.chips{display:flex;align-items:center;gap:6px;padding:8px 10px;border-top:1px solid var(--line);background:#fcfcfc;border-radius:0 0 12px 12px}
+.chip{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 8px;border-radius:4px;font-size:12px;color:var(--muted);border:1px solid transparent;transition:.2s}
+.chip.on,.chip:hover{background:var(--surface);color:var(--ink);border-color:var(--line)}
+.chip .d{width:9px;height:9px;display:grid;grid-template-columns:repeat(3,3px)}
+.chip .d i{width:2px;height:2px}
+.mic{margin-left:auto;width:28px;height:28px;background:var(--ink);border-radius:4px;display:grid;place-items:center}
+
+/* app mock */
+.app{position:relative;z-index:2;max-width:956px;margin:0 auto;background:#fdfdfd;border:1px solid var(--line);border-bottom:0;border-radius:12px 12px 0 0;padding:12px 12px 0;text-align:left;box-shadow:0 -10px 40px -20px rgba(0,0,0,.12)}
+.bar{display:flex;align-items:center;gap:6px;height:24px;margin-bottom:10px}
+.bar i{width:8px;height:8px;border-radius:50%}
+.bar .url{margin-left:14px;height:18px;width:160px;border:1px solid var(--line);border-radius:4px;font-size:10px;color:var(--faint);display:flex;align-items:center;padding:0 6px}
+.win{display:grid;grid-template-columns:200px 1fr;border:1px solid var(--line);border-bottom:0;border-radius:8px 8px 0 0;background:var(--surface);min-height:380px;overflow:hidden}
+.side{border-right:1px solid var(--line);padding:16px 12px;display:flex;flex-direction:column;gap:4px;background:#fcfcfc}
+.side .it{display:flex;align-items:center;gap:8px;padding:7px 8px;border-radius:4px;font-size:12.5px;color:var(--muted)}
+.side .it.on{background:var(--soft);color:var(--ink)}
+.side .it b{width:6px;height:6px;border-radius:2px;background:#d6d6d6}
+.side .lbl{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin:14px 8px 4px}
+.main{padding:18px;display:grid;grid-template-columns:1.25fr 1fr;gap:12px;align-content:start}
+.card{border:1px solid var(--line);border-radius:8px;padding:14px;background:var(--surface)}
+.card.soft{background:#fcfcfc}
+.kv{display:flex;justify-content:space-between;font-size:12px;padding:6px 0;border-bottom:1px dashed var(--line)}
+.kv:last-child{border:0}
+.kv span:first-child{color:var(--muted)}
+.risk{color:#c4493c}
+.ok{color:#2c8a3d}
+.gauge{position:relative;width:96px;height:96px}
+.gauge svg{transform:rotate(-90deg)}
+.gauge .n{position:absolute;inset:0;display:grid;place-items:center;font-size:24px;font-weight:600;letter-spacing:-.04em}
+.gauge .n small{display:block;font-size:10px;color:var(--faint);font-weight:400;text-align:center;letter-spacing:0}
+.alert{display:flex;gap:10px;align-items:flex-start;font-size:12px;line-height:1.35;padding:10px;border-radius:6px;background:#fff6f5;border:1px solid #f6d6d2}
+.alert b{font-weight:500}
+.dot{width:7px;height:7px;border-radius:50%;flex:none;margin-top:4px}
+.task{display:flex;align-items:center;gap:8px;font-size:12px;padding:7px 0;border-bottom:1px solid var(--soft)}
+.task:last-child{border:0}
+.box{width:13px;height:13px;border:1px solid #cfcfcf;border-radius:3px;flex:none}
+.box.done{background:var(--ink);border-color:var(--ink);position:relative}
+.box.done::after{content:"";position:absolute;left:3.5px;top:1px;width:3px;height:6px;border:solid #fff;border-width:0 1.5px 1.5px 0;transform:rotate(45deg)}
+.task .when{margin-left:auto;color:var(--faint);font-family:"JetBrains Mono",monospace;font-size:10.5px}
+
+/* logos strip */
+.strip{padding:56px 0;text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(#fafafa,var(--bg))}
+.marquee{overflow:hidden;margin-top:30px;mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent)}
+.track{display:flex;gap:72px;width:max-content;animation:slide 30s linear infinite}
+.track span{display:flex;align-items:center;gap:10px;font-weight:600;font-size:19px;letter-spacing:-.03em;color:#9a9a9a}
+.track span i{width:20px;height:20px;border-radius:5px;background:#d9d9d9;display:block}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* bordered card grid (problem / features) */
+.grid{display:grid;border:1px solid var(--line);background:var(--soft)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+.cell{padding:24px;background:var(--bg);border-right:1px solid var(--line);position:relative}
+.cell:last-child{border-right:0}
+.cell.hi{background:var(--surface);margin:10px;border-radius:12px;border:0;box-shadow:var(--shadow)}
+.ico{width:28px;height:28px;display:grid;place-items:center;background:var(--surface);border-radius:4px}
+.ico.dark{background:var(--ink);color:#fff}
+.cell h3{margin:96px 0 18px}
+.cell.hi h3{margin-top:86px}
+.ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.ul li{display:flex;gap:12px;color:var(--muted);font-size:15px;line-height:1.2}
+.ul li::before{content:"—";color:var(--ink)}
+.ul.plus li::before{content:"+";font-weight:300;font-size:18px;line-height:15px}
+
+.feat{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border:1px solid var(--line)}
+.f{padding:28px;border-bottom:1px solid var(--line);border-right:1px solid var(--line);background:var(--bg);display:flex;flex-direction:column;gap:12px;transition:background .3s}
+.f:nth-child(2n){border-right:0}
+.f:nth-last-child(-n+2){border-bottom:0}
+.f:hover{background:var(--surface)}
+.f .vis{height:210px;border:1px solid var(--line);border-radius:8px;background:var(--surface);margin-bottom:18px;padding:16px;overflow:hidden;position:relative}
+.f p{color:var(--muted);line-height:1.35;max-width:520px}
+.f .note{color:var(--ink);font-size:14px;font-style:italic}
+.pill{display:inline-flex;align-items:center;gap:6px;height:22px;padding:0 8px;border-radius:100px;font-size:11px;border:1px solid var(--line);background:var(--surface)}
+.f .top{display:flex;justify-content:space-between;align-items:center}
+
+/* extraction visual */
+.ex{display:grid;grid-template-columns:1fr 1fr;gap:12px;height:100%}
+.doc{border:1px solid var(--line);border-radius:6px;padding:12px;font-size:10.5px;line-height:1.55;color:var(--faint);background:#fcfcfc}
+.doc mark{background:none;color:var(--ink);border-bottom:2px solid var(--purple);padding:0 1px}
+.doc mark.y{border-color:var(--yellow)}.doc mark.g{border-color:var(--green)}.doc mark.r{border-color:var(--red)}
+.json{font-family:"JetBrains Mono",monospace;font-size:10.5px;line-height:1.6;color:var(--muted)}
+.json b{color:var(--ink);font-weight:400}
+.json .k{color:#7b77e8}
+/* bars */
+.bars{display:flex;align-items:flex-end;gap:10px;height:120px;padding-top:10px}
+.bars{margin-right:240px}
+.bars div{flex:1;background:var(--soft);border-radius:4px 4px 0 0;position:relative;transition:height 1s cubic-bezier(.2,.8,.2,1)}
+.bars div.a{background:var(--purple)}
+.bars div span{position:absolute;bottom:-18px;left:0;right:0;text-align:center;font-size:10px;color:var(--faint)}
+.reco{position:absolute;right:14px;top:14px;width:220px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px;font-size:11.5px;line-height:1.4;box-shadow:var(--shadow)}
+
+/* use cases accordion */
+.uc{display:grid;grid-template-columns:1fr 1.15fr;border:1px solid var(--line)}
+.uc-list{border-right:1px solid var(--line)}
+.uc-item{border-bottom:1px solid var(--line);padding:24px;cursor:pointer;transition:background .2s}
+.uc-item:last-child{border-bottom:0}
+.uc-item .row{display:flex;align-items:center;gap:16px}
+.num{display:inline-grid;place-items:center;height:26px;padding:0 8px;border-radius:4px;background:var(--soft);font-size:14px;font-weight:500;color:var(--muted);transition:.2s}
+.uc-item.on .num{background:var(--ink);color:#fff}
+.uc-item h3{font-size:24px}
+.uc-item .body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.uc-item .body>div{overflow:hidden}
+.uc-item.on .body{grid-template-rows:1fr}
+.uc-item p{color:var(--muted);line-height:1.4;padding-top:14px;max-width:520px}
+.uc-item.on{background:var(--surface)}
+.uc-vis{padding:28px;background:var(--bg);display:flex;flex-direction:column;gap:12px;justify-content:center}
+.uc-vis .card{transition:opacity .35s,transform .35s}
+.uc-vis.swap .card{opacity:0;transform:translateY(8px)}
+
+/* how it works */
+.how{display:grid;grid-template-columns:490px 1fr;border:1px solid var(--line)}
+.steps{border-right:1px solid var(--line);display:flex;flex-direction:column}
+.step{padding:24px;border-bottom:1px solid var(--line);cursor:pointer;background:var(--bg);transition:.3s;position:relative}
+.step:last-child{border-bottom:0}
+.step h3{font-size:24px;margin:30px 0 12px}
+.step p{line-height:1.3;font-size:15px}
+.step.on{background:var(--surface);margin:10px;border-radius:12px;border-bottom:0;box-shadow:var(--shadow)}
+.step .tag{font-size:14px;height:30px;padding:0 9px;color:var(--ink)}
+.step.on .tag{background:var(--ink);color:#fff;border-color:var(--ink)}
+.prog{position:absolute;left:24px;right:24px;bottom:0;height:2px;background:var(--soft);border-radius:2px;overflow:hidden;opacity:0}
+.step.on .prog{opacity:1;bottom:10px}
+.prog i{display:block;height:100%;width:0;background:var(--ink)}
+.stage{background:var(--bg);display:flex;flex-direction:column}
+.stage-cap{border-bottom:1px solid var(--line);padding:12px;text-align:center;font-size:12.5px;font-style:italic}
+.pipe{display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;padding:14px;border-bottom:1px solid var(--line)}
+.pipe span{font-family:"JetBrains Mono",monospace;font-size:11.5px;padding:4px 8px;border-radius:4px;border:1px solid var(--line);background:var(--surface);color:var(--faint);transition:.3s}
+.pipe span.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.pipe em{color:#c8c8c8;font-style:normal;font-size:11px}
+.screen{flex:1;padding:28px;display:grid;place-items:center;min-height:440px}
+.panel{width:min(560px,100%);background:var(--surface);border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);padding:18px;display:none;animation:rise .45s ease both}
+.panel.on{display:block}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.drop{border:1.5px dashed #d6d6d6;border-radius:8px;padding:28px;text-align:center;color:var(--muted);font-size:13px}
+.file{display:flex;align-items:center;gap:12px;border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-top:12px;font-size:13px}
+.file .pdf{width:30px;height:36px;border-radius:4px;background:#fdecea;color:#c4493c;font-size:9px;font-weight:600;display:grid;place-items:center}
+.load{height:3px;background:var(--soft);border-radius:3px;overflow:hidden;margin-top:8px}
+.load i{display:block;height:100%;background:var(--ink);animation:load 2.2s ease-in-out infinite}
+@keyframes load{0%{width:0}70%{width:100%}100%{width:100%}}
+.ptitle{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.ptitle h4{font-size:15px;font-weight:500}
+.mail{font-size:12.5px;line-height:1.5;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:12px;background:#fcfcfc}
+.mail b{color:var(--ink);font-weight:500}
+.approve{display:flex;gap:8px;margin-top:12px}
+.approve .btn{height:34px;font-size:13px;padding:0 14px}
+.approve .btn-line{width:auto}
+
+/* results / deal health */
+.res{display:grid;grid-template-columns:490px 1fr;border:1px solid var(--line);background:var(--bg)}
+.res-l{padding:10px;border-right:1px solid var(--line)}
+.res-l .inner{background:var(--surface);border-radius:12px;box-shadow:var(--shadow);height:100%;padding:24px;display:flex;flex-direction:column}
+.res-l h3{font-size:24px;margin:auto 0 12px}
+.res-l p{line-height:1.3}
+.res-l .it{font-size:12.5px;font-style:italic;color:var(--muted);margin:10px 0 28px}
+.res-r{display:grid;grid-template-rows:auto 1fr auto}
+.res-head{display:flex;align-items:center;gap:16px;padding:22px 24px;border-bottom:1px solid var(--line)}
+.res-head h4{font-size:20px;font-weight:500}
+.res-head small{font-size:12.5px;font-style:italic;color:var(--muted)}
+.weights{display:grid;grid-template-columns:repeat(2,1fr)}
+.w{padding:22px 24px;border-bottom:1px solid var(--line);border-right:1px solid var(--line)}
+.w:nth-child(2n){border-right:0}
+.w .lab{font-size:14px;text-transform:uppercase;letter-spacing:.01em}
+.w .big{font-size:46px;font-weight:500;letter-spacing:-.04em;margin:10px 0 18px;font-variant-numeric:tabular-nums}
+.w .big small{font-size:20px;color:var(--faint);font-weight:400}
+.meter{height:4px;background:var(--soft);border-radius:4px;overflow:hidden;margin-bottom:16px}
+.meter i{display:block;height:100%;width:0;border-radius:4px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.w p{font-size:14px;line-height:1.3;color:var(--muted)}
+.res-foot{padding:22px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.res-foot h4{font-size:20px;font-weight:500}
+
+/* demo timeline */
+.tl{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line)}
+.tl .s{padding:22px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg);min-height:170px;display:flex;flex-direction:column;gap:10px;transition:background .3s}
+.tl .s:nth-child(3n){border-right:0}
+.tl .s:nth-last-child(-n+3){border-bottom:0}
+.tl .s:hover{background:var(--surface)}
+.tl .n{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--faint)}
+.tl h4{font-size:18px;font-weight:500;letter-spacing:-.02em}
+.tl .out{margin-top:auto;display:flex;align-items:center;gap:8px;font-size:13px}
+.tl .out i{width:8px;height:8px;border-radius:2px}
+.judge{margin-top:24px;border:1px solid var(--line);border-radius:12px;background:var(--surface);padding:22px 24px;display:flex;gap:16px;align-items:center;box-shadow:var(--shadow)}
+.judge p{font-size:18px;line-height:1.35;letter-spacing:-.02em}
+
+/* integrations */
+.int{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line)}
+.ic{padding:20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg);display:flex;flex-direction:column;gap:8px;min-height:150px;transition:background .3s}
+.ic:nth-child(5n){border-right:0}
+.ic:nth-last-child(-n+5){border-bottom:0}
+.ic:hover{background:var(--surface)}
+.ic .lg{width:34px;height:34px;border-radius:8px;display:grid;place-items:center;font-weight:600;font-size:14px;color:#fff;margin-bottom:6px}
+.ic h4{font-size:15px;font-weight:500}
+.ic p{font-size:13px;color:var(--muted);line-height:1.3}
+.ic .pr{margin-top:auto;display:flex;gap:6px;flex-wrap:wrap}
+.p0{background:var(--ink)!important;color:#fff;border-color:var(--ink)!important}
+
+/* trust */
+.trust .cell h3{margin-top:70px}
+.flow{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:28px;flex-wrap:wrap}
+.flow span{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:4px;border:1px solid var(--line);background:var(--surface);font-size:15px}
+.flow span.k{background:var(--ink);color:#fff;border-color:var(--ink)}
+.flow em{font-style:normal;color:var(--faint)}
+
+/* pricing */
+.toggle{display:inline-flex;padding:4px;border:1px solid var(--line);border-radius:6px;background:var(--surface);margin-top:28px}
+.toggle button{height:36px;padding:0 18px;border-radius:4px;transition:.2s}
+.toggle button.on{background:var(--ink);color:#fff}
+.toggle .save{font-size:11px;margin-left:6px;color:#2c8a3d}
+.toggle button.on .save{color:var(--green)}
+.price{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);background:var(--bg)}
+.pc{padding:28px;border-right:1px solid var(--line);display:flex;flex-direction:column}
+.pc:last-child{border-right:0}
+.pc.hi{background:var(--surface);margin:10px;border-radius:12px;box-shadow:var(--shadow);border:0}
+.pc .t{display:flex;justify-content:space-between;align-items:center}
+.pc h3{font-size:24px}
+.pc .sub{color:var(--muted);margin-top:8px}
+.pc .amt{font-size:44px;font-weight:500;letter-spacing:-.03em;margin:36px 0 4px}
+.pc .amt small{font-size:15px;color:var(--muted);font-weight:400;letter-spacing:0}
+.pc .btn{width:100%;margin:24px 0 28px}
+.pc .btn-line{width:100%}
+
+/* faq */
+.faq{display:grid;grid-template-columns:1fr 1.4fr;gap:64px;align-items:start}
+.faq .head{text-align:left;margin:0;position:sticky;top:110px}
+.faq .head .lead{margin-left:0}
+.qa{border-top:1px solid var(--line)}
+.q{border-bottom:1px solid var(--line)}
+.q button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 0;text-align:left;font-size:20px;font-weight:500;letter-spacing:-.02em}
+.q button i{flex:none;width:28px;height:28px;border-radius:4px;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;font-style:normal;font-weight:300;font-size:18px;transition:background .3s,color .3s}
+.q button i::after{content:"+"}
+.q.on button i{background:var(--ink);color:#fff;border-color:var(--ink)}
+.q.on button i::after{content:"−"}
+.q .a{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s ease}
+.q .a>div{overflow:hidden}
+.q.on .a{grid-template-rows:1fr}
+.q .a p{color:var(--muted);line-height:1.45;padding-bottom:24px;max-width:640px}
+
+/* closing CTA + footer */
+.final{margin:0 auto;border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:72px 24px;text-align:center;position:relative;overflow:hidden}
+.final .hero-grid{opacity:.5}
+.final>*{position:relative}
+footer{border-top:1px solid var(--line);padding:56px 0 40px}
+.foot{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px}
+.foot h5{font-size:12px;font-weight:400;color:var(--muted);margin-bottom:14px}
+.foot a{display:block;margin-bottom:10px;font-size:15px}
+.foot a:hover{color:var(--muted)}
+.foot a.logo{display:flex}
+.fine{display:flex;justify-content:space-between;gap:20px;margin-top:48px;padding-top:24px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);flex-wrap:wrap}
+
+/* reveal on scroll (only when JS is running, so content never stays hidden) */
+.js .rv{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
+
+/* tablet */
+@media (max-width:1199px){
+  h1{font-size:52px}h2{font-size:40px}
+  .how,.res{grid-template-columns:1fr}
+  .steps,.res-l{border-right:0;border-bottom:1px solid var(--line)}
+  .int{grid-template-columns:repeat(3,1fr)}
+  .ic:nth-child(n){border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .ic:nth-child(3n){border-right:0}
+  .main{grid-template-columns:1fr}
+  .main .hide-t{display:none}
+}
+/* phone */
+@media (max-width:809px){
+  .wrap{padding:0 16px}
+  section{padding:80px 0}
+  h1{font-size:40px}h2{font-size:32px}
+  .lead{font-size:16px}
+  .links,nav .btn{display:none}
+  .menu-btn{display:inline-flex}
+  nav.open .links{display:flex;flex-direction:column;position:absolute;top:75px;left:0;right:0;background:var(--bg);padding:16px;border-bottom:1px solid var(--line);gap:16px}
+  .cta{flex-direction:column;align-items:stretch;max-width:320px;margin-left:auto;margin-right:auto}
+  .btn-line{width:auto}
+  .win{grid-template-columns:1fr}.side{display:none}
+  .g3,.g2,.feat,.uc,.price,.tl,.faq{grid-template-columns:1fr}
+  .cell,.pc,.f,.tl .s{border-right:0!important;border-bottom:1px solid var(--line)!important}
+  .cell:last-child,.pc:last-child,.f:last-child,.tl .s:last-child{border-bottom:0!important}
+  .cell h3{margin-top:48px}
+  .uc-list{border-right:0;border-bottom:1px solid var(--line)}
+  .weights{grid-template-columns:1fr}.w{border-right:0}
+  .int{grid-template-columns:1fr 1fr}
+  .ic:nth-child(n){border-right:1px solid var(--line)}.ic:nth-child(2n){border-right:0}
+  .ex{grid-template-columns:1fr}.ex .doc{display:none}
+  .reco{position:static;width:auto;margin-top:26px}
+  .bars{margin-right:0}
+  .chips{flex-wrap:wrap}
+  .tl .s{min-height:0}
+  .tl .out{margin-top:8px}
+  .f .vis{height:auto;min-height:200px}
+  .faq{gap:32px}.faq .head{position:static}
+  .foot{grid-template-columns:1fr 1fr}
+  .spark,.pix{display:none}
+  .judge{flex-direction:column;align-items:flex-start}
+  .screen{padding:16px;min-height:380px}
+}
+</style>
+</head>
+<body>
+<div class="frame">
+
+<!-- ============ NAV ============ -->
+<nav id="nav">
+  <div class="wrap">
+    <a href="#" class="logo" aria-label="CreatorOS home">
+      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M16 2l3.2 6.6L26 6l-2.6 6.8L30 16l-6.6 3.2L26 26l-6.8-2.6L16 30l-3.2-6.6L6 26l2.6-6.8L2 16l6.6-3.2L6 6l6.8 2.6z" fill="#181818"/><rect x="11.5" y="11.5" width="9" height="9" rx="1.5" fill="#f9f9f9" transform="rotate(45 16 16)"/></svg>
+      CREATOROS
+    </a>
+    <div class="links">
+      <a href="#product">Product</a>
+      <a href="#modules">Modules</a>
+      <a href="#how">How It Works</a>
+      <a href="#integrations">Integrations</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+    <a href="#demo" class="btn btn-dark btn-sm">Watch the Demo</a>
+    <button class="menu-btn" aria-label="Open menu" onclick="document.getElementById('nav').classList.toggle('open')">
+      <svg width="16" height="16" viewBox="0 0 16 16"><path d="M2 5h12M2 11h12" stroke="#181818" stroke-width="1.5"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="product">
+  <div class="hero-grid"></div>
+  <span class="spark" style="left:20%;top:58px">✦</span>
+  <span class="spark" style="right:20%;top:58px">✦</span>
+  <div class="pix" style="left:17%;top:150px"><i></i><i class="o"></i><i></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i></i></div>
+  <div class="pix" style="right:16%;top:150px"><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i></i><i class="o"></i><i></i><i class="o"></i></div>
+  <div class="pix" style="left:10%;top:400px"><i></i><i></i><i class="o"></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i></i></div>
+  <div class="pix" style="right:9%;top:390px"><i></i><i class="o"></i><i></i><i></i><i></i><i class="o"></i><i class="o"></i><i></i><i></i></div>
+
+  <div class="wrap">
+    <div class="eyebrow rv"><span>[</span>AI operating system for creators<span>]</span></div>
+    <h1 class="rv">Run your creator business.<br>Smarter. With AI</h1>
+    <p class="lead rv">CreatorOS reads your brand deals, contracts, deadlines, payments and content performance, then turns them into decisions and actions instead of another dashboard.</p>
+    <div class="cta rv">
+      <a href="#how" class="btn btn-dark">Get Started</a>
+      <a href="#demo" class="btn btn-line">Try Demo</a>
+    </div>
+
+    <div class="prompt rv">
+      <div class="prompt-in">
+        <svg width="14" height="14" viewBox="0 0 16 16"><path d="M8 1l1.6 4.4L14 7l-4.4 1.6L8 13l-1.6-4.4L2 7l4.4-1.6z" fill="#181818"/></svg>
+        <span><span class="typed" id="typed"></span><span class="caret"></span></span>
+      </div>
+      <div class="chips">
+        <span class="chip on"><span class="d"><i style="background:var(--blue)"></i><i></i><i style="background:var(--blue)"></i><i></i><i style="background:var(--blue)"></i><i></i><i style="background:var(--blue)"></i><i></i><i style="background:var(--blue)"></i></span>Deal Intel</span>
+        <span class="chip"><span class="d"><i style="background:#4bbf5a"></i><i style="background:#4bbf5a"></i><i></i><i></i><i style="background:#4bbf5a"></i><i></i><i style="background:#4bbf5a"></i><i style="background:#4bbf5a"></i><i></i></span>Autopilot</span>
+        <span class="chip"><span class="d"><i></i><i style="background:var(--yellow)"></i><i></i><i style="background:var(--yellow)"></i><i style="background:var(--yellow)"></i><i style="background:var(--yellow)"></i><i></i><i style="background:var(--yellow)"></i><i></i></span>Revenue</span>
+        <span class="chip"><span class="d"><i style="background:#7b77e8"></i><i></i><i style="background:#7b77e8"></i><i></i><i style="background:#7b77e8"></i><i></i><i style="background:#7b77e8"></i><i></i><i style="background:#7b77e8"></i></span>Copilot</span>
+        <span class="mic"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 4v4M4.5 2v8M7 3v6M9.5 4.5v3" stroke="#fff" stroke-width="1.2" stroke-linecap="round"/></svg></span>
+      </div>
+    </div>
+
+    <div class="app rv">
+      <div class="bar"><i style="background:#ec6b5e"></i><i style="background:#f4bf4f"></i><i style="background:#61c554"></i><span class="url">app.creatoros.ai/deals/nike</span></div>
+      <div class="win">
+        <aside class="side">
+          <div class="lbl">Workspace</div>
+          <div class="it"><b></b>Overview</div>
+          <div class="it on"><b style="background:var(--ink)"></b>Deals</div>
+          <div class="it"><b></b>Deliverables</div>
+          <div class="it"><b></b>Revenue</div>
+          <div class="it"><b></b>Analytics</div>
+          <div class="lbl">AI</div>
+          <div class="it"><b style="background:var(--purple)"></b>Copilot</div>
+          <div class="it"><b style="background:var(--green)"></b>Actions <span class="tag" style="margin-left:auto;height:18px;font-size:10px;padding:0 5px">3</span></div>
+        </aside>
+        <div class="main">
+          <div class="card">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px">
+              <div>
+                <div style="font-size:11px;color:var(--faint);margin-bottom:4px">Extracted from contract.pdf</div>
+                <div style="font-size:17px;font-weight:500;letter-spacing:-.02em">Nike · Spring Campaign</div>
+              </div>
+              <span class="pill"><i class="dot" style="background:var(--green);margin:0"></i>Active</span>
+            </div>
+            <div class="kv"><span>Fee</span><span>$4,000</span></div>
+            <div class="kv"><span>Deliverables</span><span>1 Reel · 2 Stories</span></div>
+            <div class="kv"><span>Deadline</span><span class="mono" style="font-size:11.5px">2026-11-15</span></div>
+            <div class="kv"><span>Usage rights</span><span class="risk">60 days ▲</span></div>
+            <div class="kv"><span>Payment terms</span><span class="risk">Missing ▲</span></div>
+            <div class="kv"><span>Revisions</span><span class="risk">Unspecified ▲</span></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div class="card" style="display:flex;gap:14px;align-items:center">
+              <div class="gauge">
+                <svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" stroke="#f1f1f1" stroke-width="7" fill="none"/><circle id="g1" cx="48" cy="48" r="40" stroke="#181818" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="251.3" style="transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)"/></svg>
+                <div class="n"><div><span id="g1n">0</span><small>/100</small></div></div>
+              </div>
+              <div>
+                <div style="font-size:14px;font-weight:500">Deal Health</div>
+                <div style="font-size:12px;color:var(--muted);line-height:1.35;margin-top:4px">3 contract risks found. Score is rule-based; AI explains it.</div>
+              </div>
+            </div>
+            <div class="alert"><i class="dot" style="background:var(--red)"></i><div><b>Payment overdue · Glossier</b><br><span class="muted">$2,500 was due 6 days ago. Follow-up draft ready.</span></div></div>
+            <div class="card soft hide-t">
+              <div style="font-size:12px;color:var(--muted);margin-bottom:4px">Auto-generated deliverables</div>
+              <div class="task"><span class="box done"></span>Nike Reel: concept<span class="when">NOV 02</span></div>
+              <div class="task"><span class="box"></span>Story #1: launch day<span class="when">NOV 10</span></div>
+              <div class="task"><span class="box"></span>Story #2: recap<span class="when">NOV 15</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONNECTS TO ============ -->
+<div class="strip">
+  <div class="wrap">
+    <p>Connects to the tools creators already use</p>
+    <div class="marquee">
+      <div class="track" id="track">
+        <span><i style="background:#ea4335"></i>Gmail</span>
+        <span><i style="background:#34a853"></i>Google Drive</span>
+        <span><i style="background:#4285f4"></i>Calendar</span>
+        <span><i style="background:#ff0033"></i>YouTube</span>
+        <span><i style="background:linear-gradient(45deg,#f9a825,#e91e63,#7b1fa2)"></i>Instagram</span>
+        <span><i style="background:#111"></i>TikTok</span>
+        <span><i style="background:#3ecf8e"></i>Supabase</span>
+        <span><i style="background:#7b77e8"></i>Gemini</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PROBLEM & DIFFERENCE ============ -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow rv"><span>[</span>the difference<span>]</span></div>
+      <h2 class="rv">Where creator chaos<br>ends, clarity begins</h2>
+      <p class="lead rv">Most tools store your business. CreatorOS understands it and tells you what to do next.</p>
+    </div>
+    <div class="grid g3 rv">
+      <div class="cell">
+        <span class="ico"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M1 1l10 10M11 1L1 11" stroke="#181818" stroke-width="1.5"/></svg></span>
+        <h3>Scattered deals</h3>
+        <ul class="ul">
+          <li>Contracts buried in email threads</li>
+          <li>Deadlines tracked in notes apps</li>
+          <li>No single view of what's owed</li>
+        </ul>
+      </div>
+      <div class="cell">
+        <span class="ico"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M1 1l10 10M11 1L1 11" stroke="#181818" stroke-width="1.5"/></svg></span>
+        <h3>Silent money leaks</h3>
+        <ul class="ul">
+          <li>Late payments go unnoticed</li>
+          <li>Unlimited revisions slip through</li>
+          <li>Usage rights signed away blindly</li>
+        </ul>
+      </div>
+      <div class="cell hi">
+        <span class="ico dark"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M1.5 6.5l3 3 6-7" stroke="#fff" stroke-width="1.5" fill="none"/></svg></span>
+        <h3>An OS that acts for you</h3>
+        <ul class="ul plus">
+          <li>Every contract parsed and risk-scored</li>
+          <li>Deliverables and reminders created for you</li>
+          <li>Overdue payments flagged with a draft ready</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="hr"></div>
+
+<!-- ============ MODULES ============ -->
+<section id="modules">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow rv"><span>[</span>modules<span>]</span></div>
+      <h2 class="rv">Everything your creator<br>business needs</h2>
+      <p class="lead rv">Four core modules that turn your data into detected risks, created work and clear next steps.</p>
+    </div>
+    <div class="feat rv">
+      <!-- Deal Intelligence -->
+      <div class="f">
+        <div class="vis">
+          <div class="ex">
+            <div class="doc">…the Creator shall deliver <mark>one (1) Instagram Reel and two (2) Stories</mark> no later than <mark class="g">November 15, 2026</mark>. Brand shall pay a fee of <mark class="y">USD 4,000</mark>. Brand may use the content for <mark class="r">sixty (60) days</mark> and request revisions <mark class="r">as needed</mark>…</div>
+            <div class="json">{<br>&nbsp;<span class="k">"brand"</span>: <b>"Nike"</b>,<br>&nbsp;<span class="k">"fee"</span>: <b>4000</b>,<br>&nbsp;<span class="k">"deliverables"</span>: <b>3</b>,<br>&nbsp;<span class="k">"deadline"</span>: <b>"2026-11-15"</b>,<br>&nbsp;<span class="k">"usage_days"</span>: <b>60</b>,<br>&nbsp;<span class="k">"revisions"</span>: <b style="color:#c4493c">"unlimited"</b>,<br>&nbsp;<span class="k">"payment_terms"</span>: <b style="color:#c4493c">null</b><br>}</div>
+          </div>
+        </div>
+        <div class="top"><h3>AI Deal Intelligence</h3><span class="pill">P0</span></div>
+        <p>Upload a PDF, DOCX or pasted agreement. Fee, deliverables, dates, usage rights and revisions are extracted into a structured deal, and every field links back to its source clause.</p>
+        <span class="note">Every risk comes with evidence.</span>
+      </div>
+      <!-- Autopilot -->
+      <div class="f">
+        <div class="vis">
+          <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-bottom:8px"><span>Nike · Spring Campaign</span><span class="mono">3 tasks</span></div>
+          <div class="task"><span class="box done"></span>Reel: concept & script<span class="tag" style="margin-left:8px;height:20px;font-size:10px">§4.1</span><span class="when">NOV 02</span></div>
+          <div class="task"><span class="box"></span>Story #1: launch day<span class="tag" style="margin-left:8px;height:20px;font-size:10px">§4.2</span><span class="when">NOV 10</span></div>
+          <div class="task"><span class="box"></span>Story #2: recap<span class="tag" style="margin-left:8px;height:20px;font-size:10px">§4.2</span><span class="when">NOV 15</span></div>
+          <div class="task" style="color:var(--muted)"><span class="box" style="border-style:dashed"></span>Draft review: no date in contract<span class="pill" style="margin-left:auto;background:#fff8e1;border-color:#ffe39a">Needs your date</span></div>
+        </div>
+        <div class="top"><h3>Deliverable Autopilot</h3><span class="pill">P0</span></div>
+        <p>Deliverables become tasks with deadlines, statuses and reminders, each linked to the deal and clause it came from. If the contract gives no date, CreatorOS asks you instead of guessing.</p>
+        <span class="note">It never invents a deadline.</span>
+      </div>
+      <!-- Revenue -->
+      <div class="f">
+        <div class="vis">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:14px">
+            <div><div style="font-size:10.5px;color:var(--faint)">EXPECTED</div><div style="font-size:20px;font-weight:500;letter-spacing:-.03em">$18.4k</div></div>
+            <div><div style="font-size:10.5px;color:var(--faint)">PENDING</div><div style="font-size:20px;font-weight:500;letter-spacing:-.03em">$6.5k</div></div>
+            <div><div style="font-size:10.5px;color:var(--faint)">PAID</div><div style="font-size:20px;font-weight:500;letter-spacing:-.03em" class="ok">$9.4k</div></div>
+            <div><div style="font-size:10.5px;color:var(--faint)">OVERDUE</div><div style="font-size:20px;font-weight:500;letter-spacing:-.03em" class="risk">$2.5k</div></div>
+          </div>
+          <div style="display:flex;height:8px;border-radius:4px;overflow:hidden;gap:2px;margin-bottom:14px"><i style="flex:9.4;background:var(--green)"></i><i style="flex:6.5;background:var(--yellow)"></i><i style="flex:2.5;background:var(--red)"></i></div>
+          <div class="alert"><i class="dot" style="background:var(--red)"></i><div><b>Glossier · $2,500 · 6 days late</b><br><span class="muted">Net 30 passed on Oct 22.</span></div><a class="btn btn-dark" style="height:28px;font-size:12px;padding:0 10px;margin-left:auto">Draft follow-up</a></div>
+        </div>
+        <div class="top"><h3>Revenue &amp; Payment Intelligence</h3><span class="pill">P0</span></div>
+        <p>Track what's expected, pending, paid and overdue. Get alerts before payments are due and a one-click follow-up email when they're late. You can still set statuses by hand, so no bank connection is needed.</p>
+        <span class="note">Know who owes you what.</span>
+      </div>
+      <!-- Analytics -->
+      <div class="f">
+        <div class="vis">
+          <div style="font-size:12px;color:var(--muted)">Avg. engagement by format · 30 days</div>
+          <div class="bars" id="bars">
+            <div data-h="38" style="height:4%"><span>Long</span></div>
+            <div data-h="52" style="height:4%"><span>Vlog</span></div>
+            <div class="a" data-h="92" style="height:4%"><span>&lt;30s</span></div>
+            <div data-h="61" style="height:4%"><span>Tutorial</span></div>
+            <div data-h="44" style="height:4%"><span>Collab</span></div>
+          </div>
+          <div class="reco"><b style="font-weight:500">Recommendation</b><br><span class="muted">Shorts under 30s get 2.3× more engagement (14 videos). Make the next Nike deliverable a 25s cut.</span><div style="margin-top:8px"><span class="pill p0">+ Create task</span></div></div>
+        </div>
+        <div class="top"><h3>Analytics → Action</h3><span class="pill">P0</span></div>
+        <p>Pull in YouTube data or import a CSV. CreatorOS compares formats, lengths, topics and platforms, then gives you one recommendation backed by your numbers and turns it into a task.</p>
+        <span class="note">One clear next step, not ten charts.</span>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="hr"></div>
+
+<!-- ============ USE CASES ============ -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow rv"><span>[</span>built for<span>]</span></div>
+      <h2 class="rv">Built for how creators<br>actually run a business</h2>
+      <p class="lead rv">Whether you sign one deal a month or manage a roster, CreatorOS keeps the money, the work and the deadlines in one place.</p>
+    </div>
+    <div class="uc rv">
+      <div class="uc-list" id="ucList">
+        <div class="uc-item on" data-i="0">
+          <div class="row"><span class="num">001</span><h3>For solo creators</h3></div>
+          <div class="body"><div><p>Stop being your own lawyer, accountant and project manager. Upload a deal and CreatorOS flags what's risky, schedules what's due and reminds you who still owes you.</p></div></div>
+        </div>
+        <div class="uc-item" data-i="1">
+          <div class="row"><span class="num">002</span><h3>For talent managers</h3></div>
+          <div class="body"><div><p>See every creator's deals, deliverables and payment risk on one board. Know which campaign needs attention before the brand asks.</p></div></div>
+        </div>
+        <div class="uc-item" data-i="2">
+          <div class="row"><span class="num">003</span><h3>For creator teams</h3></div>
+          <div class="body"><div><p>Editors, assistants and managers share one workspace. Tasks come from contracts automatically, and the Copilot answers "what's due this week?" with sources.</p></div></div>
+        </div>
+      </div>
+      <div class="uc-vis" id="ucVis"></div>
+    </div>
+  </div>
+</section>
+<div class="hr"></div>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow rv"><span>[</span>how it works<span>]</span></div>
+      <h2 class="rv">One contract in.<br>A running campaign out.</h2>
+      <p class="lead rv">No manual data entry. AI prepares everything, you approve it, and CreatorOS carries it out.</p>
+    </div>
+    <div class="how rv">
+      <div class="steps" id="steps">
+        <div class="step on" data-s="0"><span class="tag">STEP 1</span><h3>Upload a contract</h3><p>Drop a PDF or DOCX, import one from Google Drive, or paste the agreement.</p><div class="prog"><i></i></div></div>
+        <div class="step" data-s="1"><span class="tag">STEP 2</span><h3>AI understands &amp; scores</h3><p>Terms are extracted with confidence levels, and a rule-based engine scores Deal Health.</p><div class="prog"><i></i></div></div>
+        <div class="step" data-s="2"><span class="tag">STEP 3</span><h3>Autopilot creates the work</h3><p>Deliverables, reminders and payment checks appear automatically.</p><div class="prog"><i></i></div></div>
+        <div class="step" data-s="3"><span class="tag">STEP 4</span><h3>You approve, it executes</h3><p>Calendar events and follow-up emails only go out after you approve them.</p><div class="prog"><i></i></div></div>
+      </div>
+      <div class="stage">
+        <div class="stage-cap">One document becomes structured business state, which becomes actions</div>
+        <div class="pipe" id="pipe"><span>ingest</span><em>→</em><span>understand</span><em>→</em><span>score</span><em>→</em><span>recommend</span><em>→</em><span>execute</span></div>
+        <div class="screen">
+          <div class="panel on" data-p="0">
+            <div class="drop">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="margin-bottom:8px"><path d="M12 16V4m0 0l-5 5m5-5l5 5M4 20h16" stroke="#181818" stroke-width="1.5" stroke-linecap="round"/></svg>
+              <div>Drop a contract, or <u>import from Drive</u></div>
+            </div>
+            <div class="file"><span class="pdf">PDF</span><div style="flex:1"><div>nike_spring_contract.pdf</div><div class="load"><i></i></div></div><span class="mono" style="font-size:11px;color:var(--faint)">212 KB</span></div>
+            <div style="font-size:11.5px;color:var(--faint);margin-top:10px" class="mono">extracting text locally · pdf-parse</div>
+          </div>
+          <div class="panel" data-p="1">
+            <div class="ptitle"><h4>Nike · Deal Health</h4><span class="pill">Gemini · structured output</span></div>
+            <div style="display:flex;gap:18px;align-items:center">
+              <div class="gauge">
+                <svg width="96" height="96" viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" stroke="#f1f1f1" stroke-width="7" fill="none"/><circle cx="48" cy="48" r="40" stroke="#181818" stroke-width="7" fill="none" stroke-linecap="round" stroke-dasharray="251.3" stroke-dashoffset="55.3"/></svg>
+                <div class="n"><div>78<small>/100</small></div></div>
+              </div>
+              <div style="flex:1">
+                <div class="kv"><span>Payment terms</span><span class="risk">Missing · −8</span></div>
+                <div class="kv"><span>Revisions</span><span class="risk">Unlimited · −9</span></div>
+                <div class="kv"><span>Usage rights</span><span class="risk">60 days, no fee · −5</span></div>
+                <div class="kv"><span>Deadline</span><span class="ok">Explicit ✓</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="panel" data-p="2">
+            <div class="ptitle"><h4>Generated from §4 Deliverables</h4><span class="pill">3 tasks · 3 reminders</span></div>
+            <div class="task"><span class="box"></span>Reel: concept &amp; script<span class="when">NOV 02 · 🔔 −2d</span></div>
+            <div class="task"><span class="box"></span>Story #1: launch day<span class="when">NOV 10 · 🔔 −1d</span></div>
+            <div class="task"><span class="box"></span>Story #2: recap<span class="when">NOV 15 · 🔔 −1d</span></div>
+            <div class="task"><span class="box"></span>Invoice Nike $4,000<span class="when">NOV 16 · 💸</span></div>
+          </div>
+          <div class="panel" data-p="3">
+            <div class="ptitle"><h4>Follow-up draft · Glossier</h4><span class="pill" style="background:#fff6f5;border-color:#f6d6d2">Overdue 6 days</span></div>
+            <div class="mail"><b>To:</b> partnerships@glossier.com<br><b>Subject:</b> Invoice #0142, payment reminder<br><br>Hi Maya, hope the launch went well! A quick note that invoice #0142 ($2,500) was due on Oct 22 under our Net 30 terms. Could you check on its status? Happy to resend it if that helps.</div>
+            <div class="approve"><a class="btn btn-dark">Approve &amp; save to Gmail drafts</a><a class="btn btn-line">Edit</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="hr"></div>
+
+<!-- ============ DEAL HEALTH ============ -->
+<section>
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow rv"><span>[</span>deal health<span>]</span></div>
+      <h2 class="rv">Scores you can trust</h2>
+      <p class="lead rv">Deal Health is calculated with clear rules, not made up by AI. The AI explains the score. It never decides it.</p>
+    </div>
+    <div class="res rv" id="health">
+      <div class="res-l"><div class="inner">
+        <a href="#" class="logo" style="font-size:13px"><svg viewBox="0 0 32 32" style="width:20px;height:20px" fill="none"><path d="M16 2l3.2 6.6L26 6l-2.6 6.8L30 16l-6.6 3.2L26 26l-6.8-2.6L16 30l-3.2-6.6L6 26l2.6-6.8L2 16l6.6-3.2L6 6l6.8 2.6z" fill="#181818"/><rect x="11.5" y="11.5" width="9" height="9" rx="1.5" fill="#fff" transform="rotate(45 16 16)"/></svg>CREATOROS</a>
+        <h3>78 / 100. Here's why.</h3>
+        <p>"Payment terms are missing (§6), revisions are unlimited (§5.2), and the brand gets 60 days of usage with no extra fee (§7.1). Ask for Net 30, 2 revision rounds and a usage fee before signing."</p>
+        <p class="it">Each claim cites the clause it came from.</p>
+        <a href="#demo" class="btn btn-dark" style="align-self:flex-start">See the Demo</a>
+      </div></div>
+      <div class="res-r">
+        <div class="res-head">
+          <svg width="32" height="32" viewBox="0 0 32 32"><g fill="#aeabff"><rect x="0" y="0" width="6" height="6"/><rect x="26" y="0" width="6" height="6"/><rect x="13" y="13" width="6" height="6"/><rect x="0" y="26" width="6" height="6"/><rect x="26" y="26" width="6" height="6"/><rect x="13" y="0" width="6" height="6" opacity=".5"/><rect x="0" y="13" width="6" height="6" opacity=".5"/></g></svg>
+          <div><h4>Weighted, deterministic scoring</h4><small>Same contract, same score, every time.</small></div>
+        </div>
+        <div class="weights">
+          <div class="w"><div class="lab">Financial · 25%</div><div class="big"><span class="cnt" data-to="17">0</span><small>/25</small></div><div class="meter"><i style="background:var(--yellow)" data-w="68"></i></div><p>Fee is clear, but payment terms are missing.</p></div>
+          <div class="w"><div class="lab">Deadline · 25%</div><div class="big"><span class="cnt" data-to="25">0</span><small>/25</small></div><div class="meter"><i style="background:var(--green)" data-w="100"></i></div><p>Explicit dates with workable lead times.</p></div>
+          <div class="w"><div class="lab">Contract · 30%</div><div class="big"><span class="cnt" data-to="19">0</span><small>/30</small></div><div class="meter"><i style="background:var(--red)" data-w="63"></i></div><p>Unlimited revisions and unpaid usage rights.</p></div>
+          <div class="w"><div class="lab">Scope · 20%</div><div class="big"><span class="cnt" data-to="17">0</span><small>/20</small></div><div class="meter"><i style="background:var(--purple)" data-w="85"></i></div><p>3 deliverables, clearly defined per platform.</p></div>
+        </div>
+        <div class="res-foot"><div><h4>Ask the Copilot anything</h4><small class="muted" style="font-style:italic;font-size:12.5px">"Which deals are at risk this month?" Answers cite your deals and clauses.</small></div><span class="pill">P1 · Creator AI Copilot</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="hr"></div>
+
+<!-- ============ DEMO SCENARIO ============ -->
+<section id="demo">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow rv"><span>[</span>demo<span>]</span></div>
+      <h2 class="rv">Watch one Nike contract<br>run the whole business</h2>
+      <p class="lead rv">A $4,000 campaign, nine steps, and no intermediate data typed by hand.</p>
+    </div>
+    <div class="tl rv">
+      <div class="s"><span class="n">01 · UPLOAD</span><h4>Upload contract.pdf</h4><div class="out"><i style="background:var(--ink)"></i>Nike deal created</div></div>
+      <div class="s"><span class="n">02 · EXTRACT</span><h4>Terms extracted</h4><div class="out"><i style="background:var(--purple)"></i>$4,000 · 3 deliverables · 60-day usage</div></div>
+      <div class="s"><span class="n">03 · SCORE</span><h4>Risk engine runs</h4><div class="out"><i style="background:var(--yellow)"></i>Deal Health 78/100</div></div>
+      <div class="s"><span class="n">04 · EXPLAIN</span><h4>Risks explained</h4><div class="out"><i style="background:var(--red)"></i>Payment, revision &amp; usage issues</div></div>
+      <div class="s"><span class="n">05 · AUTOPILOT</span><h4>Campaign generated</h4><div class="out"><i style="background:var(--green)"></i>3 deliverables + reminders</div></div>
+      <div class="s"><span class="n">06 · CALENDAR</span><h4>Creator approves events</h4><div class="out"><i style="background:var(--sky)"></i>Google Calendar updated</div></div>
+      <div class="s"><span class="n">07 · MONITOR</span><h4>Payment watched</h4><div class="out"><i style="background:var(--red)"></i>Overdue alert fires</div></div>
+      <div class="s"><span class="n">08 · ACT</span><h4>AI prepares action</h4><div class="out"><i style="background:var(--cyan)"></i>Follow-up email drafted</div></div>
+      <div class="s"><span class="n">09 · COPILOT</span><h4>Ask "why?"</h4><div class="out"><i style="background:var(--purple)"></i>Explanation with sources</div></div>
+    </div>
+    <div class="judge rv">
+      <span class="ico dark" style="flex:none"><svg width="12" height="12" viewBox="0 0 16 16"><path d="M8 1l1.6 4.4L14 7l-4.4 1.6L8 13l-1.6-4.4L2 7l4.4-1.6z" fill="#fff"/></svg></span>
+      <p>One document creates structured business state, which creates actions, which later trigger an alert and a response.</p>
+    </div>
+  </div>
+</section>
+<div class="hr"></div>
+
+<!-- ============ INTEGRATIONS ============ -->
+<section id="integrations">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow rv"><span>[</span>integrations<span>]</span></div>
+      <h2 class="rv">Real integrations.<br>Fallbacks that always work.</h2>
+      <p class="lead rv">Each provider sits behind an adapter. If an API is rate-limited or still waiting on approval, CreatorOS falls back to imports, seed data or local drafts, so the experience never breaks.</p>
+    </div>
+    <div class="int rv">
+      <div class="ic"><span class="lg" style="background:#7b77e8">G</span><h4>Gemini</h4><p>Extraction, reasoning &amp; Copilot</p><div class="pr"><span class="pill p0">Primary AI</span><span class="pill">↳ Groq</span></div></div>
+      <div class="ic"><span class="lg" style="background:#f55036">Gq</span><h4>Groq</h4><p>Fast fallback inference &amp; Whisper</p><div class="pr"><span class="pill">Fallback</span></div></div>
+      <div class="ic"><span class="lg" style="background:#ea4335">M</span><h4>Gmail</h4><p>Find relevant mail, prepare drafts</p><div class="pr"><span class="pill p0">P0</span><span class="pill">↳ local draft</span></div></div>
+      <div class="ic"><span class="lg" style="background:#34a853">D</span><h4>Google Drive</h4><p>Import contracts directly</p><div class="pr"><span class="pill p0">P0</span><span class="pill">↳ upload</span></div></div>
+      <div class="ic"><span class="lg" style="background:#4285f4">31</span><h4>Google Calendar</h4><p>Deadlines &amp; reminders as events</p><div class="pr"><span class="pill p0">P0</span><span class="pill">↳ internal reminder</span></div></div>
+      <div class="ic"><span class="lg" style="background:#ff0033">▶</span><h4>YouTube</h4><p>Video &amp; channel metrics</p><div class="pr"><span class="pill">P1</span><span class="pill">↳ CSV</span></div></div>
+      <div class="ic"><span class="lg" style="background:linear-gradient(45deg,#f9a825,#e91e63,#7b1fa2)">IG</span><h4>Instagram</h4><p>Professional content insights</p><div class="pr"><span class="pill">P2</span><span class="pill">↳ manual metrics</span></div></div>
+      <div class="ic"><span class="lg" style="background:#111">♪</span><h4>TikTok</h4><p>Profile &amp; video data</p><div class="pr"><span class="pill">P2</span><span class="pill">↳ seed data</span></div></div>
+      <div class="ic"><span class="lg" style="background:#3ecf8e">S</span><h4>Supabase</h4><p>Postgres, Auth &amp; Storage</p><div class="pr"><span class="pill p0">Core</span></div></div>
+      <div class="ic"><span class="lg" style="background:#181818">R</span><h4>Resend</h4><p>Transactional email alerts</p><div class="pr"><span class="pill">Optional</span></div></div>
+    </div>
+  </div>
+</section>
+<div class="hr"></div>
+
+<!-- ============ TRUST ============ -->
+<section class="trust">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow rv"><span>[</span>trust<span>]</span></div>
+      <h2 class="rv">Your business data,<br>handled responsibly</h2>
+      <p class="lead rv">CreatorOS never sends, books or changes anything without your approval.</p>
+      <div class="flow rv"><span>AI prepares</span><em>→</em><span class="k">You approve</span><em>→</em><span>System executes</span></div>
+    </div>
+    <div class="grid g3 rv">
+      <div class="cell">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="3" y="7" width="10" height="7" rx="1.5" stroke="#181818" stroke-width="1.3"/><path d="M5 7V5a3 3 0 016 0v2" stroke="#181818" stroke-width="1.3"/></svg></span>
+        <h3>Encrypted &amp; scoped</h3>
+        <ul class="ul"><li>OAuth tokens encrypted at rest</li><li>Every query scoped to your account</li><li>API keys never reach the browser</li></ul>
+      </div>
+      <div class="cell">
+        <span class="ico"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9H3z" stroke="#181818" stroke-width="1.3"/><path d="M5.5 8h5M5.5 11h3" stroke="#181818" stroke-width="1.3"/></svg></span>
+        <h3>Evidence for every insight</h3>
+        <ul class="ul"><li>Every extracted field links to its source</li><li>Confidence shown on uncertain terms</li><li>Full contracts and emails are not logged</li></ul>
+      </div>
+      <div class="cell hi">
+        <span class="ico dark"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M1.5 6.5l3 3 6-7" stroke="#fff" stroke-width="1.5" fill="none"/></svg></span>
+        <h3>You stay in control</h3>
+        <ul class="ul plus"><li>Confirmation before every external action</li><li>Drafts, never auto-sent emails</li><li>Scores are analysis, not legal or financial advice</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="hr"></div>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow rv"><span>[</span>pricing<span>]</span></div>
+      <h2 class="rv">Choose the plan<br>that grows with you</h2>
+      <p class="lead rv">Start free with your first deals. Upgrade when your business does.</p>
+      <div class="toggle rv" id="toggle"><button class="on" data-b="m">Monthly</button><button data-b="a">Annual<span class="save">−20%</span></button></div>
+    </div>
+    <div class="price rv">
+      <div class="pc">
+        <div class="t"><h3>Starter</h3></div>
+        <p class="sub">For creators landing their first deals</p>
+        <div class="amt">$<span data-m="0" data-a="0">0</span><small> /month</small></div>
+        <a href="#" class="btn btn-line">Start Free</a>
+        <ul class="ul plus"><li>3 contracts analyzed per month</li><li>Deal Health scoring</li><li>Deliverable Autopilot</li><li>Manual payment tracking</li></ul>
+      </div>
+      <div class="pc hi">
+        <div class="t"><h3>Creator</h3><span class="tag dark">Popular</span></div>
+        <p class="sub">For full-time creators and professionals</p>
+        <div class="amt">$<span data-m="19" data-a="15">19</span><small> /month</small></div>
+        <a href="#" class="btn btn-dark">Get Started</a>
+        <ul class="ul plus"><li>Unlimited contract analysis</li><li>Gmail &amp; Calendar actions</li><li>Payment alerts &amp; follow-up drafts</li><li>Analytics → Action + Copilot</li></ul>
+      </div>
+      <div class="pc">
+        <div class="t"><h3>Manager</h3></div>
+        <p class="sub">For talent managers and creator teams</p>
+        <div class="amt">$<span data-m="49" data-a="39">49</span><small> /month</small></div>
+        <a href="#" class="btn btn-line">Get Started</a>
+        <ul class="ul plus"><li>Multiple creator workspaces</li><li>Shared deal &amp; revenue board</li><li>Team roles &amp; approvals</li><li>Priority support</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="hr"></div>
+
+<!-- ============ FAQ ============ -->
+<section>
+  <div class="wrap faq">
+    <div class="head">
+      <div class="eyebrow rv"><span>[</span>faq<span>]</span></div>
+      <h2 class="rv">Everything you need<br>to know</h2>
+      <p class="lead rv">Questions about how CreatorOS reads, scores and acts on your business.</p>
+    </div>
+    <div class="qa rv" id="qa">
+      <div class="q on"><button>What is CreatorOS?<i></i></button><div class="a"><div><p>CreatorOS is an AI operating system for creators. It links your brand deals, contracts, deadlines, content performance and payments, then turns them into decisions and actions: risk scores, tasks, reminders, follow-ups and recommendations.</p></div></div></div>
+      <div class="q"><button>How is Deal Health calculated?<i></i></button><div class="a"><div><p>Deal Health is calculated by rules: financial terms are 25%, deadlines 25%, contract terms 30% and scope 20%. The AI explains the score using the contract clauses, but the score itself comes from code, so it is consistent and auditable.</p></div></div></div>
+      <div class="q"><button>Will it send emails or book events on its own?<i></i></button><div class="a"><div><p>No. CreatorOS prepares drafts and events, and nothing is sent or booked until you approve it. The flow is always AI prepares → creator approves → system executes.</p></div></div></div>
+      <div class="q"><button>What if the contract doesn't include a deadline?<i></i></button><div class="a"><div><p>CreatorOS never invents deadlines. If a deliverable has no explicit date, the task is marked "needs your date" until you confirm one.</p></div></div></div>
+      <div class="q"><button>Do I need to connect my bank or social accounts?<i></i></button><div class="a"><div><p>No. You can update payment statuses by hand, and analytics work from a CSV or manual import. Connecting YouTube, Gmail or Calendar adds to what CreatorOS can do but isn't required.</p></div></div></div>
+      <div class="q"><button>Is this legal or financial advice?<i></i></button><div class="a"><div><p>No. Scores and recommendations are analysis to help you negotiate and stay organized. For binding decisions, talk to a qualified professional.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINAL CTA ============ -->
+<section style="padding-top:40px">
+  <div class="wrap">
+    <div class="final rv">
+      <div class="hero-grid"></div>
+      <div class="eyebrow"><span>[</span>get started<span>]</span></div>
+      <h2>Your next contract<br>could run itself</h2>
+      <p class="lead">Upload one deal and see the risk score, deliverables and next steps in under a minute.</p>
+      <div class="cta"><a href="#" class="btn btn-dark">Get Started</a><a href="#demo" class="btn btn-line">Try Demo</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#" class="logo"><svg viewBox="0 0 32 32" fill="none"><path d="M16 2l3.2 6.6L26 6l-2.6 6.8L30 16l-6.6 3.2L26 26l-6.8-2.6L16 30l-3.2-6.6L6 26l2.6-6.8L2 16l6.6-3.2L6 6l6.8 2.6z" fill="#181818"/><rect x="11.5" y="11.5" width="9" height="9" rx="1.5" fill="#f9f9f9" transform="rotate(45 16 16)"/></svg>CREATOROS</a>
+        <p class="muted" style="margin-top:14px;max-width:300px;line-height:1.4">The AI operating system for the creator business.</p>
+      </div>
+      <div><h5>Product</h5><a href="#modules">Modules</a><a href="#how">How It Works</a><a href="#pricing">Pricing</a></div>
+      <div><h5>Platform</h5><a href="#integrations">Integrations</a><a href="#demo">Demo</a><a href="#">Copilot</a></div>
+      <div><h5>Company</h5><a href="#">Contact Us</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+    </div>
+    <div class="fine"><span>© 2026 CreatorOS. All rights reserved.</span><span>AI analysis is not legal or financial advice.</span></div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+document.documentElement.classList.add('js');
+
+/* reveal on scroll */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold: .12});
+document.querySelectorAll('.rv').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + 'ms'; io.observe(el); });
+
+/* hero prompt typing */
+const prompts = ['Analyze my Nike contract and flag the risks', 'Which payments are overdue this month?', 'Turn my best-performing format into a task', 'What does Glossier still owe me?'];
+const typed = document.getElementById('typed');
+let pi = 0, ci = 0, del = false;
+(function type() {
+  const t = prompts[pi];
+  typed.textContent = t.slice(0, ci);
+  if (!del && ci === t.length) { del = true; return setTimeout(type, 1800); }
+  if (del && ci === 0) { del = false; pi = (pi + 1) % prompts.length; }
+  ci += del ? -1 : 1;
+  setTimeout(type, del ? 22 : 48);
+})();
+
+/* chips cycle */
+const chips = document.querySelectorAll('.chip');
+let ch = 0;
+setInterval(() => { chips.forEach(c => c.classList.remove('on')); ch = (ch + 1) % chips.length; chips[ch].classList.add('on'); }, 2200);
+
+/* duplicate marquee for seamless loop */
+const track = document.getElementById('track'); track.innerHTML += track.innerHTML;
+
+/* animate on first view */
+function onView(el, fn) { const o = new IntersectionObserver(es => { if (es[0].isIntersecting) { fn(); o.disconnect(); } }, {threshold: .3}); o.observe(el); }
+onView(document.querySelector('.app'), () => {
+  document.getElementById('g1').style.strokeDashoffset = 251.3 * (1 - .78);
+  count(document.getElementById('g1n'), 78, 1500);
+});
+onView(document.getElementById('bars'), () => document.querySelectorAll('#bars div').forEach(b => b.style.height = b.dataset.h + '%'));
+onView(document.getElementById('health'), () => {
+  document.querySelectorAll('.cnt').forEach(c => count(c, +c.dataset.to, 1300));
+  document.querySelectorAll('.meter i').forEach(m => m.style.width = m.dataset.w + '%');
+});
+function count(el, to, ms) {
+  const t0 = performance.now();
+  (function f(t) { const p = Math.min(1, (t - t0) / ms); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(f); })(t0);
+}
+
+/* use cases accordion + visual */
+const ucData = [
+  `<div class="card"><div style="display:flex;justify-content:space-between;font-size:13px"><b style="font-weight:500">This week</b><span class="muted">Oct 28 – Nov 3</span></div></div>
+   <div class="card"><div class="task"><span class="box done"></span>Nike Reel: concept<span class="when">NOV 02</span></div><div class="task"><span class="box"></span>Sephora unboxing: film<span class="when">NOV 03</span></div><div class="task"><span class="box"></span>Review Adidas contract<span class="pill" style="margin-left:auto;background:#fff6f5;border-color:#f6d6d2">Health 61</span></div></div>
+   <div class="alert"><i class="dot" style="background:var(--red)"></i><div><b>Glossier owes you $2,500</b><br><span class="muted">6 days overdue · follow-up draft ready</span></div></div>`,
+  `<div class="card"><div style="font-size:13px;font-weight:500;margin-bottom:8px">Roster · 4 creators</div>
+   <div class="kv"><span>@mayamakes</span><span>3 deals · <span class="ok">Health 86</span></span></div>
+   <div class="kv"><span>@leo.films</span><span>2 deals · <span class="risk">Health 58 ▲</span></span></div>
+   <div class="kv"><span>@studio.sana</span><span>5 deals · <span class="ok">Health 81</span></span></div>
+   <div class="kv"><span>@jaybuilds</span><span>1 deal · Health 74</span></div></div>
+   <div class="alert"><i class="dot" style="background:var(--yellow)"></i><div><b>@leo.films: Puma deadline in 2 days</b><br><span class="muted">Story #2 is still in draft.</span></div></div>`,
+  `<div class="card"><div style="font-size:12px;color:var(--muted);margin-bottom:6px">Copilot</div><div style="font-size:13px;background:var(--soft);border-radius:8px;padding:10px;margin-left:auto;max-width:80%">What's due this week and is anything at risk?</div>
+   <div style="font-size:13px;line-height:1.45;margin-top:10px">Two deliverables are due: the <b style="font-weight:500">Nike Reel</b> (Nov 2) and the <b style="font-weight:500">Sephora unboxing</b> (Nov 3). The Adidas contract is at risk: it has no payment terms <span class="tag" style="height:18px;font-size:10px">§6</span> and unlimited revisions <span class="tag" style="height:18px;font-size:10px">§5.2</span>.</div></div>
+   <div class="card soft" style="font-size:12px;color:var(--muted)">Assigned: <b style="color:var(--ink);font-weight:500">Ana (editor)</b> → Nike Reel cut · <b style="color:var(--ink);font-weight:500">Sam</b> → Adidas review</div>`
+];
+const ucVis = document.getElementById('ucVis');
+ucVis.innerHTML = ucData[0];
+document.querySelectorAll('.uc-item').forEach(it => it.addEventListener('click', () => {
+  if (it.classList.contains('on')) return;
+  document.querySelectorAll('.uc-item').forEach(x => x.classList.remove('on'));
+  it.classList.add('on');
+  ucVis.classList.add('swap');
+  setTimeout(() => { ucVis.innerHTML = ucData[it.dataset.i]; requestAnimationFrame(() => ucVis.classList.remove('swap')); }, 250);
+}));
+
+/* how-it-works stepper: auto-advances, click to jump */
+const steps = [...document.querySelectorAll('.step')], panels = [...document.querySelectorAll('.panel')], pipe = [...document.querySelectorAll('#pipe span')];
+const pipeMap = [[0], [1, 2], [3], [4]];
+let cur = 0, timer, start;
+function show(i) {
+  cur = i;
+  steps.forEach((s, j) => s.classList.toggle('on', j === i));
+  panels.forEach((p, j) => p.classList.toggle('on', j === i));
+  pipe.forEach((p, j) => p.classList.toggle('on', pipeMap[i].includes(j)));
+  start = performance.now();
+}
+function tick(t) {
+  const p = Math.min(1, (t - start) / 5000);
+  const bar = steps[cur].querySelector('.prog i'); if (bar) bar.style.width = p * 100 + '%';
+  if (p >= 1) show((cur + 1) % steps.length);
+  timer = requestAnimationFrame(tick);
+}
+steps.forEach((s, i) => s.addEventListener('click', () => { steps.forEach(x => x.querySelector('.prog i').style.width = 0); show(i); }));
+show(0); requestAnimationFrame(tick);
+
+/* pricing toggle */
+document.querySelectorAll('#toggle button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#toggle button').forEach(x => x.classList.remove('on')); b.classList.add('on');
+  document.querySelectorAll('[data-m]').forEach(s => s.textContent = s.dataset[b.dataset.b]);
+}));
+
+/* faq */
+document.querySelectorAll('.q button').forEach(b => b.addEventListener('click', () => {
+  const q = b.parentElement, open = q.classList.contains('on');
+  document.querySelectorAll('.q').forEach(x => x.classList.remove('on'));
+  if (!open) q.classList.add('on');
+}));
+
+/* close mobile menu on link tap */
+document.querySelectorAll('.links a').forEach(a => a.addEventListener('click', () => document.getElementById('nav').classList.remove('open')));
+</script>
+</body>
+</html>
