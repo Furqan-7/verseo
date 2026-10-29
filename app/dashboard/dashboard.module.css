@@ -358,9 +358,14 @@
   border: 1px solid var(--ink);
   background: rgba(255, 255, 255, 0.7);
 }
-.btnLine:hover {
+.btnLine:hover:not(:disabled) {
   background: var(--ink);
   color: #fff !important;
+}
+.btnLine:disabled,
+.btnGhost:disabled {
+  opacity: 0.55;
+  cursor: default !important;
 }
 .btnDark {
   border: 0;
@@ -374,6 +379,9 @@
 .btnGhost {
   border: 1px solid var(--line);
   background: #fff;
+}
+.btnGhost:hover:not(:disabled) {
+  border-color: #cfcfcf;
 }
 
 /* greeting */

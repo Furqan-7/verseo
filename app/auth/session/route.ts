@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { SESSION_COOKIE, SESSION_VALUE, isDemoLogin } from "../../../src/auth/demo";
+import { ONBOARDED_COOKIE, SESSION_COOKIE, SESSION_VALUE, isDemoLogin } from "../../../src/auth/demo";
 
 // The sign-in form posts here. 303 makes the browser follow the redirect with
 // a GET; redirect() would answer 307 and repeat the POST.
@@ -15,7 +15,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.redirect(back, 303);
   }
 
-  const response = NextResponse.redirect(new URL("/dashboard", request.url), 303);
+  const next = request.cookies.has(ONBOARDED_COOKIE) ? "/dashboard" : "/dashboard/onboarding";
+  const response = NextResponse.redirect(new URL(next, request.url), 303);
   response.cookies.set(SESSION_COOKIE, SESSION_VALUE, {
     httpOnly: true,
     sameSite: "lax",

@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 
 export const metadata: Metadata = {
-  title: "Today — CreatorOS",
+  title: { default: "CreatorOS", template: "%s — CreatorOS" },
   description: "Your daily creator briefing.",
   robots: { index: false },
 };
