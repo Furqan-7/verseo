@@ -4,7 +4,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import styles from "../dashboard.module.css";
-import { copilot, creator, deals, stats, today, type CalEvent } from "../data";
+import { alerts, copilot, creator, deals, stats, today, type CalEvent } from "../data";
+import Notifications from "./Notifications";
 import { ACCOUNT_META, DEFAULT_SETTINGS, loadSettings, saveSettings, type AccountId, type Settings } from "./settings";
 import { BLUE, GREEN, PATTERNS, PURPLE, Pixels, Logo, YELLOW, cx } from "./ui";
 
@@ -43,6 +44,8 @@ interface Shell {
   removeEvent: (id: string) => void;
   settings: Settings;
   updateSettings: (patch: Partial<Settings>) => void;
+  readAlerts: Set<string>;
+  markRead: (ids: string[]) => void;
 }
 
 const ShellContext = createContext<Shell | null>(null);
@@ -77,6 +80,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
   const [removedEvents, setRemovedEvents] = useState<Set<string>>(new Set());
   // Defaults on the first render (matching the server), then this browser's saved copy.
   const [settings, setSettings] = useState<Settings>(DEFAULT_SETTINGS);
+  const [readAlerts, setReadAlerts] = useState<Set<string>>(() => new Set(alerts.filter((a) => a.read).map((a) => a.id)));
   const [draft, setDraft] = useState<DraftTarget | null>(null);
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [chat, setChat] = useState<ChatTurn[]>([]);
@@ -162,6 +166,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
     removeEvent: (id) => setRemovedEvents((s) => new Set(s).add(id)),
     settings,
     updateSettings,
+    readAlerts,
+    markRead: (ids) => setReadAlerts((s) => new Set([...s, ...ids])),
   };
 
   return (
@@ -300,7 +306,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
 
 // The Ask bar and bell, with the screen's main action on the right.
 export function TopBar({ children }: { children?: ReactNode }) {
-  const { notify, openCopilot } = useShell();
+  const { openCopilot } = useShell();
   return (
     <header className={styles.top}>
       <button type="button" className={styles.ask} onClick={openCopilot}>
@@ -309,10 +315,7 @@ export function TopBar({ children }: { children?: ReactNode }) {
         <kbd className={styles.kbd}>⌘K</kbd>
       </button>
       <div className={styles.topActions}>
-        <button type="button" className={styles.bell} aria-label="Notifications" onClick={() => notify("Glossier's payment is 6 days overdue")}>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 8 3 8H3s3-1 3-8M10 21h4" /></svg>
-          <b />
-        </button>
+        <Notifications />
         {children}
       </div>
     </header>

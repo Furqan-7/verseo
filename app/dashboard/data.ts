@@ -858,3 +858,30 @@ export const onboardingAccounts: {
 
 export const niches = ["Tech & gear", "Lifestyle", "Beauty", "Fitness", "Education"];
 export const goals = ["Land more brand deals", "Post more often", "Save time"];
+
+// ── Notifications ───────────────────────────────────────────────────────────
+// `kind` matches the switches in Settings › Notifications; an alert whose
+// switch is off is not shown.
+
+export type AlertKind = "overdue" | "newDeal" | "deadline" | "weekly";
+
+export interface Alert {
+  id: string;
+  kind: AlertKind;
+  title: string;
+  detail: string;
+  when: string;
+  today: boolean;
+  href: string;
+  // Starts as read (older alerts).
+  read?: boolean;
+}
+
+export const alerts: Alert[] = [
+  { id: "a1", kind: "overdue", title: "Glossier's payment is 6 days overdue", detail: "$2,500 · invoice #0142. A polite reminder is drafted.", when: "9:00", today: true, href: "/dashboard/deals?deal=glossier" },
+  { id: "a2", kind: "deadline", title: "Nike Story #1 is due tomorrow", detail: "Thu 29 Oct · Spring campaign · not in your calendar yet", when: "8:00", today: true, href: "/dashboard/calendar?date=2026-10-29" },
+  { id: "a3", kind: "deadline", title: "Camera setup Reel needs your approval", detail: "It's set to go out today at 6:30 pm", when: "8:00", today: true, href: "/dashboard/publish?clip=c1" },
+  { id: "a4", kind: "newDeal", title: "New offer from Adidas", detail: "Run club series · $3,200 · Deal Health 61, 3 risks", when: "Yesterday", today: false, href: "/dashboard/deals?deal=adidas" },
+  { id: "a5", kind: "newDeal", title: "Spotify wants a Wrapped teaser", detail: "$1,800 · 1 Short · due Tue 1 Dec", when: "Mon", today: false, href: "/dashboard/deals?deal=spotify", read: true },
+  { id: "a6", kind: "weekly", title: "Your week: $3,300 in, 9 posts out", detail: "6.5 hours saved · views up 13.9%", when: "Sun", today: false, href: "/dashboard/analytics?range=7", read: true },
+];
