@@ -192,10 +192,14 @@ export default function AppShell({ children }: { children: ReactNode }) {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="3" /><path d="M3 10h18M8 2v4M16 2v4" /></svg>
               <span>Calendar</span>
             </Link>
-            <button type="button" className={styles.navItem} onClick={() => notify("Analytics is coming next")}>
+            <Link
+              href="/dashboard/analytics"
+              className={cx(styles.navItem, pathname.startsWith("/dashboard/analytics") && styles.navActive)}
+              aria-current={pathname.startsWith("/dashboard/analytics") ? "page" : undefined}
+            >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></svg>
               <span>Analytics</span>
-            </button>
+            </Link>
             <button type="button" className={styles.navItem} onClick={() => setCopilotOpen(true)}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M12 2l2.4 6.9H22l-6 4.4 2.3 7L12 16l-6.3 4.3L8 13.3 2 8.9h7.6z" /></svg>
               <span>Copilot</span>
