@@ -15,7 +15,7 @@ const BRIEFING_TIMES = ["7:00", "8:00", "9:00"];
 
 type AccountState = "connected" | "connecting" | "connect" | "csv" | "imported" | "soon";
 
-export default function Onboarding() {
+export default function Onboarding({ name }: { name?: string }) {
   const router = useRouter();
   const csvInput = useRef<HTMLInputElement>(null);
   const [step, setStep] = useState(0);
@@ -29,8 +29,10 @@ export default function Onboarding() {
 
   const connected = onboardingAccounts.filter((a) => accounts[a.id] === "connected" || accounts[a.id] === "imported");
 
-  // Skipping keeps the saved settings; finishing saves what was chosen here.
+  // Skipping keeps the saved settings (plus a new name); finishing saves
+  // what was chosen here.
   function finish(save = false) {
+    if (name && !save) saveSettings({ ...loadSettings(), name });
     if (save) {
       const current = loadSettings();
       const mapped = Object.fromEntries(
@@ -39,7 +41,7 @@ export default function Onboarding() {
           return [a.id, state === "connected" || state === "imported" || state === "soon" ? state : "disconnected"];
         }),
       ) as Record<AccountId, "connected" | "imported" | "soon" | "disconnected">;
-      saveSettings({ ...current, niche, goals: [...goal], briefingTime: briefingAt, accounts: { ...current.accounts, ...mapped } });
+      saveSettings({ ...current, ...(name ? { name } : {}), niche, goals: [...goal], briefingTime: briefingAt, accounts: { ...current.accounts, ...mapped } });
     }
     document.cookie = `${ONBOARDED_COOKIE}=1; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
     router.push("/dashboard");
@@ -101,7 +103,7 @@ export default function Onboarding() {
           {step === 0 && (
             <>
               <h1 id="step-title" className={styles.h1}>Connect your accounts</h1>
-              <p className={styles.lead}>CreatorOS reads these to build your daily briefing. You can add more later.</p>
+              <p className={styles.lead}>{name ? `Welcome, ${name}. ` : ""}CreatorOS reads these to build your daily briefing. You can add more later.</p>
               <ul className={styles.accounts}>
                 {onboardingAccounts.map((a) => {
                   const state = accounts[a.id];

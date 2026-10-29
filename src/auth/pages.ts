@@ -5,13 +5,16 @@
 // so they need no Framer runtime. Styles are inline because the site caches
 // every .css and .js file for a year (see _headers and vercel.json).
 //
-// Sign-in posts to app/auth/session/route.ts, which accepts the hackathon demo
-// login (src/auth/demo.ts) and opens /dashboard. Sign-up and Google sign-in
-// are not connected yet and show a notice pointing to the demo login.
+// Sign-in posts to app/auth/session/route.ts (the hackathon demo login in
+// src/auth/demo.ts). Sign-up posts to app/auth/register, which opens the
+// shared demo workspace. "Continue with Google" goes to app/auth/google,
+// which runs real Google sign-in once GOOGLE_CLIENT_ID/SECRET are set.
+// Forgot password is app/auth/forgot. Routes report back with ?error= or
+// ?notice=, and the matching [data-show] message appears.
 
 import { DEMO_EMAIL, DEMO_PASSWORD } from "./demo";
 
-export type AuthKind = "signup" | "signin";
+export type AuthKind = "signup" | "signin" | "forgot";
 
 const LOGO = `<svg viewBox="0 0 26.722 26.733" fill="#181818" aria-hidden="true"><path d="M9.454 0L3.214 6.357C3.928 7.371 6.778 8.149 8.865 8.559 9.715 8.732 10.586 8.775 11.449 8.688 17.454 8.045 20.051 4.778 20.609 3.12 14.368 6.449 10.572 2.426 9.455 0Z"/><path d="M17.581 26.733L23.823 20.376C23.108 19.36 20.258 18.584 18.172 18.172 17.322 18 16.451 17.957 15.588 18.044 9.584 18.688 6.987 21.955 6.429 23.612 12.669 20.284 16.464 24.307 17.581 26.733Z"/><path d="M0 17.609L6.411 23.793C7.42 23.071 8.172 20.214 8.564 18.123 8.729 17.272 8.765 16.401 8.671 15.539 7.974 9.54 4.684 6.972 3.021 6.429 6.405 12.64 2.417 16.47 0 17.609Z"/><path d="M26.722 9.399L20.312 3.214C19.302 3.937 18.55 6.794 18.158 8.884 17.993 9.735 17.957 10.607 18.051 11.469 18.748 17.468 22.038 20.035 23.701 20.579 20.317 14.368 24.305 10.538 26.722 9.399Z"/></svg>`;
 
@@ -56,6 +59,7 @@ h1{font-size:30px;font-weight:600;letter-spacing:-.03em;line-height:1.15}
 button{cursor:pointer}
 .google{margin-top:26px;width:100%;height:48px;border:1px solid #dcdcdc;border-radius:4px;background:#fff;display:flex;align-items:center;justify-content:center;gap:10px;font:500 15px Inter,sans-serif;color:var(--ink);transition:background .2s}
 .google:hover{background:#f6f6f6}
+a.google{text-decoration:none}
 .or{display:flex;align-items:center;gap:12px;margin:22px 0;font-size:13px;color:var(--faint)}
 .or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
 label{display:flex;justify-content:space-between;font-size:13px;font-weight:500;margin:14px 0 6px}
@@ -94,22 +98,26 @@ input:focus{outline:2px solid var(--ink);outline-offset:-1px;border-color:var(--
   .px{display:none}
 }`;
 
-// Prefills the email from ?email= (the footer newsletter and a failed sign-in
-// send visitors here), shows the sign-in error, and shows a notice for the
-// parts that aren't connected yet.
+// Prefills ?email= and ?name= (the footer newsletter and failed forms send
+// visitors back with them) and shows every [data-show="key=value"] message
+// whose key/value is in the URL.
 const SCRIPT = `
 (function () {
   var params = new URLSearchParams(location.search);
-  var field = document.getElementById("email");
-  if (params.get("email") && field) field.value = params.get("email");
-  var notice = document.getElementById("notice");
-  var error = document.getElementById("error");
-  if (error && params.get("error")) error.classList.add("show");
-  function hold(e) { e.preventDefault(); notice.classList.add("show"); }
-  var form = document.getElementById("auth-form");
-  if (form.getAttribute("data-hold") === "true") form.addEventListener("submit", hold);
-  document.getElementById("google").addEventListener("click", hold);
+  ["email", "name"].forEach(function (key) {
+    var field = document.getElementById(key);
+    if (field && params.get(key)) field.value = params.get(key);
+  });
+  document.querySelectorAll("[data-show]").forEach(function (el) {
+    var pair = el.getAttribute("data-show").split("=");
+    if (params.get(pair[0]) === pair[1]) el.classList.add("show");
+  });
 })();`;
+
+const GOOGLE_NOTICES = `
+    <p class="notice" data-show="notice=google" role="status">Google sign-in isn't connected yet. Use the demo login, or sign up with email.</p>
+    <p class="notice error" data-show="notice=google-cancelled" role="alert">Google sign-in was cancelled.</p>
+    <p class="notice error" data-show="notice=google-failed" role="alert">Google sign-in didn't work. Try again, or use the demo login.</p>`;
 
 const SIGNUP_PITCH = `
   <section class="pitch">
@@ -125,17 +133,20 @@ const SIGNUP_PITCH = `
   </section>`;
 
 const SIGNUP_FORM = `
-  <form class="card" id="auth-form" data-hold="true" novalidate>
+  <form class="card" id="auth-form" method="post" action="/auth/register">
     <div class="eyebrow"><span>[</span>sign up<span>]</span></div>
     <h1>Create your account</h1>
     <p class="sub">Free to start. No credit card needed.</p>
-    <button class="google" id="google" type="button">${GOOGLE} Continue with Google</button>
+    <a class="google" href="/auth/google?from=signup">${GOOGLE} Continue with Google</a>${GOOGLE_NOTICES}
     <div class="or">or sign up with email</div>
-    <label for="name">Name</label><input id="name" name="name" placeholder="Maya Lopez" autocomplete="name">
-    <label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
-    <label for="password">Password <span class="hint">8+ characters</span></label><input id="password" name="password" type="password" placeholder="••••••••" autocomplete="new-password" minlength="8">
+    <label for="name">Name</label><input id="name" name="name" placeholder="Maya Lopez" autocomplete="name" required maxlength="60">
+    <label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+    <label for="password">Password <span class="hint">8+ characters</span></label><input id="password" name="password" type="password" placeholder="••••••••" autocomplete="new-password" minlength="8" required>
     <button class="primary" type="submit">Create account</button>
-    <p class="notice" id="notice" role="status">Sign-up isn't connected yet. For the demo, <a href="/auth/signin">sign in</a> with ${DEMO_EMAIL} / ${DEMO_PASSWORD}.</p>
+    <p class="notice error" data-show="error=name" role="alert">Add your name so your briefing can greet you.</p>
+    <p class="notice error" data-show="error=email" role="alert">That email doesn't look right.</p>
+    <p class="notice error" data-show="error=password" role="alert">Use a password with at least 8 characters.</p>
+    <p class="demo">Demo: signing up opens the shared demo workspace with your name. No account is stored yet.</p>
     <p class="legal">By creating an account you agree to our <a href="/terms-of-service">Terms</a> and <a href="/privacy-policy">Privacy Policy</a>.</p>
   </form>`;
 
@@ -144,15 +155,27 @@ const SIGNIN_FORM = `
     <div class="eyebrow"><span>[</span>welcome back<span>]</span></div>
     <h1>Sign in to CreatorOS</h1>
     <p class="sub">Your briefing is waiting.</p>
-    <button class="google" id="google" type="button">${GOOGLE} Continue with Google</button>
+    <a class="google" href="/auth/google">${GOOGLE} Continue with Google</a>${GOOGLE_NOTICES}
     <div class="or">or sign in with email</div>
     <label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
-    <label for="password">Password <a class="hint" href="#">Forgot password?</a></label><input id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password" required>
+    <label for="password">Password <a class="hint" href="/auth/forgot">Forgot password?</a></label><input id="password" name="password" type="password" placeholder="••••••••" autocomplete="current-password" required>
     <button class="primary" type="submit">Sign in</button>
-    <p class="notice error" id="error" role="alert">That email and password don't match the demo login.</p>
-    <p class="notice" id="notice" role="status">Google sign-in isn't connected yet. Use the demo login below.</p>
+    <p class="notice error" data-show="error=1" role="alert">That email and password don't match the demo login.</p>
     <p class="demo">Demo login: <b>${DEMO_EMAIL}</b> · <b>${DEMO_PASSWORD}</b></p>
     <p class="foot">Don't have an account? <a href="/auth/signup">Sign up free</a></p>
+  </form>`;
+
+const FORGOT_FORM = `
+  <form class="card" id="auth-form" method="post" action="/auth/forgot">
+    <div class="eyebrow"><span>[</span>reset password<span>]</span></div>
+    <h1>Forgot your password?</h1>
+    <p class="sub">Enter your email and we'll send you a link to choose a new one.</p>
+    <label for="email">Email</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+    <button class="primary" type="submit">Send reset link</button>
+    <p class="notice" data-show="sent=1" role="status">If there's an account for that email, a reset link is on its way. It works for one hour.</p>
+    <p class="notice error" data-show="error=email" role="alert">That email doesn't look right.</p>
+    <p class="demo">Demo: email sending isn't connected yet. The demo login is <b>${DEMO_EMAIL}</b> · <b>${DEMO_PASSWORD}</b>.</p>
+    <p class="foot">Remembered it? <a href="/auth/signin">Sign in</a></p>
   </form>`;
 
 const PAGES: Record<AuthKind, { title: string; description: string; nav: string; body: string }> = {
@@ -167,6 +190,12 @@ const PAGES: Record<AuthKind, { title: string; description: string; nav: string;
     description: "Sign in to CreatorOS.",
     nav: `<a class="navlink" href="/auth/signup"><span class="long">New here? </span><b>Sign up free</b></a>`,
     body: SIGNIN_FORM,
+  },
+  forgot: {
+    title: "Reset password — CreatorOS",
+    description: "Reset your CreatorOS password.",
+    nav: `<a class="navlink" href="/auth/signin"><span class="long">Remembered it? </span><b>Sign in</b></a>`,
+    body: FORGOT_FORM,
   },
 };
 

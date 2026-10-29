@@ -55,7 +55,7 @@ export default function Dashboard() {
 
       <PageHead
         eyebrow={`today · ${today.label}`}
-        title={`Good morning, ${creator.firstName}`}
+        title={`Good morning, ${settings.name.trim().split(" ")[0] || creator.firstName}`}
         lead={today.summary}
         badge={`${hours(minutesSaved)} saved this week`}
       />
