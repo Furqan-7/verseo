@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import base from "../../dashboard.module.css";
 import styles from "./deals.module.css";
 import { PageHead, TopBar, useShell } from "../../_shell/AppShell";
 import { EmptyState, ReconnectBanner } from "../../_shell/states";
 import { cx, healthColor } from "../../_shell/ui";
-import { HEALTH_MAX, boardDeals, dealStages, deals, inboxThreads, isoFromLabel, type BoardDeal } from "../../data";
+import { HEALTH_MAX, dealStages, deals, inboxThreads, isoFromLabel, type BoardDeal } from "../../data";
+import ContractUpload from "./ContractUpload";
 
 const HEALTH_ROWS: { key: keyof BoardDeal["health"]; label: string }[] = [
   { key: "financial", label: "Financial" },
@@ -28,8 +29,8 @@ function money(n: number) {
 
 export default function Deals({ initialSlug }: { initialSlug?: string }) {
   const router = useRouter();
-  const { notify, openDraft, approved, dealsInCalendar: inCalendar, addDealToCalendar } = useShell();
-  const fileInput = useRef<HTMLInputElement>(null);
+  const { notify, openDraft, approved, dealsInCalendar: inCalendar, addDealToCalendar, allDeals: boardDeals, addDeal } = useShell();
+  const [uploading, setUploading] = useState<string | null>(null);
   const [slug, setSlug] = useState(boardDeals.some((d) => d.slug === initialSlug) ? initialSlug! : "nike");
   const [done, setDone] = useState<Record<string, boolean>>({});
 
@@ -78,19 +79,19 @@ export default function Deals({ initialSlug }: { initialSlug?: string }) {
   return (
     <>
       <TopBar>
-        <button type="button" className={base.btnDark} onClick={() => fileInput.current?.click()}>＋ Upload contract</button>
-        <input
-          ref={fileInput}
-          type="file"
-          accept=".pdf,.doc,.docx"
-          hidden
-          onChange={(e) => {
-            const file = e.target.files?.[0];
-            if (file) notify(`${file.name} uploaded. CreatorOS is reading the terms.`);
-            e.target.value = "";
+        <button type="button" className={base.btnDark} onClick={() => setUploading("")}>＋ Upload contract</button>
+      </TopBar>
+      {uploading !== null && (
+        <ContractUpload
+          onClose={() => setUploading(null)}
+          onAdd={(added) => {
+            addDeal(added);
+            setUploading(null);
+            select(added.slug);
+            notify(`${added.brand} added to ${added.stage}`);
           }}
         />
-      </TopBar>
+      )}
 
       <PageHead
         eyebrow="deals"

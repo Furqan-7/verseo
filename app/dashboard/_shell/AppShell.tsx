@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import styles from "../dashboard.module.css";
-import { alerts, copilot, creator, deals, stats, today, type CalEvent } from "../data";
+import { alerts, boardDeals, copilot, creator, deals, stats, today, type BoardDeal, type CalEvent } from "../data";
 import Notifications from "./Notifications";
 import { ACCOUNT_META, DEFAULT_SETTINGS, loadSettings, saveSettings, type AccountId, type Settings } from "./settings";
 import { BLUE, GREEN, PATTERNS, PURPLE, Pixels, Logo, YELLOW, cx } from "./ui";
@@ -46,6 +46,9 @@ interface Shell {
   updateSettings: (patch: Partial<Settings>) => void;
   readAlerts: Set<string>;
   markRead: (ids: string[]) => void;
+  // The demo deals plus any added from an uploaded contract.
+  allDeals: BoardDeal[];
+  addDeal: (deal: BoardDeal) => void;
 }
 
 const ShellContext = createContext<Shell | null>(null);
@@ -83,6 +86,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
   const [readAlerts, setReadAlerts] = useState<Set<string>>(() => new Set(alerts.filter((a) => a.read).map((a) => a.id)));
   const [draft, setDraft] = useState<DraftTarget | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [addedDeals, setAddedDeals] = useState<BoardDeal[]>([]);
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [chat, setChat] = useState<ChatTurn[]>([]);
   const [question, setQuestion] = useState("");
@@ -180,11 +184,13 @@ export default function AppShell({ children }: { children: ReactNode }) {
     updateSettings,
     readAlerts,
     markRead: (ids) => setReadAlerts((s) => new Set([...s, ...ids])),
+    allDeals: [...boardDeals, ...addedDeals],
+    addDeal: (deal) => setAddedDeals((list) => [...list, deal]),
   };
 
   return (
     <ShellContext.Provider value={shell}>
-      <div className={styles.app}>
+      <div className={styles.app} data-app-root>
         <aside className={cx(styles.sidebar, menuOpen && styles.sidebarOpen)}>
           <div className={styles.phoneBar}>
             <Link className={styles.logo} href="/" aria-label="CreatorOS home">

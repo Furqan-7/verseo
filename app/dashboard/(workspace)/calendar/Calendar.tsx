@@ -6,12 +6,11 @@ import { useState, type CSSProperties } from "react";
 import base from "../../dashboard.module.css";
 import styles from "./calendar.module.css";
 import { PageHead, TopBar, useShell } from "../../_shell/AppShell";
-import { EmptyState, ReconnectBanner } from "../../_shell/states";
+import { AppLayer, EmptyState, ReconnectBanner } from "../../_shell/states";
 import { cx } from "../../_shell/ui";
 import {
   TODAY_ISO,
   addDays,
-  boardDeals,
   calendarEvents,
   clips,
   clock,
@@ -73,7 +72,7 @@ function layoutDay(events: CalEvent[]) {
 export default function Calendar({ initialDate, initialView }: { initialDate?: string; initialView: View }) {
   const router = useRouter();
   const shell = useShell();
-  const { notify, scheduledClips, dealsInCalendar, addDealToCalendar, addedEvents, addEvent, removedEvents, removeEvent } = shell;
+  const { notify, scheduledClips, dealsInCalendar, addDealToCalendar, addedEvents, addEvent, removedEvents, removeEvent, allDeals } = shell;
   const [anchor, setAnchor] = useState(initialDate ?? TODAY_ISO);
   const [view, setView] = useState<View>(initialView);
   const [hidden, setHidden] = useState<Set<EventType>>(new Set());
@@ -83,7 +82,7 @@ export default function Calendar({ initialDate, initialView }: { initialDate?: s
 
   // Everything on the calendar: Google Calendar events, deal deadlines the
   // creator added from Deals, and posts from Publish.
-  const dealEvents: CalEvent[] = boardDeals
+  const dealEvents: CalEvent[] = allDeals
     .filter((d) => dealsInCalendar.has(d.slug))
     .flatMap((d) =>
       d.deliverables.map((item) => ({
@@ -132,7 +131,7 @@ export default function Calendar({ initialDate, initialView }: { initialDate?: s
   const weeksNeeded = Math.ceil(monthDays.findIndex((d, i) => i > 27 && d.slice(0, 7) !== anchor.slice(0, 7)) / 7) || 6;
   const monthCells = monthDays.slice(0, weeksNeeded * 7);
 
-  const missingDeals = boardDeals.filter((d) => !dealsInCalendar.has(d.slug) && d.deliverables.some((item) => !item.done));
+  const missingDeals = allDeals.filter((d) => !dealsInCalendar.has(d.slug) && d.deliverables.some((item) => !item.done));
   const waitingClips = clips.filter((c) => !scheduledClips.has(c.id));
 
   function go(nextAnchor: string, nextView: View = view) {
@@ -469,58 +468,60 @@ export default function Calendar({ initialDate, initialView }: { initialDate?: s
       </div>
 
       {draft && (
-        <div className={base.overlay} onClick={() => setDraft(null)}>
-          <form
-            className={base.modal}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="new-event-title"
-            onClick={(e) => e.stopPropagation()}
-            onSubmit={(e) => { e.preventDefault(); saveDraft(); }}
-          >
-            <div className={base.eyebrow}><span>[</span>new event<span>]</span></div>
-            <h3 id="new-event-title" className={base.modalTitle}>Add to your calendar</h3>
-            <label className={styles.formRow}>
-              <span>Title</span>
-              <input autoFocus required value={draft.title} onChange={(e) => setDraft({ ...draft, title: e.target.value })} placeholder="Film: gear haul" />
-            </label>
-            <div className={styles.formGrid}>
+        <AppLayer>
+          <div className={base.overlay} onClick={() => setDraft(null)}>
+            <form
+              className={base.modal}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="new-event-title"
+              onClick={(e) => e.stopPropagation()}
+              onSubmit={(e) => { e.preventDefault(); saveDraft(); }}
+            >
+              <div className={base.eyebrow}><span>[</span>new event<span>]</span></div>
+              <h3 id="new-event-title" className={base.modalTitle}>Add to your calendar</h3>
               <label className={styles.formRow}>
-                <span>Type</span>
-                <select value={draft.type} onChange={(e) => setDraft({ ...draft, type: e.target.value as EventType })}>
-                  {eventTypes.map((t) => <option key={t.type} value={t.type}>{t.label.replace(/s$/, "")}</option>)}
-                </select>
+                <span>Title</span>
+                <input autoFocus required value={draft.title} onChange={(e) => setDraft({ ...draft, title: e.target.value })} placeholder="Film: gear haul" />
               </label>
-              <label className={styles.formRow}>
-                <span>Date</span>
-                <input type="date" required value={draft.date} onChange={(e) => e.target.value && setDraft({ ...draft, date: e.target.value })} />
-              </label>
-              {draft.type !== "deadline" && (
-                <>
-                  <label className={styles.formRow}>
-                    <span>Starts</span>
-                    <select value={draft.start} onChange={(e) => setDraft({ ...draft, start: Number(e.target.value) })}>
-                      {Array.from({ length: (END_HOUR - START_HOUR) * 2 }, (_, i) => START_HOUR * 60 + i * 30).map((m) => (
-                        <option key={m} value={m}>{clock(m)}</option>
-                      ))}
-                    </select>
-                  </label>
-                  <label className={styles.formRow}>
-                    <span>Length</span>
-                    <select value={draft.length} onChange={(e) => setDraft({ ...draft, length: Number(e.target.value) })}>
-                      {[30, 60, 90, 120, 180].map((m) => <option key={m} value={m}>{m < 60 ? `${m} min` : `${m / 60} h`}</option>)}
-                    </select>
-                  </label>
-                </>
-              )}
-            </div>
-            <p className={base.modalNote}>{draft.type === "deadline" ? "Deadlines are all-day events." : "Saved to Google Calendar once your account is live."}</p>
-            <div className={base.modalActions}>
-              <button type="button" className={base.btnGhost} onClick={() => setDraft(null)}>Cancel</button>
-              <button type="submit" className={base.btnDark} disabled={!draft.title.trim()}>Add event</button>
-            </div>
-          </form>
-        </div>
+              <div className={styles.formGrid}>
+                <label className={styles.formRow}>
+                  <span>Type</span>
+                  <select value={draft.type} onChange={(e) => setDraft({ ...draft, type: e.target.value as EventType })}>
+                    {eventTypes.map((t) => <option key={t.type} value={t.type}>{t.label.replace(/s$/, "")}</option>)}
+                  </select>
+                </label>
+                <label className={styles.formRow}>
+                  <span>Date</span>
+                  <input type="date" required value={draft.date} onChange={(e) => e.target.value && setDraft({ ...draft, date: e.target.value })} />
+                </label>
+                {draft.type !== "deadline" && (
+                  <>
+                    <label className={styles.formRow}>
+                      <span>Starts</span>
+                      <select value={draft.start} onChange={(e) => setDraft({ ...draft, start: Number(e.target.value) })}>
+                        {Array.from({ length: (END_HOUR - START_HOUR) * 2 }, (_, i) => START_HOUR * 60 + i * 30).map((m) => (
+                          <option key={m} value={m}>{clock(m)}</option>
+                        ))}
+                      </select>
+                    </label>
+                    <label className={styles.formRow}>
+                      <span>Length</span>
+                      <select value={draft.length} onChange={(e) => setDraft({ ...draft, length: Number(e.target.value) })}>
+                        {[30, 60, 90, 120, 180].map((m) => <option key={m} value={m}>{m < 60 ? `${m} min` : `${m / 60} h`}</option>)}
+                      </select>
+                    </label>
+                  </>
+                )}
+              </div>
+              <p className={base.modalNote}>{draft.type === "deadline" ? "Deadlines are all-day events." : "Saved to Google Calendar once your account is live."}</p>
+              <div className={base.modalActions}>
+                <button type="button" className={base.btnGhost} onClick={() => setDraft(null)}>Cancel</button>
+                <button type="submit" className={base.btnDark} disabled={!draft.title.trim()}>Add event</button>
+              </div>
+            </form>
+          </div>
+        </AppLayer>
       )}
     </>
   );

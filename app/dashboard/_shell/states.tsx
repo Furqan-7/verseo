@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
+import { createPortal } from "react-dom";
 import base from "../dashboard.module.css";
 import styles from "./states.module.css";
 import { useShell } from "./AppShell";
@@ -60,4 +61,13 @@ export function ReconnectBanner({ accounts }: { accounts: AccountId[] }) {
       ))}
     </>
   );
+}
+
+// Renders a page's dialog at the top of the app (inside .app, so it keeps the
+// tokens and zoom) rather than inside the content column, where the phone
+// bar would cover it.
+export function AppLayer({ children }: { children: ReactNode }) {
+  const [root, setRoot] = useState<Element | null>(null);
+  useEffect(() => setRoot(document.querySelector("[data-app-root]")), []);
+  return root ? createPortal(children, root) : null;
 }
