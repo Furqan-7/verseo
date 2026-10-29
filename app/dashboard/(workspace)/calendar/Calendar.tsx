@@ -6,6 +6,7 @@ import { useState, type CSSProperties } from "react";
 import base from "../../dashboard.module.css";
 import styles from "./calendar.module.css";
 import { PageHead, TopBar, useShell } from "../../_shell/AppShell";
+import { EmptyState, ReconnectBanner } from "../../_shell/states";
 import { cx } from "../../_shell/ui";
 import {
   TODAY_ISO,
@@ -219,8 +220,9 @@ export default function Calendar({ initialDate, initialView }: { initialDate?: s
         lead={`${thisWeek ? "This week" : `Week of ${dayLabel(monday, false)}`}: ${summary}.${
           thisWeek && count("deadline") === 0 ? " Add deal deadlines from the list on the right." : ""
         }`}
-        badge="synced with Google Calendar"
+        badge={shell.settings.accounts.calendar === "disconnected" ? "Google Calendar not syncing" : "synced with Google Calendar"}
       />
+      <ReconnectBanner accounts={["calendar"]} />
 
       <div className={styles.layout}>
         <section className={styles.card} aria-label="Calendar">
@@ -257,7 +259,25 @@ export default function Calendar({ initialDate, initialView }: { initialDate?: s
           </div>
 
           {view === "week" ? (
-            <div className={styles.scroller}>
+            <div className={cx(styles.scroller, styles.weekWrap)}>
+              {!week.some((iso) => onDay(iso).length > 0) && !showSlot && (
+                <div className={styles.weekEmpty}>
+                  <EmptyState
+                    title={hidden.size ? "Nothing to show with these filters" : "Nothing booked this week"}
+                    color="#2a6df4"
+                    pattern="1010010110100101"
+                    action={
+                      hidden.size ? (
+                        <button type="button" className={base.mini} onClick={() => setHidden(new Set())}>Show everything</button>
+                      ) : (
+                        <button type="button" className={base.miniDark} onClick={() => setDraft({ title: "", type: "film", date: week[0], start: 14 * 60, length: 60 })}>＋ New event</button>
+                      )
+                    }
+                  >
+                    {hidden.size ? "Some event types are hidden." : "Add a filming block, or add deal deadlines from the list on the right."}
+                  </EmptyState>
+                </div>
+              )}
               <div className={styles.week}>
                 <div className={styles.corner} />
                 {week.map((iso, i) => (

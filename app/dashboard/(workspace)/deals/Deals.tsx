@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import base from "../../dashboard.module.css";
 import styles from "./deals.module.css";
 import { PageHead, TopBar, useShell } from "../../_shell/AppShell";
+import { EmptyState, ReconnectBanner } from "../../_shell/states";
 import { cx, healthColor } from "../../_shell/ui";
 import { HEALTH_MAX, boardDeals, dealStages, deals, inboxThreads, isoFromLabel, type BoardDeal } from "../../data";
 
@@ -99,6 +100,7 @@ export default function Deals({ initialSlug }: { initialSlug?: string }) {
         }`}
         badge={reminderSaved ? "reminder saved to Gmail drafts" : `${reminder.overdue!.amount} overdue · reminder ready`}
       />
+      <ReconnectBanner accounts={["gmail"]} />
 
       <div className={styles.layout}>
         <div className={styles.board} role="list" aria-label="Deal pipeline">
@@ -111,6 +113,7 @@ export default function Deals({ initialSlug }: { initialSlug?: string }) {
                   <strong>{stage}</strong>
                   <span>{inStage.length}</span>
                 </div>
+                {inStage.length === 0 && <EmptyState compact title="No deals here" color={color} />}
                 {inStage.map((d) => {
                   const s = score(d);
                   const reminderNote = d.replyId === reminder.id && reminderSaved;

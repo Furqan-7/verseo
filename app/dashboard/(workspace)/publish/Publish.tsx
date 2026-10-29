@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import base from "../../dashboard.module.css";
 import styles from "./publish.module.css";
 import { PageHead, TopBar, useShell } from "../../_shell/AppShell";
+import { ReconnectBanner } from "../../_shell/states";
 import { PATTERNS, Pixels, RefreshIcon, YELLOW, cx } from "../../_shell/ui";
 import { clips, postSlots, publishPlatforms, video, type PublishPlatform } from "../../data";
 
@@ -105,6 +106,7 @@ export default function Publish({ initialClip }: { initialClip?: string }) {
         lead={`One 14-minute vlog became ${clips.length} clips with captions for every platform.`}
         badge={`${video.minutesSavedPerClip} min saved per clip`}
       />
+      <ReconnectBanner accounts={["youtube"]} />
 
       <ol className={styles.stepper} aria-label="Progress">
         {STEPS.map((step, i) => (

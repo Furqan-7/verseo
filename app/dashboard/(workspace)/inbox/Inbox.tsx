@@ -6,7 +6,8 @@ import { Fragment, useState } from "react";
 import base from "../../dashboard.module.css";
 import styles from "./inbox.module.css";
 import { PageHead, TopBar, useShell } from "../../_shell/AppShell";
-import { BLUE, CATEGORY_STYLE, PATTERNS, Pixels, RefreshIcon, cx, hours } from "../../_shell/ui";
+import { EmptyState, ReconnectBanner } from "../../_shell/states";
+import { BLUE, CATEGORY_STYLE, GREEN, PATTERNS, Pixels, RefreshIcon, cx, hours } from "../../_shell/ui";
 import { categoryCounts, inboxThreads, stats, type Category, type InboxThread, type Tone } from "../../data";
 
 const TONES: Tone[] = ["Friendly", "Professional", "Shorter"];
@@ -102,7 +103,7 @@ export default function Inbox({ initialId }: { initialId?: string }) {
     <>
       <TopBar>
         <button type="button" className={base.btnLine} onClick={approveAll} disabled={waiting.length === 0}>
-          {waiting.length ? `✓ Approve all ${waiting.length} drafts` : "✓ All drafts approved"}
+          {waiting.length ? `✓ Approve all ${waiting.length} drafts` : "✓ No drafts waiting"}
         </button>
       </TopBar>
 
@@ -112,10 +113,11 @@ export default function Inbox({ initialId }: { initialId?: string }) {
         lead={
           waiting.length
             ? `${stats.messagesSorted} messages sorted since yesterday. ${waiting.length} ${waiting.length === 1 ? "reply is" : "replies are"} drafted and waiting for you.`
-            : `${stats.messagesSorted} messages sorted since yesterday. Every drafted reply is saved to Gmail.`
+            : `${stats.messagesSorted} messages sorted since yesterday. Nothing is waiting for you.`
         }
         badge={`${hours(minutesSaved)} saved this week`}
       />
+      <ReconnectBanner accounts={["gmail"]} />
 
       <div className={styles.layout}>
         <section className={styles.listCard} aria-label="Messages">
@@ -170,7 +172,23 @@ export default function Inbox({ initialId }: { initialId?: string }) {
                 </button>
               </li>
             ))}
-            {visible.length === 0 && <li className={base.empty}>{q ? `No messages match “${query.trim()}”.` : "Nothing here right now."}</li>}
+            {visible.length === 0 && (
+              <li>
+                {q ? (
+                  <EmptyState
+                    compact
+                    title={`No messages match “${query.trim()}”`}
+                    action={<button type="button" className={base.mini} onClick={() => setQuery("")}>Clear search</button>}
+                  >
+                    Search looks at the sender, subject and preview.
+                  </EmptyState>
+                ) : (
+                  <EmptyState compact title="Nothing here right now" color={GREEN} pattern={PATTERNS.inbox}>
+                    New messages in this category will show up here, sorted and with replies drafted.
+                  </EmptyState>
+                )}
+              </li>
+            )}
             {visible.length > 0 && hidden > 0 && !query && (
               <li className={styles.more}>
                 {filter === "Spam"
@@ -203,7 +221,16 @@ export default function Inbox({ initialId }: { initialId?: string }) {
             onGmail={() => notify("Opens this thread in Gmail once your account is live")}
           />
         ) : (
-          <section className={styles.reader}><p className={base.empty}>Inbox zero. Nothing needs you right now.</p></section>
+          <section className={styles.reader}>
+            <EmptyState
+              title="Inbox zero"
+              color={GREEN}
+              pattern={PATTERNS.inbox}
+              action={<Link className={base.btnDark} href="/dashboard">Back to Today</Link>}
+            >
+              Every message is answered or archived. CreatorOS will sort new ones as they arrive.
+            </EmptyState>
+          </section>
         )}
       </div>
     </>

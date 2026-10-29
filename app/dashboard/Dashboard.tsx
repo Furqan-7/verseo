@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import styles from "./dashboard.module.css";
 import { PageHead, TopBar, useShell } from "./_shell/AppShell";
+import { EmptyState, ReconnectBanner } from "./_shell/states";
 import { BLUE, CATEGORY_STYLE, GREEN, PATTERNS, PURPLE, Pixels, YELLOW, healthColor, hours } from "./_shell/ui";
 import {
   categoryCounts,
@@ -57,6 +58,7 @@ export default function Dashboard() {
         lead={today.summary}
         badge={`${hours(minutesSaved)} saved this week`}
       />
+      <ReconnectBanner accounts={["gmail", "youtube"]} />
 
       <section className={styles.stats} aria-label="Today at a glance">
         <div className={styles.stat}>
@@ -104,6 +106,11 @@ export default function Dashboard() {
               </li>
             ))}
           </ul>
+          {doneCount === todoList.length && (
+            <EmptyState compact title="All done for today" color={BLUE} pattern={PATTERNS.briefing}>
+              Nice work. Add an idea below, or plan tomorrow in Calendar.
+            </EmptyState>
+          )}
         </section>
 
         <section className={styles.card} id="inbox" aria-labelledby="inbox-title">

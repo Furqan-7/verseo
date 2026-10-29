@@ -1,0 +1,63 @@
+"use client";
+
+import Link from "next/link";
+import type { ReactNode } from "react";
+import base from "../dashboard.module.css";
+import styles from "./states.module.css";
+import { useShell } from "./AppShell";
+import { ACCOUNT_META, type AccountId } from "./settings";
+import { Pixels, cx } from "./ui";
+
+// "Nothing here" with a pixel icon, one line of help and an optional action.
+export function EmptyState({
+  title,
+  children,
+  action,
+  color = "#b5b5b5",
+  pattern = "1001011001101001",
+  compact,
+}: {
+  title: string;
+  children?: ReactNode;
+  action?: ReactNode;
+  color?: string;
+  pattern?: string;
+  compact?: boolean;
+}) {
+  return (
+    <div className={cx(styles.empty, compact && styles.compact)}>
+      <span className={styles.emptyIcon}><Pixels color={color} pattern={pattern} size={compact ? 3 : 4} /></span>
+      <strong>{title}</strong>
+      {children && <p>{children}</p>}
+      {action && <div className={styles.emptyAction}>{action}</div>}
+    </div>
+  );
+}
+
+const IMPACT: Record<AccountId, string> = {
+  gmail: "New emails aren't being sorted, and replies can't be saved to your drafts.",
+  calendar: "Deadlines and posts you add stay in CreatorOS and won't reach Google Calendar.",
+  youtube: "Comments, views and ideas from your audience have stopped updating.",
+  instagram: "Instagram metrics aren't imported.",
+  tiktok: "",
+};
+
+// One banner per disconnected account the current screen depends on.
+export function ReconnectBanner({ accounts }: { accounts: AccountId[] }) {
+  const { settings } = useShell();
+  const missing = accounts.filter((id) => settings.accounts[id] === "disconnected");
+  if (missing.length === 0) return null;
+  return (
+    <>
+      {missing.map((id) => (
+        <div key={id} className={styles.banner} role="status">
+          <span className={styles.bannerMark} style={{ background: ACCOUNT_META[id].color }}>{ACCOUNT_META[id].mark}</span>
+          <span>
+            <strong>{ACCOUNT_META[id].name} is disconnected.</strong> {IMPACT[id]}
+          </span>
+          <Link className={base.miniDark} href="/dashboard/settings?tab=accounts">Reconnect</Link>
+        </div>
+      ))}
+    </>
+  );
+}

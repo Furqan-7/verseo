@@ -302,6 +302,22 @@
   background: rgba(229, 238, 254, 0.9);
 }
 
+.weekWrap {
+  position: relative;
+}
+.weekEmpty {
+  position: absolute;
+  left: 50%;
+  top: 150px;
+  transform: translateX(-50%);
+  z-index: 4;
+  width: min(360px, 90%);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px -20px rgba(24, 24, 24, 0.3);
+}
+
 /* month grid */
 .month {
   display: grid;
