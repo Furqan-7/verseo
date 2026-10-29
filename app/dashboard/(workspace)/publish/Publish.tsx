@@ -6,7 +6,7 @@ import base from "../../dashboard.module.css";
 import styles from "./publish.module.css";
 import { PageHead, TopBar, useShell } from "../../_shell/AppShell";
 import { PATTERNS, Pixels, RefreshIcon, YELLOW, cx } from "../../_shell/ui";
-import { bestTimes, clips, publishPlatforms, video, type PublishPlatform } from "../../data";
+import { clips, postSlots, publishPlatforms, video, type PublishPlatform } from "../../data";
 
 const STEPS = ["Upload", "Transcript", "Clips", "Captions", "Schedule"];
 const TICKS = ["0:00", "3:30", "7:00", "10:30", video.length];
@@ -21,7 +21,7 @@ type CaptionKey = `${string}:${PublishPlatform}`;
 
 export default function Publish({ initialClip }: { initialClip?: string }) {
   const router = useRouter();
-  const { notify } = useShell();
+  const { notify, scheduledClips: scheduled, scheduleClip } = useShell();
   const fileInput = useRef<HTMLInputElement>(null);
   const [clipId, setClipId] = useState(clips.some((c) => c.id === initialClip) ? initialClip! : clips[0].id);
   const [platform, setPlatform] = useState<PublishPlatform>("reel");
@@ -31,10 +31,10 @@ export default function Publish({ initialClip }: { initialClip?: string }) {
   const [extraTags, setExtraTags] = useState<Record<string, string[]>>({});
   const [adding, setAdding] = useState(false);
   const [newTag, setNewTag] = useState("");
-  const [scheduled, setScheduled] = useState<Set<string>>(new Set());
 
   const clip = clips.find((c) => c.id === clipId)!;
   const clipNumber = clips.indexOf(clip) + 1;
+  const slots = postSlots(clipNumber - 1);
   const key: CaptionKey = `${clip.id}:${platform}`;
   const options = clip.captions[platform];
   const caption = edits[key] ?? options[(variant[key] ?? 0) % options.length];
@@ -78,8 +78,8 @@ export default function Publish({ initialClip }: { initialClip?: string }) {
   }
 
   function schedule() {
-    setScheduled((s) => new Set(s).add(clip.id));
-    notify(`Clip ${clipNumber} scheduled: ${bestTimes.map((t) => `${t.label} ${t.when}`).join(", ")}`);
+    scheduleClip(clip.id);
+    notify(`Clip ${clipNumber} scheduled: ${slots.map((t) => `${t.label} ${t.when}`).join(", ")}`);
   }
 
   return (
@@ -223,7 +223,7 @@ export default function Publish({ initialClip }: { initialClip?: string }) {
             <span className={styles.counter}>from your last 30 days</span>
           </div>
           <div className={styles.times}>
-            {bestTimes.map((t) => (
+            {slots.map((t) => (
               <div key={t.platform} className={cx(styles.time, t.platform === platform && styles.timeOn)}>
                 <strong>
                   <span className={styles.swatchSmall} style={{ background: publishPlatforms.find((p) => p.id === t.platform)!.swatch }} />
@@ -236,13 +236,13 @@ export default function Publish({ initialClip }: { initialClip?: string }) {
           </div>
 
           <div className={styles.foot}>
-            <span className={styles.note}>{isScheduled ? "Scheduled. You can still edit posts in Calendar." : "Nothing posts until you approve."}</span>
+            <span className={styles.note}>{isScheduled ? "Scheduled. Every post is now in your calendar." : "Nothing posts until you approve."}</span>
             {isScheduled ? (
-              <span className={base.savedTag}>✓ {bestTimes.length} posts scheduled</span>
+              <span className={base.savedTag}>✓ {slots.length} posts scheduled</span>
             ) : (
               <>
                 <button type="button" className={base.btnGhost} onClick={rewrite}><RefreshIcon /> Rewrite</button>
-                <button type="button" className={base.btnDark} onClick={schedule}>Approve and schedule {bestTimes.length} posts</button>
+                <button type="button" className={base.btnDark} onClick={schedule}>Approve and schedule {slots.length} posts</button>
               </>
             )}
           </div>

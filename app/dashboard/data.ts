@@ -409,6 +409,7 @@ export const publishPlatforms: { id: PublishPlatform; label: string; swatch: str
 
 export interface Clip {
   id: string;
+  short: string;
   title: string;
   quote: string;
   start: string;
@@ -433,6 +434,7 @@ export const video = {
 export const clips: Clip[] = [
   {
     id: "c1",
+    short: "Camera setup",
     title: "“Here's the setup I use for every video”",
     quote: "The camera setup I use for every video",
     start: "0:52",
@@ -460,6 +462,7 @@ export const clips: Clip[] = [
   },
   {
     id: "c2",
+    short: "$40 light",
     title: "The $40 light that changed everything",
     quote: "This $40 light changed everything",
     start: "5:31",
@@ -481,6 +484,7 @@ export const clips: Clip[] = [
   },
   {
     id: "c3",
+    short: "Mic test",
     title: "Mic test: before and after",
     quote: "Mic test: before and after",
     start: "10:18",
@@ -502,11 +506,132 @@ export const clips: Clip[] = [
   },
 ];
 
-export const bestTimes: { platform: PublishPlatform; label: string; when: string; why: string }[] = [
-  { platform: "reel", label: "Reel", when: "Today 6:30 pm", why: "Your followers peak 6–8 pm" },
-  { platform: "short", label: "Short", when: "Thu 12:00 pm", why: "Lunch views are 1.8x" },
-  { platform: "tiktok", label: "TikTok", when: "Fri 7:00 pm", why: "Weekend reach starts Friday" },
+export const bestTimes: { platform: PublishPlatform; label: string; day: number; minutes: number; why: string }[] = [
+  { platform: "reel", label: "Reel", day: 0, minutes: 18 * 60 + 30, why: "Your followers peak 6–8 pm" },
+  { platform: "short", label: "Short", day: 1, minutes: 12 * 60, why: "Lunch views are 1.8x" },
+  { platform: "tiktok", label: "TikTok", day: 2, minutes: 19 * 60, why: "Weekend reach starts Friday" },
 ];
+
+export interface PostSlot {
+  platform: PublishPlatform;
+  label: string;
+  date: string;
+  minutes: number;
+  when: string;
+  why: string;
+}
+
+// Clip 1 goes out this week (Wed, Thu, Fri); each later clip a week after.
+export function postSlots(clipIndex: number): PostSlot[] {
+  return bestTimes.map((t) => {
+    const date = addDays(TODAY_ISO, t.day + clipIndex * 7);
+    return { platform: t.platform, label: t.label, date, minutes: t.minutes, why: t.why, when: `${dayLabel(date)} ${clock(t.minutes)}` };
+  });
+}
+
+// ── Dates ───────────────────────────────────────────────────────────────────
+// The demo's "today" is fixed. Dates are ISO strings handled in UTC so the
+// server and the browser always agree.
+
+export const TODAY_ISO = "2026-10-28";
+
+const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+export function parseIso(iso: string) {
+  const [y, m, d] = iso.split("-").map(Number);
+  return new Date(Date.UTC(y, m - 1, d));
+}
+
+export function toIso(date: Date) {
+  return date.toISOString().slice(0, 10);
+}
+
+export function addDays(iso: string, days: number) {
+  const d = parseIso(iso);
+  d.setUTCDate(d.getUTCDate() + days);
+  return toIso(d);
+}
+
+// Monday of the week that contains `iso`.
+export function weekStart(iso: string) {
+  const day = parseIso(iso).getUTCDay();
+  return addDays(iso, -((day + 6) % 7));
+}
+
+// "Thu 29 Oct"; "Today" for the demo's today.
+export function dayLabel(iso: string, relative = true) {
+  if (relative && iso === TODAY_ISO) return "Today";
+  const d = parseIso(iso);
+  return `${DAY_NAMES[d.getUTCDay()]} ${d.getUTCDate()} ${MONTH_NAMES[d.getUTCMonth()]}`;
+}
+
+export function monthLabel(iso: string) {
+  const d = parseIso(iso);
+  return `${["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"][d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+
+// "Thu 29 Oct" → "2026-10-29" (deal deliverables use the short form).
+export function isoFromLabel(label: string, year = 2026) {
+  const [, day, month] = label.split(" ");
+  return toIso(new Date(Date.UTC(year, MONTH_NAMES.indexOf(month), Number(day))));
+}
+
+// 1110 → "6:30 pm"
+export function clock(minutes: number) {
+  const h = Math.floor(minutes / 60);
+  const m = minutes % 60;
+  const suffix = h >= 12 ? "pm" : "am";
+  return `${((h + 11) % 12) + 1}:${String(m).padStart(2, "0")} ${suffix}`;
+}
+
+// ── Calendar screen ─────────────────────────────────────────────────────────
+// Deal deadlines and scheduled posts are added by the Deals and Publish
+// screens; these are the events already in Google Calendar.
+
+export type EventType = "deadline" | "post" | "film" | "call";
+
+export interface CalEvent {
+  id: string;
+  title: string;
+  type: EventType;
+  date: string;
+  // Minutes from midnight. Without them the event is all-day.
+  start?: number;
+  end?: number;
+  detail?: string;
+  link?: { href: string; label: string };
+  tentative?: boolean;
+  done?: boolean;
+}
+
+export const eventTypes: { type: EventType; label: string; color: string; bg: string; ink: string }[] = [
+  { type: "deadline", label: "Deadlines", color: "#7b77e8", bg: "#ece9ff", ink: "#3f389f" },
+  { type: "post", label: "Posts", color: "#f4c430", bg: "#fff3cf", ink: "#6e5500" },
+  { type: "film", label: "Filming", color: "#2a6df4", bg: "#e5eefe", ink: "#1d4aa8" },
+  { type: "call", label: "Calls", color: "#56c25a", bg: "#e3f4df", ink: "#2f6528" },
+];
+
+export const calendarEvents: CalEvent[] = [
+  { id: "e1", title: "Nike Reel: concept and script", type: "film", date: "2026-10-26", start: 10 * 60, end: 12 * 60, detail: "Studio · first deliverable for the Spring campaign", link: { href: "/dashboard/deals?deal=nike", label: "Open deal" }, done: true },
+  { id: "e2", title: "Canon script approved", type: "call", date: "2026-10-26", start: 15 * 60, end: 15 * 60 + 30, detail: "Video call with the Canon team", link: { href: "/dashboard/deals?deal=canon", label: "Open deal" }, done: true },
+  { id: "e3", title: "Edit: vlog_tuesday", type: "film", date: "2026-10-27", start: 13 * 60, end: 17 * 60, detail: "14-minute vlog, cut into 3 clips", link: { href: "/dashboard/publish", label: "Open in Publish" }, done: true },
+  { id: "e4", title: "Film camera setup Short", type: "film", date: "2026-10-28", start: 11 * 60, end: 12 * 60, detail: "Idea from 12 comments · on today's to-do" },
+  { id: "e5", title: "Adidas contract review", type: "call", date: "2026-10-30", start: 10 * 60, end: 10 * 60 + 30, detail: "Deal Health 61 · 3 risks to raise", link: { href: "/dashboard/deals?deal=adidas", label: "Open deal" } },
+  { id: "e6", title: "Film: studio tour before and after", type: "film", date: "2026-10-31", start: 10 * 60, end: 13 * 60, detail: "Your tours get 2.1x average views" },
+  { id: "e7", title: "Canon night shoot", type: "film", date: "2026-11-02", start: 19 * 60, end: 21 * 60 + 30, detail: "Low-light review · city centre", link: { href: "/dashboard/deals?deal=canon", label: "Open deal" } },
+  { id: "e8", title: "Gear swap with Leo Films", type: "film", date: "2026-11-03", start: 14 * 60, end: 17 * 60, detail: "Tentative until Leo picks a slot", link: { href: "/dashboard/inbox?m=m2", label: "Open message" }, tentative: true },
+  { id: "e9", title: "Studio Sana podcast, ep. 42", type: "call", date: "2026-11-10", start: 11 * 60, end: 11 * 60 + 45, detail: "Remote recording · tentative", link: { href: "/dashboard/inbox?m=m4", label: "Open message" }, tentative: true },
+];
+
+// A gap CreatorOS suggests for filming, shown beside the week it falls in.
+export const suggestedSlot = {
+  date: "2026-10-29",
+  start: 9 * 60,
+  end: 11 * 60,
+  title: "Film: “What camera do you use?” Short",
+  why: "Free before your Short goes out at 12:00 pm, and 12 people asked for it.",
+};
 
 // ── Deals screen ────────────────────────────────────────────────────────────
 

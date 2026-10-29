@@ -212,7 +212,7 @@ export default function Dashboard() {
           <div className={styles.cardHead}>
             <span className={styles.icon}><Pixels color={YELLOW} pattern={PATTERNS.publish} /></span>
             <h2 id="publish-title">Up next</h2>
-            <span className={styles.tag}>best times</span>
+            <Link className={styles.tag} href="/dashboard/calendar">Open calendar →</Link>
           </div>
           <ul className={styles.list}>
             {posts.map((p) => (

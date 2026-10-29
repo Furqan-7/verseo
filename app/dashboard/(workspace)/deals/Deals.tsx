@@ -1,12 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import base from "../../dashboard.module.css";
 import styles from "./deals.module.css";
 import { PageHead, TopBar, useShell } from "../../_shell/AppShell";
 import { cx, healthColor } from "../../_shell/ui";
-import { HEALTH_MAX, boardDeals, dealStages, deals, inboxThreads, type BoardDeal } from "../../data";
+import { HEALTH_MAX, boardDeals, dealStages, deals, inboxThreads, isoFromLabel, type BoardDeal } from "../../data";
 
 const HEALTH_ROWS: { key: keyof BoardDeal["health"]; label: string }[] = [
   { key: "financial", label: "Financial" },
@@ -26,11 +27,10 @@ function money(n: number) {
 
 export default function Deals({ initialSlug }: { initialSlug?: string }) {
   const router = useRouter();
-  const { notify, openDraft, approved } = useShell();
+  const { notify, openDraft, approved, dealsInCalendar: inCalendar, addDealToCalendar } = useShell();
   const fileInput = useRef<HTMLInputElement>(null);
   const [slug, setSlug] = useState(boardDeals.some((d) => d.slug === initialSlug) ? initialSlug! : "nike");
   const [done, setDone] = useState<Record<string, boolean>>({});
-  const [inCalendar, setInCalendar] = useState<Set<string>>(new Set());
 
   const deal = boardDeals.find((d) => d.slug === slug)!;
   const total = boardDeals.reduce((sum, d) => sum + d.amount, 0);
@@ -65,8 +65,8 @@ export default function Deals({ initialSlug }: { initialSlug?: string }) {
   }
 
   function addToCalendar() {
-    setInCalendar((s) => new Set(s).add(deal.slug));
-    notify(`${deal.deliverables.length} ${deal.brand} deadlines added to Google Calendar`);
+    addDealToCalendar(deal.slug);
+    notify(`${deal.deliverables.length} ${deal.brand} deadlines added to your calendar`);
   }
 
   const isDone = (id: string, fallback: boolean) => done[id] ?? fallback;
@@ -247,7 +247,7 @@ export default function Deals({ initialSlug }: { initialSlug?: string }) {
 
           <div className={styles.actions}>
             {inCalendar.has(deal.slug) ? (
-              <span className={cx(base.savedTag, styles.actionTag)}>✓ In your calendar</span>
+              <Link className={cx(base.savedTag, styles.actionTag)} href={`/dashboard/calendar?date=${isoFromLabel(deal.deliverables.find((d) => !d.done)?.date ?? deal.deliverables[0].date)}`}>✓ In your calendar →</Link>
             ) : (
               <button type="button" className={base.btnGhost} onClick={addToCalendar}>Add to calendar</button>
             )}

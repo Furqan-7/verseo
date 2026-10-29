@@ -4,12 +4,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import styles from "../dashboard.module.css";
-import { copilot, creator, deals, stats, today } from "../data";
+import { copilot, creator, deals, stats, today, type CalEvent } from "../data";
 import { BLUE, GREEN, PATTERNS, PURPLE, Pixels, Logo, YELLOW, cx } from "./ui";
 
 // The workspace frame shared by every /dashboard screen: sidebar, sky band,
-// Copilot drawer, draft modal and toast. Approvals live here so a draft
-// approved on one screen stays approved on the others.
+// Copilot drawer, draft modal and toast. Approvals, scheduled clips and
+// calendar additions live here so every screen sees the same state.
 
 export interface DraftTarget {
   kind: "reply" | "reminder";
@@ -32,6 +32,14 @@ interface Shell {
   approved: Set<string>;
   approve: (ids: { id: string; minutesSaved: number }[]) => void;
   minutesSaved: number;
+  scheduledClips: Set<string>;
+  scheduleClip: (id: string) => void;
+  dealsInCalendar: Set<string>;
+  addDealToCalendar: (slug: string) => void;
+  addedEvents: CalEvent[];
+  addEvent: (event: CalEvent) => void;
+  removedEvents: Set<string>;
+  removeEvent: (id: string) => void;
 }
 
 const ShellContext = createContext<Shell | null>(null);
@@ -60,6 +68,10 @@ export default function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const [approved, setApproved] = useState<Set<string>>(new Set());
   const [minutesSaved, setMinutesSaved] = useState(today.minutesSavedThisWeek);
+  const [scheduledClips, setScheduledClips] = useState<Set<string>>(new Set());
+  const [dealsInCalendar, setDealsInCalendar] = useState<Set<string>>(new Set());
+  const [addedEvents, setAddedEvents] = useState<CalEvent[]>([]);
+  const [removedEvents, setRemovedEvents] = useState<Set<string>>(new Set());
   const [draft, setDraft] = useState<DraftTarget | null>(null);
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [chat, setChat] = useState<ChatTurn[]>([]);
@@ -123,6 +135,14 @@ export default function AppShell({ children }: { children: ReactNode }) {
     approved,
     approve,
     minutesSaved,
+    scheduledClips,
+    scheduleClip: (id) => setScheduledClips((s) => new Set(s).add(id)),
+    dealsInCalendar,
+    addDealToCalendar: (slug) => setDealsInCalendar((s) => new Set(s).add(slug)),
+    addedEvents,
+    removedEvents,
+    addEvent: (event) => setAddedEvents((list) => [...list, event]),
+    removeEvent: (id) => setRemovedEvents((s) => new Set(s).add(id)),
   };
 
   return (
@@ -145,10 +165,14 @@ export default function AppShell({ children }: { children: ReactNode }) {
               );
             })}
             <div className={styles.navLabel}>Workspace</div>
-            <button type="button" className={styles.navItem} onClick={() => notify("Calendar is coming next")}>
+            <Link
+              href="/dashboard/calendar"
+              className={cx(styles.navItem, pathname.startsWith("/dashboard/calendar") && styles.navActive)}
+              aria-current={pathname.startsWith("/dashboard/calendar") ? "page" : undefined}
+            >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><rect x="3" y="4" width="18" height="17" rx="3" /><path d="M3 10h18M8 2v4M16 2v4" /></svg>
               <span>Calendar</span>
-            </button>
+            </Link>
             <button type="button" className={styles.navItem} onClick={() => notify("Analytics is coming next")}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></svg>
               <span>Analytics</span>
