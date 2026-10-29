@@ -6,6 +6,7 @@ import { Fragment, useState } from "react";
 import base from "../../dashboard.module.css";
 import styles from "./inbox.module.css";
 import { PageHead, TopBar, useShell } from "../../_shell/AppShell";
+import { withSignOff } from "../../_shell/settings";
 import { EmptyState, ReconnectBanner } from "../../_shell/states";
 import { BLUE, CATEGORY_STYLE, GREEN, PATTERNS, Pixels, RefreshIcon, cx, hours } from "../../_shell/ui";
 import { categoryCounts, inboxThreads, stats, type Category, type InboxThread, type Tone } from "../../data";
@@ -43,7 +44,7 @@ function plain(text: string) {
 
 export default function Inbox({ initialId }: { initialId?: string }) {
   const router = useRouter();
-  const { notify, approve, approved, minutesSaved } = useShell();
+  const { notify, approve, approved, minutesSaved, settings } = useShell();
   const [selectedId, setSelectedId] = useState(
     inboxThreads.some((t) => t.id === initialId) ? initialId! : inboxThreads[0].id,
   );
@@ -53,6 +54,8 @@ export default function Inbox({ initialId }: { initialId?: string }) {
   const [archived, setArchived] = useState<Set<string>>(new Set());
   const [tones, setTones] = useState<Record<string, Tone>>({});
   const [drafted, setDrafted] = useState<Set<string>>(new Set());
+  const [edits, setEdits] = useState<Record<string, string>>({});
+  const [editing, setEditing] = useState<string | null>(null);
   const [regenerating, setRegenerating] = useState(false);
 
   const live = inboxThreads.filter((t) => !archived.has(t.id));
@@ -63,8 +66,12 @@ export default function Inbox({ initialId }: { initialId?: string }) {
       (!q || [t.from, t.subject, t.preview].some((field) => field.toLowerCase().includes(q))),
   );
 
-  const hasDraft = (t: InboxThread) => Boolean(t.drafts) && (t.draftReady || drafted.has(t.id));
-  const waiting = live.filter((t) => t.draftReady && !approved.has(t.id));
+  // Drafted automatically only when Settings › Replies allows it for the category.
+  const autoDrafted = (t: InboxThread) => t.draftReady && t.category !== "Spam" && settings.autoDraft[t.category];
+  const hasDraft = (t: InboxThread) => Boolean(t.drafts) && (autoDrafted(t) || drafted.has(t.id));
+  const waiting = live.filter((t) => autoDrafted(t) && !approved.has(t.id));
+  const toneFor = (t: InboxThread) => tones[t.id] ?? settings.tone;
+  const draftText = (t: InboxThread) => edits[t.id] ?? withSignOff(t.drafts![toneFor(t)], settings.signOff);
   const selected = live.find((t) => t.id === selectedId) ?? live[0];
 
   function select(id: string) {
@@ -90,7 +97,7 @@ export default function Inbox({ initialId }: { initialId?: string }) {
     setRegenerating(true);
     setTimeout(() => {
       setRegenerating(false);
-      const tone = tones[t.id] ?? "Friendly";
+      const tone = toneFor(t);
       notify(`Draft rewritten in a ${tone.toLowerCase()} tone`);
     }, 700);
   }
@@ -203,9 +210,26 @@ export default function Inbox({ initialId }: { initialId?: string }) {
           <Reader
             key={selected.id}
             thread={selected}
-            tone={tones[selected.id] ?? "Friendly"}
-            setTone={(tone) => setTones((s) => ({ ...s, [selected.id]: tone }))}
+            tone={toneFor(selected)}
+            setTone={(tone) => {
+              setTones((s) => ({ ...s, [selected.id]: tone }));
+              if (edits[selected.id] !== undefined) {
+                setEdits(({ [selected.id]: _, ...rest }) => rest);
+                notify(`Switched to ${tone.toLowerCase()}; your edits were replaced`);
+              }
+            }}
             hasDraft={hasDraft(selected)}
+            autoOff={selected.draftReady && !autoDrafted(selected)}
+            text={selected.drafts ? draftText(selected) : ""}
+            edited={edits[selected.id] !== undefined}
+            editing={editing === selected.id}
+            onEdit={() => setEditing(selected.id)}
+            onDoneEditing={() => setEditing(null)}
+            onChangeText={(value) => setEdits((s) => ({ ...s, [selected.id]: value }))}
+            onUndoEdits={() => {
+              setEdits(({ [selected.id]: _, ...rest }) => rest);
+              setEditing(null);
+            }}
             isApproved={approved.has(selected.id)}
             regenerating={regenerating}
             onDraft={() => {
@@ -214,6 +238,7 @@ export default function Inbox({ initialId }: { initialId?: string }) {
             }}
             onRegenerate={() => regenerate(selected)}
             onApprove={() => {
+              setEditing(null);
               approve([selected]);
               notify("Reply saved to your Gmail drafts");
             }}
@@ -242,6 +267,14 @@ function Reader({
   tone,
   setTone,
   hasDraft,
+  autoOff,
+  text,
+  edited,
+  editing,
+  onEdit,
+  onDoneEditing,
+  onChangeText,
+  onUndoEdits,
   isApproved,
   regenerating,
   onDraft,
@@ -254,6 +287,14 @@ function Reader({
   tone: Tone;
   setTone: (tone: Tone) => void;
   hasDraft: boolean;
+  autoOff: boolean;
+  text: string;
+  edited: boolean;
+  editing: boolean;
+  onEdit: () => void;
+  onDoneEditing: () => void;
+  onChangeText: (value: string) => void;
+  onUndoEdits: () => void;
   isApproved: boolean;
   regenerating: boolean;
   onDraft: () => void;
@@ -304,7 +345,7 @@ function Reader({
         <div className={styles.draft}>
           <div className={styles.draftHead}>
             <strong>Reply draft</strong>
-            <span className={base.tag}>written in your tone</span>
+            <span className={base.tag}>{edited ? "edited by you" : "written in your tone"}</span>
             {hasDraft && (
               <div className={styles.tones} role="radiogroup" aria-label="Tone">
                 {TONES.map((option) => (
@@ -325,16 +366,33 @@ function Reader({
           </div>
           {hasDraft ? (
             <>
-              <div className={cx(styles.draftBody, regenerating && styles.draftBusy)} aria-label={plain(t.drafts[tone])}>
-                <Rich text={t.drafts[tone]} />
-              </div>
+              {editing ? (
+                <textarea
+                  className={styles.draftEdit}
+                  value={plain(text)}
+                  onChange={(e) => onChangeText(e.target.value)}
+                  rows={Math.max(8, plain(text).split("\n").length + 2)}
+                  aria-label="Edit reply"
+                  autoFocus
+                />
+              ) : (
+                <div className={cx(styles.draftBody, regenerating && styles.draftBusy)} aria-label={plain(text)}>
+                  <Rich text={text} />
+                </div>
+              )}
               <div className={styles.draftFoot}>
                 <span className={styles.note}>Nothing is sent until you approve it.</span>
                 {isApproved ? (
                   <span className={base.savedTag}>✓ Saved to Gmail drafts</span>
+                ) : editing ? (
+                  <>
+                    {edited && <button type="button" className={base.btnGhost} onClick={onUndoEdits}>Undo edits</button>}
+                    <button type="button" className={base.btnDark} onClick={onDoneEditing}>Done editing</button>
+                  </>
                 ) : (
                   <>
-                    <button type="button" className={base.btnGhost} onClick={onRegenerate} disabled={regenerating}>
+                    <button type="button" className={base.btnGhost} onClick={onEdit}>Edit</button>
+                    <button type="button" className={base.btnGhost} onClick={onRegenerate} disabled={regenerating || edited}>
                       <RefreshIcon /> {regenerating ? "Rewriting…" : "Regenerate"}
                     </button>
                     <button type="button" className={base.btnDark} onClick={onApprove}>Approve and save to Gmail drafts</button>
@@ -344,7 +402,11 @@ function Reader({
             </>
           ) : (
             <div className={styles.noDraft}>
-              <p>No reply drafted yet. This one needs your decision, so CreatorOS waited for you.</p>
+              <p>
+                {autoOff
+                  ? `Auto-drafts for ${t.category === "Fan question" ? "fan questions" : t.category === "Collab" ? "collabs" : "brand deals"} are off in Settings, so nothing was drafted.`
+                  : "No reply drafted yet. This one needs your decision, so CreatorOS waited for you."}
+              </p>
               <button type="button" className={base.btnDark} onClick={onDraft}>✦ Draft a reply</button>
             </div>
           )}

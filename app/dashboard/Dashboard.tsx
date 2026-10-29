@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import styles from "./dashboard.module.css";
 import { PageHead, TopBar, useShell } from "./_shell/AppShell";
+import { withSignOff } from "./_shell/settings";
 import { EmptyState, ReconnectBanner } from "./_shell/states";
 import { BLUE, CATEGORY_STYLE, GREEN, PATTERNS, PURPLE, Pixels, YELLOW, healthColor, hours } from "./_shell/ui";
 import {
@@ -21,7 +22,7 @@ import {
 } from "./data";
 
 export default function Dashboard() {
-  const { notify, openDraft, approved, minutesSaved } = useShell();
+  const { notify, openDraft, approved, minutesSaved, settings } = useShell();
   const [todoList, setTodoList] = useState<Todo[]>(initialTodos);
   const [addedIdeas, setAddedIdeas] = useState<Set<string>>(new Set());
   const [filter, setFilter] = useState<Category | "All">("All");
@@ -141,7 +142,7 @@ export default function Dashboard() {
                     {approved.has(m.id) ? (
                       <span className={styles.savedTag}>✓ Saved to Gmail drafts</span>
                     ) : (
-                      <button type="button" className={styles.miniDark} onClick={() => openDraft({ kind: "reply", id: m.id, title: "Reply draft", to: m.from, text: m.draft, minutesSaved: m.minutesSaved })}>
+                      <button type="button" className={styles.miniDark} onClick={() => openDraft({ kind: "reply", id: m.id, title: "Reply draft", to: m.from, text: withSignOff(m.draft, settings.signOff), minutesSaved: m.minutesSaved })}>
                         Review draft
                       </button>
                     )}

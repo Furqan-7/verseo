@@ -83,3 +83,11 @@ export const ACCOUNT_META: Record<AccountId, { name: string; mark: string; color
   instagram: { name: "Instagram", mark: "IG", color: "linear-gradient(45deg,#f9a825,#e91e63,#7b1fa2)", detail: "Metrics from a CSV import" },
   tiktok: { name: "TikTok", mark: "♪", color: "#181818", detail: "Coming soon" },
 };
+
+// Swap a drafted email's closing paragraph for the creator's sign-off.
+// Short replies (comments, DMs) have no sign-off and are left alone.
+export function withSignOff(draft: string, signOff: string) {
+  const parts = draft.split("\n\n");
+  if (parts.length < 3 || !signOff.trim()) return draft;
+  return [...parts.slice(0, -1), signOff.trim()].join("\n\n");
+}
