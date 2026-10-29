@@ -265,6 +265,20 @@ export default function Settings({ initialTab }: { initialTab: SettingsTab }) {
               <Row title="Email me the briefing" detail={`Arrives at ${settings.briefingTime} am, Monday to Sunday. It’s always on your Today screen too.`}>
                 <Toggle on={settings.briefingEmail} onChange={(on) => save({ briefingEmail: on })} label="Email me the briefing" />
               </Row>
+              <Row title="Preview the email" detail="Opens today’s briefing email with your time, name and sections.">
+                <a
+                  className={base.btnGhost}
+                  target="_blank"
+                  rel="noopener"
+                  href={`/dashboard/email/briefing?${new URLSearchParams({
+                    time: settings.briefingTime,
+                    name: settings.name.split(" ")[0] || "Maya",
+                    sections: (Object.keys(settings.briefingSections) as BriefingSection[]).filter((k) => settings.briefingSections[k]).join(","),
+                  })}`}
+                >
+                  Preview ↗
+                </a>
+              </Row>
               <h3 className={styles.subTitle}>What it includes</h3>
               {SECTIONS.map((s) => (
                 <Row
