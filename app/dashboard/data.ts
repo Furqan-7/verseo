@@ -885,3 +885,27 @@ export const alerts: Alert[] = [
   { id: "a5", kind: "newDeal", title: "Spotify wants a Wrapped teaser", detail: "$1,800 · 1 Short · due Tue 1 Dec", when: "Mon", today: false, href: "/dashboard/deals?deal=spotify", read: true },
   { id: "a6", kind: "weekly", title: "Your week: $3,300 in, 9 posts out", detail: "6.5 hours saved · views up 13.9%", when: "Sun", today: false, href: "/dashboard/analytics?range=7", read: true },
 ];
+
+// ── Publish: transcript ─────────────────────────────────────────────────────
+// What CreatorOS heard in vlog_tuesday.mp4, one line every few seconds of
+// speech. Lines inside a clip are tinted with that clip's colour.
+
+export const transcript: { sec: number; text: string }[] = [
+  { sec: 4, text: "Okay, morning! It's Tuesday, and today is all about the setup." },
+  { sec: 21, text: "A lot of you asked in the comments what I film with, so let's finally do it." },
+  { sec: 52, text: "Here's the setup I use for every video. Camera, one lens, one mic." },
+  { sec: 66, text: "The lens is a 24 millimetre, and honestly it covers ninety percent of what I shoot." },
+  { sec: 79, text: "Everything is linked in my bio, so you don't have to screenshot this." },
+  { sec: 140, text: "Before we go further, coffee. Non-negotiable." },
+  { sec: 212, text: "This is the corner of the studio I film most of my talking shots in." },
+  { sec: 331, text: "Now, this forty dollar light changed everything for me." },
+  { sec: 352, text: "Look at the difference. Same room, same camera, just this one light." },
+  { sec: 372, text: "If you buy one thing after this video, make it a light, not a lens." },
+  { sec: 455, text: "Okay, quick break to answer a few comments." },
+  { sec: 540, text: "Someone asked how long editing takes me. Usually a full day per video." },
+  { sec: 618, text: "Mic test: before and after. Here's the camera's built-in mic." },
+  { sec: 633, text: "And here's the clip-on. Same voice, same room. Hear that?" },
+  { sec: 644, text: "That's the biggest upgrade for the least money." },
+  { sec: 760, text: "Next week I'm doing a gear swap with Leo, so subscribe for that." },
+  { sec: 852, text: "That's it for today. Thanks for watching, see you Friday." },
+];
