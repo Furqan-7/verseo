@@ -2,6 +2,8 @@
    tokens so buttons, tags and eyebrows look the same. */
 
 .page {
+  --zoom: 1;
+  zoom: var(--zoom);
   --ink: #181818;
   --muted: #686868;
   --faint: #8b8b8b;
@@ -10,7 +12,7 @@
   --bg: #f9f9f9;
   --red: #d64535;
   position: relative;
-  min-height: 100vh;
+  min-height: calc(100vh / var(--zoom));
   overflow: hidden;
   background: linear-gradient(#f9f9f9 0%, #f3f6f9 45%, #dae3ed 72%, #b7cae0 100%);
   color: var(--ink);
@@ -408,6 +410,13 @@ button.chipOn:hover {
   font-size: 13.5px;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+/* Drawn at 80% on desktop, like the workspace screens. */
+@media (min-width: 1100px) {
+  .page {
+    --zoom: 0.8;
+  }
 }
 
 @media (max-width: 1000px) {

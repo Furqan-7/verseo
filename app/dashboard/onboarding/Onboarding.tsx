@@ -7,6 +7,7 @@ import base from "../dashboard.module.css";
 import styles from "./onboarding.module.css";
 import { BLUE, GREEN, Logo, PATTERNS, PURPLE, Pixels, YELLOW, cx } from "../_shell/ui";
 import { ONBOARDED_COOKIE } from "../../../src/auth/demo";
+import { loadSettings, saveSettings, type AccountId } from "../_shell/settings";
 import { categoryCounts, goals, ideas, niches, onboardingAccounts, stats, todos } from "../data";
 
 const STEPS = ["Connect", "About you", "First briefing"];
@@ -28,9 +29,20 @@ export default function Onboarding() {
 
   const connected = onboardingAccounts.filter((a) => accounts[a.id] === "connected" || accounts[a.id] === "imported");
 
-  function finish(to = "/dashboard") {
+  // Skipping keeps the saved settings; finishing saves what was chosen here.
+  function finish(save = false) {
+    if (save) {
+      const current = loadSettings();
+      const mapped = Object.fromEntries(
+        onboardingAccounts.map((a) => {
+          const state = accounts[a.id];
+          return [a.id, state === "connected" || state === "imported" || state === "soon" ? state : "disconnected"];
+        }),
+      ) as Record<AccountId, "connected" | "imported" | "soon" | "disconnected">;
+      saveSettings({ ...current, niche, goals: [...goal], briefingTime: briefingAt, accounts: { ...current.accounts, ...mapped } });
+    }
     document.cookie = `${ONBOARDED_COOKIE}=1; path=/; max-age=${60 * 60 * 24 * 365}; samesite=lax`;
-    router.push(to);
+    router.push("/dashboard");
   }
 
   function connect(id: string) {
@@ -188,7 +200,7 @@ export default function Onboarding() {
             ) : (
               <button type="button" className={base.btnGhost} onClick={() => setStep(step - 1)}>Back</button>
             )}
-            <button type="button" className={cx(base.btnDark, styles.continue)} onClick={() => (step < STEPS.length - 1 ? setStep(step + 1) : finish())}>
+            <button type="button" className={cx(base.btnDark, styles.continue)} onClick={() => (step < STEPS.length - 1 ? setStep(step + 1) : finish(true))}>
               {step < STEPS.length - 1 ? "Continue" : "Open my briefing"}
             </button>
           </div>

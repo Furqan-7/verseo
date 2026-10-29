@@ -344,7 +344,7 @@
   font-size: 14px !important;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1099px) {
   .layout {
     grid-template-columns: minmax(0, 1fr);
   }

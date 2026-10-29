@@ -390,7 +390,7 @@
   flex: 1 1 140px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1099px) {
   .layout {
     grid-template-columns: minmax(0, 1fr);
   }

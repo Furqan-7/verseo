@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useRef, useState, type ReactNode } from "react";
 import styles from "../dashboard.module.css";
 import { copilot, creator, deals, stats, today, type CalEvent } from "../data";
+import { ACCOUNT_META, DEFAULT_SETTINGS, loadSettings, saveSettings, type AccountId, type Settings } from "./settings";
 import { BLUE, GREEN, PATTERNS, PURPLE, Pixels, Logo, YELLOW, cx } from "./ui";
 
 // The workspace frame shared by every /dashboard screen: sidebar, sky band,
@@ -40,6 +41,8 @@ interface Shell {
   addEvent: (event: CalEvent) => void;
   removedEvents: Set<string>;
   removeEvent: (id: string) => void;
+  settings: Settings;
+  updateSettings: (patch: Partial<Settings>) => void;
 }
 
 const ShellContext = createContext<Shell | null>(null);
@@ -72,6 +75,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
   const [dealsInCalendar, setDealsInCalendar] = useState<Set<string>>(new Set());
   const [addedEvents, setAddedEvents] = useState<CalEvent[]>([]);
   const [removedEvents, setRemovedEvents] = useState<Set<string>>(new Set());
+  // Defaults on the first render (matching the server), then this browser's saved copy.
+  const [settings, setSettings] = useState<Settings>(DEFAULT_SETTINGS);
   const [draft, setDraft] = useState<DraftTarget | null>(null);
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [chat, setChat] = useState<ChatTurn[]>([]);
@@ -98,6 +103,18 @@ export default function AppShell({ children }: { children: ReactNode }) {
     },
     [approved],
   );
+
+  useEffect(() => {
+    setSettings(loadSettings());
+  }, []);
+
+  const updateSettings = useCallback((patch: Partial<Settings>) => {
+    setSettings((s) => {
+      const next = { ...s, ...patch };
+      saveSettings(next);
+      return next;
+    });
+  }, []);
 
   // ⌘K / Ctrl+K opens the Copilot, Escape closes whatever is open.
   useEffect(() => {
@@ -143,6 +160,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
     removedEvents,
     addEvent: (event) => setAddedEvents((list) => [...list, event]),
     removeEvent: (id) => setRemovedEvents((s) => new Set(s).add(id)),
+    settings,
+    updateSettings,
   };
 
   return (
@@ -182,22 +201,31 @@ export default function AppShell({ children }: { children: ReactNode }) {
               <span>Copilot</span>
               <kbd className={styles.kbdSmall}>⌘K</kbd>
             </button>
+            <Link
+              href="/dashboard/settings"
+              className={cx(styles.navItem, pathname.startsWith("/dashboard/settings") && styles.navActive)}
+              aria-current={pathname.startsWith("/dashboard/settings") ? "page" : undefined}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><circle cx="12" cy="12" r="3" /><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z" /></svg>
+              <span>Settings</span>
+            </Link>
           </nav>
           <div className={styles.sideFoot}>
             <div className={styles.connected}>
               <span>Connected</span>
               <div className={styles.connIcons}>
-                <span style={{ background: "#ea4335" }} title="Gmail">M</span>
-                <span style={{ background: "#4285f4" }} title="Google Calendar">31</span>
-                <span style={{ background: "#ff0033" }} title="YouTube">▶</span>
-                <span style={{ background: "linear-gradient(45deg,#f9a825,#e91e63,#7b1fa2)" }} title="Instagram">IG</span>
-                <Link className={styles.connAdd} href="/dashboard/onboarding" aria-label="Connect another account" title="Connect another account">+</Link>
+                {(Object.keys(ACCOUNT_META) as AccountId[])
+                  .filter((id) => settings.accounts[id] === "connected" || settings.accounts[id] === "imported")
+                  .map((id) => (
+                    <span key={id} style={{ background: ACCOUNT_META[id].color }} title={ACCOUNT_META[id].name}>{ACCOUNT_META[id].mark}</span>
+                  ))}
+                <Link className={styles.connAdd} href="/dashboard/settings?tab=accounts" aria-label="Manage connected accounts" title="Manage connected accounts">+</Link>
               </div>
             </div>
             <div className={styles.me}>
               <span className={styles.avatar}>{creator.initial}</span>
               <div className={styles.meText}>
-                <strong>{creator.name}</strong>
+                <strong>{settings.name || creator.name}</strong>
                 <span>{creator.audience}</span>
               </div>
               <a className={styles.signOut} href="/auth/signout" title="Sign out" aria-label="Sign out">

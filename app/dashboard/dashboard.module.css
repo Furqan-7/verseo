@@ -1,7 +1,13 @@
 /* CreatorOS dashboard. Tokens match the landing page: #181818 ink, #ededed
-   hairlines, 12px cards, square 4px buttons, Inter + JetBrains Mono. */
+   hairlines, 12px cards, square 4px buttons, Inter + JetBrains Mono.
+
+   On desktop the whole app is drawn at 80% (--zoom), so the 1440px designs
+   fit a laptop at 100% browser zoom. Viewport heights are divided by --zoom
+   to still fill the window. Below 1100px the app is drawn at full size. */
 
 .app {
+  --zoom: 1;
+  zoom: var(--zoom);
   --ink: #181818;
   --muted: #686868;
   --faint: #8b8b8b;
@@ -11,7 +17,7 @@
   --red: #d64535;
   display: grid;
   grid-template-columns: 248px 1fr;
-  min-height: 100vh;
+  min-height: calc(100vh / var(--zoom));
   background: var(--bg);
   color: var(--ink);
   font-family: var(--font-inter), Inter, system-ui, sans-serif;
@@ -62,7 +68,7 @@
 .sidebar {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: calc(100vh / var(--zoom));
   background: #fff;
   border-right: 1px solid var(--line);
   display: flex;
@@ -267,7 +273,7 @@
   position: relative;
   z-index: 2;
   padding: 22px 32px 48px;
-  max-width: 1320px;
+  max-width: 1600px;
 }
 
 /* top bar */
@@ -1023,8 +1029,14 @@
   }
 }
 
-/* tablet */
-@media (max-width: 1200px) {
+@media (min-width: 1100px) {
+  .app {
+    --zoom: 0.8;
+  }
+}
+
+/* tablet (the breakpoints are below 1100px, where --zoom is 1) */
+@media (max-width: 1099px) {
   .cols {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
