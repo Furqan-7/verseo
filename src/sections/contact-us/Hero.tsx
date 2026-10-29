@@ -57,7 +57,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-1gzltzo" data-framer-appear-id="1gzltzo" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                   <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                    {"Have a question, want to see Verseo in action, or need help choosing the right workflow? Send us a note and we’ll get back to you soon."}
+                    {"Have a question, want to see CreatorOS in action, or need help connecting your accounts? Send us a note and we’ll get back to you soon."}
                   </p>
                 </div>
               </div>
@@ -113,7 +113,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-1gzltzo" data-framer-appear-id="1gzltzo" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                   <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                    {"Have a question, want to see Verseo in action, or need help choosing the right workflow? Send us a note and we’ll get back to you soon."}
+                    {"Have a question, want to see CreatorOS in action, or need help connecting your accounts? Send us a note and we’ll get back to you soon."}
                   </p>
                 </div>
               </div>
@@ -169,7 +169,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-1gzltzo" data-framer-appear-id="1gzltzo" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                   <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "start" }}>
-                    {"Have a question, want to see Verseo in action, or need help choosing the right workflow? Send us a note and we’ll get back to you soon."}
+                    {"Have a question, want to see CreatorOS in action, or need help connecting your accounts? Send us a note and we’ll get back to you soon."}
                   </p>
                 </div>
               </div>
@@ -1319,12 +1319,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-1ydtg3d" data-framer-name="Tell us what you’re building" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                   <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                    {"Tell us what you’re building"}
+                    {"Tell us about your channel"}
                   </p>
                 </div>
                 <div className="framer-19jlear" data-framer-name="Contact Details Body" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                   <p className="framer-text framer-styles-preset-wklbpq" data-styles-preset="HM0tD8O3g" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }}>
-                    {"Share a few details and the Verseo team will point you toward the fastest way to create, refine, and publish better content."}
+                    {"Share a few details and the CreatorOS team will help you set up your briefing, inbox and deal tracking."}
                   </p>
                 </div>
               </div>
@@ -1336,7 +1336,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-19t0b9y" data-framer-name="verseo@gmail.com" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                   <p className="framer-text framer-styles-preset-qrqban" data-styles-preset="QJehLDsLg" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                    {"verseo@gmail.com"}
+                    {"hello@creatoros.ai"}
                   </p>
                 </div>
               </div>
@@ -1425,12 +1425,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-1ydtg3d" data-framer-name="Tell us what you’re building" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                   <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                    {"Tell us what you’re building"}
+                    {"Tell us about your channel"}
                   </p>
                 </div>
                 <div className="framer-19jlear" data-framer-name="Contact Details Body" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                   <p className="framer-text framer-styles-preset-wklbpq" data-styles-preset="HM0tD8O3g" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }}>
-                    {"Share a few details and the Verseo team will point you toward the fastest way to create, refine, and publish better content."}
+                    {"Share a few details and the CreatorOS team will help you set up your briefing, inbox and deal tracking."}
                   </p>
                 </div>
               </div>
@@ -1442,7 +1442,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-19t0b9y" data-framer-name="verseo@gmail.com" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                   <p className="framer-text framer-styles-preset-qrqban" data-styles-preset="QJehLDsLg" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                    {"verseo@gmail.com"}
+                    {"hello@creatoros.ai"}
                   </p>
                 </div>
               </div>
@@ -1531,12 +1531,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-1ydtg3d" data-framer-name="Tell us what you’re building" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                   <p className="framer-text framer-styles-preset-1oe4yia" data-styles-preset="HMSqd56Jo" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                    {"Tell us what you’re building"}
+                    {"Tell us about your channel"}
                   </p>
                 </div>
                 <div className="framer-19jlear" data-framer-name="Contact Details Body" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                   <p className="framer-text framer-styles-preset-wklbpq" data-styles-preset="HM0tD8O3g" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--token-0142e593-9c62-4a02-8a77-c2bc87e6f565, rgb(104, 104, 104))" }}>
-                    {"Share a few details and the Verseo team will point you toward the fastest way to create, refine, and publish better content."}
+                    {"Share a few details and the CreatorOS team will help you set up your briefing, inbox and deal tracking."}
                   </p>
                 </div>
               </div>
@@ -1548,7 +1548,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-19t0b9y" data-framer-name="verseo@gmail.com" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                   <p className="framer-text framer-styles-preset-qrqban" data-styles-preset="QJehLDsLg" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))" }}>
-                    {"verseo@gmail.com"}
+                    {"hello@creatoros.ai"}
                   </p>
                 </div>
               </div>

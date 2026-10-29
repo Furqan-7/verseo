@@ -234,10 +234,65 @@
   "content_request: ": "request: ",
   "Get Started": "Get started free",
   "Try Demo": "See how it works"
+ },
+ "pages": {
+  "/privacy-policy": {
+   "Last updated: June 2026": "Last updated: 28 October 2026",
+   "It is a legal document that explains how a website collects, uses, stores, and protects user data.": "How CreatorOS collects, uses and protects your data when you connect your inbox, calendar and channels.",
+   "We collect both personal and non-personal information to improve our services and provide you with a seamless experience. This may include:": "We collect only what we need to run your workspace:",
+   "Personal Information: Name, email address, phone number, billing information, and any other details you provide when contacting us or using our services.": "Account information: your name, email address and, on paid plans, billing details.",
+   "Non-Personal Information: Browser type, device information, IP address, pages visited, and other analytics data collected automatically.": "Connected-account data: with your permission, read-only access to the Gmail, Google Calendar and YouTube data CreatorOS needs to sort messages, draft replies and plan your day, plus any metrics you import.",
+   "Provide and improve our services.": "Build your daily briefing, sort your inbox and draft replies in your tone.",
+   "Communicate with you regarding inquiries, projects, or support requests.": "Track brand deals, deadlines and payments, and suggest content ideas.",
+   "Personalize your experience on our Website.": "Send the briefing email and the alerts you turn on.",
+   "Improve Website functionality and security.": "Keep CreatorOS secure and fix problems.",
+   "We do not sell or rent your personal information. However, we may share your information with:": "We never sell your data or use it for advertising. We share it only with:",
+   "Service providers assisting us in operating our Website and business (e.g., payment processors, hosting providers).": "Service providers that run CreatorOS for us, such as hosting, email delivery, payments and AI model providers, under contracts that limit how they use it.",
+   "We use cookies and similar tracking technologies to analyze website traffic and enhance user experience. You can control cookie preferences through your browser settings.": "We use a sign-in cookie to keep you signed in and to remember that you finished setup. Some settings are stored in your browser. You can clear both at any time in your browser settings.",
+   "We implement industry-standard security measures to protect your personal information. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.": "Connections are read-only where possible, data is encrypted in transit, and nothing is sent, posted or booked without your approval. No system is perfectly secure, so we can't guarantee absolute security.",
+   "7. Termination": "7. Data Retention",
+   "We reserve the right to terminate or suspend access to our Website or services at any time if a user violates these Terms of Service.": "We keep your data while your account is open. When you disconnect an account we stop syncing it, and when you delete your account we delete your data within 30 days unless the law requires us to keep it.",
+   "Request data portability. To exercise these rights, contact us at [your email address].": "Request a copy of your data. To use any of these rights, email hello@creatoros.ai.",
+   "Our Website may contain links to third-party sites. We are not responsible for their privacy practices and encourage you to review their policies.": "CreatorOS connects to services such as Gmail, Google Calendar and YouTube. Their own privacy policies apply to the data they hold.",
+   "Welcome to [Your Website Name] (\"we,\" \"our,\" \"us\"). Your privacy is important to us. This Privacy Policy outlines how we collect, use, disclose, and protect your information when you visit our website [yourwebsite.com] (the \"Website\"). By using the Website, you agree to the terms outlined in this Privacy Policy.": "This policy explains how CreatorOS (\"we,\" \"our,\" \"us\") collects, uses and protects your information when you use creatoros.ai and the CreatorOS app. By using CreatorOS, you agree to this policy."
+  },
+  "/terms-of-service": {
+   "Last updated: June 2026": "Last updated: 28 October 2026",
+   "It is a legal agreement that outlines the rules, responsibilities, and expectations between a website, app, or service provider and its users.": "The rules for using CreatorOS: what we provide, what we ask of you, and what each of us is responsible for.",
+   "We provide brand design services, including but not limited to logo design, brand strategy, and visual identity development. Our services may change or be updated from time to time at our discretion.": "CreatorOS is an AI assistant for creators. It connects to accounts you choose, such as Gmail, Google Calendar and YouTube, to sort messages, draft replies, track brand deals, repurpose videos and plan your schedule. Features may change as we improve the product.",
+   "By using our Website, you agree that you will not:": "By using CreatorOS, you agree that you will not:",
+   "Attempt to hack, disrupt, or modify our Website.": "Attempt to hack, overload or disrupt CreatorOS.",
+   "Use our content or designs without permission.": "Use CreatorOS to send spam or to post content you don't have the rights to.",
+   "Refunds are only granted under specific circumstances, subject to our review.": "Paid plans renew monthly until you cancel, and you can cancel at any time in Settings.",
+   "All payments for services must be made as per the agreed terms before work commences.": "Fees are charged in advance for each billing period. Refunds are handled case by case.",
+   "Late payments may result in service delays or termination.": "If a payment fails, paid features may pause until it is resolved.",
+   "Clients receive rights to use the final design as outlined in the agreed contract.": "You own your content, including your videos, captions and the replies you approve.",
+   "We retain ownership of all preliminary design work until final payment is received.": "You give us permission to process your content only to provide CreatorOS to you.",
+   "You may not resell, modify, or claim ownership of any work without our permission.": "CreatorOS itself, including its software and design, belongs to us.",
+   "We are not liable for any damages, including lost profits or data, resulting from the use of our Website or services. We do not guarantee that our Website will be error-free or uninterrupted.": "AI suggestions can be wrong, so review drafts, captions and extracted contract terms before you approve them. CreatorOS never sends, posts or signs anything without your approval. To the extent the law allows, we are not liable for indirect losses such as lost profits, and we don't guarantee the service will be uninterrupted or error-free.",
+   "We reserve the right to terminate or suspend access to our Website or services at any time if a user violates these Terms of Service.": "We may suspend or close an account that breaks these terms. You can delete your account at any time.",
+   "We may update these Terms from time to time. Continued use of the Website after changes are posted constitutes acceptance of the revised Terms.": "We may update these terms. We'll tell you about important changes by email, and continuing to use CreatorOS after that means you accept them.",
+   "Welcome to [Your Website Name] (\"we,\" \"our,\" \"us\"). By accessing and using our website [yourwebsite.com] (the \"Website\") and services, you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please do not use our Website.": "These terms apply when you use creatoros.ai and the CreatorOS app (\"CreatorOS,\" \"we,\" \"our,\" \"us\"). By using CreatorOS, you agree to them. If you don't agree, please don't use CreatorOS."
+  },
+  "/contact-us": {
+   "Have a question, want to see Verseo in action, or need help choosing the right workflow? Send us a note and we’ll get back to you soon.": "Have a question, want to see CreatorOS in action, or need help connecting your accounts? Send us a note and we’ll get back to you soon.",
+   "Tell us what you’re building": "Tell us about your channel",
+   "Share a few details and the Verseo team will point you toward the fastest way to create, refine, and publish better content.": "Share a few details and the CreatorOS team will help you set up your briefing, inbox and deal tracking.",
+   "verseo@gmail.com": "hello@creatoros.ai"
+  }
  }
 };
 
-  var TITLE = "CreatorOS — The AI Operating System for Creators";
+  // Each page's title; Framer's runtime resets it to the template's.
+  var TITLES = {
+    "/": "CreatorOS — The AI Operating System for Creators",
+    "/privacy-policy": "Privacy Policy — CreatorOS",
+    "/terms-of-service": "Terms of Service — CreatorOS",
+    "/contact-us": "Contact CreatorOS",
+    "/404": "Page Not Found — CreatorOS"
+  };
+  var PATH = location.pathname.replace(/\/+$/, "") || "/";
+  var TITLE = TITLES[PATH] || (document.title.indexOf("Not Found") !== -1 ? TITLES["/404"] : TITLES["/"]);
   // Page text and map keys are compared in a normalised form: trimmed, runs of
   // whitespace collapsed and curly quotes made straight. Some template lines end
   // in a space (the first half of a two-line heading), and text that only
@@ -252,6 +307,9 @@
     return m;
   }
   var globalMap = trimmed(COPY.global);
+  // Copy that only applies on one page (the legal pages share section names
+  // but need different text), checked before the section maps.
+  var pageMap = COPY.pages && COPY.pages[PATH] ? trimmed(COPY.pages[PATH]) : {};
   var sectionMaps = {};
   Object.keys(COPY.sections).forEach(function (name) {
     var m = trimmed(COPY.sections[name]);
@@ -277,8 +335,7 @@
       return;
     }
     var key = norm(raw);
-    var map = mapFor(node);
-    var next = map[key];
+    var next = key in pageMap ? pageMap[key] : mapFor(node)[key];
     if (next === undefined && raw.indexOf("Verseo") !== -1) next = raw.trim().replace(/Verseo/g, "CreatorOS");
     if (next === undefined) return fixFaqAnswer(node);
     if (next === raw.trim()) return;
@@ -355,6 +412,7 @@
     if (/(^|\/)404$/.test(href)) return hide(a.closest("p") || a);
     if (href.indexOf("framer.link/") !== -1) want = SIGNUP;
     else if (href.indexOf("x.com/YTsyhanenko") !== -1) want = "https://x.com/";
+    else if (href === "mailto:verseo@gmail.com") want = "mailto:hello@creatoros.ai";
     else if (toContact && (a.closest('[data-framer-name="Results"]') || a.closest('[data-framer-name="Pricing"]'))) want = SIGNUP;
     else if (role === "Primary" && (toContact || a.closest('[data-framer-name="Hero"]'))) want = SIGNUP;
     else if (role === "Secondary" && (toContact || a.closest('[data-framer-name="Hero"]'))) want = "./#how-it-works";
@@ -365,12 +423,23 @@
   // The footer newsletter form is wired to the template's Framer form service,
   // which would send visitors' emails to the template author. Send them to
   // sign-up instead, with the email filled in.
+  // The Contact page's form posts there too, so it opens an email to the
+  // team with the visitor's message instead.
   window.addEventListener("submit", function (e) {
     var form = e.target;
     var input = form && form.querySelector && form.querySelector('input[type="email"]');
     if (!input) return;
     e.preventDefault();
     e.stopImmediatePropagation();
+    if (form.getAttribute("data-framer-name") === "Contact Form") {
+      var value = function (sel) { var el = form.querySelector(sel); return el ? el.value.trim() : ""; };
+      // Exact names: the form also has hidden spam-trap fields.
+      var name = value('input[name="Full Name"]');
+      var subject = value('input[name="Subject"]') || "Hello from the CreatorOS site";
+      var body = value("textarea") + "\n\n— " + (name || "") + (input.value ? " (" + input.value + ")" : "");
+      location.href = "mailto:hello@creatoros.ai?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      return;
+    }
     location.href = SIGNUP + "?email=" + encodeURIComponent(input.value);
   }, true);
 

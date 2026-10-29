@@ -57,7 +57,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-nsmcer" data-framer-appear-id="nsmcer" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                   <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                    {"Last updated: June 2026"}
+                    {"Last updated: 28 October 2026"}
                   </p>
                 </div>
               </div>
@@ -113,7 +113,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-nsmcer" data-framer-appear-id="nsmcer" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                   <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                    {"Last updated: June 2026"}
+                    {"Last updated: 28 October 2026"}
                   </p>
                 </div>
               </div>
@@ -169,7 +169,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                 </div>
                 <div className="framer-nsmcer" data-framer-appear-id="nsmcer" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ opacity: "0.001", justifyContent: "center", transform: "translateY(50px)" }}>
                   <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "center" }}>
-                    {"Last updated: June 2026"}
+                    {"Last updated: 28 October 2026"}
                   </p>
                 </div>
               </div>
@@ -1317,29 +1317,29 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1axaudc">
                       <div className="framer-2tnz63" data-framer-name="Title" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"It is a legal document that explains how a website collects, uses, stores, and protects user data."}
+                          {"How CreatorOS collects, uses and protects your data when you connect your inbox, calendar and channels."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
                           {"1. Introduction"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"Welcome to [Your Website Name] (\"we,\" \"our,\" \"us\"). Your privacy is important to us. This Privacy Policy outlines how we collect, use, disclose, and protect your information when you visit our website [yourwebsite.com] (the \"Website\"). By using the Website, you agree to the terms outlined in this Privacy Policy."}
+                          {"This policy explains how CreatorOS (\"we,\" \"our,\" \"us\") collects, uses and protects your information when you use creatoros.ai and the CreatorOS app. By using CreatorOS, you agree to this policy."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
                           {"2. Information We Collect"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We collect both personal and non-personal information to improve our services and provide you with a seamless experience. This may include:"}
+                          {"We collect only what we need to run your workspace:"}
                         </p>
                         <ul dir="auto" className="framer-text">
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Personal Information: Name, email address, phone number, billing information, and any other details you provide when contacting us or using our services."}
+                              {"Account information: your name, email address and, on paid plans, billing details."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Non-Personal Information: Browser type, device information, IP address, pages visited, and other analytics data collected automatically."}
+                              {"Connected-account data: with your permission, read-only access to the Gmail, Google Calendar and YouTube data CreatorOS needs to sort messages, draft replies and plan your day, plus any metrics you import."}
                             </p>
                           </li>
                         </ul>
@@ -1352,12 +1352,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                         <ul dir="auto" className="framer-text">
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Provide and improve our services."}
+                              {"Build your daily briefing, sort your inbox and draft replies in your tone."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Communicate with you regarding inquiries, projects, or support requests."}
+                              {"Track brand deals, deadlines and payments, and suggest content ideas."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
@@ -1367,12 +1367,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Personalize your experience on our Website."}
+                              {"Send the briefing email and the alerts you turn on."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Improve Website functionality and security."}
+                              {"Keep CreatorOS secure and fix problems."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
@@ -1385,12 +1385,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           {"4. Sharing and Disclosure"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We do not sell or rent your personal information. However, we may share your information with:"}
+                          {"We never sell your data or use it for advertising. We share it only with:"}
                         </p>
                         <ul dir="auto" className="framer-text">
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Service providers assisting us in operating our Website and business (e.g., payment processors, hosting providers)."}
+                              {"Service providers that run CreatorOS for us, such as hosting, email delivery, payments and AI model providers, under contracts that limit how they use it."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
@@ -1408,19 +1408,19 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           {"5. Cookies and Tracking Technologies"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We use cookies and similar tracking technologies to analyze website traffic and enhance user experience. You can control cookie preferences through your browser settings."}
+                          {"We use a sign-in cookie to keep you signed in and to remember that you finished setup. Some settings are stored in your browser. You can clear both at any time in your browser settings."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
                           {"6. Data Security"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We implement industry-standard security measures to protect your personal information. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security."}
+                          {"Connections are read-only where possible, data is encrypted in transit, and nothing is sent, posted or booked without your approval. No system is perfectly secure, so we can't guarantee absolute security."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
-                          {"7. Termination"}
+                          {"7. Data Retention"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We reserve the right to terminate or suspend access to our Website or services at any time if a user violates these Terms of Service."}
+                          {"We keep your data while your account is open. When you disconnect an account we stop syncing it, and when you delete your account we delete your data within 30 days unless the law requires us to keep it."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
                           {"8. Your Rights"}
@@ -1446,7 +1446,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Request data portability. To exercise these rights, contact us at [your email address]."}
+                              {"Request a copy of your data. To use any of these rights, email hello@creatoros.ai."}
                             </p>
                           </li>
                         </ul>
@@ -1454,7 +1454,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           {"9. Third-Party Links"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"Our Website may contain links to third-party sites. We are not responsible for their privacy practices and encourage you to review their policies."}
+                          {"CreatorOS connects to services such as Gmail, Google Calendar and YouTube. Their own privacy policies apply to the data they hold."}
                         </p>
                       </div>
                     </div>
@@ -1475,29 +1475,29 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1axaudc">
                       <div className="framer-2tnz63" data-framer-name="Title" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"It is a legal document that explains how a website collects, uses, stores, and protects user data."}
+                          {"How CreatorOS collects, uses and protects your data when you connect your inbox, calendar and channels."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
                           {"1. Introduction"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"Welcome to [Your Website Name] (\"we,\" \"our,\" \"us\"). Your privacy is important to us. This Privacy Policy outlines how we collect, use, disclose, and protect your information when you visit our website [yourwebsite.com] (the \"Website\"). By using the Website, you agree to the terms outlined in this Privacy Policy."}
+                          {"This policy explains how CreatorOS (\"we,\" \"our,\" \"us\") collects, uses and protects your information when you use creatoros.ai and the CreatorOS app. By using CreatorOS, you agree to this policy."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
                           {"2. Information We Collect"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We collect both personal and non-personal information to improve our services and provide you with a seamless experience. This may include:"}
+                          {"We collect only what we need to run your workspace:"}
                         </p>
                         <ul dir="auto" className="framer-text">
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Personal Information: Name, email address, phone number, billing information, and any other details you provide when contacting us or using our services."}
+                              {"Account information: your name, email address and, on paid plans, billing details."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Non-Personal Information: Browser type, device information, IP address, pages visited, and other analytics data collected automatically."}
+                              {"Connected-account data: with your permission, read-only access to the Gmail, Google Calendar and YouTube data CreatorOS needs to sort messages, draft replies and plan your day, plus any metrics you import."}
                             </p>
                           </li>
                         </ul>
@@ -1510,12 +1510,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                         <ul dir="auto" className="framer-text">
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Provide and improve our services."}
+                              {"Build your daily briefing, sort your inbox and draft replies in your tone."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Communicate with you regarding inquiries, projects, or support requests."}
+                              {"Track brand deals, deadlines and payments, and suggest content ideas."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
@@ -1525,12 +1525,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Personalize your experience on our Website."}
+                              {"Send the briefing email and the alerts you turn on."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Improve Website functionality and security."}
+                              {"Keep CreatorOS secure and fix problems."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
@@ -1543,12 +1543,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           {"4. Sharing and Disclosure"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We do not sell or rent your personal information. However, we may share your information with:"}
+                          {"We never sell your data or use it for advertising. We share it only with:"}
                         </p>
                         <ul dir="auto" className="framer-text">
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Service providers assisting us in operating our Website and business (e.g., payment processors, hosting providers)."}
+                              {"Service providers that run CreatorOS for us, such as hosting, email delivery, payments and AI model providers, under contracts that limit how they use it."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
@@ -1566,19 +1566,19 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           {"5. Cookies and Tracking Technologies"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We use cookies and similar tracking technologies to analyze website traffic and enhance user experience. You can control cookie preferences through your browser settings."}
+                          {"We use a sign-in cookie to keep you signed in and to remember that you finished setup. Some settings are stored in your browser. You can clear both at any time in your browser settings."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
                           {"6. Data Security"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We implement industry-standard security measures to protect your personal information. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security."}
+                          {"Connections are read-only where possible, data is encrypted in transit, and nothing is sent, posted or booked without your approval. No system is perfectly secure, so we can't guarantee absolute security."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
-                          {"7. Termination"}
+                          {"7. Data Retention"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We reserve the right to terminate or suspend access to our Website or services at any time if a user violates these Terms of Service."}
+                          {"We keep your data while your account is open. When you disconnect an account we stop syncing it, and when you delete your account we delete your data within 30 days unless the law requires us to keep it."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
                           {"8. Your Rights"}
@@ -1604,7 +1604,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Request data portability. To exercise these rights, contact us at [your email address]."}
+                              {"Request a copy of your data. To use any of these rights, email hello@creatoros.ai."}
                             </p>
                           </li>
                         </ul>
@@ -1612,7 +1612,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           {"9. Third-Party Links"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"Our Website may contain links to third-party sites. We are not responsible for their privacy practices and encourage you to review their policies."}
+                          {"CreatorOS connects to services such as Gmail, Google Calendar and YouTube. Their own privacy policies apply to the data they hold."}
                         </p>
                       </div>
                     </div>
@@ -1633,29 +1633,29 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                     <div className="framer-1axaudc">
                       <div className="framer-2tnz63" data-framer-name="Title" data-framer-component-type="RichTextContainer" style={{ transform: "none" }}>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"It is a legal document that explains how a website collects, uses, stores, and protects user data."}
+                          {"How CreatorOS collects, uses and protects your data when you connect your inbox, calendar and channels."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
                           {"1. Introduction"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"Welcome to [Your Website Name] (\"we,\" \"our,\" \"us\"). Your privacy is important to us. This Privacy Policy outlines how we collect, use, disclose, and protect your information when you visit our website [yourwebsite.com] (the \"Website\"). By using the Website, you agree to the terms outlined in this Privacy Policy."}
+                          {"This policy explains how CreatorOS (\"we,\" \"our,\" \"us\") collects, uses and protects your information when you use creatoros.ai and the CreatorOS app. By using CreatorOS, you agree to this policy."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
                           {"2. Information We Collect"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We collect both personal and non-personal information to improve our services and provide you with a seamless experience. This may include:"}
+                          {"We collect only what we need to run your workspace:"}
                         </p>
                         <ul dir="auto" className="framer-text">
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Personal Information: Name, email address, phone number, billing information, and any other details you provide when contacting us or using our services."}
+                              {"Account information: your name, email address and, on paid plans, billing details."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Non-Personal Information: Browser type, device information, IP address, pages visited, and other analytics data collected automatically."}
+                              {"Connected-account data: with your permission, read-only access to the Gmail, Google Calendar and YouTube data CreatorOS needs to sort messages, draft replies and plan your day, plus any metrics you import."}
                             </p>
                           </li>
                         </ul>
@@ -1668,12 +1668,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                         <ul dir="auto" className="framer-text">
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Provide and improve our services."}
+                              {"Build your daily briefing, sort your inbox and draft replies in your tone."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Communicate with you regarding inquiries, projects, or support requests."}
+                              {"Track brand deals, deadlines and payments, and suggest content ideas."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
@@ -1683,12 +1683,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Personalize your experience on our Website."}
+                              {"Send the briefing email and the alerts you turn on."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Improve Website functionality and security."}
+                              {"Keep CreatorOS secure and fix problems."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
@@ -1701,12 +1701,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           {"4. Sharing and Disclosure"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We do not sell or rent your personal information. However, we may share your information with:"}
+                          {"We never sell your data or use it for advertising. We share it only with:"}
                         </p>
                         <ul dir="auto" className="framer-text">
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Service providers assisting us in operating our Website and business (e.g., payment processors, hosting providers)."}
+                              {"Service providers that run CreatorOS for us, such as hosting, email delivery, payments and AI model providers, under contracts that limit how they use it."}
                             </p>
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
@@ -1724,19 +1724,19 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           {"5. Cookies and Tracking Technologies"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We use cookies and similar tracking technologies to analyze website traffic and enhance user experience. You can control cookie preferences through your browser settings."}
+                          {"We use a sign-in cookie to keep you signed in and to remember that you finished setup. Some settings are stored in your browser. You can clear both at any time in your browser settings."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
                           {"6. Data Security"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We implement industry-standard security measures to protect your personal information. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security."}
+                          {"Connections are read-only where possible, data is encrypted in transit, and nothing is sent, posted or booked without your approval. No system is perfectly secure, so we can't guarantee absolute security."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
-                          {"7. Termination"}
+                          {"7. Data Retention"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"We reserve the right to terminate or suspend access to our Website or services at any time if a user violates these Terms of Service."}
+                          {"We keep your data while your account is open. When you disconnect an account we stop syncing it, and when you delete your account we delete your data within 30 days unless the law requires us to keep it."}
                         </p>
                         <h4 dir="auto" className="framer-text framer-styles-preset-192kqv5">
                           {"8. Your Rights"}
@@ -1762,7 +1762,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           </li>
                           <li data-preset-tag="p" className="framer-text framer-styles-preset-12h7zc6">
                             <p className="framer-text framer-styles-preset-12h7zc6">
-                              {"Request data portability. To exercise these rights, contact us at [your email address]."}
+                              {"Request a copy of your data. To use any of these rights, email hello@creatoros.ai."}
                             </p>
                           </li>
                         </ul>
@@ -1770,7 +1770,7 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                           {"9. Third-Party Links"}
                         </h4>
                         <p dir="auto" className="framer-text framer-styles-preset-12h7zc6">
-                          {"Our Website may contain links to third-party sites. We are not responsible for their privacy practices and encourage you to review their policies."}
+                          {"CreatorOS connects to services such as Gmail, Google Calendar and YouTube. Their own privacy policies apply to the data they hold."}
                         </p>
                       </div>
                     </div>

@@ -32,15 +32,15 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
               <h1 className="framer-text framer-styles-preset-i5u1e3" data-styles-preset="IqdDbb0JQ" dir="auto">
                 {"Start creating "}
                 <br className="framer-text" />
-                {"better content today"}
+                {"more, manage less"}
               </h1>
             </div>
           </div>
           <div className="framer-17nberj" data-framer-name="Verseo helps teams, founders, and marketers generate high-quality content in seconds — without overthinking every word" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", willChange: "transform", opacity: "0", transform: "translateY(20px)" }}>
             <p className="framer-text framer-styles-preset-1nk2dou" data-styles-preset="qAMdVSYF7" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-              {"Turn ideas into polished content in seconds. Generate, refine, and publish faster"}
+              {"Your inbox, deals, content and schedule in one place. Wake up to a plan,"}
               <br className="framer-text" />
-              {"with AI-powered workflows designed for modern teams."}
+              {"with the busywork already done."}
             </p>
           </div>
         </div>
@@ -48,16 +48,16 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
           <Suspense fallback={null}>
             <div className="framer-3glfew-container" data-framer-name="Final CTA Instance" name="Final CTA Instance">
               <Suspense fallback={null}>
-                <a name="Final CTA Instance" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-m8hd4j framer-14zb1bv" data-framer-name="Primary" data-highlight="true" href="./contact-us" data-framer-page-link-current="true" tabIndex={0} style={{ "--border-bottom-width": "0px", "--border-color": "rgba(0, 0, 0, 0)", "--border-left-width": "0px", "--border-right-width": "0px", "--border-style": "solid", "--border-top-width": "0px", backgroundColor: "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", width: "100%", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
+                <a name="Final CTA Instance" className="framer-JNWaH framer-IDlYG framer-m8hd4j framer-v-m8hd4j framer-14zb1bv" data-framer-name="Primary" data-highlight="true" href="/auth/signup" tabIndex={0} style={{ "--border-bottom-width": "0px", "--border-color": "rgba(0, 0, 0, 0)", "--border-left-width": "0px", "--border-right-width": "0px", "--border-style": "solid", "--border-top-width": "0px", backgroundColor: "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", width: "100%", borderBottomLeftRadius: "4px", borderBottomRightRadius: "4px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>
                   <div className="framer-8n851v" data-framer-name="Text Container">
                     <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                        {"Get Started"}
+                        {"Get started free"}
                       </p>
                     </div>
                     <div className="framer-1uxyoc7" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-color": "var(--extracted-r6o4lv, var(--token-b8bc3670-987c-48cf-82d4-790f50736b23, rgb(255, 255, 255)))" }}>
-                        {"Get Started"}
+                        {"Get started free"}
                       </p>
                     </div>
                   </div>
@@ -72,12 +72,12 @@ for Structured Growth " data-framer-component-type="RichTextContainer" style={{ 
                   <div className="framer-8n851v" data-framer-name="Text Container">
                     <div className="framer-axfzz6" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                        {"Try Demo"}
+                        {"See how it works"}
                       </p>
                     </div>
                     <div className="framer-1uxyoc7" data-framer-name="Get template" data-framer-component-type="RichTextContainer" style={{ justifyContent: "center", "--extracted-r6o4lv": "var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24))", "--framer-paragraph-spacing": "0px", transform: "none" }}>
                       <p className="framer-text framer-styles-preset-1r64itd" data-styles-preset="MNlwj3ylK" dir="auto" style={{ "--framer-text-alignment": "start", "--framer-text-color": "var(--extracted-r6o4lv, var(--token-150c4a4e-408f-4cdd-8cd9-4f462c902163, rgb(24, 24, 24)))" }}>
-                        {"Try Demo"}
+                        {"See how it works"}
                       </p>
                     </div>
                   </div>
