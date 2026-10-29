@@ -82,6 +82,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState<Settings>(DEFAULT_SETTINGS);
   const [readAlerts, setReadAlerts] = useState<Set<string>>(() => new Set(alerts.filter((a) => a.read).map((a) => a.id)));
   const [draft, setDraft] = useState<DraftTarget | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
   const [copilotOpen, setCopilotOpen] = useState(false);
   const [chat, setChat] = useState<ChatTurn[]>([]);
   const [question, setQuestion] = useState("");
@@ -120,6 +121,11 @@ export default function AppShell({ children }: { children: ReactNode }) {
     });
   }, []);
 
+  // The phone menu closes whenever the screen changes.
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
   // ⌘K / Ctrl+K opens the Copilot, Escape closes whatever is open.
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -129,6 +135,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
       } else if (e.key === "Escape") {
         setDraft(null);
         setCopilotOpen(false);
+        setMenuOpen(false);
       }
     }
     window.addEventListener("keydown", onKey);
@@ -148,6 +155,11 @@ export default function AppShell({ children }: { children: ReactNode }) {
     setChat((c) => [...c, { role: "you", text: q }, { role: "copilot", text: answerFor(q) }]);
     setQuestion("");
   }
+
+  const screenName =
+    [...NAV, { label: "Calendar", href: "/dashboard/calendar" }, { label: "Analytics", href: "/dashboard/analytics" }, { label: "Settings", href: "/dashboard/settings" }]
+      .filter((item) => (item.href === "/dashboard" ? pathname === item.href : pathname.startsWith(item.href)))
+      .map((item) => item.label)[0] ?? "";
 
   const shell: Shell = {
     notify,
@@ -173,12 +185,22 @@ export default function AppShell({ children }: { children: ReactNode }) {
   return (
     <ShellContext.Provider value={shell}>
       <div className={styles.app}>
-        <aside className={styles.sidebar}>
-          <Link className={styles.logo} href="/" aria-label="CreatorOS home">
-            <Logo />
-            CREATOROS
-          </Link>
-          <nav className={styles.nav} aria-label="Workspace">
+        <aside className={cx(styles.sidebar, menuOpen && styles.sidebarOpen)}>
+          <div className={styles.phoneBar}>
+            <Link className={styles.logo} href="/" aria-label="CreatorOS home">
+              <Logo />
+              CREATOROS
+            </Link>
+            <span className={styles.phoneTitle}>{screenName}</span>
+            <button type="button" className={styles.menuBtn} onClick={() => setMenuOpen((v) => !v)} aria-expanded={menuOpen} aria-controls="workspace-nav">
+              {menuOpen ? (
+                <><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>Close</>
+              ) : (
+                <><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>Menu</>
+              )}
+            </button>
+          </div>
+          <nav className={styles.nav} aria-label="Workspace" id="workspace-nav">
             {NAV.map((item) => {
               const active = item.href === "/dashboard" ? pathname === item.href : pathname.startsWith(item.href);
               return (
@@ -206,7 +228,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2" /></svg>
               <span>Analytics</span>
             </Link>
-            <button type="button" className={styles.navItem} onClick={() => setCopilotOpen(true)}>
+            <button type="button" className={styles.navItem} onClick={() => { setMenuOpen(false); setCopilotOpen(true); }}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M12 2l2.4 6.9H22l-6 4.4 2.3 7L12 16l-6.3 4.3L8 13.3 2 8.9h7.6z" /></svg>
               <span>Copilot</span>
               <kbd className={styles.kbdSmall}>⌘K</kbd>

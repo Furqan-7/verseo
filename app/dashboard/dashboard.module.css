@@ -89,6 +89,24 @@
   width: 24px;
   height: 24px;
 }
+.phoneBar {
+  display: contents;
+}
+.phoneTitle,
+.menuBtn {
+  display: none;
+}
+.menuBtn {
+  margin-left: auto;
+  height: 36px;
+  padding: 0 12px;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  font-size: 14px;
+}
 .nav {
   display: flex;
   flex-direction: column;
@@ -1054,41 +1072,67 @@
   .app {
     grid-template-columns: 1fr;
   }
+  /* A slim bar with the logo, the current screen and a Menu button; the
+     menu opens the full sidebar over the page. */
   .sidebar {
     position: sticky;
     height: auto;
     flex-direction: row;
     align-items: center;
-    gap: 6px;
-    padding: 10px 12px;
+    gap: 10px;
+    padding: 10px 16px;
     border-right: 0;
     border-bottom: 1px solid var(--line);
-    overflow-x: auto;
   }
   .logo {
-    padding: 0 6px 0 0;
-    font-size: 0;
+    padding: 0;
   }
-  .nav {
-    flex-direction: row;
+  .phoneBar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
   }
-  .nav .navLabel,
-  .nav button,
-  .sideFoot .connected,
-  .meText {
+  .phoneTitle {
+    display: block;
+    font-size: 14px;
+    color: var(--muted);
+    padding-left: 10px;
+    border-left: 1px solid var(--line);
+  }
+  .menuBtn {
+    display: inline-flex;
+  }
+  .sidebar .nav,
+  .sidebar .sideFoot {
     display: none;
   }
-  .navItem {
-    width: auto;
-    height: 36px;
-    font-size: 13.5px;
+  .sidebarOpen {
+    position: fixed;
+    inset: 0;
+    z-index: 35;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    overflow-y: auto;
+    border-bottom: 0;
+    animation: fade 0.15s ease;
   }
-  .sideFoot {
-    margin: 0 0 0 auto;
-    flex-direction: row;
+  .sidebarOpen .phoneBar {
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
   }
-  .me {
-    padding: 0;
+  .sidebarOpen .nav {
+    display: flex;
+    margin-top: 10px;
+  }
+  .sidebarOpen .navItem {
+    height: 48px;
+    font-size: 16px;
+  }
+  .sidebarOpen .sideFoot {
+    display: flex;
+    margin-top: 24px;
   }
   .wrap {
     padding: 16px 16px 40px;
