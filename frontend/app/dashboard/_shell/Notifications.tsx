@@ -21,7 +21,7 @@ const KIND: Record<AlertKind, { label: string; color: string; icon: string }> = 
 // Settings › Notifications; read state lives in the shell.
 export default function Notifications() {
   const router = useRouter();
-  const { settings, alerts, readAlerts, markRead, approved, allDeals } = useShell();
+  const { settings, alerts, readAlerts, markRead, approved, allDeals, threads } = useShell();
   const [open, setOpen] = useState(false);
   const wrap = useRef<HTMLDivElement>(null);
 
@@ -50,7 +50,9 @@ export default function Notifications() {
     .filter((a) => settings.notifications[a.kind])
     .map((a) => {
       const deal = reminderSaved(a);
-      return deal ? { ...a, title: `${deal.brand} reminder saved to drafts`, detail: `${deal.overdue!.amount} · invoice ${deal.overdue!.invoice} · send it from Gmail` } : a;
+      if (!deal) return a;
+      const toGmail = threads.find((t) => t.id === deal.replyId)?.delivery === "gmail_draft";
+      return { ...a, title: `${deal.brand} reminder ${toGmail ? "saved to drafts" : "approved"}`, detail: `${deal.overdue!.amount} · invoice ${deal.overdue!.invoice}${toGmail ? " · send it from Gmail" : ""}` };
     });
   const unread = list.filter((a) => !readAlerts.has(a.id));
   const groups = [

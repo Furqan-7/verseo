@@ -1,19 +1,20 @@
 import { prisma } from "db";
 import type { AnalyticsDayDto, AnalyticsDto, Channel } from "../types/api";
 import { addDays, fromIsoDate, toIsoDate } from "../utils/dates";
-import { WORKSPACE_TODAY } from "./sample.data";
+import { clockFor } from "./clock.service";
 
 const MONTHS_SHOWN = 6;
 const zero = (): Record<Channel, number> => ({ youtube: 0, instagram: 0, tiktok: 0 });
 
 export async function getAnalytics(userId: string, range: number): Promise<AnalyticsDto> {
-  const from = addDays(WORKSPACE_TODAY, -(range * 2 - 1));
-  const firstMonth = fromIsoDate(`${WORKSPACE_TODAY.slice(0, 7)}-01`);
+  const { today } = await clockFor(userId);
+  const from = addDays(today, -(range * 2 - 1));
+  const firstMonth = fromIsoDate(`${today.slice(0, 7)}-01`);
   firstMonth.setUTCMonth(firstMonth.getUTCMonth() - (MONTHS_SHOWN - 1));
 
   const [rows, posts, paid, owed] = await Promise.all([
     prisma.channelDay.findMany({
-      where: { profileId: userId, date: { gte: fromIsoDate(from), lte: fromIsoDate(WORKSPACE_TODAY) } },
+      where: { profileId: userId, date: { gte: fromIsoDate(from), lte: fromIsoDate(today) } },
       orderBy: { date: "asc" },
     }),
     prisma.contentPost.findMany({ where: { profileId: userId }, orderBy: { views: "desc" }, take: 20 }),

@@ -204,3 +204,7 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.modal .error {
+  color: var(--red);
+}

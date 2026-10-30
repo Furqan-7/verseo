@@ -49,6 +49,14 @@ export function toMessageDto(m: MessageRow): MessageDto {
     archived: m.archivedAt !== null,
     approvedAt: m.approvedAt?.toISOString() ?? null,
     approvedReply: m.approvedReply,
+    delivery: m.externalId && m.source === "gmail" ? "gmail_draft" : m.externalId && m.source === "youtube" ? "youtube_reply" : "none",
+    delivered: m.replyExternalId !== null,
+    externalUrl:
+      m.source === "gmail" && m.threadId
+        ? `https://mail.google.com/mail/u/0/#all/${m.threadId}`
+        : m.source === "youtube" && m.threadId && m.externalId
+          ? `https://www.youtube.com/watch?v=${m.threadId}&lc=${m.externalId}`
+          : null,
     drafts,
   };
 }
@@ -120,7 +128,18 @@ export function toEventDto(e: Prisma.CalendarEventGetPayload<object>): EventDto 
 }
 
 export function toPostDto(p: Prisma.ScheduledPostGetPayload<object>): PostDto {
-  return { id: p.id, clipId: p.clipId, platform: p.platform, scheduledAt: p.scheduledAt.toISOString(), why: p.why, caption: p.caption };
+  return {
+    id: p.id,
+    clipId: p.clipId,
+    platform: p.platform,
+    scheduledAt: p.scheduledAt.toISOString(),
+    why: p.why,
+    caption: p.caption,
+    status: p.status,
+    externalUrl: p.externalUrl,
+    error: p.error,
+    hasClipFile: p.clipPath !== null,
+  };
 }
 
 export const clipInclude = { captions: true, posts: { orderBy: { scheduledAt: "asc" } } } satisfies Prisma.ClipInclude;
@@ -165,6 +184,8 @@ export function toVideoDto(v: Prisma.VideoGetPayload<{ include: typeof videoIncl
   return {
     id: v.id,
     fileName: v.fileName,
+    status: v.status,
+    error: v.error,
     lengthSec: v.lengthSec,
     quality: v.quality,
     createdAt: v.createdAt.toISOString(),

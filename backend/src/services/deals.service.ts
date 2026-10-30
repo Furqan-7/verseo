@@ -5,6 +5,8 @@ import type { DealDto, DealStage } from "../types/api";
 import { notFound } from "../utils/AppError";
 import { fromIsoDate } from "../utils/dates";
 import { PAYMENT_LABEL, assessContract, deliverableItems } from "./dealHealth";
+import { clockFor } from "./clock.service";
+import { pushCalendar } from "./events.service";
 import { dealInclude, toDealDto } from "./mappers";
 
 // Deals added from a contract all get the same brand colour; the sample
@@ -30,7 +32,7 @@ function slugFor(brand: string) {
 // Turns the terms read from a contract into a deal, scoring it on the
 // server so the client can't send its own health or risks.
 export async function createDeal(userId: string, input: CreateDealInput): Promise<DealDto> {
-  const { health, risks } = assessContract(input);
+  const { health, risks } = assessContract(input, (await clockFor(userId)).today);
   const fee = `$${input.fee.toLocaleString("en-US")}`;
   const data: Prisma.DealCreateInput = {
     profile: { connect: { id: userId } },
@@ -50,15 +52,20 @@ export async function createDeal(userId: string, input: CreateDealInput): Promis
     healthScope: health.scope,
     terms: {
       create: [
-        { position: 0, label: "Fee", value: fee, clause: "§5.1" },
-        { position: 1, label: "Deliverables", value: input.deliverables, clause: "§3" },
-        { position: 2, label: "Usage rights", value: `${input.usageDays} days${input.usagePaid ? ", paid" : ""}`, clause: "§8" },
-        { position: 3, label: "Payment terms", value: PAYMENT_LABEL[input.payment], clause: "§6", missing: input.payment === "missing" },
+        { position: 0, label: "Fee", value: fee, clause: input.clauses?.fee ?? null },
+        { position: 1, label: "Deliverables", value: input.deliverables, clause: input.clauses?.deliverables ?? null },
+        { position: 2, label: "Usage rights", value: `${input.usageDays} days${input.usagePaid ? ", paid" : ""}`, clause: input.clauses?.usageDays ?? null },
+        { position: 3, label: "Payment terms", value: PAYMENT_LABEL[input.payment], clause: input.clauses?.payment ?? null, missing: input.payment === "missing" },
       ],
     },
     risks: { create: risks.map((r, position) => ({ position, title: r.title, fix: r.fix })) },
     deliverables: { create: deliverableItems(input.deliverables).map((title, position) => ({ position, title, dueDate: fromIsoDate(input.due) })) },
   };
+  if (input.documentId) {
+    const doc = await prisma.document.findFirst({ where: { id: input.documentId, profileId: userId }, select: { id: true } });
+    if (!doc) throw notFound("Contract");
+    data.documents = { connect: { id: doc.id } };
+  }
   const deal = await prisma.deal.create({ data, include: dealInclude });
   return toDealDto(deal);
 }
@@ -73,6 +80,7 @@ export async function updateDeal(userId: string, slug: string, input: UpdateDeal
     },
     include: dealInclude,
   });
+  if (input.inCalendar) await pushCalendar(userId);
   return toDealDto(deal);
 }
 

@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { requireAuth } from "../middleware/auth";
+import { accountRouter, briefingRouter, contractsRouter } from "./account.routes";
+import { integrationsRouter } from "./integrations.routes";
 import { dealsRouter } from "./deals.routes";
 import { eventsRouter } from "./events.routes";
 import { messagesRouter } from "./messages.routes";
@@ -26,3 +28,7 @@ apiRouter.use("/posts", postsRouter);
 apiRouter.use("/alerts", alertsRouter);
 apiRouter.use("/analytics", analyticsRouter);
 apiRouter.use("/copilot", copilotRouter);
+apiRouter.use("/integrations", integrationsRouter);
+apiRouter.use("/contracts", contractsRouter);
+apiRouter.use("/briefing", briefingRouter);
+apiRouter.use("/account", accountRouter);

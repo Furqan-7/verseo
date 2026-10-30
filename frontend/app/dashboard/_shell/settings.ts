@@ -12,6 +12,7 @@ export type NotificationId = "overdue" | "newDeal" | "deadline" | "weekly";
 export interface Settings {
   // The Supabase account's email (read-only here).
   email: string;
+  timezone: string;
   name: string;
   channel: string;
   niche: string;
@@ -29,6 +30,7 @@ export interface Settings {
 // Shown only until the profile has loaded.
 export const DEFAULT_SETTINGS: Settings = {
   email: "",
+  timezone: "UTC",
   name: "",
   channel: "",
   niche: "",

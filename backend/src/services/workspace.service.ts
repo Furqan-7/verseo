@@ -1,6 +1,10 @@
 import { prisma, type Prisma } from "db";
 import type { Tone } from "../types/api";
 import { addDays, fromIsoDate } from "../utils/dates";
+import { revoke } from "../lib/google";
+import { errorMessage, logger } from "../utils/logger";
+import { indexSource, messageText } from "./rag.service";
+import { localizer } from "./sample.localize";
 import { conflict } from "../utils/AppError";
 import {
   sampleAlerts,
@@ -44,13 +48,23 @@ export async function hasWorkspace(userId: string, db: Tx | typeof prisma = pris
 
 // Writes the sample creator's workspace into this user's rows. Refuses if
 // the workspace already has data, so it can never duplicate or overwrite.
-export async function seedSampleWorkspace(userId: string, tx: Tx) {
+export async function seedSampleWorkspace(userId: string, tx: Tx, today: string) {
   if (await hasWorkspace(userId, tx)) {
     throw conflict("Your workspace already has data", "WORKSPACE_NOT_EMPTY");
   }
+  // The sample, moved so its "today" is the creator's today.
+  const { walk } = localizer(today);
+  const deals = walk(sampleDeals);
+  const messages = walk(sampleMessages);
+  const todos = walk(sampleTodos);
+  const events = walk(sampleEvents);
+  const alerts = walk(sampleAlerts);
+  const video = walk(sampleVideo);
+  const topContent = walk(sampleTopContent);
+  const channelDays = walk(sampleChannelDays(addDays));
 
   const dealIds = new Map<string, string>();
-  for (const d of sampleDeals) {
+  for (const d of deals) {
     const deal = await tx.deal.create({
       data: {
         profileId: userId,
@@ -82,7 +96,7 @@ export async function seedSampleWorkspace(userId: string, tx: Tx) {
   }
 
   const messageIds = new Map<string, string>();
-  for (const m of sampleMessages) {
+  for (const m of messages) {
     const message = await tx.message.create({
       data: {
         profileId: userId,
@@ -107,6 +121,7 @@ export async function seedSampleWorkspace(userId: string, tx: Tx) {
       select: { id: true },
     });
     messageIds.set(m.key, message.id);
+    await indexSource(userId, "message", message.id, messageText({ fromName: m.fromName, subject: m.subject, body: m.body, summary: m.summary }), tx);
   }
 
   const ideaRows = await tx.idea.createManyAndReturn({
@@ -115,11 +130,11 @@ export async function seedSampleWorkspace(userId: string, tx: Tx) {
   });
 
   await tx.todo.createMany({
-    data: sampleTodos.map((t) => ({ profileId: userId, title: t.title, detail: t.detail, dueDate: fromIsoDate(t.dueDate), dueMinutes: t.dueMinutes, done: t.done })),
+    data: todos.map((t) => ({ profileId: userId, title: t.title, detail: t.detail, dueDate: fromIsoDate(t.dueDate), dueMinutes: t.dueMinutes, done: t.done })),
   });
 
   await tx.calendarEvent.createMany({
-    data: sampleEvents.map((e) => {
+    data: events.map((e) => {
       const link =
         !e.link ? null
         : "deal" in e.link ? { href: `/dashboard/deals?deal=${e.link.deal}`, label: "Open deal" }
@@ -141,9 +156,22 @@ export async function seedSampleWorkspace(userId: string, tx: Tx) {
     }),
   });
 
+  // The same keys the alert job uses, so it doesn't raise these again.
+  const tomorrow = addDays(today, 1);
+  const dueTomorrow = await tx.deliverable.findMany({ where: { dueDate: fromIsoDate(tomorrow), deal: { profileId: userId } }, select: { id: true, dealId: true } });
+  const dedupeKey = (a: (typeof alerts)[number]) => {
+    const dealId = a.dealSlug ? dealIds.get(a.dealSlug) : undefined;
+    if (a.kind === "overdue" && dealId) return `overdue:${dealId}`;
+    if (a.kind === "deadline" && dealId) {
+      const item = dueTomorrow.find((d) => d.dealId === dealId);
+      return item ? `deadline:${item.id}` : undefined;
+    }
+    return undefined;
+  };
   await tx.alert.createMany({
-    data: sampleAlerts.map((a) => ({
+    data: alerts.map((a) => ({
       profileId: userId,
+      dedupeKey: dedupeKey(a),
       dealId: a.dealSlug ? dealIds.get(a.dealSlug) : undefined,
       kind: a.kind,
       title: a.title,
@@ -154,15 +182,16 @@ export async function seedSampleWorkspace(userId: string, tx: Tx) {
     })),
   });
 
-  await tx.video.create({
+  const seededVideo = await tx.video.create({
+    select: { id: true },
     data: {
       profileId: userId,
-      fileName: sampleVideo.fileName,
-      lengthSec: sampleVideo.lengthSec,
-      quality: sampleVideo.quality,
-      transcript: { create: sampleVideo.transcript },
+      fileName: video.fileName,
+      lengthSec: video.lengthSec,
+      quality: video.quality,
+      transcript: { create: video.transcript },
       clips: {
-        create: sampleVideo.clips.map((c, position) => ({
+        create: video.clips.map((c, position) => ({
           position,
           short: c.short,
           title: c.title,
@@ -182,12 +211,14 @@ export async function seedSampleWorkspace(userId: string, tx: Tx) {
   });
 
   await tx.channelDay.createMany({
-    data: sampleChannelDays(addDays).map((d) => ({ profileId: userId, channel: d.channel, date: fromIsoDate(d.date), views: d.views, followers: d.followers, watchMinutes: d.watchMinutes })),
+    data: channelDays.map((d) => ({ profileId: userId, channel: d.channel, date: fromIsoDate(d.date), views: d.views, followers: d.followers, watchMinutes: d.watchMinutes })),
   });
 
   await tx.contentPost.createMany({
-    data: sampleTopContent.map((p) => ({ profileId: userId, ...p, postedAt: fromIsoDate(p.postedAt) })),
+    data: topContent.map((p) => ({ profileId: userId, ...p, postedAt: fromIsoDate(p.postedAt) })),
   });
+
+  await indexSource(userId, "transcript", seededVideo.id, video.transcript.map((l) => l.text).join(" "), tx);
 
   return { ideas: ideaRows.length };
 }
@@ -196,6 +227,8 @@ export async function seedSampleWorkspace(userId: string, tx: Tx) {
 // onboarding with default settings. The profile row (the Supabase user's
 // id and email) stays.
 export async function resetWorkspace(userId: string) {
+  // Disconnecting Google revokes the grant there too, not just here.
+  await revoke(userId).catch((err: unknown) => logger.warn("google revoke failed", { userId, error: errorMessage(err) }));
   await prisma.$transaction([
     prisma.message.deleteMany({ where: { profileId: userId } }),
     prisma.alert.deleteMany({ where: { profileId: userId } }),
@@ -207,6 +240,9 @@ export async function resetWorkspace(userId: string) {
     prisma.channelDay.deleteMany({ where: { profileId: userId } }),
     prisma.contentPost.deleteMany({ where: { profileId: userId } }),
     prisma.connectedAccount.deleteMany({ where: { profileId: userId } }),
+    prisma.document.deleteMany({ where: { profileId: userId } }),
+    prisma.chunk.deleteMany({ where: { profileId: userId } }),
+    prisma.job.deleteMany({ where: { profileId: userId, status: { in: ["queued", "failed", "done"] } } }),
     prisma.profile.updateMany({ where: { id: userId }, data: { ...DEFAULT_SETTINGS, onboardedAt: null } }),
   ]);
 }

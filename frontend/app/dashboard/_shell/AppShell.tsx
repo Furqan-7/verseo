@@ -1,12 +1,12 @@
 "use client";
 
-import type { ContractTermsInput, IdeaPlatform, PublishPlatform } from "@api-types";
+import type { ContractTermsInput, IdeaPlatform, ProfileDto, PublishPlatform, VideoDto } from "@api-types";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import styles from "../dashboard.module.css";
 import Loading from "../(workspace)/loading";
-import { TODAY_ISO, copilotQuestions, type Alert, type BoardDeal, type CalEvent, type Idea, type InboxThread, type Todo, type Tone, type Video } from "../data";
+import { TODAY_ISO, copilotQuestions, setWorkspaceClock, type Alert, type BoardDeal, type CalEvent, type Idea, type InboxThread, type Todo, type Tone, type Video } from "../data";
 import { ApiError, api } from "./api";
 import { TONE_CODE, toAlert, toDeal, toEvent, toIdea, toProfilePatch, toSettings, toThread, toTodo, toVideo } from "./model";
 import Notifications from "./Notifications";
@@ -49,8 +49,26 @@ export interface ClipPatch {
   hashtags?: string[];
 }
 
+// What the server can do (it has the keys) and how each account is syncing.
+export interface Integrations {
+  features: ProfileDto["features"];
+  sync: ProfileDto["sync"];
+  googleEmail: string | null;
+}
+
+const NO_INTEGRATIONS: Integrations = { features: { ai: false, google: false, storage: false, email: false }, sync: {}, googleEmail: null };
+const integrationsOf = (p: ProfileDto): Integrations => ({ features: p.features, sync: p.sync, googleEmail: p.googleEmail });
+
 interface Shell {
   notify: (message: string) => void;
+  integrations: Integrations;
+  // Re-reads the profile (settings, accounts, sync state) from the API.
+  refreshProfile: () => Promise<void>;
+  // Writes the reply with AI; false when AI isn't available.
+  regenerateDrafts: (id: string) => Promise<boolean>;
+  rewriteCaption: (clipId: string, platform: PublishPlatform) => Promise<boolean>;
+  pendingVideo: VideoDto | null;
+  refreshVideo: () => Promise<void>;
   openCopilot: () => void;
   openDraft: (draft: DraftTarget) => void;
   settings: Settings;
@@ -100,6 +118,7 @@ interface Workspace {
   ideas: Idea[];
   events: CalEvent[];
   video: Video | null;
+  pendingVideo: VideoDto | null;
   alerts: Alert[];
   minutesSaved: number;
 }
@@ -112,15 +131,18 @@ const LOADERS: { [K in Collection]: () => Promise<Partial<Workspace>> } = {
   todos: async () => ({ todos: (await api.todos()).map(toTodo) }),
   ideas: async () => ({ ideas: (await api.ideas()).map(toIdea) }),
   events: async () => ({ events: (await api.events()).map(toEvent) }),
+  // The newest finished video, plus one still uploading or processing.
   video: async () => {
-    const video = await api.latestVideo();
-    return { video: video ? toVideo(video) : null };
+    const videos = await api.videos();
+    const ready = videos.find((v) => v.status === "ready");
+    const pending = videos.find((v) => v.status !== "ready" && (!ready || v.createdAt > ready.createdAt));
+    return { video: ready ? toVideo(ready) : null, pendingVideo: pending ?? null };
   },
   alerts: async () => ({ alerts: (await api.alerts()).map(toAlert) }),
   summary: async () => ({ minutesSaved: (await api.summary()).minutesSavedThisWeek }),
 };
 
-const EMPTY: Workspace = { threads: [], deals: [], todos: [], ideas: [], events: [], video: null, alerts: [], minutesSaved: 0 };
+const EMPTY: Workspace = { threads: [], deals: [], todos: [], ideas: [], events: [], video: null, pendingVideo: null, alerts: [], minutesSaved: 0 };
 
 export default function AppShell({ children }: { children: ReactNode }) {
   const pathname = usePathname();
@@ -128,6 +150,7 @@ export default function AppShell({ children }: { children: ReactNode }) {
   const [status, setStatus] = useState<"loading" | "ready" | "error">("loading");
   const [loadError, setLoadError] = useState("");
   const [settings, setSettings] = useState<Settings>(DEFAULT_SETTINGS);
+  const [integrations, setIntegrations] = useState<Integrations>(NO_INTEGRATIONS);
   const [ws, setWs] = useState<Workspace>(EMPTY);
   const [draft, setDraft] = useState<DraftTarget | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -179,7 +202,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
         router.replace("/dashboard/onboarding");
         return;
       }
+      setWorkspaceClock(profile.timezone);
       setSettings(toSettings(profile));
+      setIntegrations(integrationsOf(profile));
       const parts = await Promise.all((Object.keys(LOADERS) as Collection[]).map((name) => LOADERS[name]()));
       setWs(Object.assign({ ...EMPTY }, ...parts));
       setStatus("ready");
@@ -264,7 +289,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
   function approveDraft() {
     if (!draft) return;
     approve([{ id: draft.id, text: draft.text, minutesSaved: draft.minutesSaved }]);
-    notify(draft.kind === "reminder" ? "Reminder saved to your Gmail drafts" : "Reply saved to your Gmail drafts");
+    const toGmail = ws.threads.find((t) => t.id === draft.id)?.delivery === "gmail_draft";
+    notify(`${draft.kind === "reminder" ? "Reminder" : "Reply"} ${toGmail ? "saved to your Gmail drafts" : "approved"}`);
     setDraft(null);
   }
 
@@ -272,8 +298,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
     const q = text.trim();
     if (!q) return;
     setQuestion("");
+    const history = chat.map((t) => ({ role: t.role === "you" ? ("user" as const) : ("model" as const), text: t.text }));
     setChat((c) => [...c, { role: "you", text: q }, { role: "copilot", text: "…" }]);
-    const answer = await api.askCopilot(q).then((r) => r.answer).catch((err: unknown) => (err instanceof ApiError ? err.message : "I couldn't answer that just now. Try again."));
+    const answer = await api.askCopilot(q, history).then((r) => r.answer).catch((err: unknown) => (err instanceof ApiError ? err.message : "I couldn't answer that just now. Try again."));
     setChat((c) => [...c.slice(0, -1), { role: "copilot", text: answer }]);
   }
 
@@ -290,8 +317,39 @@ export default function AppShell({ children }: { children: ReactNode }) {
       .filter((item) => (item.href === "/dashboard" ? pathname === item.href : pathname.startsWith(item.href)))
       .map((item) => item.label)[0] ?? "";
 
+  const refreshProfile = useCallback(async () => {
+    const profile = await api.profile();
+    setWorkspaceClock(profile.timezone);
+    setSettings(toSettings(profile));
+    setIntegrations(integrationsOf(profile));
+  }, []);
+
   const shell: Shell = {
     notify,
+    integrations,
+    refreshProfile,
+    regenerateDrafts: async (id) => {
+      try {
+        const thread = toThread(await api.draftReply(id));
+        patchWs((w) => ({ threads: w.threads.map((t) => (t.id === id ? thread : t)) }));
+        return true;
+      } catch (err) {
+        notify(err instanceof ApiError ? err.message : "Couldn't write the reply. Try again.");
+        return false;
+      }
+    },
+    rewriteCaption: async (clipId, platform) => {
+      try {
+        const clip = await api.rewriteCaption(clipId, platform);
+        patchWs((w) => ({ video: w.video && { ...w.video, clips: w.video.clips.map((c) => (c.id === clipId ? { ...c, captions: clip.captions } : c)) } }));
+        return true;
+      } catch (err) {
+        if (!(err instanceof ApiError && err.code === "AI_NOT_CONFIGURED")) notify(err instanceof ApiError ? err.message : "Couldn't write a caption. Try again.");
+        return false;
+      }
+    },
+    pendingVideo: ws.pendingVideo,
+    refreshVideo: () => reload("video", "summary"),
     openCopilot: () => setCopilotOpen(true),
     openDraft: setDraft,
     settings,
@@ -397,7 +455,9 @@ export default function AppShell({ children }: { children: ReactNode }) {
       patchWs((w) => ({
         video: w.video && {
           ...w.video,
-          clips: w.video.clips.map((c) => (c.id === id ? { ...c, posts: posts.map((p) => ({ platform: p.platform, scheduledAt: `${p.date}T00:00:00.000Z` })) } : c)),
+          clips: w.video.clips.map((c) =>
+            c.id === id ? { ...c, posts: posts.map((p) => ({ id: `${c.id}-${p.platform}`, platform: p.platform, scheduledAt: `${p.date}T00:00:00.000Z`, status: "scheduled" as const, externalUrl: null, error: null, hasClipFile: false })) } : c,
+          ),
         },
       }));
       save(() => api.scheduleClip(id, posts), ["video", "summary"], () => reload("video", "summary").catch(() => undefined));
@@ -530,7 +590,11 @@ export default function AppShell({ children }: { children: ReactNode }) {
               <h3 id="draft-title" className={styles.modalTitle}>{draft.title}</h3>
               <div className={styles.field}><span>To</span><strong>{draft.to}</strong></div>
               <textarea className={styles.textarea} value={draft.text} onChange={(e) => setDraft({ ...draft, text: e.target.value })} rows={9} />
-              <p className={styles.modalNote}>Nothing is sent until you approve it. Approved drafts are saved to Gmail.</p>
+              <p className={styles.modalNote}>
+                {ws.threads.find((t) => t.id === draft.id)?.delivery === "gmail_draft"
+                  ? "Nothing is sent: approving saves it to your Gmail drafts, for you to send."
+                  : "Nothing is sent. Approving keeps it here; connect Gmail to have approved replies saved to your drafts."}
+              </p>
               <div className={styles.modalActions}>
                 <button type="button" className={styles.btnGhost} onClick={() => setDraft(null)}>Cancel</button>
                 <button type="button" className={styles.btnDark} onClick={approveDraft}>Approve and save to drafts</button>

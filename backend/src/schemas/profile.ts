@@ -1,7 +1,9 @@
 import { z } from "zod";
+import { isValidTimeZone } from "../utils/dates";
 import { accountStatus, alertKind, briefingSection, category, provider, text, tone } from "./common";
 
 const briefingTime = z.string().regex(/^([01]?\d|2[0-3]):[0-5]\d$/, "Use a time like 8:00");
+export const timezone = z.string().max(64).refine(isValidTimeZone, "Use an IANA time zone like Europe/London");
 
 export const updateProfileBody = z
   .object({
@@ -16,6 +18,7 @@ export const updateProfileBody = z
     signOff: z.string().max(200),
     autoDraft: z.array(category.exclude(["spam"])),
     notifications: z.array(alertKind),
+    timezone,
   })
   .partial()
   .strict()
@@ -30,6 +33,7 @@ export const completeOnboardingBody = z
     niche: z.string().trim().max(60),
     goals: z.array(text(80)).min(1).max(10),
     briefingTime,
+    timezone: timezone.optional(),
     accounts: z.partialRecord(provider, accountStatus).optional(),
     // Fill an empty workspace with the sample creator's inbox, deals and posts.
     sampleWorkspace: z.boolean().default(true),

@@ -43,10 +43,11 @@ const IMPACT: Record<AccountId, string> = {
   tiktok: "",
 };
 
-// One banner per disconnected account the current screen depends on.
+// One banner per account the current screen depends on that stopped
+// working: Google access was removed, or its last sync failed.
 export function ReconnectBanner({ accounts }: { accounts: AccountId[] }) {
-  const { settings } = useShell();
-  const missing = accounts.filter((id) => settings.accounts[id] === "disconnected");
+  const { integrations } = useShell();
+  const missing = accounts.filter((id) => integrations.sync[id]?.lastError);
   if (missing.length === 0) return null;
   return (
     <>
@@ -54,7 +55,7 @@ export function ReconnectBanner({ accounts }: { accounts: AccountId[] }) {
         <div key={id} className={styles.banner} role="status">
           <span className={styles.bannerMark} style={{ background: ACCOUNT_META[id].color }}>{ACCOUNT_META[id].mark}</span>
           <span>
-            <strong>{ACCOUNT_META[id].name} is disconnected.</strong> {IMPACT[id]}
+            <strong>{ACCOUNT_META[id].name} needs attention:</strong> {integrations.sync[id]?.lastError} {IMPACT[id]}
           </span>
           <Link className={base.miniDark} href="/dashboard/settings?tab=accounts">Reconnect</Link>
         </div>

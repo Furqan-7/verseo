@@ -1,4 +1,8 @@
 import { prisma } from "db";
+import { z } from "zod";
+import { generateJson } from "../lib/ai";
+import { enqueue } from "../jobs/queue";
+import { pushCalendar } from "./events.service";
 import type { ListPostsQuery, ScheduleClipInput, UpdateCaptionInput, UpdateClipInput } from "../schemas/publish";
 import type { ClipDto, PostDto, PublishPlatform, VideoDto } from "../types/api";
 import { badRequest, notFound } from "../utils/AppError";
@@ -52,6 +56,10 @@ export async function updateCaption(userId: string, id: string, platform: Publis
 export async function scheduleClip(userId: string, id: string, input: ScheduleClipInput): Promise<ClipDto> {
   const clip = await ownedClip(userId, id);
   if (clip.skipped) throw badRequest("This clip is skipped. Keep it before scheduling.", "CLIP_SKIPPED");
+  // Moving a post: its old Google Calendar event goes.
+  for (const p of clip.posts.filter((p) => p.googleEventId)) {
+    await enqueue("calendar.delete", { googleEventId: p.googleEventId }, { profileId: userId });
+  }
 
   await prisma.$transaction(
     input.posts.map((post) => {
@@ -62,10 +70,49 @@ export async function scheduleClip(userId: string, id: string, input: ScheduleCl
       return prisma.scheduledPost.upsert({
         where: { clipId_platform: { clipId: clip.id, platform: post.platform } },
         create: { clipId: clip.id, platform: post.platform, scheduledAt, why: post.why, caption },
-        update: { scheduledAt, why: post.why, caption },
+        update: { scheduledAt, why: post.why, caption, status: "scheduled", error: null, googleEventId: null },
       });
     }),
   );
+  await pushCalendar(userId);
+  return toClipDto(await prisma.clip.findUniqueOrThrow({ where: { id: clip.id }, include: clipInclude }));
+}
+
+const LIMITS: Record<PublishPlatform, { label: string; chars: number; style: string }> = {
+  reel: { label: "Instagram Reel", chars: 2200, style: "One to three sentences, one emoji at most, a call to action (save, comment, link in bio)." },
+  short: { label: "YouTube Short", chars: 100, style: "A title-style line under 100 characters ending with #shorts." },
+  tiktok: { label: "TikTok", chars: 2200, style: "Casual and lowercase, under 150 characters, one emoji." },
+};
+
+// Writes one more caption option for a platform, in the creator's tone,
+// from what is said in the clip, and makes it the picked option.
+export async function rewriteCaption(userId: string, id: string, platform: PublishPlatform): Promise<ClipDto> {
+  const clip = await ownedClip(userId, id);
+  const caption = clip.captions.find((c) => c.platform === platform);
+  if (!caption) throw notFound("Caption");
+  const [profile, lines] = await Promise.all([
+    prisma.profile.findUniqueOrThrow({ where: { id: userId }, select: { name: true, niche: true, tone: true } }),
+    prisma.transcriptLine.findMany({ where: { videoId: clip.videoId, sec: { gte: clip.startSec - 5, lte: clip.endSec } }, orderBy: { sec: "asc" } }),
+  ]);
+  const spec = LIMITS[platform];
+  const { caption: text } = await generateJson(
+    {
+      system: [
+        `You write ${spec.label} captions for ${profile.name || "a creator"}${profile.niche ? ` (${profile.niche.toLowerCase()})` : ""}, in a ${profile.tone} tone.`,
+        spec.style,
+        `Hard limit: ${spec.chars} characters. No hashtags except where the style asks; hashtags are added separately.`,
+        "Don't repeat the existing options. Reply with JSON: {\"caption\": \"...\"}.",
+      ].join("\n"),
+      prompt: [
+        `Clip: ${clip.title}`,
+        `What is said: ${lines.map((l) => l.text).join(" ") || clip.quote}`,
+        `Existing options:\n${caption.options.map((o) => `- ${o}`).join("\n")}`,
+      ].join("\n\n"),
+      temperature: 0.9,
+    },
+    z.object({ caption: z.string().min(1).max(spec.chars) }),
+  );
+  await prisma.clipCaption.update({ where: { id: caption.id }, data: { options: [...caption.options, text.trim()], variant: caption.options.length, text: null } });
   return toClipDto(await prisma.clip.findUniqueOrThrow({ where: { id: clip.id }, include: clipInclude }));
 }
 

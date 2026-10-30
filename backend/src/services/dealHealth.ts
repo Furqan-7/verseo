@@ -1,7 +1,6 @@
 import type { CreateDealInput } from "../schemas/deals";
 import type { DealHealth, DealRiskDto, PaymentTerms, Revisions } from "../types/api";
 import { daysBetween } from "../utils/dates";
-import { WORKSPACE_TODAY } from "./sample.data";
 
 // The rule-based Deal Health score: up to 25 financial, 25 deadline,
 // 30 contract and 20 scope points, plus the risks that cost points.
@@ -27,8 +26,9 @@ export function deliverableItems(deliverables: string): string[] {
     .filter(Boolean);
 }
 
-export function assessContract(t: CreateDealInput): { health: DealHealth; risks: DealRiskDto[] } {
-  const daysLeft = daysBetween(WORKSPACE_TODAY, t.due);
+// `today` is the creator's local date; the deadline score counts from it.
+export function assessContract(t: CreateDealInput, today: string): { health: DealHealth; risks: DealRiskDto[] } {
+  const daysLeft = daysBetween(today, t.due);
   const items = deliverableItems(t.deliverables);
   const freeUsage = t.usageDays > 30 && !t.usagePaid;
 

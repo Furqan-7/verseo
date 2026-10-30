@@ -109,6 +109,7 @@
   color: var(--muted);
 }
 .field input,
+.field select,
 .field textarea {
   border: 1px solid #e3e3e3;
   border-radius: 4px;
@@ -118,7 +119,8 @@
   background: #fff;
   max-width: 460px;
 }
-.field input {
+.field input,
+.field select {
   height: 42px;
 }
 .field textarea {
@@ -127,6 +129,7 @@
   resize: vertical;
 }
 .field input:focus,
+.field select:focus,
 .field textarea:focus {
   outline: 2px solid var(--ink);
   outline-offset: -1px;

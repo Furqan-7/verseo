@@ -2,13 +2,13 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import base from "../dashboard.module.css";
 import styles from "./onboarding.module.css";
 import { BLUE, GREEN, Logo, PATTERNS, PURPLE, Pixels, YELLOW, cx } from "../_shell/ui";
-import type { AccountStatus, Provider } from "@api-types";
+import type { Provider } from "@api-types";
 import { ApiError, api } from "../_shell/api";
-import { goals, niches, onboardingAccounts } from "../data";
+import { browserTimeZone, goals, niches, onboardingAccounts } from "../data";
 
 const STEPS = ["Connect", "About you", "First briefing"];
 const BRIEFING_TIMES = ["7:00", "8:00", "9:00"];
@@ -23,6 +23,28 @@ export default function Onboarding({ name }: { name?: string }) {
     () => Object.fromEntries(onboardingAccounts.map((a) => [a.id, a.action])),
   );
   const [csvName, setCsvName] = useState<string | null>(null);
+  const [features, setFeatures] = useState({ google: false });
+
+  // What's really connected (this page is also where Google sends people
+  // back to after connecting).
+  useEffect(() => {
+    api
+      .profile()
+      .then((p) => {
+        setFeatures({ google: p.features.google });
+        setAccounts((s) => {
+          const next = { ...s };
+          for (const a of onboardingAccounts) {
+            const status = p.accounts[a.id as Provider];
+            if (status === "connected" || status === "imported") next[a.id] = status;
+          }
+          return next;
+        });
+      })
+      .catch(() => undefined);
+    const failed = new URLSearchParams(window.location.search).get("connect_error");
+    if (failed) setError(failed === "cancelled" ? "Connecting was cancelled. You can connect later in Settings." : "Connecting didn't work. You can try again, or later in Settings.");
+  }, []);
   const [niche, setNiche] = useState(niches[0]);
   const [goal, setGoal] = useState<Set<string>>(new Set([goals[0]]));
   const [briefingAt, setBriefingAt] = useState("8:00");
@@ -36,12 +58,6 @@ export default function Onboarding({ name }: { name?: string }) {
   // opens the workspace, filled with the sample creator's inbox, deals and
   // posts until real accounts are connected.
   async function finish(save = false) {
-    const mapped = Object.fromEntries(
-      onboardingAccounts.map((a) => {
-        const state = accounts[a.id];
-        return [a.id, state === "connected" || state === "imported" || state === "soon" ? state : "disconnected"];
-      }),
-    ) as Record<Provider, AccountStatus>;
     setSaving(true);
     setError(null);
     try {
@@ -50,7 +66,7 @@ export default function Onboarding({ name }: { name?: string }) {
         niche: save ? niche : niches[0],
         goals: save ? [...goal] : [goals[0]],
         briefingTime: save ? briefingAt : "8:00",
-        accounts: mapped,
+        timezone: browserTimeZone(),
         sampleWorkspace: true,
       });
       router.push("/dashboard");
@@ -60,9 +76,31 @@ export default function Onboarding({ name }: { name?: string }) {
     }
   }
 
-  function connect(id: string) {
+  // Off to Google's consent screen; it sends the creator back here.
+  async function connect(id: string) {
+    if (id !== "gmail" && id !== "calendar" && id !== "youtube") return;
+    if (!features.google) {
+      setError("Connecting Google accounts isn't set up on this server yet. You can carry on and connect later in Settings.");
+      return;
+    }
     setAccounts((s) => ({ ...s, [id]: "connecting" }));
-    setTimeout(() => setAccounts((s) => ({ ...s, [id]: "connected" })), 900);
+    try {
+      const back = `/dashboard/onboarding${name ? `?name=${encodeURIComponent(name)}` : ""}`;
+      window.location.href = (await api.connectGoogle(id, back)).url;
+    } catch (err) {
+      setAccounts((s) => ({ ...s, [id]: "connect" }));
+      setError(err instanceof ApiError ? err.message : "Couldn't start connecting. Try again.");
+    }
+  }
+
+  async function importCsv(file: File) {
+    try {
+      const result = await api.importInstagram(await file.text(), file.name);
+      setCsvName(`${file.name} · ${result.imported} days`);
+      setAccounts((s) => ({ ...s, instagram: "imported" }));
+    } catch (err) {
+      setError(err instanceof ApiError ? err.message : "Couldn't import that CSV.");
+    }
   }
 
   function toggleGoal(g: string) {
@@ -149,14 +187,12 @@ export default function Onboarding({ name }: { name?: string }) {
                 hidden
                 onChange={(e) => {
                   const file = e.target.files?.[0];
-                  if (file) {
-                    setCsvName(file.name);
-                    setAccounts((s) => ({ ...s, instagram: "imported" }));
-                  }
+                  if (file) importCsv(file);
                   e.target.value = "";
                 }}
               />
-              <p className={styles.note}>🔒 Read-only access. Nothing is sent, posted or booked without your approval.</p>
+              {error && step === 0 && <p className={styles.error} role="alert">{error}</p>}
+              <p className={styles.note}>🔒 Nothing is sent, posted or booked without your approval.</p>
             </>
           )}
 
@@ -219,7 +255,7 @@ export default function Onboarding({ name }: { name?: string }) {
               {step < STEPS.length - 1 ? "Continue" : saving ? "Setting up…" : "Open my briefing"}
             </button>
           </div>
-          {error && <p className={styles.error} role="alert">{error}</p>}
+          {error && step !== 0 && <p className={styles.error} role="alert">{error}</p>}
           {step === STEPS.length - 1 && !error && (
             <p className={styles.sample}>Until your accounts sync, your workspace starts with a sample creator&apos;s inbox, deals and posts. Reset it any time in Settings.</p>
           )}

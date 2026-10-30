@@ -1,6 +1,9 @@
 import { prisma, type Prisma } from "db";
+import { features } from "../config/env";
+import { todayIn } from "../utils/dates";
 import type { CompleteOnboardingInput, UpdateProfileInput } from "../schemas/profile";
 import type { AccountStatus, ProfileDto, Provider } from "../types/api";
+import { enqueueEmbedding } from "./rag.service";
 import { hasWorkspace, seedSampleWorkspace } from "./workspace.service";
 
 const PROVIDERS: Provider[] = ["gmail", "calendar", "youtube", "instagram", "tiktok"];
@@ -15,12 +18,16 @@ const DEFAULT_ACCOUNTS: Record<Provider, AccountStatus> = {
   tiktok: "soon",
 };
 
-const profileInclude = { accounts: true } satisfies Prisma.ProfileInclude;
+const profileInclude = { accounts: true, google: { select: { googleEmail: true } } } satisfies Prisma.ProfileInclude;
 type ProfileRow = Prisma.ProfileGetPayload<{ include: typeof profileInclude }>;
 
 function toProfileDto(p: ProfileRow, workspace: boolean): ProfileDto {
   const accounts = { ...DEFAULT_ACCOUNTS };
-  for (const a of p.accounts) accounts[a.provider] = a.status;
+  const sync: ProfileDto["sync"] = {};
+  for (const a of p.accounts) {
+    accounts[a.provider] = a.status;
+    sync[a.provider] = { syncedAt: a.syncedAt?.toISOString() ?? null, lastError: a.lastError, externalId: a.externalId };
+  }
   return {
     id: p.id,
     email: p.email,
@@ -36,6 +43,10 @@ function toProfileDto(p: ProfileRow, workspace: boolean): ProfileDto {
     autoDraft: p.autoDraft,
     notifications: p.notifications,
     accounts,
+    sync,
+    googleEmail: p.google?.googleEmail ?? null,
+    timezone: p.timezone,
+    features: { ai: features.ai, google: features.google, storage: features.storage, email: features.email },
     onboarded: p.onboardedAt !== null,
     hasWorkspace: workspace,
   };
@@ -84,6 +95,7 @@ export async function completeOnboarding(userId: string, email: string, input: C
           niche: input.niche,
           goals: input.goals,
           briefingTime: input.briefingTime,
+          timezone: input.timezone ?? current.timezone,
           signOff: current.signOff || (first ? `Best,\n${first}` : ""),
           onboardedAt: current.onboardedAt ?? new Date(),
         },
@@ -98,15 +110,28 @@ export async function completeOnboarding(userId: string, email: string, input: C
         });
       }
       if (input.sampleWorkspace && !(await hasWorkspace(userId, tx))) {
-        await seedSampleWorkspace(userId, tx);
+        await seedSampleWorkspace(userId, tx, todayIn(input.timezone ?? current.timezone));
       }
     },
     { timeout: 30_000 },
   );
+  await afterSeed(userId, async () => undefined);
   const profile = await prisma.profile.findUniqueOrThrow({ where: { id: userId }, include: profileInclude });
   return toProfileDto(profile, await hasWorkspace(userId));
 }
 
+// Sample text was indexed inside the seed's transaction; its embeddings
+// are made by the worker afterwards.
+async function afterSeed(userId: string, run: () => Promise<void>) {
+  await run();
+  if (features.embeddings) await enqueueEmbedding(userId);
+}
+
 export async function loadSampleWorkspace(userId: string) {
-  await prisma.$transaction((tx) => seedSampleWorkspace(userId, tx), { timeout: 30_000 });
+  await afterSeed(userId, () => seed(userId));
+}
+
+async function seed(userId: string) {
+  const { timezone } = await prisma.profile.findUniqueOrThrow({ where: { id: userId }, select: { timezone: true } });
+  await prisma.$transaction((tx) => seedSampleWorkspace(userId, tx, todayIn(timezone)), { timeout: 30_000 });
 }
