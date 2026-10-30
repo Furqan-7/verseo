@@ -1,26 +1,19 @@
 {
-  "name": "verseo-framer-website",
-  "version": "0.1.0",
+  "name": "creatoros",
+  "version": "1.0.0",
   "private": true,
-  "type": "module",
+  "packageManager": "pnpm@10.28.0",
   "scripts": {
-    "prerender": "tsx scripts/prerender.mts",
-    "predev": "npm run prerender",
-    "dev": "next dev",
-    "prebuild": "npm run prerender",
-    "build": "next build",
-    "start": "next start"
-  },
-  "dependencies": {
-    "next": "^16.0.0",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "dev": "concurrently -n web,api -c blue,green \"pnpm --filter frontend dev\" \"pnpm --filter backend dev\"",
+    "build": "pnpm --filter db build && pnpm --filter backend build && pnpm --filter frontend build",
+    "typecheck": "pnpm --filter db build && pnpm --filter backend typecheck && pnpm --filter frontend typecheck",
+    "prisma": "pnpm --filter db exec prisma",
+    "db:generate": "pnpm --filter db db:generate",
+    "db:migrate": "pnpm --filter db db:migrate",
+    "db:deploy": "pnpm --filter db db:deploy",
+    "db:studio": "pnpm --filter db db:studio"
   },
   "devDependencies": {
-    "@types/node": "^22.10.0",
-    "@types/react": "^19.2.0",
-    "@types/react-dom": "^19.2.0",
-    "tsx": "^4.19.0",
-    "typescript": "^5.7.0"
+    "concurrently": "^10.0.6"
   }
 }

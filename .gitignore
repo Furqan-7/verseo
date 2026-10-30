@@ -1,8 +1,9 @@
-/node_modules
-/.next
-/out
-/.rendered
-.env*.local
-.DS_Store
-next-env.d.ts
+node_modules
+.env
+.env.*
+!.env.example
+/db/generated
+/db/dist
+/backend/dist
 *.tsbuildinfo
+.DS_Store
