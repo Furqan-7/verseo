@@ -1,0 +1,10 @@
+packages:
+  - 'frontend'
+  - 'backend'
+  - 'db'
+onlyBuiltDependencies:
+  - '@prisma/engines'
+  - esbuild
+  - prisma
+  - sharp
+  - unrs-resolver
