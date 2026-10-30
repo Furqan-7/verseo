@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import base from "../../dashboard.module.css";
 import styles from "./deals.module.css";
 import { PageHead, TopBar, useShell } from "../../_shell/AppShell";
@@ -33,6 +33,9 @@ export default function Deals({ initialSlug }: { initialSlug?: string }) {
   const [uploading, setUploading] = useState<string | null>(null);
   const [slug, setSlug] = useState(boardDeals.some((d) => d.slug === initialSlug) ? initialSlug! : "nike");
   const [done, setDone] = useState<Record<string, boolean>>({});
+  // Phones show one stage at a time; it follows the selected deal until a tab is picked.
+  const [phoneStage, setPhoneStage] = useState<BoardDeal["stage"] | null>(null);
+  const panel = useRef<HTMLElement>(null);
 
   const deal = boardDeals.find((d) => d.slug === slug)!;
   const total = boardDeals.reduce((sum, d) => sum + d.amount, 0);
@@ -40,9 +43,16 @@ export default function Deals({ initialSlug }: { initialSlug?: string }) {
   const reminderSaved = approved.has(reminder.id);
   const replyId = deal.replyId ?? `deal-${deal.slug}`;
 
-  function select(next: string) {
+  const shownStage = phoneStage ?? deal.stage;
+
+  function select(next: string, reveal = false) {
     setSlug(next);
+    setPhoneStage(null);
     router.replace(`/dashboard/deals?deal=${next}`, { scroll: false });
+    // On phones the detail panel sits below the board, so bring it into view.
+    if (reveal && window.matchMedia("(max-width: 860px)").matches) {
+      requestAnimationFrame(() => panel.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+    }
   }
 
   function draftReply() {
@@ -104,11 +114,26 @@ export default function Deals({ initialSlug }: { initialSlug?: string }) {
       <ReconnectBanner accounts={["gmail"]} />
 
       <div className={styles.layout}>
+        <div className={styles.stageTabs} role="group" aria-label="Pipeline stage">
+          {dealStages.map(({ stage, color }) => (
+            <button
+              key={stage}
+              type="button"
+              className={cx(styles.stageTab, stage === shownStage && styles.stageTabOn)}
+              onClick={() => setPhoneStage(stage)}
+              aria-pressed={stage === shownStage}
+            >
+              <span className={styles.stageDot} style={{ background: color }} />
+              {stage}
+              <span>{boardDeals.filter((d) => d.stage === stage).length}</span>
+            </button>
+          ))}
+        </div>
         <div className={styles.board} role="list" aria-label="Deal pipeline">
           {dealStages.map(({ stage, color }) => {
             const inStage = boardDeals.filter((d) => d.stage === stage);
             return (
-              <section key={stage} className={styles.column} role="listitem" aria-label={stage}>
+              <section key={stage} className={cx(styles.column, stage !== shownStage && styles.columnAway)} role="listitem" aria-label={stage}>
                 <div className={styles.columnHead}>
                   <span className={styles.stageDot} style={{ background: color }} />
                   <strong>{stage}</strong>
@@ -123,7 +148,7 @@ export default function Deals({ initialSlug }: { initialSlug?: string }) {
                       key={d.slug}
                       type="button"
                       className={cx(styles.dealCard, d.slug === slug && styles.dealOn)}
-                      onClick={() => select(d.slug)}
+                      onClick={() => select(d.slug, true)}
                       aria-pressed={d.slug === slug}
                     >
                       <span className={styles.brand}>
@@ -149,7 +174,7 @@ export default function Deals({ initialSlug }: { initialSlug?: string }) {
           })}
         </div>
 
-        <aside className={styles.panel} aria-labelledby="deal-title">
+        <aside className={styles.panel} aria-labelledby="deal-title" ref={panel}>
           <div className={styles.panelHead}>
             <div className={styles.chips}>
               <span className={cx(base.tag, styles.stageTag)} style={{ background: `${dealStages.find((s) => s.stage === deal.stage)!.color}33` }}>{deal.stage}</span>

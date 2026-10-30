@@ -345,6 +345,10 @@
   display: flex;
   gap: 10px;
 }
+.topAction {
+  display: flex;
+  gap: 10px;
+}
 .bell {
   width: 44px;
   height: 44px;
@@ -1143,8 +1147,20 @@
   .askText {
     font-size: 13.5px;
   }
-  .btnLine {
-    display: none;
+  .top {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .topActions {
+    display: contents;
+  }
+  .topAction {
+    order: 1;
+    flex-basis: 100%;
+  }
+  .topAction > * {
+    flex: 1;
+    justify-content: center;
   }
   .hello {
     flex-direction: column;

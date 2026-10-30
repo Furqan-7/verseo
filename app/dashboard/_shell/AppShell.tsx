@@ -332,7 +332,8 @@ export default function AppShell({ children }: { children: ReactNode }) {
   );
 }
 
-// The Ask bar and bell, with the screen's main action on the right.
+// The Ask bar and bell, with the screen's main action on the right
+// (on phones the action drops to its own full-width row).
 export function TopBar({ children }: { children?: ReactNode }) {
   const { openCopilot } = useShell();
   return (
@@ -344,7 +345,7 @@ export function TopBar({ children }: { children?: ReactNode }) {
       </button>
       <div className={styles.topActions}>
         <Notifications />
-        {children}
+        {children && <div className={styles.topAction}>{children}</div>}
       </div>
     </header>
   );

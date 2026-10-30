@@ -8,6 +8,11 @@
   align-items: start;
 }
 
+/* stage tabs: phones only, in place of the four columns side by side */
+.stageTabs {
+  display: none;
+}
+
 /* board */
 .board {
   display: grid;
@@ -353,16 +358,45 @@
   }
 }
 
-/* phone: the board scrolls sideways inside its own frame */
+/* phone: one stage at a time, picked from a 2×2 grid of tabs */
 @media (max-width: 860px) {
-  .board {
-    grid-template-columns: repeat(4, 220px);
-    overflow-x: auto;
-    padding-bottom: 6px;
-    scroll-snap-type: x proximity;
+  .stageTabs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
   }
-  .column {
-    scroll-snap-align: start;
+  .stageTab {
+    height: 44px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.85);
+    font-size: 14px;
+    text-align: left;
+  }
+  .stageTab > span:last-child {
+    margin-left: auto;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .stageTabOn {
+    border-color: var(--ink);
+    background: #fff;
+    font-weight: 500;
+  }
+  .board {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .columnAway,
+  .columnHead {
+    display: none;
+  }
+  /* clear the sticky phone bar */
+  .panel {
+    scroll-margin-top: 72px;
   }
   .health {
     flex-direction: column;
