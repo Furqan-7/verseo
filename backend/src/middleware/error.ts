@@ -4,6 +4,7 @@ import { ZodError } from "zod";
 import { env } from "../config/env";
 import type { ApiFailure } from "../types/api";
 import { AppError } from "../utils/AppError";
+import { logger } from "../utils/logger";
 
 export function notFoundHandler(req: Request, res: Response) {
   const body: ApiFailure = { success: false, message: `No route for ${req.method} ${req.path}`, error: "ROUTE_NOT_FOUND" };
@@ -48,8 +49,19 @@ export function errorHandler(err: unknown, req: Request, res: Response, _next: N
     };
   }
 
-  if (status >= 500) {
-    console.error(`[${req.method} ${req.originalUrl}]`, env.isProduction && err instanceof Error ? err.message : err);
+  // Known 5xx answers (a feature not set up, AI down) are expected: a
+  // warning, no stack. Anything unexpected is an error with its stack.
+  if (status >= 500 && err instanceof AppError) {
+    logger.warn("request refused", { id: res.locals.requestId, method: req.method, path: req.path, code: body.error });
+  } else if (status >= 500) {
+    logger.error("request failed", {
+      id: res.locals.requestId,
+      method: req.method,
+      path: req.path,
+      code: body.error,
+      error: err instanceof Error ? err.message : String(err),
+      ...(env.isProduction || !(err instanceof Error) ? {} : { stack: err.stack }),
+    });
   }
   res.status(status).json(body);
 }

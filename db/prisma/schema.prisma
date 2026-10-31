@@ -3,13 +3,16 @@
 // and only the workspace data the app shows lives here.
 
 generator client {
-  provider     = "prisma-client"
-  output       = "../generated/prisma"
-  moduleFormat = "cjs"
+  provider        = "prisma-client"
+  output          = "../generated/prisma"
+  moduleFormat    = "cjs"
+  previewFeatures = ["postgresqlExtensions"]
 }
 
 datasource db {
-  provider = "postgresql"
+  provider   = "postgresql"
+  // pgvector, for the RAG embeddings (Chunk.embedding). Neon has it built in.
+  extensions = [vector]
 }
 
 // ── Profile, settings and connected accounts ────────────────────────────────
@@ -31,11 +34,20 @@ model Profile {
   autoDraft        Category[]        @default([brand_deal, collab, fan_question])
   // Settings › Notifications: the alert kinds that are switched on
   notifications    AlertKind[]       @default([overdue, new_deal, deadline])
+  // IANA time zone ("Europe/London"); "today", the briefing time and
+  // deadlines are all worked out in it.
+  timezone         String            @default("UTC")
+  // The local date the last briefing email went out, so it goes once a day.
+  briefingSentOn   DateTime?         @db.Date
   onboardedAt      DateTime?
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
 
   accounts     ConnectedAccount[]
+  google       GoogleConnection?
+  documents    Document[]
+  chunks       Chunk[]
+  jobs         Job[]
   messages     Message[]
   deals        Deal[]
   todos        Todo[]
@@ -48,53 +60,81 @@ model Profile {
 }
 
 model ConnectedAccount {
-  id        String        @id @default(cuid())
-  profileId String        @db.Uuid
-  provider  Provider
-  status    AccountStatus
-  updatedAt DateTime      @updatedAt
-  profile   Profile       @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  id         String        @id @default(cuid())
+  profileId  String        @db.Uuid
+  provider   Provider
+  status     AccountStatus
+  // The provider's id for the account (the YouTube channel id, the Gmail
+  // address) and where the last sync stopped.
+  externalId String?
+  syncCursor String?
+  syncedAt   DateTime?
+  lastError  String?
+  updatedAt  DateTime      @updatedAt
+  profile    Profile       @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
   @@unique([profileId, provider])
+}
+
+// One Google sign-in per creator, covering whichever of Gmail, Calendar and
+// YouTube they connected. Tokens are encrypted (AES-256-GCM) with
+// TOKEN_ENCRYPTION_KEY before they are stored.
+model GoogleConnection {
+  id              String    @id @default(cuid())
+  profileId       String    @unique @db.Uuid
+  googleEmail     String
+  scopes          String[]
+  refreshTokenEnc String
+  accessTokenEnc  String?
+  accessExpiresAt DateTime?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+  profile         Profile   @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }
 
 // ── Inbox ───────────────────────────────────────────────────────────────────
 
 model Message {
-  id             String        @id @default(cuid())
-  profileId      String        @db.Uuid
-  dealId         String?
-  source         MessageSource
-  category       Category
-  fromName       String
-  fromAddress    String
-  avatarInitial  String
-  avatarColor    String
-  subject        String
-  preview        String
+  id              String        @id @default(cuid())
+  profileId       String        @db.Uuid
+  dealId          String?
+  source          MessageSource
+  category        Category
+  fromName        String
+  fromAddress     String
+  avatarInitial   String
+  avatarColor     String
+  subject         String
+  preview         String
   // Paragraphs; **bold** marks the key facts.
-  body           String[]
-  senderSignOff  String
-  summary        String?
-  receivedAt     DateTime
+  body            String[]
+  senderSignOff   String
+  summary         String?
+  receivedAt      DateTime
   // A reply CreatorOS drafted without being asked.
-  draftReady     Boolean       @default(false)
+  draftReady      Boolean       @default(false)
   // The creator asked for a draft on a message that had none ready.
-  draftRequested Boolean       @default(false)
-  minutesSaved   Int           @default(0)
-  tone           Tone?
-  editedReply    String?
-  readAt         DateTime?
-  archivedAt     DateTime?
-  approvedAt     DateTime?
-  approvedReply  String?
-  createdAt      DateTime      @default(now())
-  updatedAt      DateTime      @updatedAt
+  draftRequested  Boolean       @default(false)
+  minutesSaved    Int           @default(0)
+  tone            Tone?
+  editedReply     String?
+  // The provider's ids: the Gmail message and thread, or the YouTube comment.
+  externalId      String?
+  threadId        String?
+  // Where an approved reply went: the Gmail draft or the posted comment.
+  replyExternalId String?
+  readAt          DateTime?
+  archivedAt      DateTime?
+  approvedAt      DateTime?
+  approvedReply   String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
 
   profile Profile        @relation(fields: [profileId], references: [id], onDelete: Cascade)
   deal    Deal?          @relation(fields: [dealId], references: [id], onDelete: SetNull)
   drafts  MessageDraft[]
 
+  @@unique([profileId, source, externalId])
   @@index([profileId, archivedAt, receivedAt])
   @@index([dealId])
 }
@@ -144,6 +184,7 @@ model Deal {
   deliverables Deliverable[]
   messages     Message[]
   alerts       Alert[]
+  documents    Document[]
 
   @@unique([profileId, slug])
   @@index([profileId, stage])
@@ -174,13 +215,15 @@ model DealRisk {
 }
 
 model Deliverable {
-  id       String   @id @default(cuid())
-  dealId   String
-  position Int
-  title    String
-  dueDate  DateTime @db.Date
-  done     Boolean  @default(false)
-  deal     Deal     @relation(fields: [dealId], references: [id], onDelete: Cascade)
+  id            String   @id @default(cuid())
+  dealId        String
+  position      Int
+  title         String
+  dueDate       DateTime @db.Date
+  done          Boolean  @default(false)
+  // The Google Calendar event made for it, once the deal is in the calendar.
+  googleEventId String?
+  deal          Deal     @relation(fields: [dealId], references: [id], onDelete: Cascade)
 
   @@unique([dealId, position])
 }
@@ -225,35 +268,44 @@ model Idea {
 // reads them from Deal (inCalendar) and ScheduledPost.
 
 model CalendarEvent {
-  id           String    @id @default(cuid())
-  profileId    String    @db.Uuid
-  title        String
-  type         EventType
-  date         DateTime  @db.Date
-  startMinutes Int?
-  endMinutes   Int?
-  detail       String?
-  linkHref     String?
-  linkLabel    String?
-  tentative    Boolean   @default(false)
-  done         Boolean   @default(false)
-  createdAt    DateTime  @default(now())
-  updatedAt    DateTime  @updatedAt
+  id            String      @id @default(cuid())
+  profileId     String      @db.Uuid
+  title         String
+  type          EventType
+  date          DateTime    @db.Date
+  startMinutes  Int?
+  endMinutes    Int?
+  detail        String?
+  linkHref      String?
+  linkLabel     String?
+  tentative     Boolean     @default(false)
+  done          Boolean     @default(false)
+  // Events from Google Calendar, or made here and copied to it.
+  source        EventSource @default(creatoros)
+  googleEventId String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
 
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
+  @@unique([profileId, googleEventId])
   @@index([profileId, date])
 }
 
 // ── Publish ─────────────────────────────────────────────────────────────────
 
 model Video {
-  id        String   @id @default(cuid())
-  profileId String   @db.Uuid
-  fileName  String
-  lengthSec Int
-  quality   String
-  createdAt DateTime @default(now())
+  id          String      @id @default(cuid())
+  profileId   String      @db.Uuid
+  fileName    String
+  lengthSec   Int         @default(0)
+  quality     String      @default("")
+  status      VideoStatus @default(ready)
+  // Where the upload sits in Supabase Storage; empty for the sample video.
+  storagePath String?
+  mimeType    String?
+  error       String?
+  createdAt   DateTime    @default(now())
 
   profile    Profile          @relation(fields: [profileId], references: [id], onDelete: Cascade)
   transcript TranscriptLine[]
@@ -312,17 +364,24 @@ model ClipCaption {
 }
 
 model ScheduledPost {
-  id          String          @id @default(cuid())
-  clipId      String
-  platform    PublishPlatform
-  scheduledAt DateTime
-  why         String
-  caption     String
-  createdAt   DateTime        @default(now())
-  clip        Clip            @relation(fields: [clipId], references: [id], onDelete: Cascade)
+  id            String          @id @default(cuid())
+  clipId        String
+  platform      PublishPlatform
+  scheduledAt   DateTime
+  why           String
+  caption       String
+  status        PostStatus      @default(scheduled)
+  // The cut clip in Storage, the published post's URL, and why it failed.
+  clipPath      String?
+  externalUrl   String?
+  error         String?
+  publishedAt   DateTime?
+  googleEventId String?
+  createdAt     DateTime        @default(now())
+  clip          Clip            @relation(fields: [clipId], references: [id], onDelete: Cascade)
 
   @@unique([clipId, platform])
-  @@index([scheduledAt])
+  @@index([status, scheduledAt])
 }
 
 // ── Notifications ───────────────────────────────────────────────────────────
@@ -337,11 +396,74 @@ model Alert {
   href      String
   createdAt DateTime
   readAt    DateTime?
+  // Stops the alert job raising the same alert twice ("overdue:<deal id>").
+  dedupeKey String?
 
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
   deal    Deal?   @relation(fields: [dealId], references: [id], onDelete: SetNull)
 
+  @@unique([profileId, dedupeKey])
   @@index([profileId, createdAt])
+}
+
+// ── Documents and RAG ───────────────────────────────────────────────────────
+
+// Text CreatorOS has read from an upload (contracts for now), kept so
+// Copilot and drafts can quote it.
+model Document {
+  id        String       @id @default(cuid())
+  profileId String       @db.Uuid
+  dealId    String?
+  kind      DocumentKind
+  fileName  String
+  text      String
+  createdAt DateTime     @default(now())
+  profile   Profile      @relation(fields: [profileId], references: [id], onDelete: Cascade)
+  deal      Deal?        @relation(fields: [dealId], references: [id], onDelete: SetNull)
+
+  @@index([profileId])
+}
+
+// A passage of a message, approved reply, document or transcript, with its
+// embedding. Search filters by profileId first, so each creator's chunks
+// are compared exactly (no approximate index needed at this size).
+model Chunk {
+  id         String                      @id @default(cuid())
+  profileId  String                      @db.Uuid
+  sourceType ChunkSource
+  sourceId   String
+  position   Int
+  content    String
+  // Filled by the embed job; null until then (keyword search still works).
+  embedding  Unsupported("vector(768)")?
+  createdAt  DateTime                    @default(now())
+  profile    Profile                     @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@unique([sourceType, sourceId, position])
+  @@index([profileId, sourceType])
+}
+
+// ── Background jobs ─────────────────────────────────────────────────────────
+
+model Job {
+  id          String    @id @default(cuid())
+  profileId   String?   @db.Uuid
+  type        String
+  payload     Json      @default("{}")
+  // At most one queued or running job per key ("sync.gmail:<user>").
+  key         String?
+  status      JobStatus @default(queued)
+  runAt       DateTime  @default(now())
+  attempts    Int       @default(0)
+  maxAttempts Int       @default(5)
+  lastError   String?
+  lockedAt    DateTime?
+  finishedAt  DateTime?
+  createdAt   DateTime  @default(now())
+  profile     Profile?  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@index([status, runAt])
+  @@index([key, status])
 }
 
 // ── Analytics ───────────────────────────────────────────────────────────────
@@ -371,9 +493,12 @@ model ContentPost {
   // Percent of viewers who liked, commented or shared.
   engagement Float
   postedAt   DateTime @db.Date
+  // The YouTube video id, so a re-sync updates the same row.
+  externalId String?
 
   profile Profile @relation(fields: [profileId], references: [id], onDelete: Cascade)
 
+  @@unique([profileId, externalId])
   @@index([profileId, views])
 }
 
@@ -465,4 +590,44 @@ enum Channel {
   youtube
   instagram
   tiktok
+}
+
+enum EventSource {
+  creatoros
+  google
+}
+
+enum VideoStatus {
+  uploading
+  processing
+  ready
+  failed
+}
+
+enum PostStatus {
+  scheduled
+  publishing
+  published
+  // Ready (clip cut, caption written) but the platform has no posting API
+  // this app is approved for, so the creator posts it.
+  needs_manual
+  failed
+}
+
+enum DocumentKind {
+  contract
+}
+
+enum ChunkSource {
+  message
+  reply
+  document
+  transcript
+}
+
+enum JobStatus {
+  queued
+  running
+  done
+  failed
 }

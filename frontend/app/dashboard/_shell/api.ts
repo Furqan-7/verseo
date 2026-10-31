@@ -9,6 +9,7 @@ import type {
   ApiList,
   ApiSuccess,
   ClipDto,
+  ContractReadDto,
   ContractTermsInput,
   CopilotAnswerDto,
   DealDto,
@@ -26,6 +27,7 @@ import type {
   TodoDto,
   Tone,
   VideoDto,
+  VideoUploadDto,
 } from "@api-types";
 
 // Every call to the CreatorOS API goes through here. The Supabase session
@@ -54,6 +56,7 @@ export class ApiError extends Error {
 }
 
 async function request<T>(method: "GET" | "POST" | "PATCH" | "PUT" | "DELETE", path: string, body?: unknown): Promise<T> {
+  const form = typeof FormData !== "undefined" && body instanceof FormData;
   const { data } = await supabaseBrowser().auth.getSession();
   const token = data.session?.access_token;
   if (!token) {
@@ -65,8 +68,8 @@ async function request<T>(method: "GET" | "POST" | "PATCH" | "PUT" | "DELETE", p
   try {
     response = await fetch(`${API_URL}${path}`, {
       method,
-      headers: { Authorization: `Bearer ${token}`, ...(body !== undefined ? { "Content-Type": "application/json" } : {}) },
-      body: body !== undefined ? JSON.stringify(body) : undefined,
+      headers: { Authorization: `Bearer ${token}`, ...(body !== undefined && !form ? { "Content-Type": "application/json" } : {}) },
+      body: form ? (body as FormData) : body !== undefined ? JSON.stringify(body) : undefined,
     });
   } catch {
     throw new ApiError(0, "NETWORK_ERROR", "Can't reach CreatorOS right now. Check your connection.");
@@ -92,7 +95,7 @@ export const api = {
   profile: () => get<ProfileDto>("/api/profile"),
   updateProfile: (patch: Partial<Omit<ProfileDto, "id" | "email" | "accounts" | "onboarded" | "hasWorkspace">>) => send<ProfileDto>("PATCH", "/api/profile", patch),
   setAccount: (provider: Provider, status: AccountStatus) => send<ProfileDto>("PUT", `/api/profile/accounts/${provider}`, { status }),
-  completeOnboarding: (body: { name?: string; niche: string; goals: string[]; briefingTime: string; accounts: Partial<Record<Provider, AccountStatus>>; sampleWorkspace: boolean }) =>
+  completeOnboarding: (body: { name?: string; niche: string; goals: string[]; briefingTime: string; timezone?: string; sampleWorkspace: boolean }) =>
     send<ProfileDto>("POST", "/api/profile/onboarding", body),
   resetWorkspace: () => send<null>("DELETE", "/api/workspace"),
 
@@ -101,6 +104,7 @@ export const api = {
   messages: () => request<ApiList<MessageDto>>("GET", "/api/messages?limit=100").then((r) => r.data),
   updateMessage: (id: string, patch: { read?: boolean; archived?: boolean; tone?: Tone; draftRequested?: true; editedReply?: string | null }) =>
     send<MessageDto>("PATCH", `/api/messages/${id}`, patch),
+  draftReply: (id: string) => send<MessageDto>("POST", `/api/messages/${id}/drafts`),
   approveMessages: (items: { id: string; text: string }[]) => send<{ messages: MessageDto[]; summary: SummaryDto }>("POST", "/api/messages/approve", { items }),
 
   deals: () => get<DealDto[]>("/api/deals"),
@@ -120,7 +124,12 @@ export const api = {
   updateEvent: (id: string, patch: { tentative?: boolean; done?: boolean }) => send<EventDto>("PATCH", `/api/events/${id}`, patch),
   deleteEvent: (id: string) => send<undefined>("DELETE", `/api/events/${id}`),
 
-  latestVideo: () => request<ApiList<VideoDto>>("GET", "/api/videos?limit=1").then((r) => r.data[0] ?? null),
+  videos: () => request<ApiList<VideoDto>>("GET", "/api/videos?limit=5").then((r) => r.data),
+  video: (id: string) => get<VideoDto>(`/api/videos/${id}`),
+  createVideoUpload: (file: { fileName: string; size: number; mimeType: string }) => send<VideoUploadDto>("POST", "/api/videos/uploads", file),
+  processVideo: (id: string) => send<VideoDto>("POST", `/api/videos/${id}/process`),
+  rewriteCaption: (id: string, platform: PublishPlatform) => send<ClipDto>("POST", `/api/clips/${id}/captions/${platform}/rewrite`),
+  postDownload: (id: string) => get<{ url: string }>(`/api/posts/${id}/download`),
   updateClip: (id: string, patch: { startSec?: number; endSec?: number; skipped?: boolean; hashtags?: string[] }) => send<ClipDto>("PATCH", `/api/clips/${id}`, patch),
   updateCaption: (id: string, platform: PublishPlatform, patch: { variant?: number; text?: string | null }) =>
     send<ClipDto>("PATCH", `/api/clips/${id}/captions/${platform}`, patch),
@@ -131,5 +140,19 @@ export const api = {
   markAlertsRead: (ids: string[]) => send<AlertDto[]>("POST", "/api/alerts/read", { ids }),
 
   analytics: (range: number) => get<AnalyticsDto>(`/api/analytics?range=${range}`),
-  askCopilot: (question: string) => send<CopilotAnswerDto>("POST", "/api/copilot", { question }),
+  askCopilot: (question: string, history: { role: "user" | "model"; text: string }[]) => send<CopilotAnswerDto>("POST", "/api/copilot", { question, history }),
+
+  readContract: (file: File) => {
+    const body = new FormData();
+    body.set("file", file);
+    return send<ContractReadDto>("POST", "/api/contracts/read", body);
+  },
+
+  connectGoogle: (provider: "gmail" | "calendar" | "youtube", returnTo: string) =>
+    get<{ url: string }>(`/api/integrations/google/${provider}/connect?${new URLSearchParams({ returnTo })}`),
+  disconnect: (provider: Provider) => send<ProfileDto>("DELETE", `/api/integrations/${provider}`),
+  syncAccount: (provider: Provider) => send<null>("POST", `/api/integrations/${provider}/sync`),
+  importInstagram: (csv: string, fileName: string) => send<{ imported: number; profile: ProfileDto }>("POST", "/api/integrations/instagram/import", { csv, fileName }),
+
+  deleteAccount: () => send<{ loginDeleted: boolean }>("DELETE", "/api/account"),
 };

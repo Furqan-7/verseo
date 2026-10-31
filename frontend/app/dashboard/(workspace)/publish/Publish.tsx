@@ -9,6 +9,7 @@ import { PageHead, TopBar, useShell } from "../../_shell/AppShell";
 import { ReconnectBanner } from "../../_shell/states";
 import { PATTERNS, Pixels, RefreshIcon, YELLOW, cx } from "../../_shell/ui";
 import { EmptyState } from "../../_shell/states";
+import { ApiError, api } from "../../_shell/api";
 import { MINUTES_SAVED_PER_CLIP, postSlots, publishPlatforms, type Clip, type PublishPlatform, type Video } from "../../data";
 
 const STEPS = ["Upload", "Transcript", "Clips", "Captions", "Schedule"];
@@ -28,31 +29,142 @@ function mmss(sec: number) {
   return `${Math.floor(sec / 60)}:${String(Math.round(sec % 60)).padStart(2, "0")}`;
 }
 
+// Uploading the creator's own video: straight to Supabase Storage with a
+// signed URL (with progress), then the API processes it and we poll.
+function putWithProgress(url: string, file: File, onProgress: (percent: number) => void) {
+  return new Promise<void>((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("PUT", url);
+    xhr.setRequestHeader("Content-Type", file.type || "video/mp4");
+    xhr.setRequestHeader("x-upsert", "false");
+    xhr.upload.onprogress = (e) => e.lengthComputable && onProgress(Math.round((e.loaded / e.total) * 100));
+    xhr.onload = () => (xhr.status < 300 ? resolve() : reject(new Error(`upload failed (${xhr.status})`)));
+    xhr.onerror = () => reject(new Error("upload failed"));
+    xhr.send(file);
+  });
+}
+
+type RealUpload = { name: string; progress: number; phase: "uploading" | "transcribing"; videoId?: string } | null;
+
+function useVideoUpload(onReady: () => void) {
+  const { notify, integrations, pendingVideo, refreshVideo } = useShell();
+  const [realUpload, setRealUpload] = useState<RealUpload>(
+    pendingVideo?.status === "processing" ? { name: pendingVideo.fileName, progress: 100, phase: "transcribing", videoId: pendingVideo.id } : null,
+  );
+  const ready = useRef(onReady);
+  ready.current = onReady;
+
+  useEffect(() => {
+    const id = realUpload?.videoId;
+    if (!id) return;
+    const timer = setInterval(async () => {
+      const v = await api.video(id).catch(() => null);
+      if (!v || v.status === "processing") return;
+      clearInterval(timer);
+      setRealUpload(null);
+      if (v.status === "ready") {
+        await refreshVideo();
+        ready.current();
+        notify(`${v.fileName}: transcript ready and ${v.clips.length} clips found`);
+      } else {
+        notify(`${v.fileName} couldn't be processed${v.error ? `: ${v.error}` : ""}`);
+      }
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [realUpload?.videoId, refreshVideo, notify]);
+
+  async function uploadFile(file: File) {
+    if (!integrations.features.storage) {
+      notify("Video uploads aren't set up on this server yet. Try the sample vlog.");
+      return;
+    }
+    setRealUpload({ name: file.name, progress: 0, phase: "uploading" });
+    try {
+      const target = await api.createVideoUpload({ fileName: file.name, size: file.size, mimeType: file.type || "video/mp4" });
+      await putWithProgress(target.signedUrl, file, (p) => setRealUpload({ name: file.name, progress: p, phase: "uploading" }));
+      await api.processVideo(target.videoId);
+      setRealUpload({ name: file.name, progress: 100, phase: "transcribing", videoId: target.videoId });
+    } catch (err) {
+      setRealUpload(null);
+      notify(err instanceof ApiError ? err.message : "The upload didn't finish. Try again.");
+    }
+  }
+  return { realUpload, uploadFile };
+}
+
 export default function Publish({ initialClip }: { initialClip?: string }) {
   const { video } = useShell();
-  if (!video || video.clips.length === 0) {
-    return (
-      <>
-        <TopBar />
-        <PageHead eyebrow="publish" title="Publish" lead="Upload a video and CreatorOS transcribes it, finds the clips worth posting and writes captions for every platform." />
-        <EmptyState title="No video yet" color={YELLOW} pattern={PATTERNS.publish}>
-          Your uploaded videos and their clips show up here.
-        </EmptyState>
-      </>
-    );
-  }
+  if (!video || video.clips.length === 0) return <FirstUpload />;
   return <Editor video={video} initialClip={initialClip} />;
+}
+
+function FirstUpload() {
+  const input = useRef<HTMLInputElement>(null);
+  const { realUpload, uploadFile } = useVideoUpload(() => undefined);
+  return (
+    <>
+      <TopBar />
+      <PageHead eyebrow="publish" title="Publish" lead="Upload a video and CreatorOS transcribes it, finds the clips worth posting and writes captions for every platform." />
+      <EmptyState
+        title={realUpload ? (realUpload.phase === "uploading" ? `Uploading ${realUpload.name} · ${realUpload.progress}%` : `Transcribing ${realUpload.name}…`) : "No video yet"}
+        color={YELLOW}
+        pattern={PATTERNS.publish}
+        action={!realUpload && <button type="button" className={base.btnDark} onClick={() => input.current?.click()}>Choose a video</button>}
+      >
+        {realUpload ? "You can leave this page; it keeps going." : "MP4, MOV or WebM, up to 2 GB."}
+      </EmptyState>
+      <input ref={input} type="file" accept="video/*" hidden onChange={(e) => { const f = e.target.files?.[0]; if (f) uploadFile(f); e.target.value = ""; }} />
+    </>
+  );
+}
+
+// How a scheduled clip's posts went.
+function PostStatus({ clip, notify }: { clip: Clip; notify: (m: string) => void }) {
+  const label = (p: Clip["posts"][number]) => publishPlatforms.find((x) => x.id === p.platform)!.label;
+  const done = clip.posts.filter((p) => p.status === "published");
+  const manual = clip.posts.filter((p) => p.status === "needs_manual");
+  const failed = clip.posts.filter((p) => p.status === "failed");
+  async function download(id: string) {
+    try {
+      window.location.href = (await api.postDownload(id)).url;
+    } catch (err) {
+      notify(err instanceof ApiError ? err.message : "Couldn't get the clip. Try again.");
+    }
+  }
+  if (done.length === 0 && manual.length === 0 && failed.length === 0) return <span className={base.savedTag}>✓ Scheduled</span>;
+  return (
+    <span className={styles.postStatus}>
+      {done.map((p) => (
+        <a key={p.id} className={base.savedTag} href={p.externalUrl ?? undefined} target="_blank" rel="noopener noreferrer">✓ {label(p)} live ↗</a>
+      ))}
+      {manual.map((p) =>
+        p.hasClipFile ? (
+          <button key={p.id} type="button" className={base.mini} onClick={() => download(p.id)} title={p.error ?? "Post it yourself"}>↓ {label(p)} clip</button>
+        ) : (
+          <span key={p.id} className={base.tag} title={p.error ?? ""}>{label(p)}: post it yourself</span>
+        ),
+      )}
+      {failed.map((p) => (
+        <span key={p.id} className={cx(base.tag, styles.postFailed)} title={p.error ?? ""}>{label(p)} failed</span>
+      ))}
+    </span>
+  );
 }
 
 function Editor({ video, initialClip }: { video: Video; initialClip?: string }) {
   const router = useRouter();
-  const { notify, scheduledClips: scheduled, scheduleClip, updateClip, updateCaption } = useShell();
+  const { notify, scheduledClips: scheduled, scheduleClip, updateClip, updateCaption, rewriteCaption, integrations } = useShell();
   const { clips, transcript } = video;
   const TICKS = ["0:00", mmss(video.lengthSec / 4), mmss(video.lengthSec / 2), mmss((video.lengthSec * 3) / 4), video.length];
   const fileInput = useRef<HTMLInputElement>(null);
   const [step, setStep] = useState(3);
   const [reached, setReached] = useState(3);
   const [upload, setUpload] = useState<Upload>(null);
+  const { realUpload, uploadFile } = useVideoUpload(() => {
+    setStep(1);
+    setReached(1);
+  });
+  const [captionBusy, setCaptionBusy] = useState(false);
   const [fileName, setFileName] = useState(video.file);
   const [dragging, setDragging] = useState(false);
   const [query, setQuery] = useState("");
@@ -122,7 +234,7 @@ function Editor({ video, initialClip }: { video: Video; initialClip?: string }) 
     router.replace(`/dashboard/publish?clip=${id}`, { scroll: false });
   }
 
-  // A simulated upload; the effect above moves it along.
+  // The sample vlog: a simulated upload, moved along by the effect above.
   function startUpload(name: string) {
     setFileName(name);
     setStep(0);
@@ -141,8 +253,16 @@ function Editor({ video, initialClip }: { video: Video; initialClip?: string }) 
     updateClip(clip.id, { skipped: !clip.skipped });
   }
 
-  function rewrite() {
+  async function rewrite() {
     setTyped(({ [key]: _, ...rest }) => rest);
+    // With AI: a fresh caption. Without: the next option already written.
+    if (integrations.features.ai) {
+      setCaptionBusy(true);
+      const ok = await rewriteCaption(clip.id, platform);
+      setCaptionBusy(false);
+      if (ok) notify(`New ${publishPlatforms.find((p) => p.id === platform)!.label} caption, written in your tone`);
+      return;
+    }
     updateCaption(clip.id, platform, { variant: saved.variant + 1, text: null });
     notify(`New ${publishPlatforms.find((p) => p.id === platform)!.label} caption, written in your tone`);
   }
@@ -250,7 +370,7 @@ function Editor({ video, initialClip }: { video: Video; initialClip?: string }) 
           hidden
           onChange={(e) => {
             const file = e.target.files?.[0];
-            if (file) startUpload(file.name);
+            if (file) uploadFile(file);
             e.target.value = "";
           }}
         />
@@ -277,7 +397,13 @@ function Editor({ video, initialClip }: { video: Video; initialClip?: string }) 
 
       {step === 0 && (
         <section className={cx(styles.card, styles.single)} aria-label="Upload">
-          {upload ? (
+          {realUpload ? (
+            <div className={styles.progress} role="status">
+              <strong>{realUpload.phase === "uploading" ? `Uploading ${realUpload.name}` : `Transcribing ${realUpload.name} and finding clips`}</strong>
+              <span className={styles.bar}><i style={{ width: `${realUpload.phase === "uploading" ? realUpload.progress : 100}%` }} /></span>
+              <small>{realUpload.phase === "uploading" ? `${realUpload.progress}% · keep this tab open until it reaches 100%` : "This takes a few minutes. You can leave this page; it keeps going."}</small>
+            </div>
+          ) : upload ? (
             <div className={styles.progress}>
               <strong>{upload.phase === "uploading" ? `Uploading ${upload.name}` : "Transcribing and finding clips"}</strong>
               <span className={styles.bar}><i style={{ width: `${upload.progress}%` }} /></span>
@@ -296,15 +422,15 @@ function Editor({ video, initialClip }: { video: Video; initialClip?: string }) 
                 e.preventDefault();
                 setDragging(false);
                 const file = e.dataTransfer.files?.[0];
-                if (file) startUpload(file.name);
+                if (file) uploadFile(file);
               }}
             >
               <span className={styles.dropIcon}><Pixels color={YELLOW} pattern={PATTERNS.publish} size={5} /></span>
               <strong>Drop a video here</strong>
-              <small>MP4 or MOV, up to 4 GB. CreatorOS transcribes it and suggests clips for Reels, Shorts and TikTok.</small>
+              <small>MP4, MOV or WebM, up to 2 GB. CreatorOS transcribes it and suggests clips for Reels, Shorts and TikTok.</small>
               <div className={styles.dropActions}>
                 <button type="button" className={base.btnDark} onClick={() => fileInput.current?.click()}>Choose a file</button>
-                <button type="button" className={base.btnGhost} onClick={() => startUpload(video.file)}>Use the demo vlog</button>
+                <button type="button" className={base.btnGhost} onClick={() => startUpload(video.file)}>Use the sample vlog</button>
               </div>
             </div>
           )}
@@ -474,7 +600,7 @@ function Editor({ video, initialClip }: { video: Video; initialClip?: string }) 
                       </>
                     ) : (
                       <>
-                        <button type="button" className={base.btnGhost} onClick={rewrite}><RefreshIcon /> Rewrite</button>
+                        <button type="button" className={base.btnGhost} onClick={rewrite} disabled={captionBusy}><RefreshIcon /> {captionBusy ? "Writing…" : "Rewrite"}</button>
                         <button type="button" className={base.btnDark} onClick={() => schedule()}>Approve and schedule {slots.length} posts</button>
                       </>
                     )}
@@ -504,7 +630,7 @@ function Editor({ video, initialClip }: { video: Video; initialClip?: string }) 
                     <small>{postSlots(n - 1).map((s) => `${s.label} ${s.when}`).join(" · ")}</small>
                   </span>
                   {done ? (
-                    <span className={base.savedTag}>✓ Scheduled</span>
+                    <PostStatus clip={c} notify={notify} />
                   ) : (
                     <>
                       <button type="button" className={base.mini} onClick={() => { pickClip(c.id); setStep(3); }}>Review captions</button>

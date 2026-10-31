@@ -15,6 +15,7 @@ import {
   dayLabel,
   eventTypes,
   monthLabel,
+  nowMinutes,
   parseIso,
   postSlots,
   suggestedSlot,
@@ -26,7 +27,6 @@ import {
 const START_HOUR = 8;
 const END_HOUR = 22;
 const HOUR_PX = 44;
-const NOW_MINUTES = 9 * 60 + 30; // the demo's "now" on TODAY_ISO
 const WEEKDAYS = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const TYPE = Object.fromEntries(eventTypes.map((t) => [t.type, t])) as Record<EventType, (typeof eventTypes)[number]>;
 
@@ -110,6 +110,8 @@ export default function Calendar({ initialDate, initialView }: { initialDate?: s
     }));
   });
   const all = [...events, ...dealEvents, ...postEvents];
+  const slot = suggestedSlot();
+  const now = nowMinutes();
   const visible = all.filter((e) => !hidden.has(e.type));
   const onDay = (iso: string) => visible.filter((e) => e.date === iso);
   const selected = all.find((e) => e.id === selectedId) ?? null;
@@ -118,8 +120,8 @@ export default function Calendar({ initialDate, initialView }: { initialDate?: s
   const week = Array.from({ length: 7 }, (_, i) => addDays(monday, i));
   const inWeek = all.filter((e) => week.includes(e.date));
   const count = (type: EventType) => inWeek.filter((e) => e.type === type && !e.done).length;
-  const slotBooked = events.some((e) => e.title === suggestedSlot.title && e.date === suggestedSlot.date);
-  const showSlot = view === "week" && week.includes(suggestedSlot.date) && !slotBooked && !hidden.has("film");
+  const slotBooked = events.some((e) => e.title === slot.title && e.date === slot.date);
+  const showSlot = view === "week" && week.includes(slot.date) && !slotBooked && !hidden.has("film");
 
   // Month grid: Monday-start weeks covering the anchor's month.
   const first = `${anchor.slice(0, 7)}-01`;
@@ -157,16 +159,16 @@ export default function Calendar({ initialDate, initialView }: { initialDate?: s
 
   async function bookSlot() {
     const booked = await addEvent({
-      title: suggestedSlot.title,
+      title: slot.title,
       type: "film",
-      date: suggestedSlot.date,
-      start: suggestedSlot.start,
-      end: suggestedSlot.end,
-      detail: suggestedSlot.why,
+      date: slot.date,
+      start: slot.start,
+      end: slot.end,
+      detail: slot.why,
     });
     if (!booked) return;
     setSelectedId(booked.id);
-    notify(`Booked ${dayLabel(suggestedSlot.date)}, ${clock(suggestedSlot.start)} – ${clock(suggestedSlot.end)}`);
+    notify(`Booked ${dayLabel(slot.date)}, ${clock(slot.start)} – ${clock(slot.end)}`);
   }
 
   async function saveDraft() {
@@ -313,13 +315,13 @@ export default function Calendar({ initialDate, initialView }: { initialDate?: s
                         />
                       );
                     })}
-                    {showSlot && iso === suggestedSlot.date && (
+                    {showSlot && iso === slot.date && (
                       <button
                         type="button"
                         className={styles.ghost}
                         style={{
-                          top: ((suggestedSlot.start - START_HOUR * 60) / 60) * HOUR_PX,
-                          height: ((suggestedSlot.end - suggestedSlot.start) / 60) * HOUR_PX - 2,
+                          top: ((slot.start - START_HOUR * 60) / 60) * HOUR_PX,
+                          height: ((slot.end - slot.start) / 60) * HOUR_PX - 2,
                         }}
                         onClick={bookSlot}
                       >
@@ -328,7 +330,7 @@ export default function Calendar({ initialDate, initialView }: { initialDate?: s
                       </button>
                     )}
                     {iso === TODAY_ISO && (
-                      <span className={styles.now} style={{ top: ((NOW_MINUTES - START_HOUR * 60) / 60) * HOUR_PX }} aria-label={`Now, ${clock(NOW_MINUTES)}`} />
+                      <span className={styles.now} style={{ top: ((now - START_HOUR * 60) / 60) * HOUR_PX }} aria-label={`Now, ${clock(now)}`} />
                     )}
                   </div>
                 ))}
@@ -394,7 +396,7 @@ export default function Calendar({ initialDate, initialView }: { initialDate?: s
               <h3 className={styles.sideTitle}>Up next</h3>
               <ul className={styles.agenda}>
                 {all
-                  .filter((e) => e.date > TODAY_ISO || (e.date === TODAY_ISO && (e.start ?? 24 * 60) >= NOW_MINUTES))
+                  .filter((e) => e.date > TODAY_ISO || (e.date === TODAY_ISO && (e.start ?? 24 * 60) >= now))
                   .filter((e) => !e.done)
                   .sort((a, b) => a.date.localeCompare(b.date) || (a.start ?? -1) - (b.start ?? -1))
                   .slice(0, 5)
@@ -453,9 +455,9 @@ export default function Calendar({ initialDate, initialView }: { initialDate?: s
           {!slotBooked && (
             <section className={cx(styles.panel, styles.suggest)}>
               <div className={styles.suggestLabel}>✦ Suggested filming slot</div>
-              <strong>{dayLabel(suggestedSlot.date)}, {clock(suggestedSlot.start)} – {clock(suggestedSlot.end)}</strong>
-              <p>{suggestedSlot.why}</p>
-              <button type="button" className={base.miniDark} onClick={() => { bookSlot(); if (!week.includes(suggestedSlot.date)) go(suggestedSlot.date, "week"); }}>
+              <strong>{dayLabel(slot.date)}, {clock(slot.start)} – {clock(slot.end)}</strong>
+              <p>{slot.why}</p>
+              <button type="button" className={base.miniDark} onClick={() => { bookSlot(); if (!week.includes(slot.date)) go(slot.date, "week"); }}>
                 Book this slot
               </button>
             </section>

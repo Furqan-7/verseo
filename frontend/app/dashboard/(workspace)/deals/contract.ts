@@ -1,8 +1,8 @@
 // The terms read from a contract, the live Deal Health preview while the
 // creator checks them, and the request that adds the deal.
 
-import type { ContractTermsInput } from "@api-types";
-import { HEALTH_MAX, TODAY_ISO, parseIso, type DealStage } from "../../data";
+import type { ContractReadDto, ContractTermsInput } from "@api-types";
+import { HEALTH_MAX, TODAY_ISO, addDays, parseIso, type DealStage } from "../../data";
 import { STAGE_CODE } from "../../_shell/model";
 
 export interface ContractTerms {
@@ -21,20 +21,20 @@ export interface ContractTerms {
 const PAYMENT_CODE: Record<ContractTerms["payment"], ContractTermsInput["payment"]> = { "Net 15": "net_15", "Net 30": "net_30", "Net 45": "net_45", "Net 60": "net_60", Missing: "missing" };
 const REVISIONS_CODE: Record<ContractTerms["revisions"], ContractTermsInput["revisions"]> = { "1 round": "one", "2 rounds": "two", Unlimited: "unlimited" };
 
-// What the demo "reads" from any uploaded contract; every field is editable
-// before the deal is added.
-export const SAMPLE_TERMS: ContractTerms = {
+// The sample contract's terms (for "Use a sample contract"); every field is
+// editable before the deal is added. Due a month from today.
+export const sampleTerms = (): ContractTerms => ({
   brand: "Sony",
   campaign: "Alpha creator series",
   fee: 2800,
   deliverables: "1 YouTube video, 2 Shorts",
-  due: "2026-11-27",
+  due: addDays(TODAY_ISO, 30),
   usageDays: 90,
   usagePaid: false,
   payment: "Net 60",
   revisions: "Unlimited",
   stage: "New offer",
-};
+});
 
 // The clauses the sample was read from, shown next to each term.
 export const SAMPLE_CLAUSES: Partial<Record<keyof ContractTerms, string>> = {
@@ -71,7 +71,7 @@ export function assess(t: ContractTerms) {
 
 // The reviewed terms in the API's shape. The API scores the deal itself
 // (the same rules as assess(), which only previews the score here).
-export function toContractInput(t: ContractTerms, fileName: string): ContractTermsInput {
+export function toContractInput(t: ContractTerms, fileName: string, read?: { documentId: string; clauses: Clauses }): ContractTermsInput {
   return {
     brand: t.brand.trim(),
     campaign: t.campaign.trim(),
@@ -84,5 +84,20 @@ export function toContractInput(t: ContractTerms, fileName: string): ContractTer
     revisions: REVISIONS_CODE[t.revisions],
     stage: STAGE_CODE[t.stage] as ContractTermsInput["stage"],
     fileName,
+    ...(read ? { documentId: read.documentId, clauses: { fee: read.clauses.fee ?? null, deliverables: read.clauses.deliverables ?? null, usageDays: read.clauses.usageDays ?? null, payment: read.clauses.payment ?? null } } : {}),
+  };
+}
+
+export type Clauses = Partial<Record<keyof ContractTerms, string | null>>;
+
+const PAYMENT_LABEL = Object.fromEntries(Object.entries(PAYMENT_CODE).map(([k, v]) => [v, k])) as Record<ContractTermsInput["payment"], ContractTerms["payment"]>;
+const REVISIONS_LABEL = Object.fromEntries(Object.entries(REVISIONS_CODE).map(([k, v]) => [v, k])) as Record<ContractTermsInput["revisions"], ContractTerms["revisions"]>;
+
+// What the API read from an uploaded contract, as the form's values.
+export function fromContractRead(read: ContractReadDto): { terms: ContractTerms; clauses: Clauses } {
+  const t = read.terms;
+  return {
+    terms: { brand: t.brand, campaign: t.campaign, fee: t.fee, deliverables: t.deliverables, due: t.due, usageDays: t.usageDays, usagePaid: t.usagePaid, payment: PAYMENT_LABEL[t.payment], revisions: REVISIONS_LABEL[t.revisions], stage: "New offer" },
+    clauses: t.clauses,
   };
 }

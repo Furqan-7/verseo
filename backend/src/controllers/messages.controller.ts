@@ -1,6 +1,7 @@
 import type { Request, Response } from "express";
 import type { ApproveMessagesInput, ListMessagesQuery, UpdateMessageInput } from "../schemas/messages";
 import * as messagesService from "../services/messages.service";
+import { writeDrafts } from "../services/drafts.service";
 import { getSummary } from "../services/summary.service";
 import { paginate, sendList, sendSuccess } from "../utils/response";
 
@@ -21,4 +22,9 @@ export async function approveMessages(req: Request, res: Response) {
   const messages = await messagesService.approveMessages(res.locals.userId, req.body as ApproveMessagesInput);
   const summary = await getSummary(res.locals.userId);
   sendSuccess(res, { messages, summary }, messages.length === 1 ? "Reply approved" : "Replies approved");
+}
+
+// Writes (or rewrites) the reply in all three tones with AI.
+export async function draftReply(req: Request, res: Response) {
+  sendSuccess(res, await writeDrafts(res.locals.userId, req.params.id as string), "Reply drafted");
 }

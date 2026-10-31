@@ -657,3 +657,17 @@
     display: none;
   }
 }
+
+/* how a scheduled clip's posts went */
+.postStatus {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+.postStatus a {
+  text-decoration: none;
+}
+.postFailed {
+  color: var(--red);
+}

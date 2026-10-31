@@ -1,7 +1,7 @@
 // The morning briefing email. Plain tables and inline styles so it renders
 // the same in Gmail, Apple Mail and Outlook; no web fonts, no CSS classes.
-// Content is the creator's own workspace (see the preview route, which
-// reads it from the API).
+// Content is the creator's own workspace (services/briefing.service.ts);
+// the same HTML is the Settings preview and the email that's sent.
 
 export type BriefingSection = "todo" | "inbox" | "ideas" | "deals";
 

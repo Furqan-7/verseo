@@ -5,6 +5,7 @@ packages:
 onlyBuiltDependencies:
   - '@prisma/engines'
   - esbuild
+  - ffmpeg-static
   - prisma
   - sharp
   - unrs-resolver

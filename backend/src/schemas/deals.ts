@@ -16,6 +16,13 @@ export const createDealBody = z
     revisions: z.enum(["one", "two", "unlimited"]),
     stage: dealStage.exclude(["paid"]),
     fileName: text(200),
+    // The contract read by POST /api/contracts/read, to link to the deal.
+    documentId: cuid.optional(),
+    // The section each term came from, when the contract reader found it.
+    clauses: z
+      .object({ fee: z.string().max(20).nullable(), deliverables: z.string().max(20).nullable(), usageDays: z.string().max(20).nullable(), payment: z.string().max(20).nullable() })
+      .partial()
+      .optional(),
   })
   .strict();
 

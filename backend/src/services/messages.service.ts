@@ -2,7 +2,9 @@ import { prisma, type Prisma } from "db";
 import type { ApproveMessagesInput, ListMessagesQuery, UpdateMessageInput } from "../schemas/messages";
 import type { MessageDto } from "../types/api";
 import { badRequest, notFound } from "../utils/AppError";
+import { enqueue } from "../jobs/queue";
 import { messageInclude, toMessageDto } from "./mappers";
+import { indexSource } from "./rag.service";
 
 export async function listMessages(userId: string, query: ListMessagesQuery) {
   const where: Prisma.MessageWhereInput = {
@@ -50,7 +52,7 @@ export async function updateMessage(userId: string, id: string, input: UpdateMes
 // messages are left as they were, so approving twice is harmless.
 export async function approveMessages(userId: string, input: ApproveMessagesInput): Promise<MessageDto[]> {
   const ids = [...new Set(input.items.map((item) => item.id))];
-  const owned = await prisma.message.findMany({ where: { id: { in: ids }, profileId: userId }, select: { id: true, category: true, approvedAt: true } });
+  const owned = await prisma.message.findMany({ where: { id: { in: ids }, profileId: userId }, select: { id: true, category: true, approvedAt: true, source: true, externalId: true, subject: true } });
   if (owned.length !== ids.length) throw notFound("Message");
   if (owned.some((m) => m.category === "spam")) throw badRequest("Spam doesn't need a reply", "SPAM_REPLY");
 
@@ -66,6 +68,15 @@ export async function approveMessages(userId: string, input: ApproveMessagesInpu
         }),
       ),
   );
+  // Deliver the new approvals (Gmail draft / YouTube reply) in the
+  // background, and keep each approved reply for search: future drafts
+  // learn the creator's voice from them.
+  for (const item of input.items.filter((i) => pending.has(i.id))) {
+    const m = owned.find((o) => o.id === item.id)!;
+    await indexSource(userId, "reply", m.id, `Reply to "${m.subject}":\n${item.text}`);
+    if (m.externalId && m.source === "gmail") await enqueue("gmail.draft", { messageId: m.id }, { profileId: userId, key: `gmail.draft:${m.id}` });
+    if (m.externalId && m.source === "youtube") await enqueue("youtube.reply", { messageId: m.id }, { profileId: userId, key: `youtube.reply:${m.id}` });
+  }
   const rows = await prisma.message.findMany({ where: { id: { in: ids }, profileId: userId }, include: messageInclude });
   return rows.map(toMessageDto);
 }

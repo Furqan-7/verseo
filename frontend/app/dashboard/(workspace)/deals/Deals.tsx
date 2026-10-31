@@ -129,7 +129,7 @@ export default function Deals({ initialSlug }: { initialSlug?: string }) {
         lead={`${boardDeals.length} active ${boardDeals.length === 1 ? "deal" : "deals"} worth ${money(total)}.${needsReply ? ` ${needsReply.brand} needs a reply.` : ""}${
           reminder ? (reminderSaved ? ` ${reminder.brand}'s reminder is in your drafts.` : ` ${reminder.brand}'s payment is overdue.`) : ""
         }`}
-        badge={reminder ? (reminderSaved ? "reminder saved to Gmail drafts" : `${reminder.overdue!.amount} overdue · reminder ready`) : undefined}
+        badge={reminder ? (reminderSaved ? "reminder approved" : `${reminder.overdue!.amount} overdue · reminder ready`) : undefined}
       />
       <ReconnectBanner accounts={["gmail"]} />
 
@@ -301,7 +301,7 @@ export default function Deals({ initialSlug }: { initialSlug?: string }) {
               <button type="button" className={base.btnGhost} onClick={addToCalendar}>Add to calendar</button>
             )}
             {!replyId ? null : replyDone ? (
-              <span className={cx(base.savedTag, styles.actionTag)}>✓ Saved to Gmail drafts</span>
+              <span className={cx(base.savedTag, styles.actionTag)}>✓ {threads.find((t) => t.id === replyId)?.delivery === "gmail_draft" ? "Saved to Gmail drafts" : "Reply approved"}</span>
             ) : (
               <button type="button" className={base.btnDark} onClick={draftReply}>{replyLabel}</button>
             )}

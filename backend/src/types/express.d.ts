@@ -8,6 +8,7 @@ declare global {
       name: string;
       // Parsed query string, set by validate({ query }).
       query?: unknown;
+      requestId?: string;
     }
   }
 }

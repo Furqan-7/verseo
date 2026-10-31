@@ -63,6 +63,13 @@ export interface ProfileDto {
   autoDraft: Category[];
   notifications: AlertKind[];
   accounts: Record<Provider, AccountStatus>;
+  // Sync details for each connected account.
+  sync: Partial<Record<Provider, { syncedAt: string | null; lastError: string | null; externalId: string | null }>>;
+  // The Google account Gmail, Calendar and YouTube are connected through.
+  googleEmail: string | null;
+  timezone: string;
+  // What this server has keys for, so the app can say what's available.
+  features: { ai: boolean; google: boolean; storage: boolean; email: boolean };
   onboarded: boolean;
   // False until the workspace has any data (sample or real).
   hasWorkspace: boolean;
@@ -92,6 +99,12 @@ export interface MessageDto {
   archived: boolean;
   approvedAt: string | null;
   approvedReply: string | null;
+  // Where an approved reply goes: a Gmail draft, a posted YouTube reply, or
+  // nowhere (sample messages and Instagram DMs); and whether it got there.
+  delivery: "gmail_draft" | "youtube_reply" | "none";
+  delivered: boolean;
+  // Gmail thread or YouTube video, to open the original.
+  externalUrl: string | null;
   drafts: Partial<Record<Tone, string>>;
 }
 
@@ -158,6 +171,17 @@ export interface ContractTermsInput {
   revisions: Revisions;
   stage: Exclude<DealStage, "paid">;
   fileName: string;
+  documentId?: string;
+  clauses?: Partial<Record<"fee" | "deliverables" | "usageDays" | "payment", string | null>>;
+}
+
+// What POST /api/contracts/read found in an uploaded contract.
+export interface ContractReadDto {
+  documentId: string;
+  fileName: string;
+  terms: Omit<ContractTermsInput, "stage" | "fileName" | "documentId"> & {
+    clauses: Record<"fee" | "deliverables" | "due" | "usageDays" | "payment" | "revisions", string | null>;
+  };
 }
 
 export interface TodoDto {
@@ -204,6 +228,18 @@ export interface PostDto {
   scheduledAt: string;
   why: string;
   caption: string;
+  // needs_manual: cut and captioned, but the platform must be posted to by hand.
+  status: "scheduled" | "publishing" | "published" | "needs_manual" | "failed";
+  externalUrl: string | null;
+  error: string | null;
+  hasClipFile: boolean;
+}
+
+export interface VideoUploadDto {
+  videoId: string;
+  path: string;
+  token: string;
+  signedUrl: string;
 }
 
 export interface ClipDto {
@@ -228,6 +264,8 @@ export interface ClipDto {
 export interface VideoDto {
   id: string;
   fileName: string;
+  status: "uploading" | "processing" | "ready" | "failed";
+  error: string | null;
   lengthSec: number;
   quality: string;
   createdAt: string;

@@ -153,7 +153,7 @@ export default function Dashboard() {
                   <p>{m.subject}</p>
                   <div className={styles.actions}>
                     {approved.has(m.id) ? (
-                      <span className={styles.savedTag}>✓ Saved to Gmail drafts</span>
+                      <span className={styles.savedTag}>✓ {m.delivery === "gmail_draft" ? "Saved to Gmail drafts" : "Approved"}</span>
                     ) : (
                       <button type="button" className={styles.miniDark} onClick={() => openDraft({ kind: "reply", id: m.id, title: "Reply draft", to: m.from, text: m.editedReply ?? withSignOff(m.drafts![m.tone ?? settings.tone].replace(/==/g, ""), settings.signOff), minutesSaved: m.minutesSaved })}>
                         Review draft

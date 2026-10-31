@@ -2,7 +2,14 @@ import { prisma } from "db";
 import type { CreateEventInput, ListEventsQuery, UpdateEventInput } from "../schemas/events";
 import type { EventDto } from "../types/api";
 import { fromIsoDate } from "../utils/dates";
+import { enqueue } from "../jobs/queue";
 import { toEventDto } from "./mappers";
+
+// When Google Calendar is connected, changes here are copied to it.
+export async function pushCalendar(userId: string) {
+  const account = await prisma.connectedAccount.findUnique({ where: { profileId_provider: { profileId: userId, provider: "calendar" } }, select: { status: true } });
+  if (account?.status === "connected") await enqueue("sync.calendar", {}, { profileId: userId, key: `sync.calendar:${userId}` });
+}
 
 export async function listEvents(userId: string, query: ListEventsQuery): Promise<EventDto[]> {
   const rows = await prisma.calendarEvent.findMany({
@@ -28,6 +35,7 @@ export async function createEvent(userId: string, input: CreateEventInput): Prom
       tentative: input.tentative,
     },
   });
+  await pushCalendar(userId);
   return toEventDto(event);
 }
 
@@ -37,5 +45,6 @@ export async function updateEvent(userId: string, id: string, input: UpdateEvent
 }
 
 export async function deleteEvent(userId: string, id: string) {
-  await prisma.calendarEvent.delete({ where: { id, profileId: userId } });
+  const event = await prisma.calendarEvent.delete({ where: { id, profileId: userId } });
+  if (event.googleEventId) await enqueue("calendar.delete", { googleEventId: event.googleEventId }, { profileId: userId });
 }

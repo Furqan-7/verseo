@@ -7,7 +7,24 @@ import styles from "./settings.module.css";
 import { PageHead, TopBar, useShell } from "../../_shell/AppShell";
 import { ACCOUNT_META, type AccountId, type BriefingSection, type NotificationId, type Settings as SettingsShape } from "../../_shell/settings";
 import { BLUE, GREEN, PATTERNS, PURPLE, Pixels, YELLOW, cx } from "../../_shell/ui";
-import { goals, niches, type InboxThread, type Tone } from "../../data";
+import { ApiError, api } from "../../_shell/api";
+import { browserTimeZone, goals, niches, type InboxThread, type Tone } from "../../data";
+
+const CONNECT_ERRORS: Record<string, string> = {
+  cancelled: "Connecting was cancelled. Nothing changed.",
+  permissions: "Google didn't give every permission CreatorOS needs. Connect again and leave all the boxes ticked.",
+  expired: "That connect link expired. Try again.",
+  failed: "Connecting didn't work. Try again in a minute.",
+};
+
+// IANA zones the browser knows, for the time zone picker.
+const ZONES: string[] = (() => {
+  try {
+    return (Intl as unknown as { supportedValuesOf: (k: string) => string[] }).supportedValuesOf("timeZone");
+  } catch {
+    return ["UTC"];
+  }
+})();
 import { SETTINGS_TABS, type SettingsTab } from "./tabs";
 
 const TONES: Tone[] = ["Friendly", "Professional", "Shorter"];
@@ -64,7 +81,17 @@ function sampleReply(threads: InboxThread[], tone: Tone, signOff: string) {
 
 export default function Settings({ initialTab }: { initialTab: SettingsTab }) {
   const router = useRouter();
-  const { notify, settings, updateSettings, threads, resetWorkspace } = useShell();
+  const { notify, settings, updateSettings, threads, resetWorkspace, integrations, refreshProfile } = useShell();
+
+  // "Gmail sorts brand emails… · synced 10:42", or the last sync's problem.
+  function syncLine(id: AccountId, state: string, detail: string) {
+    const info = integrations.sync[id];
+    if (state === "imported") return `Metrics imported from CSV${info?.syncedAt ? ` · ${new Date(info.syncedAt).toLocaleDateString(undefined, { day: "numeric", month: "short" })}` : ""}`;
+    if (state !== "connected") return info?.lastError ?? detail;
+    if (info?.lastError) return `Last sync failed: ${info.lastError}`;
+    if (!info?.syncedAt) return `${detail} · first sync running`;
+    return `${detail} · synced ${new Date(info.syncedAt).toLocaleString(undefined, { hour: "numeric", minute: "2-digit", day: "numeric", month: "short" })}`;
+  }
   const [resetting, setResetting] = useState(false);
   const csvInput = useRef<HTMLInputElement>(null);
   const [tab, setTab] = useState<SettingsTab>(initialTab);
@@ -88,18 +115,79 @@ export default function Settings({ initialTab }: { initialTab: SettingsTab }) {
     router.replace(`/dashboard/settings?tab=${next}`, { scroll: false });
   }
 
-  function setAccount(id: AccountId, state: SettingsShape["accounts"][AccountId]) {
-    save({ accounts: { ...settings.accounts, [id]: state } });
+  // Gmail, Calendar and YouTube connect through Google's consent screen.
+  async function connect(id: AccountId) {
+    if (id !== "gmail" && id !== "calendar" && id !== "youtube") return;
+    if (!integrations.features.google) return notify("Connecting Google accounts isn't set up on this server yet.");
+    setConnecting(id);
+    try {
+      window.location.href = (await api.connectGoogle(id, "/dashboard/settings?tab=accounts")).url;
+    } catch (err) {
+      setConnecting(null);
+      notify(err instanceof ApiError ? err.message : "Couldn't start connecting. Try again.");
+    }
   }
 
-  function connect(id: AccountId) {
+  async function disconnect(id: AccountId) {
     setConnecting(id);
-    setTimeout(() => {
+    try {
+      await api.disconnect(id);
+      await refreshProfile();
+      notify(`${ACCOUNT_META[id].name} disconnected`);
+    } catch (err) {
+      notify(err instanceof ApiError ? err.message : "Couldn't disconnect. Try again.");
+    } finally {
       setConnecting(null);
-      setAccount(id, "connected");
-      notify(`${ACCOUNT_META[id].name} connected`);
-    }, 900);
+    }
   }
+
+  async function syncNow(id: AccountId) {
+    try {
+      await api.syncAccount(id);
+      notify(`Syncing ${ACCOUNT_META[id].name}…`);
+      setTimeout(() => refreshProfile().catch(() => undefined), 8000);
+    } catch (err) {
+      notify(err instanceof ApiError ? err.message : "Couldn't start a sync. Try again.");
+    }
+  }
+
+  async function importCsv(file: File) {
+    try {
+      const result = await api.importInstagram(await file.text(), file.name);
+      await refreshProfile();
+      notify(`${file.name}: ${result.imported} days imported`);
+    } catch (err) {
+      notify(err instanceof ApiError ? err.message : "Couldn't import that CSV.");
+    }
+  }
+
+  async function removeAccount() {
+    if (!window.confirm("Delete your CreatorOS account? Your workspace, uploads and connections are deleted for good.")) return;
+    setResetting(true);
+    try {
+      const result = await api.deleteAccount();
+      // The login is gone too when the server could delete it; sign out either way.
+      if (!result.loginDeleted) window.alert("Your workspace was deleted. Your sign-in will be removed by the CreatorOS team.");
+      window.location.href = "/auth/signout";
+    } catch (err) {
+      setResetting(false);
+      notify(err instanceof ApiError ? err.message : "Couldn't delete your account. Try again.");
+    }
+  }
+
+  // Back from Google: say how it went, then tidy the URL.
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const connected = params.get("connected") as AccountId | null;
+    const failed = params.get("connect_error");
+    if (!connected && !failed) return;
+    if (connected && ACCOUNT_META[connected]) notify(`${ACCOUNT_META[connected].name} connected. The first sync is running.`);
+    if (failed) notify(CONNECT_ERRORS[failed] ?? CONNECT_ERRORS.failed);
+    refreshProfile().catch(() => undefined);
+    router.replace(`/dashboard/settings?tab=${tab}`, { scroll: false });
+    // Once, on arrival.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   async function resetDemo() {
     if (!window.confirm("Delete everything in your workspace and start onboarding again? This can't be undone.")) return;
@@ -163,6 +251,13 @@ export default function Settings({ initialTab }: { initialTab: SettingsTab }) {
                 <input value={settings.channel} onChange={(e) => save({ channel: e.target.value })} placeholder="@handle · YouTube" />
               </label>
               <label className={styles.field}>
+                <span>Time zone</span>
+                <select value={settings.timezone} onChange={(e) => save({ timezone: e.target.value })}>
+                  {[...new Set([settings.timezone, browserTimeZone(), ...ZONES])].map((z) => <option key={z} value={z}>{z.replace(/_/g, " ")}</option>)}
+                </select>
+                <small>Your briefing, deadlines and &ldquo;today&rdquo; follow this. This device is on {browserTimeZone().replace(/_/g, " ")}.</small>
+              </label>
+              <label className={styles.field}>
                 <span>Sign-in email</span>
                 <input value={settings.email} readOnly disabled />
                 <small>The email you sign in with. It can’t be changed here.</small>
@@ -212,7 +307,7 @@ export default function Settings({ initialTab }: { initialTab: SettingsTab }) {
                       <span className={styles.rowText}>
                         <strong>{meta.name}</strong>
                         <small>
-                          {state === "connected" ? `${meta.detail} · synced 9:02` : state === "imported" ? "Metrics imported from CSV · 28 Oct" : meta.detail}
+                          {syncLine(id, state, meta.detail)}
                         </small>
                       </span>
                       <span className={styles.accountActions}>
@@ -223,7 +318,8 @@ export default function Settings({ initialTab }: { initialTab: SettingsTab }) {
                         ) : state === "connected" ? (
                           <>
                             <span className={styles.ok}>✓ Connected</span>
-                            <button type="button" className={base.mini} onClick={() => { setAccount(id, "disconnected"); notify(`${meta.name} disconnected`); }}>Disconnect</button>
+                            <button type="button" className={base.mini} onClick={() => syncNow(id)}>Sync now</button>
+                            <button type="button" className={base.mini} onClick={() => disconnect(id)}>Disconnect</button>
                           </>
                         ) : state === "imported" ? (
                           <>
@@ -247,14 +343,14 @@ export default function Settings({ initialTab }: { initialTab: SettingsTab }) {
                 hidden
                 onChange={(e) => {
                   const file = e.target.files?.[0];
-                  if (file) {
-                    setAccount("instagram", "imported");
-                    notify(`${file.name} imported`);
-                  }
+                  if (file) importCsv(file);
                   e.target.value = "";
                 }}
               />
-              <p className={styles.note}>🔒 Read-only access. Nothing is sent, posted or booked without your approval. Disconnecting stops new syncs; nothing already in CreatorOS is deleted.</p>
+              {integrations.googleEmail && <p className={styles.note}>Google account: {integrations.googleEmail}</p>}
+              {!integrations.features.google && <p className={styles.note}>Connecting Gmail, Calendar and YouTube isn&apos;t set up on this server yet.</p>}
+              <p className={styles.note}>🔒 CreatorOS reads your mail and channel stats, and only saves approved replies as Gmail drafts or posts approved comment replies. Nothing is sent, posted or booked without your approval. Disconnecting stops new syncs and removes Google Calendar events from CreatorOS.</p>
+              <p className={styles.note}>Instagram CSV: export daily insights from Meta Business Suite (Insights › Export), or any sheet with a <b>date</b> column and <b>views</b> and/or <b>followers</b> columns.</p>
             </>
           )}
 
@@ -369,6 +465,9 @@ export default function Settings({ initialTab }: { initialTab: SettingsTab }) {
               </div>
               <Row title="Sign out" detail="Signs you out on this device.">
                 <a className={base.btnGhost} href="/auth/signout">Sign out</a>
+              </Row>
+              <Row title="Delete account" detail="Deletes your account, workspace, uploads and connections for good.">
+                <button type="button" className={cx(base.btnGhost, styles.danger)} onClick={removeAccount} disabled={resetting}>Delete</button>
               </Row>
               <Row title="Reset workspace" detail="Deletes your inbox, deals, posts and settings, and starts onboarding again.">
                 <button type="button" className={cx(base.btnGhost, styles.danger)} onClick={resetDemo} disabled={resetting}>{resetting ? "Resetting…" : "Reset"}</button>

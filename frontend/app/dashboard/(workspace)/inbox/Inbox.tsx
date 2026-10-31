@@ -12,6 +12,11 @@ import { BLUE, CATEGORY_STYLE, GREEN, PATTERNS, Pixels, RefreshIcon, cx, hours }
 import type { Category, InboxThread, Tone } from "../../data";
 
 const TONES: Tone[] = ["Friendly", "Professional", "Shorter"];
+
+// What approving does, by where the message came from.
+const APPROVE_LABEL: Record<InboxThread["delivery"], string> = { gmail_draft: "Approve and save to Gmail drafts", youtube_reply: "Approve and post reply", none: "Approve reply" };
+const APPROVED_NOTE: Record<InboxThread["delivery"], string> = { gmail_draft: "Reply saved to your Gmail drafts", youtube_reply: "Reply approved; posting it on YouTube", none: "Reply approved" };
+const SAVED_SHORT: Record<InboxThread["delivery"], string> = { gmail_draft: "Saved to drafts", youtube_reply: "Reply posted", none: "Approved" };
 const FILTERS: { id: Category | "All"; label: string }[] = [
   { id: "All", label: "All" },
   { id: "Brand deal", label: "Brand deal" },
@@ -44,7 +49,7 @@ function plain(text: string) {
 
 export default function Inbox({ initialId }: { initialId?: string }) {
   const router = useRouter();
-  const { notify, approve, approved, minutesSaved, settings, threads: live, updateThread } = useShell();
+  const { notify, approve, approved, minutesSaved, settings, threads: live, updateThread, regenerateDrafts } = useShell();
   const [selectedId, setSelectedId] = useState(live.some((t) => t.id === initialId) ? initialId! : live[0]?.id);
   const [filter, setFilter] = useState<Category | "All">("All");
   const [query, setQuery] = useState("");
@@ -89,7 +94,7 @@ export default function Inbox({ initialId }: { initialId?: string }) {
   function approveAll() {
     if (waiting.length === 0) return;
     approve(waiting.map(approvalFor));
-    notify(`${waiting.length} ${waiting.length === 1 ? "reply" : "replies"} saved to your Gmail drafts`);
+    notify(`${waiting.length} ${waiting.length === 1 ? "reply" : "replies"} approved`);
   }
 
   function archive(t: InboxThread) {
@@ -99,13 +104,11 @@ export default function Inbox({ initialId }: { initialId?: string }) {
     notify(`Archived “${t.subject}”`);
   }
 
-  function regenerate(t: InboxThread) {
+  async function regenerate(t: InboxThread) {
     setRegenerating(true);
-    setTimeout(() => {
-      setRegenerating(false);
-      const tone = toneFor(t);
-      notify(`Draft rewritten in a ${tone.toLowerCase()} tone`);
-    }, 700);
+    const ok = await regenerateDrafts(t.id);
+    setRegenerating(false);
+    if (ok) notify(`Draft rewritten in a ${toneFor(t).toLowerCase()} tone`);
   }
 
   const shown = (c: Category | "All") => live.filter((t) => c === "All" || t.category === c).length;
@@ -174,7 +177,7 @@ export default function Inbox({ initialId }: { initialId?: string }) {
                     <span className={styles.threadTags}>
                       <span className={cx(base.tag, CATEGORY_STYLE[t.category])}>{t.category}</span>
                       {approved.has(t.id) ? (
-                        <span className={styles.ready}>✓ Saved to drafts</span>
+                        <span className={styles.ready}>✓ {SAVED_SHORT[t.delivery]}</span>
                       ) : hasDraft(t) ? (
                         <span className={styles.ready}>✓ Draft ready</span>
                       ) : null}
@@ -234,9 +237,18 @@ export default function Inbox({ initialId }: { initialId?: string }) {
             }}
             isApproved={approved.has(selected.id)}
             regenerating={regenerating}
-            onDraft={() => {
-              updateThread(selected.id, { draftRequested: true });
-              notify("Reply drafted in your tone");
+            onDraft={async () => {
+              // Drafts written ahead (auto-drafts were off) just show;
+              // otherwise the AI writes one now.
+              if (selected.drafts) {
+                updateThread(selected.id, { draftRequested: true });
+                notify("Reply drafted in your tone");
+                return;
+              }
+              setRegenerating(true);
+              const ok = await regenerateDrafts(selected.id);
+              setRegenerating(false);
+              if (ok) notify("Reply drafted in your tone");
             }}
             onRegenerate={() => regenerate(selected)}
             onApprove={() => {
@@ -245,10 +257,10 @@ export default function Inbox({ initialId }: { initialId?: string }) {
               if (text !== undefined && text !== selected.editedReply) updateThread(selected.id, { editedReply: text });
               setTyping(({ [selected.id]: _, ...rest }) => rest);
               approve([approvalFor(selected)]);
-              notify("Reply saved to your Gmail drafts");
+              notify(APPROVED_NOTE[selected.delivery]);
             }}
             onArchive={() => archive(selected)}
-            onGmail={() => notify("Opens this thread in Gmail once your account is live")}
+            onGmail={() => notify("This is a sample message, so there's nothing to open. Connect Gmail in Settings to see your own.")}
           />
         ) : (
           <section className={styles.reader}>
@@ -323,7 +335,11 @@ function Reader({
           <span className={styles.email}>{t.email}</span>
           <span className={styles.senderActions}>
             <button type="button" className={base.mini} onClick={onArchive}>Archive</button>
-            <button type="button" className={base.mini} onClick={onGmail}>Open in {t.source} ↗</button>
+            {t.externalUrl ? (
+              <a className={base.mini} href={t.externalUrl} target="_blank" rel="noopener noreferrer">Open in {t.source} ↗</a>
+            ) : (
+              <button type="button" className={base.mini} onClick={onGmail}>Open in {t.source} ↗</button>
+            )}
           </span>
         </div>
       </div>
@@ -346,7 +362,7 @@ function Reader({
         </div>
       )}
 
-      {t.drafts && (
+      {(t.drafts || t.category !== "Spam") && (
         <div className={styles.draft}>
           <div className={styles.draftHead}>
             <strong>Reply draft</strong>
@@ -388,7 +404,7 @@ function Reader({
               <div className={styles.draftFoot}>
                 <span className={styles.note}>Nothing is sent until you approve it.</span>
                 {isApproved ? (
-                  <span className={base.savedTag}>✓ Saved to Gmail drafts</span>
+                  <span className={base.savedTag}>✓ {t.delivery === "gmail_draft" ? (t.delivered ? "Saved to Gmail drafts" : "Saving to Gmail drafts…") : t.delivery === "youtube_reply" ? (t.delivered ? "Reply posted on YouTube" : "Posting on YouTube…") : "Approved"}</span>
                 ) : editing ? (
                   <>
                     {edited && <button type="button" className={base.btnGhost} onClick={onUndoEdits}>Undo edits</button>}
@@ -400,7 +416,7 @@ function Reader({
                     <button type="button" className={base.btnGhost} onClick={onRegenerate} disabled={regenerating || edited}>
                       <RefreshIcon /> {regenerating ? "Rewriting…" : "Regenerate"}
                     </button>
-                    <button type="button" className={base.btnDark} onClick={onApprove}>Approve and save to Gmail drafts</button>
+                    <button type="button" className={base.btnDark} onClick={onApprove}>{APPROVE_LABEL[t.delivery]}</button>
                   </>
                 )}
               </div>
@@ -412,7 +428,7 @@ function Reader({
                   ? `Auto-drafts for ${t.category === "Fan question" ? "fan questions" : t.category === "Collab" ? "collabs" : "brand deals"} are off in Settings, so nothing was drafted.`
                   : "No reply drafted yet. This one needs your decision, so CreatorOS waited for you."}
               </p>
-              <button type="button" className={base.btnDark} onClick={onDraft}>✦ Draft a reply</button>
+              <button type="button" className={base.btnDark} onClick={onDraft} disabled={regenerating}>{regenerating ? "Writing…" : "✦ Draft a reply"}</button>
             </div>
           )}
         </div>

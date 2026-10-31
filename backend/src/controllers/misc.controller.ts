@@ -1,5 +1,5 @@
 import type { Request, Response } from "express";
-import type { AnalyticsQuery } from "../schemas/misc";
+import type { AnalyticsQuery, CopilotInput } from "../schemas/misc";
 import { listAlerts, markAlertsRead } from "../services/alerts.service";
 import { getAnalytics } from "../services/analytics.service";
 import { askCopilot } from "../services/copilot.service";
@@ -19,5 +19,6 @@ export async function analytics(req: Request, res: Response) {
 }
 
 export async function copilot(req: Request, res: Response) {
-  sendSuccess(res, await askCopilot(res.locals.userId, (req.body as { question: string }).question), "Answered");
+  const { question, history } = req.body as CopilotInput;
+  sendSuccess(res, await askCopilot(res.locals.userId, question, history), "Answered");
 }

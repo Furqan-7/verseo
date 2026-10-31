@@ -35,6 +35,14 @@ export const scheduleClipBody = z
   })
   .strict();
 
+export const createUploadBody = z
+  .object({
+    fileName: z.string().trim().min(1).max(200),
+    size: z.number().int().positive(),
+    mimeType: z.string().max(100),
+  })
+  .strict();
+
 export const listPostsQuery = z.object({ from: isoDate.optional(), to: isoDate.optional() });
 
 export type UpdateClipInput = z.infer<typeof updateClipBody>;

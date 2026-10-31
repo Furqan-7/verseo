@@ -7,7 +7,8 @@ import styles from "./contract.module.css";
 import { AppLayer } from "../../_shell/states";
 import { cx, healthColor } from "../../_shell/ui";
 import { HEALTH_MAX, dealStages } from "../../data";
-import { SAMPLE_CLAUSES, SAMPLE_TERMS, assess, toContractInput, type ContractTerms } from "./contract";
+import { ApiError, api } from "../../_shell/api";
+import { SAMPLE_CLAUSES, assess, fromContractRead, sampleTerms, toContractInput, type Clauses, type ContractTerms } from "./contract";
 
 const READING = ["Reading 9 pages", "Finding the fee and deliverables", "Checking payment terms and usage rights", "Scoring Deal Health"];
 
@@ -16,16 +17,21 @@ export default function ContractUpload({ onClose, onAdd }: { onClose: () => void
   const input = useRef<HTMLInputElement>(null);
   const [file, setFile] = useState<string | null>(null);
   const [reading, setReading] = useState(0);
-  const [terms, setTerms] = useState<ContractTerms>(SAMPLE_TERMS);
+  const [terms, setTerms] = useState<ContractTerms>(sampleTerms);
+  const [clauses, setClauses] = useState<Clauses>(SAMPLE_CLAUSES);
+  const [documentId, setDocumentId] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
   const [saving, setSaving] = useState(false);
 
-  // Walk through the reading stages, one every 600ms.
+  // Walk through the reading stages, one every 600ms; the last one waits
+  // for the API when a real contract is being read.
   useEffect(() => {
-    if (!file || reading >= READING.length) return;
+    if (!file || reading >= READING.length || (pending && reading >= READING.length - 1)) return;
     const t = setTimeout(() => setReading((r) => r + 1), 600);
     return () => clearTimeout(t);
-  }, [file, reading]);
+  }, [file, reading, pending]);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -37,14 +43,39 @@ export default function ContractUpload({ onClose, onAdd }: { onClose: () => void
 
   const set = <K extends keyof ContractTerms>(k: K, v: ContractTerms[K]) => setTerms((t) => ({ ...t, [k]: v }));
   const result = assess(terms);
-  const done = file !== null && reading >= READING.length;
+  const done = file !== null && reading >= READING.length && !pending;
 
+  // The sample contract.
   function start(name: string) {
     setFile(name);
     setReading(0);
+    setTerms(sampleTerms());
+    setClauses(SAMPLE_CLAUSES);
+    setDocumentId(null);
+    setError(null);
   }
 
-  const clause = (k: keyof ContractTerms) => SAMPLE_CLAUSES[k] && <small className={base.mono}>{SAMPLE_CLAUSES[k]}</small>;
+  // A real contract: the API reads it (text, terms and clause numbers).
+  async function read(f: File) {
+    setFile(f.name);
+    setReading(0);
+    setPending(true);
+    setError(null);
+    try {
+      const result = await api.readContract(f);
+      const form = fromContractRead(result);
+      setTerms(form.terms);
+      setClauses(form.clauses);
+      setDocumentId(result.documentId);
+      setPending(false);
+    } catch (err) {
+      setPending(false);
+      setFile(null);
+      setError(err instanceof ApiError ? err.message : "Couldn't read that contract. Try again.");
+    }
+  }
+
+  const clause = (k: keyof ContractTerms) => clauses[k] && <small className={base.mono}>{clauses[k]}</small>;
 
   return (
     <AppLayer>
@@ -65,10 +96,10 @@ export default function ContractUpload({ onClose, onAdd }: { onClose: () => void
                   e.preventDefault();
                   setDragging(false);
                   const f = e.dataTransfer.files?.[0];
-                  if (f) start(f.name);
+                  if (f) read(f);
                 }}
               >
-                <strong>Drop a PDF or Word contract</strong>
+                <strong>Drop a PDF contract</strong>
                 <small>CreatorOS finds the fee, deliverables, deadline, usage rights and payment terms, then scores the deal.</small>
                 <div className={styles.row}>
                   <button type="button" className={base.btnDark} onClick={() => input.current?.click()}>Choose a file</button>
@@ -78,14 +109,15 @@ export default function ContractUpload({ onClose, onAdd }: { onClose: () => void
               <input
                 ref={input}
                 type="file"
-                accept=".pdf,.doc,.docx"
+                accept=".pdf,application/pdf"
                 hidden
                 onChange={(e) => {
                   const f = e.target.files?.[0];
-                  if (f) start(f.name);
+                  if (f) read(f);
                   e.target.value = "";
                 }}
               />
+              {error && <p className={cx(base.modalNote, styles.error)} role="alert">{error}</p>}
               <p className={base.modalNote}>Contracts stay private to your workspace. Nothing is signed or sent.</p>
             </>
           )}
@@ -156,8 +188,8 @@ export default function ContractUpload({ onClose, onAdd }: { onClose: () => void
               )}
 
               <div className={base.modalActions}>
-                <button type="button" className={base.btnGhost} onClick={() => { setFile(null); setTerms(SAMPLE_TERMS); }}>Upload another</button>
-                <button type="button" className={base.btnDark} onClick={() => { setSaving(true); onAdd(toContractInput(terms, file!)).finally(() => setSaving(false)); }} disabled={saving || !terms.brand.trim() || !terms.campaign.trim() || !terms.deliverables.trim()}>
+                <button type="button" className={base.btnGhost} onClick={() => { setFile(null); setTerms(sampleTerms()); setDocumentId(null); }}>Upload another</button>
+                <button type="button" className={base.btnDark} onClick={() => { setSaving(true); onAdd(toContractInput(terms, file!, documentId ? { documentId, clauses } : undefined)).finally(() => setSaving(false)); }} disabled={saving || !terms.brand.trim() || !terms.campaign.trim() || !terms.deliverables.trim()}>
                   Add to {terms.stage}
                 </button>
               </div>

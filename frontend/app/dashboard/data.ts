@@ -55,6 +55,10 @@ export interface InboxThread {
   tone: Tone | null;
   editedReply: string | null;
   approved: boolean;
+  // Where an approved reply goes, and whether it got there.
+  delivery: "gmail_draft" | "youtube_reply" | "none";
+  delivered: boolean;
+  externalUrl: string | null;
 }
 
 // ── Publish ─────────────────────────────────────────────────────────────────
@@ -82,8 +86,8 @@ export interface Clip {
   skipped: boolean;
   captions: Record<PublishPlatform, { options: string[]; variant: number; text: string | null }>;
   hashtags: string[];
-  // Scheduled posts, one per platform.
-  posts: { platform: PublishPlatform; scheduledAt: string }[];
+  // Scheduled posts, one per platform, and how each went.
+  posts: { id: string; platform: PublishPlatform; scheduledAt: string; status: "scheduled" | "publishing" | "published" | "needs_manual" | "failed"; externalUrl: string | null; error: string | null; hasClipFile: boolean }[];
 }
 
 export interface Video {
@@ -122,10 +126,46 @@ export function postSlots(clipIndex: number): PostSlot[] {
 }
 
 // ── Dates ───────────────────────────────────────────────────────────────────
-// The demo's "today" is fixed. Dates are ISO strings handled in UTC so the
-// server and the browser always agree.
+// Dates are ISO strings handled in UTC so every helper agrees. "Today" is
+// the creator's local date in their time zone: AppShell sets it from the
+// profile (setWorkspaceClock) before any screen renders.
 
-export const TODAY_ISO = "2026-10-28";
+function zoneDate(tz: string, at = new Date()) {
+  const parts = new Intl.DateTimeFormat("en-US", { timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit", hourCycle: "h23" }).formatToParts(at);
+  const get = (type: string) => parts.find((p) => p.type === type)?.value ?? "0";
+  return { iso: `${get("year")}-${get("month")}-${get("day")}`, minutes: Number(get("hour")) * 60 + Number(get("minute")) };
+}
+
+export let TIME_ZONE = "UTC";
+export let TODAY_ISO = zoneDate("UTC").iso;
+
+export function setWorkspaceClock(tz: string) {
+  try {
+    TODAY_ISO = zoneDate(tz).iso;
+    TIME_ZONE = tz;
+  } catch {
+    // An unknown zone keeps UTC.
+  }
+}
+
+// Minutes since local midnight, for the calendar's "now" line.
+export function nowMinutes() {
+  return zoneDate(TIME_ZONE).minutes;
+}
+
+// The browser's own zone, offered at onboarding and in Settings.
+export function browserTimeZone() {
+  try {
+    return Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+  } catch {
+    return "UTC";
+  }
+}
+
+// "2026-10-28T09:02:00Z" → its local date and minutes in the creator's zone.
+export function localParts(iso: string) {
+  return zoneDate(TIME_ZONE, new Date(iso));
+}
 
 const DAY_NAMES = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -201,14 +241,15 @@ export const eventTypes: { type: EventType; label: string; color: string; bg: st
   { type: "call", label: "Calls", color: "#56c25a", bg: "#e3f4df", ink: "#2f6528" },
 ];
 
-// A gap CreatorOS suggests for filming, shown beside the week it falls in.
-export const suggestedSlot = {
-  date: "2026-10-29",
+// A gap CreatorOS suggests for filming (tomorrow morning), shown beside the
+// week it falls in.
+export const suggestedSlot = () => ({
+  date: addDays(TODAY_ISO, 1),
   start: 9 * 60,
   end: 11 * 60,
   title: "Film: “What camera do you use?” Short",
   why: "Free before your Short goes out at 12:00 pm, and 12 people asked for it.",
-};
+});
 
 // ── Deals ───────────────────────────────────────────────────────────────────
 
@@ -265,8 +306,8 @@ export const onboardingAccounts: {
   color: string;
   action: "connected" | "connect" | "csv" | "soon";
 }[] = [
-  { id: "gmail", name: "Gmail", detail: "Sort brand emails and draft replies", mark: "M", color: "#ea4335", action: "connected" },
-  { id: "calendar", name: "Google Calendar", detail: "Add deadlines and posting times", mark: "31", color: "#4285f4", action: "connected" },
+  { id: "gmail", name: "Gmail", detail: "Sort brand emails and draft replies", mark: "M", color: "#ea4335", action: "connect" },
+  { id: "calendar", name: "Google Calendar", detail: "Add deadlines and posting times", mark: "31", color: "#4285f4", action: "connect" },
   { id: "youtube", name: "YouTube", detail: "Comments, views and your best formats", mark: "▶", color: "#ff0033", action: "connect" },
   { id: "instagram", name: "Instagram", detail: "Import your metrics as a CSV for now", mark: "IG", color: "linear-gradient(45deg,#f9a825,#e91e63,#7b1fa2)", action: "csv" },
   { id: "tiktok", name: "TikTok", detail: "Coming soon", mark: "♪", color: "#181818", action: "soon" },

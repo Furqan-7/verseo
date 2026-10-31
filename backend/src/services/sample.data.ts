@@ -1,8 +1,10 @@
 // The sample creator's workspace (Maya Lopez, 180k on YouTube), written into
 // a new account's own rows when onboarding asks for it, so every screen has
 // something real to show before Gmail, Calendar and YouTube are connected.
-// Dates are relative to WORKSPACE_TODAY (Wed 28 Oct 2026), the day the demo
-// screens treat as today.
+// Dates are written for SAMPLE_TODAY (Wed 28 Oct 2026). Seeding moves every
+// date by however many days separate that from the creator's real today,
+// and renders the {{YYYY-MM-DD:format}} tokens in the text to match (see
+// renderDates in workspace.service.ts).
 
 import type {
   AlertKind,
@@ -17,7 +19,7 @@ import type {
   Tone,
 } from "../types/api";
 
-export const WORKSPACE_TODAY = "2026-10-28";
+export const SAMPLE_TODAY = "2026-10-28";
 
 export interface SampleMessage {
   key: string;
@@ -53,21 +55,21 @@ export const sampleMessages: SampleMessage[] = [
     subject: "Re: Spring campaign brief",
     preview: "Thanks Maya! Can you confirm the delivery dates and the deliverables before we send the contract?",
     body: [
-      "Hi Maya, thanks for the quick reply on the brief! Can you confirm you can deliver the Reel and two Stories by **Friday 30 October**? Once confirmed, we'll send the contract over for signature.",
+      "Hi Maya, thanks for the quick reply on the brief! Can you confirm you can deliver the Reel and two Stories by **{{2026-10-30:F}}**? Once confirmed, we'll send the contract over for signature.",
     ],
     senderSignOff: "Alex",
-    summary: "Nike wants confirmation of 3 deliverables by Fri 30 Oct. Fee $4,000. Contract not signed yet; payment terms missing.",
+    summary: "Nike wants confirmation of 3 deliverables by {{2026-10-30:f}}. Fee $4,000. Contract not signed yet; payment terms missing.",
     receivedAt: "2026-10-28T09:02:00Z",
     read: false,
     draftReady: true,
     minutesSaved: 8,
     drafts: {
       friendly:
-        "Hi Alex,\n\nThanks for the brief! The Reel and two Stories work for me, and I can deliver by ==Friday 30 October==. Before I sign, can we confirm ==Net 30 payment terms== and ==two revision rounds==?\n\nBest,\nMaya",
+        "Hi Alex,\n\nThanks for the brief! The Reel and two Stories work for me, and I can deliver by =={{2026-10-30:F}}==. Before I sign, can we confirm ==Net 30 payment terms== and ==two revision rounds==?\n\nBest,\nMaya",
       professional:
-        "Hi Alex,\n\nThank you for sending the brief. I can confirm delivery of one Reel and two Stories by ==Friday 30 October==. Before signing, I'd like the contract to include ==Net 30 payment terms== and a limit of ==two revision rounds==.\n\nKind regards,\nMaya Lopez",
+        "Hi Alex,\n\nThank you for sending the brief. I can confirm delivery of one Reel and two Stories by =={{2026-10-30:F}}==. Before signing, I'd like the contract to include ==Net 30 payment terms== and a limit of ==two revision rounds==.\n\nKind regards,\nMaya Lopez",
       shorter:
-        "Hi Alex,\n\nConfirmed: Reel and two Stories by ==Friday 30 October==. Can the contract add ==Net 30 payment terms== and ==two revision rounds==?\n\nThanks,\nMaya",
+        "Hi Alex,\n\nConfirmed: Reel and two Stories by =={{2026-10-30:F}}==. Can the contract add ==Net 30 payment terms== and ==two revision rounds==?\n\nThanks,\nMaya",
     },
   },
   {
@@ -85,17 +87,17 @@ export const sampleMessages: SampleMessage[] = [
       "Hi Maya, following up on the holiday edit payment. Finance asked me to check the invoice number on our side before they release it. Is it **#0142**?",
     ],
     senderSignOff: "Jess",
-    summary: "Glossier owes $2,500 for the Holiday edit. Invoice #0142 was due 22 Oct and is 6 days overdue.",
+    summary: "Glossier owes $2,500 for the Holiday edit. Invoice #0142 was due {{2026-10-22:D}} and is 6 days overdue.",
     receivedAt: "2026-10-27T16:40:00Z",
     read: true,
     draftReady: true,
     minutesSaved: 10,
     drafts: {
       friendly:
-        "Hi Jess,\n\nThanks for checking! Yes, it's ==invoice #0142== for ==$2,500==. It was due on ==22 October== under our Net 30 terms, so I'd be grateful if finance could release it this week. Happy to resend it if that helps.\n\nThanks,\nMaya",
+        "Hi Jess,\n\nThanks for checking! Yes, it's ==invoice #0142== for ==$2,500==. It was due on =={{2026-10-22:d}}== under our Net 30 terms, so I'd be grateful if finance could release it this week. Happy to resend it if that helps.\n\nThanks,\nMaya",
       professional:
-        "Hi Jess,\n\nThank you for following up. I can confirm the reference is ==invoice #0142== for ==$2,500==, which fell due on ==22 October== under our Net 30 terms. Please let me know if finance needs anything else to process the payment.\n\nKind regards,\nMaya Lopez",
-      shorter: "Hi Jess,\n\nYes, ==invoice #0142==, ==$2,500==, due ==22 October==. Could finance release it this week?\n\nThanks,\nMaya",
+        "Hi Jess,\n\nThank you for following up. I can confirm the reference is ==invoice #0142== for ==$2,500==, which fell due on =={{2026-10-22:d}}== under our Net 30 terms. Please let me know if finance needs anything else to process the payment.\n\nKind regards,\nMaya Lopez",
+      shorter: "Hi Jess,\n\nYes, ==invoice #0142==, ==$2,500==, due =={{2026-10-22:d}}==. Could finance release it this week?\n\nThanks,\nMaya",
     },
   },
   {
@@ -136,21 +138,21 @@ export const sampleMessages: SampleMessage[] = [
     subject: "Podcast guest spot",
     preview: "We'd love to have you on episode 42 to talk about building a one-person studio...",
     body: [
-      "Hi Maya, we'd love to have you on **episode 42** of Studio Sana to talk about building a one-person studio. Recording is remote and takes about 45 minutes. Would any day in the **week of 9 November** work?",
+      "Hi Maya, we'd love to have you on **episode 42** of Studio Sana to talk about building a one-person studio. Recording is remote and takes about 45 minutes. Would any day in the **week of {{2026-11-09:d}}** work?",
     ],
     senderSignOff: "Priya",
     summary:
-      "A podcast invite for episode 42, recorded remotely in the week of 9 Nov. No fee mentioned. CreatorOS didn't draft a reply because it needs your decision.",
+      "A podcast invite for episode 42, recorded remotely in the week of {{2026-11-09:D}}. No fee mentioned. CreatorOS didn't draft a reply because it needs your decision.",
     receivedAt: "2026-10-28T08:15:00Z",
     read: false,
     draftReady: false,
     minutesSaved: 6,
     drafts: {
       friendly:
-        "Hi Priya,\n\nThanks so much for thinking of me! I'd love to join ==episode 42==. ==Tuesday 10 November== or ==Thursday 12 November== work best for me. Could you share the topics ahead of time?\n\nMaya",
+        "Hi Priya,\n\nThanks so much for thinking of me! I'd love to join ==episode 42==. =={{2026-11-10:F}}== or =={{2026-11-12:F}}== work best for me. Could you share the topics ahead of time?\n\nMaya",
       professional:
-        "Hi Priya,\n\nThank you for the invitation. I'd be happy to join ==episode 42==. I'm available ==Tuesday 10 November== or ==Thursday 12 November==. Could you send an outline of the topics beforehand?\n\nBest regards,\nMaya Lopez",
-      shorter: "Hi Priya, I'd love to! ==Tue 10== or ==Thu 12 November==? Topics in advance would help.\n\nMaya",
+        "Hi Priya,\n\nThank you for the invitation. I'd be happy to join ==episode 42==. I'm available =={{2026-11-10:F}}== or =={{2026-11-12:F}}==. Could you send an outline of the topics beforehand?\n\nBest regards,\nMaya Lopez",
+      shorter: "Hi Priya, I'd love to! =={{2026-11-10:h}}== or =={{2026-11-12:g}}==? Topics in advance would help.\n\nMaya",
     },
   },
   {
@@ -374,7 +376,7 @@ export const sampleDeals: SampleDeal[] = [
     health: { financial: 24, deadline: 25, contract: 27, scope: 16 },
     invoice: { number: "#0142", dueDate: "2026-10-22" },
     reminderDraft:
-      "Hi Jess,\n\nHope the holiday launch went well! A quick note that invoice #0142 ($2,500) was due on 22 October under our Net 30 terms. Could you check on its status? Happy to resend it if that helps.\n\nThanks,\nMaya",
+      "Hi Jess,\n\nHope the holiday launch went well! A quick note that invoice #0142 ($2,500) was due on {{2026-10-22:d}} under our Net 30 terms. Could you check on its status? Happy to resend it if that helps.\n\nThanks,\nMaya",
     terms: [
       { label: "Fee", value: "$2,500" },
       { label: "Deliverables", value: "1 Reel, 1 TikTok", clause: "§3" },
@@ -456,10 +458,10 @@ export const sampleEvents: {
 
 export const sampleAlerts: { kind: AlertKind; title: string; detail: string; href: string; dealSlug?: string; createdAt: string; read: boolean }[] = [
   { kind: "overdue", title: "Glossier's payment is 6 days overdue", detail: "$2,500 · invoice #0142. A polite reminder is drafted.", href: "/dashboard/deals?deal=glossier", dealSlug: "glossier", createdAt: "2026-10-28T09:00:00Z", read: false },
-  { kind: "deadline", title: "Nike Story #1 is due tomorrow", detail: "Thu 29 Oct · Spring campaign · not in your calendar yet", href: "/dashboard/calendar?date=2026-10-29", dealSlug: "nike", createdAt: "2026-10-28T08:00:00Z", read: false },
+  { kind: "deadline", title: "Nike Story #1 is due tomorrow", detail: "{{2026-10-29:f}} · Spring campaign · not in your calendar yet", href: "/dashboard/calendar?date=2026-10-29", dealSlug: "nike", createdAt: "2026-10-28T08:00:00Z", read: false },
   { kind: "deadline", title: "Camera setup Reel needs your approval", detail: "It's set to go out today at 6:30 pm", href: "/dashboard/publish", createdAt: "2026-10-28T08:00:00Z", read: false },
   { kind: "new_deal", title: "New offer from Adidas", detail: "Run club series · $3,200 · Deal Health 61, 3 risks", href: "/dashboard/deals?deal=adidas", dealSlug: "adidas", createdAt: "2026-10-27T15:20:00Z", read: false },
-  { kind: "new_deal", title: "Spotify wants a Wrapped teaser", detail: "$1,800 · 1 Short · due Tue 1 Dec", href: "/dashboard/deals?deal=spotify", dealSlug: "spotify", createdAt: "2026-10-26T11:05:00Z", read: true },
+  { kind: "new_deal", title: "Spotify wants a Wrapped teaser", detail: "$1,800 · 1 Short · due {{2026-12-01:f}}", href: "/dashboard/deals?deal=spotify", dealSlug: "spotify", createdAt: "2026-10-26T11:05:00Z", read: true },
   { kind: "weekly", title: "Your week: $3,300 in, 9 posts out", detail: "6.5 hours saved · views up 13.9%", href: "/dashboard/analytics?range=7", createdAt: "2026-10-25T18:00:00Z", read: true },
 ];
 
@@ -573,7 +575,7 @@ function noise(n: number) {
 export function sampleChannelDays(addDays: (iso: string, days: number) => string) {
   return Array.from({ length: 180 }, (_, i) => {
     const back = 179 - i;
-    const date = addDays(WORKSPACE_TODAY, -back);
+    const date = addDays(SAMPLE_TODAY, -back);
     const weekday = new Date(`${date}T00:00:00Z`).getUTCDay();
     const weekend = weekday === 0 || weekday === 6 ? 1.12 : 1;
     return CHANNELS.map((channel, c) => {

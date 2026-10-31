@@ -14,7 +14,7 @@ import type {
   Tone as ApiTone,
   VideoDto,
 } from "@api-types";
-import { TODAY_ISO, addDays, dayLabel, type Alert, type AlertKind, type BoardDeal, type CalEvent, type Category, type DealStage, type Idea, type InboxThread, type Platform, type Todo, type Tone, type Video } from "../data";
+import { TODAY_ISO, addDays, dayLabel, localParts, type Alert, type AlertKind, type BoardDeal, type CalEvent, type Category, type DealStage, type Idea, type InboxThread, type Platform, type Todo, type Tone, type Video } from "../data";
 import type { api } from "./api";
 import type { Settings } from "./settings";
 
@@ -35,15 +35,10 @@ export const ALERT_KIND: Record<ApiAlertKind, AlertKind> = { overdue: "overdue",
 export const ALERT_KIND_CODE = invert(ALERT_KIND);
 
 export const money = (n: number) => `$${n.toLocaleString("en-US")}`;
-const hhmm = (iso: string) => {
-  const d = new Date(iso);
-  return `${d.getUTCHours()}:${String(d.getUTCMinutes()).padStart(2, "0")}`;
-};
-
-// "9:02" today, "Yesterday", otherwise "Mon 26 Oct".
+// "9:02" today, "Yesterday", otherwise "Mon 26 Oct" (in the creator's zone).
 function relativeTime(iso: string, short = false) {
-  const date = iso.slice(0, 10);
-  if (date === TODAY_ISO) return hhmm(iso);
+  const { iso: date, minutes } = localParts(iso);
+  if (date === TODAY_ISO) return `${Math.floor(minutes / 60)}:${String(minutes % 60).padStart(2, "0")}`;
   if (date === addDays(TODAY_ISO, -1)) return "Yesterday";
   const label = dayLabel(date, false);
   return short ? label.slice(0, 3) : label;
@@ -75,6 +70,9 @@ export function toThread(m: MessageDto): InboxThread {
     tone: m.tone ? TONE[m.tone] : null,
     editedReply: m.editedReply,
     approved: m.approvedAt !== null,
+    delivery: m.delivery,
+    delivered: m.delivered,
+    externalUrl: m.externalUrl,
   };
 }
 
@@ -169,7 +167,7 @@ export function toVideo(v: VideoDto): Video {
       skipped: c.skipped,
       captions: c.captions,
       hashtags: c.hashtags,
-      posts: c.posts.map((p) => ({ platform: p.platform, scheduledAt: p.scheduledAt })),
+      posts: c.posts.map((p) => ({ id: p.id, platform: p.platform, scheduledAt: p.scheduledAt, status: p.status, externalUrl: p.externalUrl, error: p.error, hasClipFile: p.hasClipFile })),
     })),
   };
 }
@@ -181,7 +179,7 @@ export function toAlert(a: AlertDto): Alert {
     title: a.title,
     detail: a.detail,
     when: relativeTime(a.createdAt, true),
-    today: a.createdAt.slice(0, 10) === TODAY_ISO,
+    today: localParts(a.createdAt).iso === TODAY_ISO,
     href: a.href,
     read: a.read,
     dealSlug: a.dealSlug ?? undefined,
@@ -196,6 +194,7 @@ const NOTIFICATIONS: AlertKind[] = ["overdue", "newDeal", "deadline", "weekly"];
 export function toSettings(p: ProfileDto): Settings {
   return {
     email: p.email,
+    timezone: p.timezone,
     name: p.name,
     channel: p.channel,
     niche: p.niche,
@@ -215,6 +214,7 @@ export function toSettings(p: ProfileDto): Settings {
 export function toProfilePatch(patch: Partial<Settings>) {
   const out: Parameters<typeof api.updateProfile>[0] = {};
   if (patch.name !== undefined) out.name = patch.name;
+  if (patch.timezone !== undefined) out.timezone = patch.timezone;
   if (patch.channel !== undefined) out.channel = patch.channel;
   if (patch.niche !== undefined) out.niche = patch.niche;
   if (patch.goals !== undefined) out.goals = patch.goals;
